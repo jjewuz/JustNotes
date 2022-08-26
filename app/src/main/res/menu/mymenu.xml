@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/info">
+        <item
+            android:title="@string/option1"
+            android:id="@+id/first" />
+        <item
+            android:title="@string/option2"
+            android:id="@+id/second" />
+        <item
+            android:title="@string/export"
+            android:id="@+id/export" />
+    </group>
+
+</menu>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JustNotes</string>
+    <string name="about">bienvenido a JustNotes!</string>
+    <string name="about2">La aplicación está diseñada para la edición de texto rápida y fácil. Haga clic en el \"más\" para crear una nueva nota. Mantén presionada la tarjeta para eliminar la nota.</string>
+    <string name="changes">Redes sociales:</string>
+    <string name="vk">Vkontakte</string>
+    <string name="gh">Github</string>
+    <string name="back">atrás</string>
+    <string name="inf">Información</string>
+    <string name="site">Sitio web</string>
+    <string name="count1">Contador de caracteres</string>
+    <string name="count2">Tiempo de leer</string>
+    <string name="minuts">minutos</string>
+    <string name="hint">Escriba aqui</string>
+    <string name="tg">Telegram</string>
+    <string name="tasks">Tareas</string>
+    <string name="rate">Califica la aplicación</string>
+    <string name="appwidget_text">JustNotes</string>
+    <string name="add_widget">Añadir widget</string>
+    <string name="app_widget_description">Es solo un artilugio :)</string>
+    <string name="counters">Número de caracteres | Tiempo de lectura (min.)</string>
+    <string name="option1">Borrar texto</string>
+    <string name="option2">Información de texto</string>
+    <string name="option3">Guardar y Salir</string>
+    <string name="lastedit">"Última edición: "</string>
+    <string name="Title">Título de la nota</string>
+    <string name="verison" >created by jjewuz\n55 (2.2.0)</string>
+    <string name="deleted">eliminada</string>
+    <string name="saved">salvado</string>
+    <string name="pos">Sí</string>
+    <string name="neg">No</string>
+    <string name="delWarn">¿Está seguro de que desea eliminar la nota?</string>
+    <string name="export">Exportar a .docx</string>
+    <string name="docMade">¡El archivo se guardó en la carpeta Descargas!</string>
+
+</resources>

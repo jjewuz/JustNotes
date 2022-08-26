@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/layout/activity_editor.xml" value="0.33" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.255" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.255" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v31/butt.xml" value="0.3675" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v31/buttonc.xml" value="0.3675" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v31/buttons.xml" value="0.3675" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/butt.xml" value="0.3675" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/buttonc.xml" value="0.3675" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/buttone.xml" value="0.336" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/buttons.xml" value="0.3828125" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/color_cursor.xml" value="0.3185" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/custom_popup_background.xml" value="0.229" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/popup_background.xml" value="0.3185" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/popupbg.xml" value="0.229" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/rounded_corner.xml" value="0.3355" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/drawable/textedit.xml" value="0.3828125" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_add_edit_note.xml" value="0.21096491228070174" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_editor.xml" value="0.33" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_list.xml" value="0.3087719298245614" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_note_editor.xml" value="0.36666666666666664" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/activity_tasks.xml" value="0.20657894736842106" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/add_note_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/customview.xml" value="0.3087719298245614" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/example_item.xml" value="0.3087719298245614" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/note_rv_item.xml" value="0.22280701754385965" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/note_widget.xml" value="0.2100877192982456" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/todo_task.xml" value="0.20657894736842106" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/layout/toolbar.xml" value="0.20657894736842106" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/menu/main.xml" value="0.19166666666666668" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/menu/mymenu.xml" value="0.5" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/menu/navigation.xml" value="0.19166666666666668" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/menu/top_app_bar.xml" value="0.3009833262077811" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.25" />
+        <entry key="..\:/android/JustNotes/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.251" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

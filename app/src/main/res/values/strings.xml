@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">JustNotes</string>
+    <string name="about">Welcome to JustNotes!</string>
+    <string name="about2">This app created for fast and comfortable text editing .Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
+    <string name="changes">Social media:</string>
+    <string name="vk">VK group</string>
+    <string name="gh">Github</string>
+    <string name="back">Back</string>
+    <string name="inf">Information</string>
+    <string name="site">Site</string>
+    <string name="count1">Character counter</string>
+    <string name="count2">Reading time</string>
+    <string name="minuts">mins</string>
+    <string name="hint">Write here</string>
+    <string name="tg">Telegram Group</string>
+    <string name="tasks">Tasks</string>
+    <string name="rate">Rate app</string>
+    <string name="appwidget_text">JustNotes</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an JustNotes App widget</string>
+    <string name="counters">Character count | Reading time (mins.)</string>
+    <string name="option1">Clear text</string>
+    <string name="option2">Text info</string>
+    <string name="option3">Save and exit</string>
+    <string name="verison" >created by jjewuz\n55 (2.2.0)</string>
+    <string name="lastedit">"Last edited: "</string>
+    <string name="Title">Note Title</string>
+    <string name="deleted">deleted</string>
+    <string name="saved">saved</string>
+    <string name="pos">Yes</string>
+    <string name="neg">No</string>
+    <string name="delWarn">Are you sure you want to delete the note?</string>
+    <string name="export">Export to .docx</string>
+    <string name="docMade">File was saved to Downloads folder!</string>
+</resources>
