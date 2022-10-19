@@ -24,7 +24,7 @@
     <string name="option2">Textinformationen</string>
     <string name="option3">Speichern und schließen</string>
     <string name="lastedit">"Zuletzt bearbeitet: "</string>
-    <string name="verison" >created by jjewuz\n55 (2.2.0)</string>
+    <string name="verison" >created by jjewuz\n60 (2.2.2)</string>
     <string name="Title">Titel beachten</string>
     <string name="deleted">gelöscht</string>
     <string name="saved">Gerettet</string>
@@ -33,4 +33,5 @@
     <string name="delWarn">Möchten Sie die Notiz wirklich löschen?</string>
     <string name="export">In .docx exportieren</string>
     <string name="docMade">Datei wurde im Downloads-Ordner gespeichert!</string>
+    <string name="note">die Notiz</string>
 </resources>

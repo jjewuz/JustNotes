@@ -106,23 +106,38 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         val noteTitle = noteTitleEdt.text.toString()
         val noteDescription = noteEdt.text.toString()
-        if (noteType.equals("Edit")) {
-            if (noteTitle.isNotEmpty()) {
-                val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
-                val currentDateAndTime: String = sdf.format(Date())
-                val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
-                updatedNote.id = noteID
-                viewModal.updateNote(updatedNote)
+        if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
+            if (noteType.equals("Edit")) {
+
+                    val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
+                    val currentDateAndTime: String = sdf.format(Date())
+
+                    if (noteTitle.isEmpty()) {
+                        val updatedNote = Note(noteDescription, noteDescription, currentDateAndTime)
+                    } else {
+                        val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
+                        updatedNote.id = noteID
+                        viewModal.updateNote(updatedNote)
+                    }
+                    Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
+                } else {
+                    val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
+                    val currentDateAndTime: String = sdf.format(Date())
+                    if (noteTitle.isEmpty()) {
+                        viewModal.addNote(
+                            Note(
+                                noteDescription,
+                                noteDescription,
+                                currentDateAndTime
+                            )
+                        )
+                    } else {
+                        viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
+
+                    }
                 Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
+                }
             }
-        } else {
-            if (noteTitle.isNotEmpty()) {
-                val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
-                val currentDateAndTime: String = sdf.format(Date())
-                viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
-                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
-            }
-        }
         this.finish()
     }
 

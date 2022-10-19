@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.mdenisov338.justnotesapp",
+  "applicationId": "com.jjewuz.justnotes",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 51,
-      "versionName": "2.0.5",
+      "versionCode": 55,
+      "versionName": "2.2.0",
       "outputFile": "app-release.apk"
     }
   ],
