@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
@@ -33,11 +34,19 @@ class AddEditNoteActivity : AppCompatActivity() {
     lateinit var viewModal: NoteViewModal
     var noteID = -1;
 
+    private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            saveNote()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
+
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         viewModal = ViewModelProvider(
             this,
@@ -101,7 +110,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
+    private fun saveNote() {
         val noteType = intent.getStringExtra("noteType")
 
         val noteTitle = noteTitleEdt.text.toString()
@@ -178,28 +187,7 @@ class AddEditNoteActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val noteType = intent.getStringExtra("noteType")
-
-        val noteTitle = noteTitleEdt.text.toString()
-        val noteDescription = noteEdt.text.toString()
-        if (noteType.equals("Edit")) {
-            if (noteTitle.isNotEmpty()) {
-                val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
-                val currentDateAndTime: String = sdf.format(Date())
-                val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
-                updatedNote.id = noteID
-                viewModal.updateNote(updatedNote)
-                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            if (noteTitle.isNotEmpty()) {
-                val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
-                val currentDateAndTime: String = sdf.format(Date())
-                viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
-                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
-            }
-        }
-        this.finish()
+        saveNote()
         return false
     }
 
