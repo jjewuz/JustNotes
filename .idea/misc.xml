@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/drawable/ic_icon.xml" value="0.196" />
         <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/layout/activity_editor.xml" value="0.33" />
         <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/layout/note_rv_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3245" />
+        <entry key="..\:/Coding/Projects/AndroidStudio/JustNotes/app/src/main/res/mipmap-hdpi/ic_launcher_monochrome.xml" value="0.196" />
         <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.255" />
         <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.255" />
         <entry key="..\:/android/JustNotes/app/src/main/res/drawable-v31/butt.xml" value="0.3675" />

@@ -32,6 +32,6 @@
     <string name="delWarn">Вы действительно хотите удалить заметку?</string>
     <string name="export">Экспорт в .docx</string>
     <string name="docMade">Файл был сохранён в папку загрузок!</string>
-    <string name="verison" >создано jjewuz\n62 (2.2.3)</string>
+    <string name="verison" >создано jjewuz\n63 (2.2.4)</string>
     <string name="note">Заметка</string>
 </resources>

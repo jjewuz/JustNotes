@@ -82,7 +82,7 @@
     <color name="neutral_2_900">@android:color/system_neutral2_900</color>
     <color name="neutral_2_1000">@android:color/system_neutral2_1000</color>
 
-    <color name="launcher_icon_background">@android:color/system_accent1_200</color>
+    <color name="launcher_icon_background">#71DBA5</color>
 
 
 </resources>
