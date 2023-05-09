@@ -25,14 +25,28 @@
     <string name="option3">Guardar y Salir</string>
     <string name="lastedit">"Última edición: "</string>
     <string name="Title">Título de la nota</string>
-    <string name="verison" >created by jjewuz\n63 (2.2.4)</string>
-    <string name="deleted">eliminada</string>
-    <string name="saved">salvado</string>
+    <string name="verison" >Desarrollador: jjewuz</string>
+    <string name="deleted">Eliminada</string>
+    <string name="saved">Salvado</string>
     <string name="pos">Sí</string>
     <string name="neg">No</string>
     <string name="delWarn">¿Está seguro de que desea eliminar la nota?</string>
-    <string name="export">Exportar a .docx</string>
+    <string name="export">Exportar a .txt</string>
     <string name="docMade">¡El archivo se guardó en la carpeta Descargas!</string>
     <string name="note">la nota</string>
+    <string name="error">Error</string>
+    <string name="countSymb">Número de caracteres:</string>
+    <string name="countTime">Tiempo de lectura (min.):</string>
+    <string name="boosty">¡Suscríbete a Boost!</string>
+    <string name="loginText">por favor autenticar</string>
+    <string name="loginTitle">JustNotes está bloqueado</string>
+    <string name="settingsText">Ajustes</string>
+    <string name="passwordSettings">Usar contraseña</string>
+    <string name="passEnable">Contraseña habilitada</string>
+    <string name="passDisabled">Contraseña deshabilitada</string>
+    <string name="authFail">Autenticación fallida</string>
+    <string name="authSuc">Autenticación exitosa</string>
+    <string name="authError">Error de autenticación:</string>
+    <string name="noPassError">¡Habilite la contraseña en el teléfono o restablezca los datos de JustNotes!</string>
 
 </resources>

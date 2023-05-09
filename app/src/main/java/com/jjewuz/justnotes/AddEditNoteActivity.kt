@@ -1,9 +1,12 @@
 package com.jjewuz.justnotes
 
 
+import android.content.ContentValues
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.Environment.getExternalStoragePublicDirectory
+import android.provider.MediaStore
 import android.text.Editable
 import android.view.Menu
 import android.view.MenuInflater
@@ -12,16 +15,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.apache.poi.xwpf.usermodel.ParagraphAlignment
-import org.apache.poi.xwpf.usermodel.XWPFDocument
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.FileOutputStream
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,6 +45,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
+
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
@@ -85,15 +86,16 @@ class AddEditNoteActivity : AppCompatActivity() {
             }
             R.id.second -> {
                 val thisnote = findViewById<EditText>(R.id.idEdtNoteDesc)
-                val string: String = getString(R.string.counters)
+                val countS: String = getString(R.string.countSymb)
+                val countT: String = getString(R.string.countTime)
                 val count = thisnote.text.length
                 val time = count / 512
 
 
 
                 MaterialAlertDialogBuilder(this)
-                    .setTitle("$string")
-                    .setMessage("$count | ≈$time")
+                    .setTitle(R.string.inf)
+                    .setMessage("$countS $count | $countT ≈$time")
                     .setPositiveButton("OK") { dialog, which ->
                     }
                     .show()
@@ -101,9 +103,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 true
             }
             R.id.export -> {
-                var targetDoc = createWordDoc()
-                addParagraph(targetDoc)
-                saveOurDoc(targetDoc)
+                saveOurDoc()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -150,40 +150,71 @@ class AddEditNoteActivity : AppCompatActivity() {
         this.finish()
     }
 
-    private fun createWordDoc(): XWPFDocument {
-        return XWPFDocument()
-    }
 
-    private fun addParagraph(targetDoc:XWPFDocument){
-        val paragraph1 = targetDoc.createParagraph()
-        paragraph1.alignment = ParagraphAlignment.LEFT
-        val sentenceRun1 = paragraph1.createRun()
-        noteEdt = findViewById(R.id.idEdtNoteDesc)
-        sentenceRun1.fontSize = 16
-        sentenceRun1.fontFamily = "Times New Roman"
-        sentenceRun1.setText(noteEdt.text.toString())
-        sentenceRun1.addBreak()
-        Toast.makeText(this, R.string.docMade, Toast.LENGTH_SHORT).show()
+    private fun saveOurDoc() {
 
-    }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
+            noteEdt = findViewById(R.id.idEdtNoteDesc)
 
-    private fun saveOurDoc(targetDoc:XWPFDocument){
-            val path = getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val ourAppFileDirectory = (path)
-            if (ourAppFileDirectory != null && !ourAppFileDirectory.exists()) {
-                ourAppFileDirectory.mkdirs()
-            }
+            val noteText = noteEdt.text.toString()
+
             val noteTitle = noteTitleEdt.text.toString()
-            val wordFile = File(ourAppFileDirectory, "$noteTitle.docx")
-            try {
-                val fileOut = FileOutputStream(wordFile)
-                targetDoc.write(fileOut)
-                fileOut.close()
-            } catch (e: FileNotFoundException) {
-                e.printStackTrace()
-            } catch (e: IOException) {
-                e.printStackTrace()
+
+            createAndSaveWordDocScoped(this, noteTitle, noteText)
+        } else {
+
+            val noteTitle = noteTitleEdt.text.toString()
+            noteEdt = findViewById(R.id.idEdtNoteDesc)
+
+            val noteText = noteEdt.text.toString()
+
+            createAndSaveWordDoc(this, noteTitle, noteText)
+
+        }
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    fun createAndSaveWordDocScoped(context: Context, noteName: String, noteText: String) {
+        val resolver = context.contentResolver
+        val contentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, noteName)
+            put(MediaStore.MediaColumns.MIME_TYPE, "text/plain")
+            put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+        }
+
+        val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
+
+        uri.let {
+            if (it != null) {
+                contentResolver.openOutputStream(it).use { outputStream ->
+                    outputStream?.write(noteText.toByteArray())
+                }
             }
+            Toast.makeText(context, R.string.docMade, Toast.LENGTH_SHORT).show()
+        } ?: run {
+            Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun createAndSaveWordDoc(context: Context, noteName: String, noteText: String) {
+
+        val downloadsDirectory = File(Environment.getExternalStorageDirectory(), "Download")
+        if (!downloadsDirectory.exists()) {
+            downloadsDirectory.mkdirs()
+        }
+        val file = File(downloadsDirectory, noteName)
+
+        try {
+            val fileOutputStream = FileOutputStream(file)
+            fileOutputStream.write(noteText.toByteArray())
+            fileOutputStream.close()
+            Toast.makeText(this, R.string.docMade, Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            Toast.makeText(this, "${R.string.error}: $e", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

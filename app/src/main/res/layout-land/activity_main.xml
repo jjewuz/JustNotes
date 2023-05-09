@@ -22,6 +22,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView2"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -49,7 +51,7 @@
         android:src="@drawable/add"
         app:layout_constraintBottom_toTopOf="@+id/idFAB2"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="25dp"
+        android:layout_marginRight="55dp"
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="105dp" />
 
@@ -60,7 +62,7 @@
         android:src="@drawable/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="25dp"
+        android:layout_marginRight="55dp"
         android:layout_marginBottom="35dp"
         android:layout_gravity="end|bottom" />
 

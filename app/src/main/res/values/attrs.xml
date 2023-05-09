@@ -4,4 +4,39 @@
         <attr name="appWidgetInnerRadius" format="dimension" />
         <attr name="appWidgetRadius" format="dimension" />
     </declare-styleable>
+    <attr name="colorPrimary" format="color" />
+    <attr name="colorOnPrimary" format="color" />
+    <attr name="colorPrimaryContainer" format="color" />
+    <attr name="colorOnPrimaryContainer" format="color" />
+    <attr name="colorPrimaryInverse" format="color" />
+
+    <attr name="colorSecondary" format="color" />
+    <attr name="colorOnSecondary" format="color" />
+    <attr name="colorSecondaryContainer" format="color" />
+    <attr name="colorOnSecondaryContainer" format="color" />
+
+    <attr name="colorTertiary" format="color" />
+    <attr name="colorOnTertiary" format="color" />
+    <attr name="colorTertiaryContainer" format="color" />
+    <attr name="colorOnTertiaryContainer" format="color" />
+
+    <attr name="colorError" format="color" />
+    <attr name="colorOnError" format="color" />
+    <attr name="colorErrorContainer" format="color" />
+    <attr name="colorOnErrorContainer" format="color" />
+
+    <attr name="colorOutline" format="color" />
+    <attr name="colorBackground" format="color" />
+    <attr name="colorOnBackground" format="color" />
+
+    <attr name="colorSurface" format="color" />
+    <attr name="colorOnSurface" format="color" />
+    <attr name="colorSurfaceVariant" format="color" />
+    <attr name="colorOnSurfaceVariant" format="color" />
+    <attr name="colorSurfaceInverse" format="color" />
+
+    <attr name="toolBarColor" format="color" />
+    <attr name="toolBarTextColor" format="color" />
+    <attr name="textColor" format="color" />
+    <attr name="cardColor" format="color" />
 </resources>

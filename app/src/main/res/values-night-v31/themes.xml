@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--
-    Having themes.xml for night-v31 because of the priority order of the resource qualifiers.
-    -->
-    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorAccent">@color/accent</item>
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryVariant">@color/primaryVariantColor</item>
-        <item name="colorOnPrimary">@color/accent_1_900</item>
-        <item name="colorTertiary">@color/accent_3_600</item>
-        <item name="colorTertiaryContainer">@color/white</item>
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark">
 
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondary</item>
-        <item name="colorOnSecondary">@color/secondaryVariantColor</item>
-        <item name="colorSecondaryContainer">@color/accent_2_800</item>
-        <item name="colorSurfaceVariant">@color/accent_1_700</item>
-        <item name="colorSurface">@color/accent_1_700</item>
-        <item name="colorPrimaryContainer">@color/accent_1_900</item>
-        <item name="colorOnBackground">@color/colorFabIcon</item>
-
-        <item name="colorOnContainer">@color/accent_1_1000</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
         <item name="android:navigationBarColor">
             @android:color/transparent
@@ -32,9 +14,12 @@
             @android:color/transparent
         </item>
 
-        <item name="android:windowSplashScreenAnimationDuration">3000</item>
-        <item name="android:windowSplashScreenBackground">@color/primaryColor</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <item name="colorControlNormal">@android:color/white</item>
+
+        <item name="android:windowLayoutInDisplayCutoutMode">
+            shortEdges <!-- default, shortEdges, or never -->
+        </item>
     </style>
 
 
@@ -45,6 +30,23 @@
 
     <style name="Toolbar" parent="AppTheme">
         <item name="tint">@android:color/white</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+
+        <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
+
+
     </style>
 
 
