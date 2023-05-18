@@ -12,8 +12,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 23
         targetSdk 33
-        versionCode 111
-        versionName "3.1.1"
+        versionCode 112
+        versionName "3.1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     packagingOptions {
         resources {
@@ -38,20 +38,19 @@ android {
     }
     buildFeatures {
         viewBinding true
-    }
-    lintOptions {
-
-        checkReleaseBuilds false
 
     }
     namespace 'com.jjewuz.justnotes'
+    lint {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'

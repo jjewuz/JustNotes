@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/notes"
+        android:title="Notes">
+    </item>
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settingsText">
+    </item>
+    <item
+        android:id="@+id/info"
+        android:title="@string/inf">
+    </item>
+</menu>

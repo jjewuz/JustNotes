@@ -42,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                app:cardCornerRadius="25dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:minHeight="48dp">
@@ -98,6 +99,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="25dp"
                     android:clickable="true"
                     android:focusable="true">
 
@@ -159,6 +161,7 @@
                         android:layout_margin="8dp"
                         android:clickable="true"
                         style="?attr/materialCardViewFilledStyle"
+                        app:cardCornerRadius="25dp"
                         android:focusable="true">
 
                         <LinearLayout
@@ -187,15 +190,7 @@
                         android:text="@string/changes"
                         android:textSize="20sp" />
 
-                            <Button
-                                android:id="@+id/button20"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:onClick="boostyBtn"
-                                android:text="@string/boosty" />
-
-                    <LinearLayout
+                            <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center">

@@ -9,12 +9,15 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import java.util.concurrent.Executor
 
 
@@ -50,6 +54,8 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteLongClickInter
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             DynamicColors.applyToActivitiesIfAvailable(application)
         }
+
+
         notesRV = findViewById(R.id.notes)
         addFAB = findViewById(R.id.idFAB)
         infoFAB = findViewById(R.id.idFAB2)

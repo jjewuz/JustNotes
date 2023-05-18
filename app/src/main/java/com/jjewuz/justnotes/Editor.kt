@@ -107,24 +107,13 @@ class Editor : AppCompatActivity() {
 
     fun ratestore(view: View) {
 
-        val manager = ReviewManagerFactory.create(this)
-        val request = manager.requestReviewFlow()
-        request.addOnCompleteListener { request ->
-            if (request.isSuccessful) {
-                val reviewInfo = request.result
-                val flow = manager.launchReviewFlow(this, reviewInfo)
-                flow.addOnCompleteListener { _ ->
-
-                }
-            } else {
-
-            }
-        }
+        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://jjewuz.github.io/"))
+        startActivity(i)
     }
 
     fun boostyBtn(view: View){
 
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://boosty.to/jjewuz"))
+        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.jjewuz.justnotes"))
         startActivity(i)
     }
 
