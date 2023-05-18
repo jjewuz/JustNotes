@@ -41,6 +41,12 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/note_rv_item" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteLongClickInter
             }
         })
 
+
         addFAB.setOnClickListener {
             val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
             startActivity(intent)
