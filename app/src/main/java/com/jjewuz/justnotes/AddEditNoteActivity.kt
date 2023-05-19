@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -25,6 +26,7 @@ import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class AddEditNoteActivity : AppCompatActivity() {
 
     lateinit var noteTitleEdt: EditText
@@ -33,6 +35,8 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     lateinit var viewModal: NoteViewModal
     var noteID = -1;
+
+    private var hasChanges = false;
 
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -67,6 +71,30 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteEdt.setText(noteDescription)
         } else {
         }
+
+        val watcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                charSequence: CharSequence,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                charSequence: CharSequence,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                hasChanges = true
+            }
+
+            override fun afterTextChanged(editable: Editable) {}
+        }
+
+        noteTitleEdt.addTextChangedListener(watcher)
+        noteEdt.addTextChangedListener(watcher)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -91,8 +119,6 @@ class AddEditNoteActivity : AppCompatActivity() {
                 val count = thisnote.text.length
                 val time = count / 512
 
-
-
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.inf)
                     .setMessage("$countS $count | $countT ≈$time")
@@ -111,12 +137,13 @@ class AddEditNoteActivity : AppCompatActivity() {
     }
 
     private fun saveNote() {
-        val noteType = intent.getStringExtra("noteType")
+        if (hasChanges) {
+            val noteType = intent.getStringExtra("noteType")
 
-        val noteTitle = noteTitleEdt.text.toString()
-        val noteDescription = noteEdt.text.toString()
-        if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
-            if (noteType.equals("Edit")) {
+            val noteTitle = noteTitleEdt.text.toString()
+            val noteDescription = noteEdt.text.toString()
+            if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
+                if (noteType.equals("Edit")) {
 
                     val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
                     val currentDateAndTime: String = sdf.format(Date())
@@ -144,9 +171,10 @@ class AddEditNoteActivity : AppCompatActivity() {
                         viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
 
                     }
-                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
                 }
             }
+        }
         this.finish()
     }
 
