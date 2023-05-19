@@ -48,4 +48,11 @@
     <string name="authSuc">Вход выполнен</string>
     <string name="authError">Ошибка входа:</string>
     <string name="noPassError">Настройте пароль или сбросьте данные JustNotes</string>
+    <string name="notes">Заметки</string>
+    <string name="menu_home">Дом</string>
+    <string name="add_button">Новая заметка</string>
+    <string name="logo">Logo</string>
+    <string name="fontToggle">Системный шрифт</string>
+    <string name="needRestart">Изменения применятся после перезапуска приложения</string>
+    <string name="monet">Использовать адаптивные цвета</string>
 </resources>

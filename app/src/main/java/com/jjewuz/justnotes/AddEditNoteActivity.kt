@@ -3,6 +3,7 @@ package com.jjewuz.justnotes
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -38,6 +39,8 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private var hasChanges = false;
 
+    private lateinit var sharedPref: SharedPreferences
+
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             saveNote()
@@ -46,6 +49,20 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        if (enabledFont and enabledMonet){
+            setTheme(R.style.AppTheme)
+        } else if (!enabledFont and enabledMonet){
+            setTheme(R.style.FontMonet)
+        }
+        else if (!enabledFont and !enabledMonet){
+            setTheme(R.style.Font)
+        } else {
+            setTheme(R.style.Nothing)
+        }
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
@@ -68,6 +85,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteDescription = intent.getStringExtra("noteDescription")
             noteID = intent.getIntExtra("noteId", -1)
             noteTitleEdt.setText(noteTitle)
+            supportActionBar?.title = noteTitle
             noteEdt.setText(noteDescription)
         } else {
         }
@@ -121,7 +139,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.inf)
-                    .setMessage("$countS $count | $countT ≈$time")
+                    .setMessage("$countS $count \n$countT ≈$time")
                     .setPositiveButton("OK") { dialog, which ->
                     }
                     .show()

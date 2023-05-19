@@ -48,5 +48,11 @@
     <string name="authSuc">Autenticación exitosa</string>
     <string name="authError">Error de autenticación:</string>
     <string name="noPassError">¡Habilite la contraseña en el teléfono o restablezca los datos de JustNotes!</string>
-
+    <string name="notes">notas</string>
+    <string name="menu_home">Hogar</string>
+    <string name="add_button">Nueva nota</string>
+    <string name="logo">Logo</string>
+    <string name="fontToggle">Fuente del sistema</string>
+    <string name="needRestart">Los cambios se aplicarán después de reiniciar la aplicación.</string>
+    <string name="monet">Usa colores adaptables</string>
 </resources>

@@ -47,15 +47,11 @@
     <string name="authSuc">Authentication succeeded</string>
     <string name="authError">Authentication error:</string>
     <string name="noPassError">Enable password on phone or reset JustNotes data!</string>
-    <string name="title_activity_main2">MainActivity2</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="notes">Notes</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="add_button">New note</string>
+    <string name="logo">Logo</string>
+    <string name="fontToggle">System font</string>
+    <string name="needRestart">Changes will be applied after restarting the application</string>
+    <string name="monet">Use adaptive colors</string>
 </resources>

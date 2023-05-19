@@ -16,6 +16,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -26,15 +27,18 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import java.util.concurrent.Executor
 
 
-class MainActivity : AppCompatActivity(), NoteClickInterface, NoteLongClickInterface {
+class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModal: NoteViewModal
-    lateinit var notesRV: RecyclerView
-    lateinit var addFAB: FloatingActionButton
-    lateinit var infoFAB: FloatingActionButton
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var actionBarToggle: ActionBarDrawerToggle
+    private lateinit var navView: NavigationView
+
+    lateinit var binding: ActivityMainBinding
 
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
@@ -44,52 +48,85 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteLongClickInter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        if (enabledFont and enabledMonet){
+            setTheme(R.style.AppTheme)
+        } else if (!enabledFont and enabledMonet){
+            setTheme(R.style.FontMonet)
+        }
+        else if (!enabledFont and !enabledMonet){
+            setTheme(R.style.Font)
+        } else {
+            setTheme(R.style.Nothing)
+        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val font = resources.getFont(R.font.raleway)
+
+        drawerLayout = findViewById(R.id.drawer)
+
+        actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
+        drawerLayout.addDrawerListener(actionBarToggle)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        actionBarToggle.syncState()
+
+        navView = findViewById(R.id.nv)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.place_holder, NotesFragment())
+            .commit()
+
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             DynamicColors.applyToActivitiesIfAvailable(application)
         }
 
-
-        notesRV = findViewById(R.id.notes)
-        addFAB = findViewById(R.id.idFAB)
-        infoFAB = findViewById(R.id.idFAB2)
-
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
 
-        notesRV.layoutManager = LinearLayoutManager(this)
+        val notesTxt = resources.getString(R.string.notes)
+        val settingsTxt = resources.getString(R.string.settingsText)
+        val infoTxt = resources.getString(R.string.inf)
 
-        val noteRVAdapter = NoteRVAdapter(this, this, this)
-
-        notesRV.adapter = noteRVAdapter
-
-        viewModal = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(NoteViewModal::class.java)
-
-
-        viewModal.allNotes.observe(this, Observer { list ->
-            list?.let {
-                noteRVAdapter.updateList(it)
+        binding.apply {
+            nv.setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.notes -> {
+                        supportActionBar?.title = notesTxt
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.place_holder, NotesFragment())
+                            .commit()
+                    }
+                    R.id.settings -> {
+                        supportActionBar?.title = settingsTxt
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.place_holder, SettingsFragment())
+                            .commit()
+                    }
+                    R.id.info -> {
+                        supportActionBar?.title = infoTxt
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.place_holder, InfoFragment())
+                            .commit()
+                    }
+                }
+                drawer.closeDrawer(GravityCompat.START)
+                true
             }
-        })
-
-
-        addFAB.setOnClickListener {
-            val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
-            startActivity(intent)
-        }
-
-        infoFAB.setOnClickListener {
-            val intent = Intent(this@MainActivity, Editor::class.java)
-            startActivity(intent)
         }
 
         executor = ContextCompat.getMainExecutor(this)
@@ -152,26 +189,9 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteLongClickInter
 
     }
 
-    override fun onNoteClick(note: Note) {
-        val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
-        intent.putExtra("noteType", "Edit")
-        intent.putExtra("noteTitle", note.noteTitle)
-        intent.putExtra("noteDescription", note.noteDescription)
-        intent.putExtra("noteId", note.id)
-        startActivity(intent)
-    }
-
-
-    override fun onNoteLongClick(note: Note) {
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.delWarn)
-            .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
-            }
-            .setPositiveButton(R.string.pos) { dialog, which ->
-                viewModal.deleteNote(note)
-                Toast.makeText(this, R.string.deleted, Toast.LENGTH_LONG).show()
-            }
-            .show()
+    override fun onSupportNavigateUp(): Boolean {
+        drawerLayout.openDrawer(navView)
+        return true
     }
 
     fun checkDeviceHasBiometric() {
