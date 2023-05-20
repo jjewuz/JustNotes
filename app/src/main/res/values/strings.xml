@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JustNotes</string>
+    <string name="app_name" translatable="false">JustNotes</string>
     <string name="about">Welcome to JustNotes!</string>
     <string name="about2">This app created for fast and comfortable text editing .Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
     <string name="changes">Social media:</string>
@@ -40,9 +40,9 @@
     <string name="loginTitle">JustNotes is locked</string>
     <string name="loginText">Please authenticate</string>
     <string name="settingsText">Settings</string>
-    <string name="passwordSettings">Use password</string>
-    <string name="passEnable">Password enabled</string>
-    <string name="passDisabled">Password disabled</string>
+    <string name="passwordSettings">Biometric authentication</string>
+    <string name="passEnable">Protection enabled</string>
+    <string name="passDisabled">Protection disabled</string>
     <string name="authFail">Authentication failed</string>
     <string name="authSuc">Authentication succeeded</string>
     <string name="authError">Authentication error:</string>
@@ -53,5 +53,16 @@
     <string name="logo">Logo</string>
     <string name="fontToggle">System font</string>
     <string name="needRestart">Changes will be applied after restarting the application</string>
-    <string name="monet">Use adaptive colors</string>
+    <string name="monet">Wallpaper based colors</string>
+    <string name="reverseSetting">Reverse sort notes</string>
+    <string name="reportBug">Report app issue</string>
+    <string name="buildn">Build bumber:</string>
+    <string name="appversion">App version:</string>
+    <string name="appearance">Appearance</string>
+    <string name="security">Security</string>
+    <string name="other">Other</string>
+    <string name="restart">Restart</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="nothingTxt">It\'s empty here...</string>
+    <string name="socialLinksText">Subscribe to social networks:</string>
 </resources>

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/notes"
-        android:icon="@drawable/note"
-        android:title="@string/notes">
-    </item>
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/settings"
-        android:title="@string/settingsText">
-    </item>
-    <item
-        android:id="@+id/info"
-        android:icon="@drawable/info"
-        android:title="@string/inf">
-    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/notes"
+            android:checked="true"
+            android:icon="@drawable/note"
+            android:title="@string/notes">
+        </item>
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settingsText">
+        </item>
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/info"
+            android:title="@string/inf">
+        </item>
+    </group>
 </menu>

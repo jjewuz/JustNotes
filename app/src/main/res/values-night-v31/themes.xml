@@ -20,6 +20,7 @@
         <item name="android:windowLayoutInDisplayCutoutMode">
             shortEdges <!-- default, shortEdges, or never -->
         </item>
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
 
 
@@ -45,7 +46,7 @@
         </item>
 
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
-
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
 
     </style>
 
@@ -91,6 +92,7 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
 
     <style name="FontMonet" parent="Theme.Material3.DynamicColors.Dark">
@@ -109,10 +111,11 @@
             shortEdges <!-- default, shortEdges, or never -->
         </item>
         <item name="android:fontFamily">@font/raleway</item>
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
 
     <style name="Nothing" parent="Theme.Material3.Dark">
-
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="android:navigationBarColor">
             @android:color/transparent
         </item>

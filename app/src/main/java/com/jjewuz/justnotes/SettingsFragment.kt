@@ -1,17 +1,21 @@
 package com.jjewuz.justnotes
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.card.MaterialCardView
+import androidx.fragment.app.Fragment
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.snackbar.Snackbar
+
 
 class SettingsFragment : Fragment() {
 
@@ -19,6 +23,8 @@ class SettingsFragment : Fragment() {
     private lateinit var passSwitch: MaterialSwitch
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
+    private lateinit var reverseSwitch: MaterialSwitch
+    private lateinit var reportBtn: Button
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -31,6 +37,8 @@ class SettingsFragment : Fragment() {
         passSwitch = v.findViewById(R.id.passwordtoggle)
         fontSwitch = v.findViewById(R.id.fonttoggle)
         monetSwitch = v.findViewById(R.id.monettoggle)
+        reverseSwitch = v.findViewById(R.id.reversetoggle)
+        reportBtn = v.findViewById(R.id.sharebug)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             passSwitch.visibility = View.GONE
@@ -42,10 +50,29 @@ class SettingsFragment : Fragment() {
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val reversed = sharedPref.getBoolean("reversed", false)
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
         monetSwitch.isChecked = enabledMonet
+        reverseSwitch.isChecked = reversed
+
+        reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
+            startActivity(i) }
+
+        reverseSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                with (sharedPref.edit()) {
+                    putBoolean("reversed", true)
+                    apply()
+                }
+            }else{
+                with (sharedPref.edit()) {
+                    putBoolean("reversed", false)
+                    apply()
+                }
+            }
+        }
 
         passSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
@@ -53,13 +80,15 @@ class SettingsFragment : Fragment() {
                     putBoolean("enabledPassword", true)
                     apply()
                 }
-                Toast.makeText(requireActivity(), resources.getString(R.string.passEnable), Toast.LENGTH_SHORT).show()
+                Snackbar.make(v, resources.getString(R.string.passEnable), Snackbar.LENGTH_SHORT)
+                    .show()
             }else{
                 with (sharedPref.edit()) {
                     putBoolean("enabledPassword", false)
                     apply()
                 }
-                Toast.makeText(requireActivity(), resources.getString(R.string.passDisabled), Toast.LENGTH_SHORT).show()
+                Snackbar.make(v, resources.getString(R.string.passDisabled), Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -75,7 +104,13 @@ class SettingsFragment : Fragment() {
                     apply()
                 }
             }
-            Toast.makeText(requireActivity(), resources.getString(R.string.needRestart), Toast.LENGTH_SHORT).show()
+            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
+                .setAction(R.string.restart) {
+                    val intent = Intent(activity, requireActivity()::class.java)
+                    this.startActivity(intent)
+                    activity?.finishAffinity()
+                }
+                .show()
         }
 
         monetSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -90,13 +125,23 @@ class SettingsFragment : Fragment() {
                     apply()
                 }
             }
-            Toast.makeText(requireActivity(), resources.getString(R.string.needRestart), Toast.LENGTH_SHORT).show()
+            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
+                .setAction(R.string.restart) {
+                    val intent = Intent(activity, requireActivity()::class.java)
+                    this.startActivity(intent)
+                    activity?.finishAffinity()
+                }
+                .show()
         }
+
+        val ver = resources.getString(R.string.appversion)
+        val build = resources.getString(R.string.buildn)
+
 
 
         version = v.findViewById(R.id.version)
 
-        version.text = "v${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+        version.text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
 
         return v
     }

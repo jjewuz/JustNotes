@@ -30,7 +30,7 @@ class NoteRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.noteTV.setText(allNotes.get(position).noteTitle)
+        holder.noteTV.text = allNotes.get(position).noteTitle
         holder.dateTV.setText(context.getString(R.string.lastedit)+ allNotes.get(position).timeStamp)
 
 
@@ -54,10 +54,6 @@ class NoteRVAdapter(
         allNotes.addAll(newList)
         notifyDataSetChanged()
     }
-
-
-
-
 }
 
 

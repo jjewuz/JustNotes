@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:paddingEnd="20dp"
-    android:layout_marginTop="40dp"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -22,6 +20,7 @@
         android:textSize="28sp"
         android:layout_gravity="center"
         android:textStyle="bold"
+        android:textColor="?colorPrimary"
         android:fontFamily="@font/raleway"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2" />

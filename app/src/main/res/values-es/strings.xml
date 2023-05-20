@@ -41,9 +41,9 @@
     <string name="loginText">por favor autenticar</string>
     <string name="loginTitle">JustNotes está bloqueado</string>
     <string name="settingsText">Ajustes</string>
-    <string name="passwordSettings">Usar contraseña</string>
-    <string name="passEnable">Contraseña habilitada</string>
-    <string name="passDisabled">Contraseña deshabilitada</string>
+    <string name="passwordSettings">Autenticación biométrica</string>
+    <string name="passEnable">Protección habilitada</string>
+    <string name="passDisabled">Protección desactivada</string>
     <string name="authFail">Autenticación fallida</string>
     <string name="authSuc">Autenticación exitosa</string>
     <string name="authError">Error de autenticación:</string>
@@ -54,5 +54,15 @@
     <string name="logo">Logo</string>
     <string name="fontToggle">Fuente del sistema</string>
     <string name="needRestart">Los cambios se aplicarán después de reiniciar la aplicación.</string>
-    <string name="monet">Usa colores adaptables</string>
+    <string name="monet">Colores basados ​​en papel tapiz</string>
+    <string name="reverseSetting">Notas de clasificación inversa</string>
+    <string name="reportBug">Informar problema de la aplicación</string>
+    <string name="buildn">Número de compilación:</string>
+    <string name="appversion">Version de aplicacion:</string>
+    <string name="appearance">Apariencia</string>
+    <string name="security">Seguridad</string>
+    <string name="other">Otro</string>
+    <string name="restart">Reanudar</string>
+    <string name="nothingTxt">Está vacío aquí...</string>
+    <string name="socialLinksText">Suscríbete a las redes sociales:</string>
 </resources>

@@ -41,9 +41,9 @@
     <string name="loginTitle">JustNotes ist gesperrt</string>
     <string name="loginText">Bitte authentifizieren Sie sich</string>
     <string name="settingsText">Einstellungen</string>
-    <string name="passwordSettings">Passwort verwenden</string>
-    <string name="passEnable">Passwort aktiviert</string>
-    <string name="passDisabled">Passwort deaktiviert</string>
+    <string name="passwordSettings">Biometrische Authentifizierung</string>
+    <string name="passEnable">Schutz aktiviert</string>
+    <string name="passDisabled">Schutz aus</string>
     <string name="authFail">Authentifizierung fehlgeschlagen</string>
     <string name="authSuc">Authentifizierung erfolgreich</string>
     <string name="authError">Authentifizierungsfehler:</string>
@@ -54,5 +54,15 @@
     <string name="logo">Logo</string>
     <string name="fontToggle">Systemschriftart</string>
     <string name="needRestart">Änderungen werden nach dem Neustart der Anwendung übernommen</string>
-    <string name="monet">Verwenden Sie adaptive Farben</string>
+    <string name="monet">Tapetenbasierte Farben</string>
+    <string name="reverseSetting">Notizen umkehren</string>
+    <string name="reportBug">App-Problem melden</string>
+    <string name="buildn">Build-Nummer:</string>
+    <string name="appversion">App Version:</string>
+    <string name="appearance">Aussehen</string>
+    <string name="security">Sicherheit</string>
+    <string name="other">Andere</string>
+    <string name="restart">Neustart</string>
+    <string name="nothingTxt">Hier ist es leer...</string>
+    <string name="socialLinksText">Abonnieren Sie soziale Netzwerke:</string>
 </resources>

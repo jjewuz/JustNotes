@@ -4,12 +4,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-    <item name="android:navigationBarColor">
-        @android:color/transparent
-    </item>
+        <item name="android:navigationBarColor">@android:color/transparent </item>
         <item name="android:statusBarColor">
             @android:color/transparent
         </item>
+
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
 
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
@@ -67,7 +67,7 @@
     </style>
 
     <style name="Font" parent="Theme.Material3.Dark.NoActionBar">
-
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -109,7 +109,7 @@
     </style>
 
     <style name="FontMonet" parent="Theme.Material3.Dark.NoActionBar">
-
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -151,7 +151,7 @@
     </style>
 
     <style name="Nothing" parent="Theme.Material3.Dark.NoActionBar">
-
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 

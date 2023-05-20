@@ -41,9 +41,9 @@
     <string name="loginTitle">JustNotes защищен</string>
     <string name="loginText">Пожалуйста аутентифицируйтесь</string>
     <string name="settingsText">Настройки</string>
-    <string name="passwordSettings">Использовать пароль</string>
-    <string name="passEnable">Пароль включен</string>
-    <string name="passDisabled">Пароль отключен</string>
+    <string name="passwordSettings">Биометрическая аутентификация</string>
+    <string name="passEnable">Защита включена</string>
+    <string name="passDisabled">Защита выключена</string>
     <string name="authFail">Вход не удался</string>
     <string name="authSuc">Вход выполнен</string>
     <string name="authError">Ошибка входа:</string>
@@ -54,5 +54,15 @@
     <string name="logo">Logo</string>
     <string name="fontToggle">Системный шрифт</string>
     <string name="needRestart">Изменения применятся после перезапуска приложения</string>
-    <string name="monet">Использовать адаптивные цвета</string>
+    <string name="monet">Цвета на основе обоев</string>
+    <string name="reverseSetting">Обратная сортировка заметок</string>
+    <string name="reportBug">Сообщить о проблеме</string>
+    <string name="buildn">Сборка приложения:</string>
+    <string name="appversion">Версия приложения:</string>
+    <string name="appearance">Внешний вид</string>
+    <string name="security">Безопасность</string>
+    <string name="other">Прочее</string>
+    <string name="restart">Перезапуск</string>
+    <string name="nothingTxt">Тут пока пусто...</string>
+    <string name="socialLinksText">Подпишитесь на социальные сети:</string>
 </resources>

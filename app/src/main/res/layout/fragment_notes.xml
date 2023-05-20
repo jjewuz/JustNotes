@@ -22,6 +22,16 @@
                 android:orientation="vertical"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/nothing"
+                    android:text="@string/nothingTxt"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:textColor="?colorPrimary"
+                    android:layout_height="wrap_content"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/notes"
                     android:paddingTop="5dp"
@@ -41,9 +51,8 @@
             android:src="@drawable/add"
             app:layout_constraintBottom_toTopOf="@+id/idFAB2"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="25dp"
+            android:layout_margin="20dp"
             android:layout_gravity="end|bottom"
-            android:layout_marginBottom="40dp"
             android:contentDescription="@string/add_button" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
