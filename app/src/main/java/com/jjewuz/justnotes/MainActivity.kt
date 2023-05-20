@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -22,7 +21,11 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.findFragment
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import java.util.concurrent.Executor
@@ -63,15 +66,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.updateLayoutParams<MarginLayoutParams> {
-                leftMargin = insets.left
-                bottomMargin = insets.bottom
-                rightMargin = insets.right
-                topMargin = insets.top
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.place_holder)) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            if (insets.bottom > 100){
+                view.updateLayoutParams<MarginLayoutParams> {
+                    bottomMargin = insets.bottom
+                }
             }
-
             WindowInsetsCompat.CONSUMED
         }
         setSupportActionBar(findViewById(R.id.topAppBar))

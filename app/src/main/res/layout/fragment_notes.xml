@@ -51,7 +51,7 @@
             android:src="@drawable/add"
             app:layout_constraintBottom_toTopOf="@+id/idFAB2"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="20dp"
+            android:layout_margin="25dp"
             android:layout_gravity="end|bottom"
             android:contentDescription="@string/add_button" />
 
