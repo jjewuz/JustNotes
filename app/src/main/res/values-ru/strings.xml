@@ -65,4 +65,9 @@
     <string name="restart">Перезапуск</string>
     <string name="nothingTxt">Тут пока пусто...</string>
     <string name="socialLinksText">Подпишитесь на социальные сети:</string>
+    <string name="todo">Список дел</string>
+    <string name="enterTodo">Введите текст задачи</string>
+    <string name="add">Добавить</string>
+    <string name="delWarnTodo">Вы уверены, что хотите удалить задачу?</string>
+    <string name="openTask">Открывать задачи по умолчанию</string>
 </resources>

@@ -21,11 +21,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.findFragment
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import java.util.concurrent.Executor
@@ -38,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var actionBarToggle: ActionBarDrawerToggle
     private lateinit var navView: NavigationView
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
@@ -51,8 +47,10 @@ class MainActivity : AppCompatActivity() {
 
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
+
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val tasksDefault = sharedPref.getBoolean("isTask", false)
         if (enabledFont and enabledMonet){
             setTheme(R.style.AppTheme)
         } else if (!enabledFont and enabledMonet){
@@ -77,8 +75,6 @@ class MainActivity : AppCompatActivity() {
         }
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        val font = resources.getFont(R.font.raleway)
-
         drawerLayout = findViewById(R.id.drawer)
 
         actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
@@ -90,10 +86,25 @@ class MainActivity : AppCompatActivity() {
 
         navView = findViewById(R.id.nv)
 
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.place_holder, NotesFragment())
-            .commit()
+        val notesTxt = resources.getString(R.string.notes)
+        val todoTxt = resources.getString(R.string.todo)
+        val settingsTxt = resources.getString(R.string.settingsText)
+        val infoTxt = resources.getString(R.string.inf)
+
+        if (tasksDefault) {
+            supportActionBar?.title = todoTxt
+            binding.nv.setCheckedItem(R.id.todo)
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.place_holder, TodoFragment())
+                .commit()
+        } else {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.place_holder, NotesFragment())
+                .commit()
+        }
+
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
 
@@ -104,10 +115,6 @@ class MainActivity : AppCompatActivity() {
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
 
-        val notesTxt = resources.getString(R.string.notes)
-        val settingsTxt = resources.getString(R.string.settingsText)
-        val infoTxt = resources.getString(R.string.inf)
-
         binding.apply {
             nv.setNavigationItemSelectedListener {
                 when(it.itemId){
@@ -116,6 +123,13 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager
                             .beginTransaction()
                             .replace(R.id.place_holder, NotesFragment())
+                            .commit()
+                    }
+                    R.id.todo -> {
+                        supportActionBar?.title = todoTxt
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.place_holder, TodoFragment())
                             .commit()
                     }
                     R.id.settings -> {

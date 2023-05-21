@@ -49,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            app:layout_constraintBottom_toTopOf="@+id/idFAB2"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="25dp"
             android:layout_gravity="end|bottom"

@@ -24,6 +24,7 @@ class SettingsFragment : Fragment() {
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
+    private lateinit var tasksSwitch: MaterialSwitch
     private lateinit var reportBtn: Button
 
     private lateinit var sharedPref: SharedPreferences
@@ -38,6 +39,7 @@ class SettingsFragment : Fragment() {
         fontSwitch = v.findViewById(R.id.fonttoggle)
         monetSwitch = v.findViewById(R.id.monettoggle)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
+        tasksSwitch = v.findViewById(R.id.opentoggle)
         reportBtn = v.findViewById(R.id.sharebug)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -51,14 +53,30 @@ class SettingsFragment : Fragment() {
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
         val reversed = sharedPref.getBoolean("reversed", false)
+        val tasksOpen = sharedPref.getBoolean("isTask", false)
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
         monetSwitch.isChecked = enabledMonet
         reverseSwitch.isChecked = reversed
+        tasksSwitch.isChecked = tasksOpen
 
         reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
             startActivity(i) }
+
+        tasksSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                with (sharedPref.edit()) {
+                    putBoolean("isTask", true)
+                    apply()
+                }
+            }else{
+                with (sharedPref.edit()) {
+                    putBoolean("isTask", false)
+                    apply()
+                }
+            }
+        }
 
         reverseSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){

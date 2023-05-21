@@ -65,4 +65,9 @@
     <string name="restart">Reanudar</string>
     <string name="nothingTxt">Está vacío aquí...</string>
     <string name="socialLinksText">Suscríbete a las redes sociales:</string>
+    <string name="todo">Lista de quehaceres</string>
+    <string name="enterTodo">Introducir texto de tareas pendientes</string>
+    <string name="add">Agregar</string>
+    <string name="delWarnTodo">¿Está seguro de que desea eliminar la tarea?</string>
+    <string name="openTask">Tareas abiertas por defecto</string>
 </resources>

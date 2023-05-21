@@ -65,4 +65,9 @@
     <string name="restart">Neustart</string>
     <string name="nothingTxt">Hier ist es leer...</string>
     <string name="socialLinksText">Abonnieren Sie soziale Netzwerke:</string>
+    <string name="todo">Aufgabenliste</string>
+    <string name="enterTodo">Geben Sie den Aufgabentext ein</string>
+    <string name="add">Hinzufügen</string>
+    <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
+    <string name="openTask">Standardmäßig Aufgaben öffnen</string>
 </resources>

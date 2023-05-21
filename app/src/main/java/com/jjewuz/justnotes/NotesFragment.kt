@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +64,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         noteRVAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
             override fun onChanged() {
                 val count = noteRVAdapter.getItemCount()
-                Log.e("count", "Items: $count")
                 if (count == 0){
                     notesRV.visibility = View.GONE
                     nothing.visibility = View.VISIBLE

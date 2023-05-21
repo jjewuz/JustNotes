@@ -62,7 +62,11 @@
     <string name="security">Security</string>
     <string name="other">Other</string>
     <string name="restart">Restart</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="nothingTxt">It\'s empty here...</string>
     <string name="socialLinksText">Subscribe to social networks:</string>
+    <string name="todo">To-do list</string>
+    <string name="enterTodo">Enter To-Do text</string>
+    <string name="add">Add</string>
+    <string name="delWarnTodo">Are you sure you want to delete the task?</string>
+    <string name="openTask">Open tasks by default</string>
 </resources>

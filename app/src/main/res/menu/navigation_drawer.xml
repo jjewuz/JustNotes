@@ -8,6 +8,11 @@
             android:title="@string/notes">
         </item>
         <item
+            android:id="@+id/todo"
+            android:icon="@drawable/checklist"
+            android:title="@string/todo">
+        </item>
+        <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
             android:title="@string/settingsText">
