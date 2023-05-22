@@ -12,8 +12,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp"
+            android:layout_marginBottom="20dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">

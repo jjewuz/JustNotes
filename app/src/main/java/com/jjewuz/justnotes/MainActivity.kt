@@ -21,6 +21,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.navigation.NavigationView
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
@@ -65,11 +66,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.place_holder)) { view, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            if (insets.bottom > 100){
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
                 view.updateLayoutParams<MarginLayoutParams> {
-                    bottomMargin = insets.bottom
-                }
+                    leftMargin = insets.left
+                    rightMargin = insets.left
+                    if (insets.bottom > 100){
+                        bottomMargin = insets.bottom
+                    }
             }
             WindowInsetsCompat.CONSUMED
         }
@@ -94,15 +97,9 @@ class MainActivity : AppCompatActivity() {
         if (tasksDefault) {
             supportActionBar?.title = todoTxt
             binding.nv.setCheckedItem(R.id.todo)
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.place_holder, TodoFragment())
-                .commit()
+            replaceFragment(TodoFragment())
         } else {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.place_holder, NotesFragment())
-                .commit()
+            replaceFragment(NotesFragment())
         }
 
 
@@ -120,31 +117,19 @@ class MainActivity : AppCompatActivity() {
                 when(it.itemId){
                     R.id.notes -> {
                         supportActionBar?.title = notesTxt
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.place_holder, NotesFragment())
-                            .commit()
+                        replaceFragment(NotesFragment())
                     }
                     R.id.todo -> {
                         supportActionBar?.title = todoTxt
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.place_holder, TodoFragment())
-                            .commit()
+                        replaceFragment(TodoFragment())
                     }
                     R.id.settings -> {
                         supportActionBar?.title = settingsTxt
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.place_holder, SettingsFragment())
-                            .commit()
+                        replaceFragment(SettingsFragment())
                     }
                     R.id.info -> {
                         supportActionBar?.title = infoTxt
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.place_holder, InfoFragment())
-                            .commit()
+                        replaceFragment(InfoFragment())
                     }
                 }
                 drawer.closeDrawer(GravityCompat.START)
@@ -210,6 +195,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.commit ()
     }
 
     override fun onSupportNavigateUp(): Boolean {
