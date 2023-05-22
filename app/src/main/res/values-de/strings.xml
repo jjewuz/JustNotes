@@ -69,5 +69,5 @@
     <string name="enterTodo">Geben Sie den Aufgabentext ein</string>
     <string name="add">Hinzufügen</string>
     <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
-    <string name="openTask">Standardmäßig Aufgaben öffnen</string>
+    <string name="openTask">Standardmäßig geöffnet</string>
 </resources>

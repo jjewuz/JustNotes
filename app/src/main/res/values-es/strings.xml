@@ -69,5 +69,5 @@
     <string name="enterTodo">Introducir texto de tareas pendientes</string>
     <string name="add">Agregar</string>
     <string name="delWarnTodo">¿Está seguro de que desea eliminar la tarea?</string>
-    <string name="openTask">Tareas abiertas por defecto</string>
+    <string name="openTask">Abrir por defecto</string>
 </resources>

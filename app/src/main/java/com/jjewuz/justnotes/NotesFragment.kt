@@ -56,7 +56,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         ).get(NoteViewModal::class.java)
 
         viewModal.allNotes.observe(viewLifecycleOwner, Observer { list ->
-            list?.let {
+              list?.let {
                 noteRVAdapter.updateList(it)
             }
         })

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 
@@ -24,7 +26,7 @@ class SettingsFragment : Fragment() {
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
-    private lateinit var tasksSwitch: MaterialSwitch
+    private lateinit var openGroup: MaterialButtonToggleGroup
     private lateinit var reportBtn: Button
 
     private lateinit var sharedPref: SharedPreferences
@@ -39,7 +41,7 @@ class SettingsFragment : Fragment() {
         fontSwitch = v.findViewById(R.id.fonttoggle)
         monetSwitch = v.findViewById(R.id.monettoggle)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
-        tasksSwitch = v.findViewById(R.id.opentoggle)
+        openGroup = v.findViewById(R.id.toggleButton)
         reportBtn = v.findViewById(R.id.sharebug)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -48,6 +50,7 @@ class SettingsFragment : Fragment() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
             monetSwitch.visibility = View.GONE
         }
+
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
@@ -59,22 +62,39 @@ class SettingsFragment : Fragment() {
         fontSwitch.isChecked = enabledFont
         monetSwitch.isChecked = enabledMonet
         reverseSwitch.isChecked = reversed
-        tasksSwitch.isChecked = tasksOpen
+
+        if (tasksOpen){
+            openGroup.check(R.id.openTasks)
+        } else {
+            openGroup.check(R.id.yesnotes)
+        }
 
         reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
             startActivity(i) }
 
-        tasksSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("isTask", true)
-                    apply()
+
+
+        openGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            Log.i("BUG", "Button $checkedId")
+            when (checkedId){
+                R.id.yesnotes -> {
+                    if (isChecked) {
+                        with (sharedPref.edit()) {
+                            putBoolean("isTask", false)
+                            apply()
+                        }
+                    }
+
                 }
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("isTask", false)
-                    apply()
+                R.id.openTasks -> {
+                    if (isChecked) {
+                        with(sharedPref.edit()) {
+                            putBoolean("isTask", true)
+                            apply()
+                        }
+                    }
                 }
+
             }
         }
 

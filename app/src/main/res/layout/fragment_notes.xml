@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/nothing"
+            android:text="@string/nothingTxt"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="?colorPrimary"
+            android:layout_height="wrap_content"/>
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView2"
             android:layout_width="match_parent"
@@ -21,16 +30,6 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/nothing"
-                    android:text="@string/nothingTxt"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:textColor="?colorPrimary"
-                    android:layout_height="wrap_content"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/notes"
@@ -45,12 +44,12 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/idFAB"
-            style="?attr/floatingActionButtonLargePrimaryStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="25dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="50dp"
             android:layout_gravity="end|bottom"
             android:contentDescription="@string/add_button" />
 
