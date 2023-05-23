@@ -84,6 +84,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteDescription = intent.getStringExtra("noteDescription")
             noteID = intent.getIntExtra("noteId", -1)
             noteTitleEdt.setText(noteTitle)
+            supportActionBar?.title = ""
             noteEdt.setText(noteDescription)
         }
 
