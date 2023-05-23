@@ -32,7 +32,6 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     lateinit var noteTitleEdt: EditText
     lateinit var noteEdt: EditText
-    lateinit var saveBtn: Button
 
     lateinit var viewModal: NoteViewModal
     var noteID = -1;
@@ -78,16 +77,14 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
 
+
         val noteType = intent.getStringExtra("noteType")
         if (noteType.equals("Edit")) {
-            // on below line we are setting data to edit text.
             val noteTitle = intent.getStringExtra("noteTitle")
             val noteDescription = intent.getStringExtra("noteDescription")
             noteID = intent.getIntExtra("noteId", -1)
             noteTitleEdt.setText(noteTitle)
-            supportActionBar?.title = noteTitle
             noteEdt.setText(noteDescription)
-        } else {
         }
 
         val watcher: TextWatcher = object : TextWatcher {

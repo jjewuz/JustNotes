@@ -13,12 +13,6 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="?attr/collapsingToolbarLayoutLargeStyle"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
@@ -29,8 +23,6 @@
                 app:theme="@style/Toolbar"
                 app:menu="@menu/mymenu"
                 app:title="@string/app_name" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -88,7 +80,7 @@
             android:layout_margin="15dp"
             app:layout_constraintTop_toBottomOf="@+id/card">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/idEdtNoteDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

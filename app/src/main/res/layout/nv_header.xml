@@ -2,30 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:paddingStart="20dp"
+    android:orientation="vertical"
     android:paddingTop="50dp"
-    android:gravity="center_vertical"
+    android:gravity="center_horizontal"
     android:background="?colorPrimaryContainer"
     android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        app:srcCompat="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/logo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:text="@string/app_name"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginStart="10dp"
-        android:textColor="?colorOnPrimarySurface"
-        android:fontFamily="@font/raleway" />
+        android:gravity="center_vertical"
+        android:textColor="?colorOnSurface"
+        android:fontFamily="@font/raleway"
+        app:drawableLeftCompat="@drawable/logo" />
+
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

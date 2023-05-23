@@ -27,8 +27,7 @@
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_back"
                 app:theme="@style/Toolbar"
-                app:menu="@menu/mymenu"
-                app:title="@string/app_name" />
+                app:menu="@menu/mymenu" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
