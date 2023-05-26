@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">JustNotes</string>
     <string name="about">Welcome to JustNotes!</string>
-    <string name="about2">This app created for fast and comfortable text editing .Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
+    <string name="about2">This app created for fast and comfortable text editing. Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
     <string name="changes">Social media:</string>
     <string name="vk">VK group</string>
     <string name="gh">Github</string>

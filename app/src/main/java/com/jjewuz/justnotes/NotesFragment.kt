@@ -1,5 +1,6 @@
 package com.jjewuz.justnotes
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -76,7 +77,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         addFAB.setOnClickListener {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
-            startActivity(intent)
+            val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity(), addFAB, "transition_fab")
+            startActivity(intent, options.toBundle())
         }
 
         return v
@@ -84,11 +86,12 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
     override fun onNoteClick(note: Note) {
         val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
+        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
         intent.putExtra("noteType", "Edit")
         intent.putExtra("noteTitle", note.noteTitle)
         intent.putExtra("noteDescription", note.noteDescription)
         intent.putExtra("noteId", note.id)
-        startActivity(intent)
+        startActivity(intent, options.toBundle())
     }
 
 

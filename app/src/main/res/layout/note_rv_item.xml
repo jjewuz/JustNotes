@@ -8,6 +8,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     app:cardCornerRadius="25dp"
+    android:transitionName="transition_fab"
     style="?attr/materialCardViewFilledStyle">
 
     <RelativeLayout

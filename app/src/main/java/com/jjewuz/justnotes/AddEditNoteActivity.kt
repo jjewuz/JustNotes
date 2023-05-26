@@ -10,9 +10,11 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.transition.Explode
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -49,6 +51,11 @@ class AddEditNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        with(window) {
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            exitTransition = Explode()
+        }
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
@@ -191,7 +198,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 }
             }
         }
-        this.finish()
+        this.finishAfterTransition()
     }
 
 

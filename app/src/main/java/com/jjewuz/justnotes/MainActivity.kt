@@ -6,8 +6,10 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.transition.Explode
 import android.util.Log
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
