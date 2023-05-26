@@ -9,6 +9,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - Lock app with system biometry
  - Custom font setting
  - Multi-language (English, Deutsch, Espanol, Russian)
+ - To-do list creation
 
 ## Screenshots
 <img src="https://github.com/jjewuz/JustNotes/assets/53698992/83e04397-b894-4bb3-bbee-b702ffad6704" width="180" height="320" />
