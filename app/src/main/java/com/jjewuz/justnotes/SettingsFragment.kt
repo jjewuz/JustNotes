@@ -57,6 +57,7 @@ class SettingsFragment : Fragment() {
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
         val reversed = sharedPref.getBoolean("reversed", false)
         val tasksOpen = sharedPref.getBoolean("isTask", false)
+        val isGrid = sharedPref.getBoolean("grid", false)
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont

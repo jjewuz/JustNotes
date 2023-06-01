@@ -70,4 +70,5 @@
     <string name="add">Agregar</string>
     <string name="delWarnTodo">¿Está seguro de que desea eliminar la tarea?</string>
     <string name="openTask">Abrir por defecto</string>
+    <string name="change_view">Cambia estilo</string>
 </resources>

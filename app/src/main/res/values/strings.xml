@@ -69,4 +69,5 @@
     <string name="add">Add</string>
     <string name="delWarnTodo">Are you sure you want to delete the task?</string>
     <string name="openTask">Open by default</string>
+    <string name="change_view">Change view</string>
 </resources>

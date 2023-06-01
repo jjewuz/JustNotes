@@ -70,4 +70,5 @@
     <string name="add">Hinzufügen</string>
     <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
     <string name="openTask">Standardmäßig geöffnet</string>
+    <string name="change_view">Stil ändern</string>
 </resources>

@@ -6,16 +6,24 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -25,6 +33,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var notesRV: RecyclerView
     lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
+    lateinit var viewIcon: MenuItem
 
     lateinit var sharedPref: SharedPreferences
 
@@ -32,6 +41,47 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val reverse = sharedPref.getBoolean("reversed", false)
+        val isGrid = sharedPref.getBoolean("grid", false)
+
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.toolbar, menu)
+
+                viewIcon = menu.findItem(R.id.view_change)
+            }
+
+            override fun onPrepareMenu(menu: Menu) {
+                super.onPrepareMenu(menu)
+                if (isGrid){
+                    viewIcon.setIcon(R.drawable.list_icon)
+                } else {
+                    viewIcon.setIcon(R.drawable.grid_icon)
+                }
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.view_change -> {
+                        with (sharedPref.edit()) {
+                            putBoolean("grid", !isGrid)
+                            apply()
+                        }
+                        val fragmentManager = requireActivity().supportFragmentManager
+                        val fragmentTransaction = fragmentManager.beginTransaction()
+                        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                        fragmentTransaction.replace(R.id.place_holder, NotesFragment())
+                        fragmentTransaction.commit ()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val v = inflater.inflate(R.layout.fragment_notes, container, false)
 
@@ -39,13 +89,13 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         addFAB = v.findViewById(R.id.idFAB)
         nothing = v.findViewById(R.id.nothing)
 
-        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        val reverse = sharedPref.getBoolean("reversed", false)
-
-        val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, reverse)
-
-
-        notesRV.layoutManager = layoutManager
+        if (isGrid){
+            val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
+            notesRV.layoutManager = layoutManager
+        }else{
+            val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, reverse)
+            notesRV.layoutManager = layoutManager
+        }
 
         val noteRVAdapter = NoteRVAdapter(requireActivity(), this, this)
 

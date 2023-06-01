@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/view_change"
+        android:icon="@drawable/grid_icon"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:title="@string/change_view"
+        app:showAsAction="always"/>
+</menu>

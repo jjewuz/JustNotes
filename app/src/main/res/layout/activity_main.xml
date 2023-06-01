@@ -5,7 +5,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
+    tools:openDrawer="end"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -27,6 +27,7 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:tint="?colorOnPrimaryContainer"
             app:title="@string/notes" />
 
     </com.google.android.material.appbar.AppBarLayout>
