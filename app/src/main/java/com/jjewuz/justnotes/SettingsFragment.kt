@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.materialswitch.MaterialSwitch
@@ -27,7 +28,7 @@ class SettingsFragment : Fragment() {
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
-    private lateinit var reportBtn: Button
+    private lateinit var reportBtn: CardView
 
     private lateinit var sharedPref: SharedPreferences
 
