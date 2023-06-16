@@ -39,11 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/check"
-                style="?attr/floatingActionButtonLargeStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="40dp"
+                android:layout_margin="30dp"
                 android:layout_gravity="end|bottom"
                 android:contentDescription="@string/add_button" />
 

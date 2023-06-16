@@ -80,7 +80,8 @@ class MainActivity : AppCompatActivity() {
 
         if (tasksDefault) {
             supportActionBar?.title = todoTxt
-            binding.bottomNavView.selectedItemId = R.id.todo
+            binding.bottomNavView?.selectedItemId = R.id.todo
+            binding.navigationRail?.selectedItemId = R.id.todo
             replaceFragment(TodoFragment())
         } else {
             replaceFragment(NotesFragment())
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
 
-        binding.bottomNavView.setOnItemSelectedListener {
+        binding.bottomNavView?.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.notes -> {
                     supportActionBar?.title = notesTxt
@@ -112,6 +113,26 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {}
             }
+            true
+        }
+
+        binding.navigationRail?.setOnItemSelectedListener {  menuItem ->
+            when(menuItem.itemId){
+                R.id.notes -> {
+                    supportActionBar?.title = notesTxt
+                    replaceFragment(NotesFragment())
+                }
+                R.id.todo -> {
+                    supportActionBar?.title = todoTxt
+                    replaceFragment(TodoFragment())
+                }
+                R.id.other -> {
+                    supportActionBar?.title = backupTxt
+                    replaceFragment(OtherFragment())
+                }
+                else -> {}
+            }
+
             true
         }
 

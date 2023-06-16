@@ -18,15 +18,12 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
 
    private var fragmentBackupBinding: FragmentBackupBinding? = null
 
-    private lateinit var layoutContent: BottomNavigationView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = view.let { FragmentBackupBinding.bind(it) }
         fragmentBackupBinding = binding
-
-        layoutContent = activity?.findViewById(R.id.bottomNavView)!!
 
         binding.backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
 
@@ -82,7 +79,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
-        layoutContent.visibility = View.VISIBLE
         fragmentTransaction.commit ()
     }
 
