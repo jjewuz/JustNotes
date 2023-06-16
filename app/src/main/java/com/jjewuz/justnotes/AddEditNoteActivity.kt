@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.transition.MaterialElevationScale
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -56,6 +57,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
             exitTransition = Explode()
         }
+
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)

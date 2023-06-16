@@ -25,6 +25,8 @@ abstract class NoteDatabase : RoomDatabase() {
                 INSTANCE = instance
                 instance
             }
+
         }
+
     }
 }

@@ -25,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
@@ -44,6 +46,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val reverse = sharedPref.getBoolean("reversed", false)
         val isGrid = sharedPref.getBoolean("grid", false)
+
 
 
         val menuHost: MenuHost = requireActivity()
@@ -124,6 +127,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 }
             }
         })
+
+
+
 
         addFAB.setOnClickListener {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)

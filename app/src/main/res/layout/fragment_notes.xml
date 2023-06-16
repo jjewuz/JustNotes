@@ -50,12 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="?attr/floatingActionButtonLargeStyle"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="50dp"
+            android:layout_margin="30dp"
             android:layout_gravity="end|bottom"
+            style="?attr/floatingActionButtonLargeStyle"
             android:transitionName="transition_fab"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             android:contentDescription="@string/add_button" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

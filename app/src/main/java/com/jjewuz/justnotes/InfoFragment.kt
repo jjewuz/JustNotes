@@ -21,10 +21,12 @@ class InfoFragment : Fragment() {
     lateinit var ghBtn: Button
     lateinit var siteBtn: Button
     lateinit var rateBtn: Button
+    lateinit var licenseBtn: Button
 
     lateinit var  tgBtn: ImageButton
     lateinit var  vkBtn: ImageButton
     lateinit var  dsBtn: ImageButton
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,7 @@ class InfoFragment : Fragment() {
         ghBtn = v.findViewById(R.id.gh)
         siteBtn = v.findViewById(R.id.site)
         rateBtn = v.findViewById(R.id.rate)
+        licenseBtn = v.findViewById(R.id.licenses)
 
         tgBtn = v.findViewById(R.id.tg)
         vkBtn = v.findViewById(R.id.vk)
@@ -42,6 +45,7 @@ class InfoFragment : Fragment() {
         ghBtn.setOnClickListener { gh_a() }
         siteBtn.setOnClickListener{ site_a() }
         rateBtn.setOnClickListener { ratestore() }
+        licenseBtn.setOnClickListener { replaceFragment(LicensesFragment()) }
         tgBtn.setOnClickListener { tg_a() }
         vkBtn.setOnClickListener { vk_a() }
         dsBtn.setOnClickListener { ds_a() }
@@ -82,6 +86,15 @@ class InfoFragment : Fragment() {
 
         val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.jjewuz.justnotes"))
         startActivity(i)
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.addToBackStack( "tag" )
+        fragmentTransaction.commit ()
     }
 
 }

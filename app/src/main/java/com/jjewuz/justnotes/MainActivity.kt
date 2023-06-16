@@ -26,7 +26,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
+import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
 
 
@@ -44,6 +46,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     private lateinit var sharedPref: SharedPreferences
+
+    lateinit var backup: RoomBackup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,38 +70,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.place_holder)) { view, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-                view.updateLayoutParams<MarginLayoutParams> {
-                    leftMargin = insets.left
-                    rightMargin = insets.left
-                    if (insets.bottom > 100){
-                        bottomMargin = insets.bottom
-                    }
-            }
-            WindowInsetsCompat.CONSUMED
-        }
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        drawerLayout = findViewById(R.id.drawer)
-
-        actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, 0, 0)
-        drawerLayout.addDrawerListener(actionBarToggle)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        actionBarToggle.syncState()
-
-        navView = findViewById(R.id.nv)
+        backup = RoomBackup(this)
 
         val notesTxt = resources.getString(R.string.notes)
         val todoTxt = resources.getString(R.string.todo)
-        val settingsTxt = resources.getString(R.string.settingsText)
-        val infoTxt = resources.getString(R.string.inf)
+        val backupTxt = resources.getString(R.string.app_name)
 
         if (tasksDefault) {
             supportActionBar?.title = todoTxt
-            binding.nv.setCheckedItem(R.id.todo)
+            binding.bottomNavView.selectedItemId = R.id.todo
             replaceFragment(TodoFragment())
         } else {
             replaceFragment(NotesFragment())
@@ -113,30 +96,25 @@ class MainActivity : AppCompatActivity() {
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
 
-        binding.apply {
-            nv.setNavigationItemSelectedListener {
-                when(it.itemId){
-                    R.id.notes -> {
-                        supportActionBar?.title = notesTxt
-                        replaceFragment(NotesFragment())
-                    }
-                    R.id.todo -> {
-                        supportActionBar?.title = todoTxt
-                        replaceFragment(TodoFragment())
-                    }
-                    R.id.settings -> {
-                        supportActionBar?.title = settingsTxt
-                        replaceFragment(SettingsFragment())
-                    }
-                    R.id.info -> {
-                        supportActionBar?.title = infoTxt
-                        replaceFragment(InfoFragment())
-                    }
+        binding.bottomNavView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.notes -> {
+                    supportActionBar?.title = notesTxt
+                    replaceFragment(NotesFragment())
                 }
-                drawer.closeDrawer(GravityCompat.START)
-                true
+                R.id.todo -> {
+                    supportActionBar?.title = todoTxt
+                    replaceFragment(TodoFragment())
+                }
+                R.id.other -> {
+                    supportActionBar?.title = backupTxt
+                    replaceFragment(OtherFragment())
+                }
+                else -> {}
             }
+            true
         }
+
 
         executor = ContextCompat.getMainExecutor(this)
         biometricPrompt = BiometricPrompt(this, executor,
@@ -204,11 +182,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        drawerLayout.openDrawer(navView)
-        return true
     }
 
     fun checkDeviceHasBiometric() {

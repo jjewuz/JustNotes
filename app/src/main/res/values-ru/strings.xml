@@ -71,4 +71,13 @@
     <string name="delWarnTodo">Вы уверены, что хотите удалить задачу?</string>
     <string name="openTask">Открывать по умолчанию</string>
     <string name="change_view">Изменить стиль</string>
+    <string name="backup_title">Резервное копирование</string>
+    <string name="do_backup">Сделать копию</string>
+    <string name="do_restore">Восстановить копию</string>
+    <string name="licenses">Лицензии</string>
+    <string name="thx_license">В данной программе используются сторонние библиотеки. Спасибо их разработчикам.</string>
+    <string name="backup_desc">Локальное резервирование заметок</string>
+    <string name="report_desc">Если вы встретили ошибку в приложении</string>
+    <string name="settings_desc">Внешний вид, безопасность</string>
+    <string name="info_desc">Полезные ссылки, лицензии</string>
 </resources>

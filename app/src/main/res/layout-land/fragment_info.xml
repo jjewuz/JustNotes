@@ -32,7 +32,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="25dp"
                     android:clickable="true"
                     android:focusable="true">
 
@@ -74,6 +73,13 @@
                             android:layout_marginBottom="10dp"
                             android:text="@string/rate" />
 
+                        <Button
+                            android:id="@+id/licenses"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/licenses" />
+
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -82,7 +88,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="25dp"
                     android:clickable="true"
                     style="?attr/materialCardViewFilledStyle"
                     android:focusable="true">

@@ -2,6 +2,8 @@ package com.jjewuz.justnotes
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteQuery
+
 
 @Dao
 interface NotesDao {
@@ -16,5 +18,4 @@ interface NotesDao {
 
     @Update
     suspend fun update(note: Note)
-
 }

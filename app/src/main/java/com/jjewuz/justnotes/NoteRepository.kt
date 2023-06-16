@@ -1,6 +1,10 @@
 package com.jjewuz.justnotes
 
 import androidx.lifecycle.LiveData
+import androidx.sqlite.db.SimpleSQLiteQuery
+
+
+
 
 class NoteRepository(private val notesDao: NotesDao) {
 

@@ -1,5 +1,6 @@
 package com.jjewuz.justnotes
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
@@ -22,15 +24,15 @@ import com.google.android.material.snackbar.Snackbar
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var version: TextView
     private lateinit var passSwitch: MaterialSwitch
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
-    private lateinit var reportBtn: CardView
+    private lateinit var backBtn: Button
 
     private lateinit var sharedPref: SharedPreferences
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +45,8 @@ class SettingsFragment : Fragment() {
         monetSwitch = v.findViewById(R.id.monettoggle)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
         openGroup = v.findViewById(R.id.toggleButton)
-        reportBtn = v.findViewById(R.id.sharebug)
+        backBtn = v.findViewById(R.id.backBtn)
+
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             passSwitch.visibility = View.GONE
@@ -71,8 +74,7 @@ class SettingsFragment : Fragment() {
             openGroup.check(R.id.yesnotes)
         }
 
-        reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
-            startActivity(i) }
+        backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
 
 
 
@@ -146,9 +148,7 @@ class SettingsFragment : Fragment() {
             }
             Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
                 .setAction(R.string.restart) {
-                    val intent = Intent(activity, requireActivity()::class.java)
-                    this.startActivity(intent)
-                    activity?.finishAffinity()
+                    killAndRestartApp(requireActivity())
                 }
                 .show()
         }
@@ -167,22 +167,28 @@ class SettingsFragment : Fragment() {
             }
             Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
                 .setAction(R.string.restart) {
-                    val intent = Intent(activity, requireActivity()::class.java)
-                    this.startActivity(intent)
-                    activity?.finishAffinity()
+                    killAndRestartApp(requireActivity())
                 }
                 .show()
         }
 
-        val ver = resources.getString(R.string.appversion)
-        val build = resources.getString(R.string.buildn)
-
-
-
-        version = v.findViewById(R.id.version)
-
-        version.text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
-
         return v
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.commit ()
+    }
+
+    fun killAndRestartApp(activity: Activity) {
+
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        activity.startActivity(intent)
+        activity.finish()
+        Runtime.getRuntime().exit(0)
     }
 }

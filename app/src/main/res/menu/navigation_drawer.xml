@@ -13,14 +13,9 @@
             android:title="@string/todo">
         </item>
         <item
-            android:id="@+id/settings"
-            android:icon="@drawable/settings"
-            android:title="@string/settingsText">
-        </item>
-        <item
-            android:id="@+id/info"
-            android:icon="@drawable/info"
-            android:title="@string/inf">
+            android:id="@+id/other"
+            android:icon="@drawable/more"
+            android:title="More">
         </item>
     </group>
 </menu>
