@@ -1,9 +1,7 @@
 package com.jjewuz.justnotes
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,10 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.TextView
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.materialswitch.MaterialSwitch
-import java.util.Date
+
 
 class InfoFragment : Fragment() {
 
@@ -26,6 +21,8 @@ class InfoFragment : Fragment() {
     lateinit var  tgBtn: ImageButton
     lateinit var  vkBtn: ImageButton
     lateinit var  dsBtn: ImageButton
+
+    lateinit var backBtn: Button
 
 
     override fun onCreateView(
@@ -42,6 +39,9 @@ class InfoFragment : Fragment() {
         vkBtn = v.findViewById(R.id.vk)
         dsBtn = v.findViewById(R.id.ds)
 
+        backBtn = v.findViewById(R.id.backBtn)
+
+
         ghBtn.setOnClickListener { gh_a() }
         siteBtn.setOnClickListener{ site_a() }
         rateBtn.setOnClickListener { ratestore() }
@@ -49,6 +49,7 @@ class InfoFragment : Fragment() {
         tgBtn.setOnClickListener { tg_a() }
         vkBtn.setOnClickListener { vk_a() }
         dsBtn.setOnClickListener { ds_a() }
+        backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
 
         return v
     }

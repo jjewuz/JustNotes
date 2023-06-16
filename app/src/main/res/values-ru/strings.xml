@@ -80,4 +80,8 @@
     <string name="report_desc">Если вы встретили ошибку в приложении</string>
     <string name="settings_desc">Внешний вид, безопасность</string>
     <string name="info_desc">Полезные ссылки, лицензии</string>
+    <string name="more">Ещё</string>
+    <string name="backup_txt">В данном разделе вы можете сделать локальную резервную копию ваших данных.</string>
+    <string name="backup_warn">Внимание! Данные задач не сохраняются.</string>
+    <string name="backup_txt2">Для использования резервного копирования понадобиться доступ к файлам с утройства.</string>
 </resources>
