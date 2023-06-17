@@ -71,4 +71,18 @@
     <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
     <string name="openTask">Standardmäßig geöffnet</string>
     <string name="change_view">Stil ändern</string>
+    <string name="backup_title">Sicherung</string>
+    <string name="do_backup">Sicherung</string>
+    <string name="do_restore">Wiederherstellen</string>
+    <string name="licenses">Lizenzen</string>
+    <string name="thx_license">Diese App verwendet Bibliotheken von Drittanbietern. Vielen Dank an ihre Entwickler.</string>
+    <string name="backup_desc">Sorgen Sie sich um die Sicherheit Ihrer Notizen</string>
+    <string name="report_desc">Wenn ein App-Fehler auftritt</string>
+    <string name="settings_desc">Aussehen, Sicherheit...</string>
+    <string name="info_desc">Soziale Links, Lizenzen...</string>
+    <string name="more">Mehr</string>
+    <string name="backup_txt">In diesem Abschnitt können Sie eine lokale Sicherung Ihrer Daten erstellen.</string>
+    <string name="backup_warn">Aufmerksamkeit! Aufgabendaten werden nicht gespeichert.</string>
+    <string name="backup_txt2">Um die Sicherung verwenden zu können, müssen Sie auf die Dateien des Geräts zugreifen.</string>
+    <string name="not_encrypted">Aufmerksamkeit! Das Backup ist nicht verschlüsselt.</string>
 </resources>

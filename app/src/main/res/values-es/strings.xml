@@ -71,4 +71,18 @@
     <string name="delWarnTodo">¿Está seguro de que desea eliminar la tarea?</string>
     <string name="openTask">Abrir por defecto</string>
     <string name="change_view">Cambia estilo</string>
+    <string name="backup_title">Respaldo</string>
+    <string name="do_backup">Respaldo</string>
+    <string name="do_restore">Restaurar</string>
+    <string name="licenses">Licencias</string>
+    <string name="thx_license">Esta aplicación utiliza bibliotecas de terceros. Gracias a sus desarrolladores.</string>
+    <string name="backup_desc">Preocúpate por la seguridad de tus notas</string>
+    <string name="report_desc">Si encuentra un error de la aplicación</string>
+    <string name="settings_desc">Apariencia, seguridad...</string>
+    <string name="info_desc">Enlaces sociales, licencias...</string>
+    <string name="more">Más</string>
+    <string name="backup_txt">En esta sección, puede hacer una copia de seguridad local de sus datos.</string>
+    <string name="backup_warn">¡Atención! Los datos de la tarea no se guardan.</string>
+    <string name="backup_txt2">Para usar la copia de seguridad, debe acceder a los archivos desde el dispositivo.</string>
+    <string name="not_encrypted">¡Atención! La copia de seguridad no está cifrada.</string>
 </resources>

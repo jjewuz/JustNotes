@@ -89,4 +89,5 @@
     <string name="backup_txt">In this section, you can make a local backup of your data.</string>
     <string name="backup_warn">Attention! Task data is not saved.</string>
     <string name="backup_txt2">To use backup, you need to access files from the device.</string>
+    <string name="not_encrypted">Attention! The backup is not encrypted.</string>
 </resources>
