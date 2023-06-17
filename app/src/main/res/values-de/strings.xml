@@ -64,7 +64,7 @@
     <string name="other">Andere</string>
     <string name="restart">Neustart</string>
     <string name="nothingTxt">Hier ist es leer...</string>
-    <string name="socialLinksText">Abonnieren Sie soziale Netzwerke:</string>
+    <string name="socialLinksText">Folgen Sie unseren sozialen Netzwerken:</string>
     <string name="todo">Aufgabenliste</string>
     <string name="enterTodo">Geben Sie den Aufgabentext ein</string>
     <string name="add">Hinzufügen</string>
@@ -82,7 +82,7 @@
     <string name="info_desc">Soziale Links, Lizenzen...</string>
     <string name="more">Mehr</string>
     <string name="backup_txt">In diesem Abschnitt können Sie eine lokale Sicherung Ihrer Daten erstellen.</string>
-    <string name="backup_warn">Aufmerksamkeit! Aufgabendaten werden nicht gespeichert.</string>
+    <string name="backup_warn">Achtung! Aufgabendaten werden nicht gespeichert.</string>
     <string name="backup_txt2">Um die Sicherung verwenden zu können, müssen Sie auf die Dateien des Geräts zugreifen.</string>
-    <string name="not_encrypted">Aufmerksamkeit! Das Backup ist nicht verschlüsselt.</string>
+    <string name="not_encrypted">Achtung! Das Backup ist nicht verschlüsselt.</string>
 </resources>
