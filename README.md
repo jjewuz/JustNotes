@@ -12,10 +12,10 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - To-do list creation
 
 ## Screenshots
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/83e04397-b894-4bb3-bbee-b702ffad6704" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/2285cce8-6890-40a0-b6ab-143f53acef14" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/c9b2ba18-15da-4b57-ae05-6f1e96045eda" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/d957fbed-d196-4423-abb3-1e7106627d0d" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/a15a1c61-3424-46d2-a234-dec12ce0be5d" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/6503cdf5-6193-4d8d-ab5d-204d0f113a41" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/1de193b5-7e6a-4441-970e-0aece6e0b05a" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/dda7aaa6-66f0-4976-95ee-bceb6f79273a" width="180" height="320" />
 
 ## Download
  - [Google Play Store](https://play.google.com/store/apps/details?id=com.jjewuz.justnotes)
