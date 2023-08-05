@@ -6,38 +6,22 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.transition.Explode
 import android.util.Log
-import android.view.ViewGroup.MarginLayoutParams
-import android.view.Window
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
 
 
 class MainActivity : AppCompatActivity() {
-
-
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var actionBarToggle: ActionBarDrawerToggle
-    private lateinit var navView: NavigationView
 
     private lateinit var binding: ActivityMainBinding
 
