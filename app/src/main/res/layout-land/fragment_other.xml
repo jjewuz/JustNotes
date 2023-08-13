@@ -49,7 +49,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/version"
-                android:textStyle="italic"
                 android:textSize="20dp"
                 android:text="@string/appversion"/>
 
@@ -61,7 +60,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/backup"
             style="@style/Widget.Material3.CardView.Filled"
             android:layout_height="wrap_content">
@@ -92,6 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         android:text="@string/backup_title"/>
 
                     <TextView
@@ -140,6 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:text="@string/reportBug"/>
 
                     <TextView
@@ -186,6 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         android:text="@string/settingsText"/>
 
                         <TextView
@@ -232,6 +234,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         android:text="@string/inf"/>
 
                     <TextView
