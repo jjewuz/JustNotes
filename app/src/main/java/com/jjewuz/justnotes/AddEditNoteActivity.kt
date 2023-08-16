@@ -56,7 +56,6 @@ class AddEditNoteActivity : AppCompatActivity() {
             exitTransition = Explode()
         }
 
-
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
         if (enabledFont and enabledMonet){
@@ -162,8 +161,8 @@ class AddEditNoteActivity : AppCompatActivity() {
     private fun saveNote() {
         if (hasChanges) {
             val noteType = intent.getStringExtra("noteType")
-
-            val noteTitle = noteTitleEdt.text.toString()
+            val emptyTitle = getString(R.string.note)
+            var noteTitle = noteTitleEdt.text.toString()
             val noteDescription = noteEdt.text.toString()
             if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
                 if (noteType.equals("Edit")) {
@@ -172,35 +171,29 @@ class AddEditNoteActivity : AppCompatActivity() {
                     val currentDateAndTime: String = sdf.format(Date())
 
                     if (noteTitle.isEmpty()) {
-                        val updatedNote = Note(noteDescription, noteDescription, currentDateAndTime)
-                    } else {
-                        val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
-                        updatedNote.id = noteID
-                        viewModal.updateNote(updatedNote)
+                        noteTitle = emptyTitle
                     }
+
+                    val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
+                    updatedNote.id = noteID
+                    viewModal.updateNote(updatedNote)
+
                     Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
                 } else {
                     val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
                     val currentDateAndTime: String = sdf.format(Date())
                     if (noteTitle.isEmpty()) {
-                        viewModal.addNote(
-                            Note(
-                                noteDescription,
-                                noteDescription,
-                                currentDateAndTime
-                            )
-                        )
-                    } else {
-                        viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
-
+                        noteTitle = emptyTitle
                     }
+
+                    viewModal.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
+
                     Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
                 }
             }
         }
         this.finishAfterTransition()
     }
-
 
     private fun saveOurDoc() {
 
@@ -250,7 +243,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    fun createAndSaveWordDoc(context: Context, noteName: String, noteText: String) {
+    private fun createAndSaveWordDoc(context: Context, noteName: String, noteText: String) {
 
         val downloadsDirectory = File(Environment.getExternalStorageDirectory(), "Download")
         if (!downloadsDirectory.exists()) {
