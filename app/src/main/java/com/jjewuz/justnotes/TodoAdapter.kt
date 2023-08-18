@@ -1,6 +1,7 @@
 package com.jjewuz.justnotes
 
 import android.graphics.Paint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 
-class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todos: List<Todo>,val todoClickInterface: TodoClickInterface, val todoLongClickInterface: TodoLongClickInterface) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
+class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todos: List<Todo>, val todoClickInterface: TodoClickInterface, private val todoLongClickInterface: TodoLongClickInterface) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val completedCheckBox: CheckBox = itemView.findViewById(R.id.completedCheckBox)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

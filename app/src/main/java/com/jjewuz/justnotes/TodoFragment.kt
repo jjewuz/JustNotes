@@ -1,11 +1,13 @@
 package com.jjewuz.justnotes
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -38,6 +40,7 @@ class TodoFragment : Fragment(), TodoClickInterface, TodoLongClickInterface {
 
         val recyclerView: RecyclerView = v.findViewById(R.id.recyclerView)
         val adapter = TodoAdapter(requireActivity(), emptyList(), this, this)
+        adapter.setHasStableIds(true)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
@@ -83,6 +86,7 @@ class TodoFragment : Fragment(), TodoClickInterface, TodoLongClickInterface {
 
                 standardBottomSheetBehavior.state = STATE_HIDDEN
 
+                todoText.hideKeyboard()
                 todoText.text?.clear()
             }
         }
@@ -95,7 +99,6 @@ class TodoFragment : Fragment(), TodoClickInterface, TodoLongClickInterface {
     }
 
     override fun onTodoClick(todo: Todo) {
-
     }
 
     override fun onTodoLongClick(todo: Todo) {
@@ -108,6 +111,11 @@ class TodoFragment : Fragment(), TodoClickInterface, TodoLongClickInterface {
                 Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
             }
             .show()
+    }
+
+    private fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
     }
 
 }
