@@ -321,6 +321,21 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        saveNote()
+        super.onPause()
+    }
+
+    override fun onStop(){
+        saveNote()
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        saveNote()
+        super.onDestroy()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         saveNote()
         return false

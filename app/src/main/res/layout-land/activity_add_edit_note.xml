@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:transitionName="transition_fab"
     android:id="@+id/holder"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".AddEditNoteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -29,7 +31,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -100,4 +103,83 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="?colorSecondaryContainer"
+        android:orientation="horizontal"
+        android:paddingStart="75dp"
+        android:paddingEnd="75dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/clearbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/clear"
+                app:tint="?colorOnPrimaryContainer" />
+
+            <ImageButton
+                android:id="@+id/boldbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/bold"
+                app:tint="?colorOnPrimaryContainer" />
+
+            <ImageButton
+                android:id="@+id/italicbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/italic"
+                app:tint="?colorOnPrimaryContainer" />
+
+            <ImageButton
+                android:id="@+id/underbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/under"
+                app:tint="?colorOnPrimaryContainer" />
+
+            <ImageButton
+                android:id="@+id/strikebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/strike"
+                app:tint="?colorOnPrimaryContainer" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/savedtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/saved"
+            android:textColor="?colorOnSecondaryContainer"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
