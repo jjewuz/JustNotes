@@ -10,6 +10,11 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - Custom font setting
  - Multi-language (English, Deutsch, Espanol, Russian)
  - To-do list creation
+ - Text formatting
+
+## Planned
+ - Cloud backup
+ - Text's color change
 
 ## Screenshots
 <img src="https://github.com/jjewuz/JustNotes/assets/53698992/a15a1c61-3424-46d2-a234-dec12ce0be5d" width="180" height="320" />
