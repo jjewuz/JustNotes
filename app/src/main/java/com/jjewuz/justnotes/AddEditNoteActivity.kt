@@ -55,7 +55,9 @@ class AddEditNoteActivity : AppCompatActivity() {
     lateinit var viewModal: NoteViewModal
     var noteID = -1;
 
-    private var hasChanges = false;
+    private var added = false
+
+    private var hasChanges = false
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -69,7 +71,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         window.navigationBarColor = getThemeAccentColor(this)
-
         with(window) {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
             exitTransition = Explode()
@@ -217,13 +218,16 @@ class AddEditNoteActivity : AppCompatActivity() {
                     updatedNote.id = noteID
                     viewModal.updateNote(updatedNote)
                 } else {
-                    if (noteTitle.isEmpty()) {
-                        noteTitle = emptyTitle
+                    if (!added){
+                        if (noteTitle.isEmpty()) {
+                            noteTitle = emptyTitle
+                        }
+                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), currentDateAndTime))
+                        added = true
                     }
-                    viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), currentDateAndTime))
+
                 }
                 savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.substring(15)
-                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
             }
         }
         this.finishAfterTransition()
