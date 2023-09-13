@@ -11,8 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 
@@ -20,8 +22,10 @@ import com.google.android.material.snackbar.Snackbar
 class SettingsFragment : Fragment() {
 
     private lateinit var passSwitch: MaterialSwitch
+    private lateinit var secCard: LinearLayout
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
+    private lateinit var monetCard: MaterialCardView
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
     private lateinit var backBtn: Button
@@ -38,16 +42,18 @@ class SettingsFragment : Fragment() {
         passSwitch = v.findViewById(R.id.passwordtoggle)
         fontSwitch = v.findViewById(R.id.fonttoggle)
         monetSwitch = v.findViewById(R.id.monettoggle)
+        monetCard = v.findViewById(R.id.monet)
+        secCard = v.findViewById(R.id.security)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
         openGroup = v.findViewById(R.id.toggleButton)
         backBtn = v.findViewById(R.id.backBtn)
 
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            passSwitch.visibility = View.GONE
+            secCard.visibility = View.GONE
         }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
-            monetSwitch.visibility = View.GONE
+            monetCard.visibility = View.GONE
         }
 
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)

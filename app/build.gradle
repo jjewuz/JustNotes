@@ -13,8 +13,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 26
         targetSdk 34
-        versionCode 127
-        versionName "3.7.0"
+        versionCode 129
+        versionName "3.7.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

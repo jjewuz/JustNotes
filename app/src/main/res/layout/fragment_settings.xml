@@ -64,6 +64,7 @@
                     android:layout_width="match_parent"
                     style="@style/Widget.Material3.CardView.Filled"
                     android:layout_marginTop="10dp"
+                    android:id="@+id/monet"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
@@ -191,6 +192,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/security"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:orientation="vertical">

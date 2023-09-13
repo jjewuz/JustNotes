@@ -124,7 +124,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteID = intent.getIntExtra("noteId", -1)
             noteTitleEdt.setText(noteTitle)
             supportActionBar?.title = ""
-            savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime?.substring(15)
+            savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime?.takeLast(6)
             noteEdt.setText(Utils.fromHtml(noteDescription))
         }
 
@@ -227,7 +227,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
 
                 }
-                savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.substring(15)
+                savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
         }
         this.finishAfterTransition()
