@@ -26,6 +26,7 @@ class SettingsFragment : Fragment() {
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var monetCard: MaterialCardView
+    private lateinit var previewSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
     private lateinit var backBtn: Button
@@ -44,6 +45,7 @@ class SettingsFragment : Fragment() {
         monetSwitch = v.findViewById(R.id.monettoggle)
         monetCard = v.findViewById(R.id.monet)
         secCard = v.findViewById(R.id.security)
+        previewSwitch = v.findViewById(R.id.previewtoggle)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
         openGroup = v.findViewById(R.id.toggleButton)
         backBtn = v.findViewById(R.id.backBtn)
@@ -60,6 +62,7 @@ class SettingsFragment : Fragment() {
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val preview = sharedPref.getBoolean("enabledPreview", false)
         val reversed = sharedPref.getBoolean("reversed", false)
         val tasksOpen = sharedPref.getBoolean("isTask", false)
         val isGrid = sharedPref.getBoolean("grid", false)
@@ -100,6 +103,20 @@ class SettingsFragment : Fragment() {
                     }
                 }
 
+            }
+        }
+
+        previewSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                with (sharedPref.edit()) {
+                    putBoolean("enabledPreview", true)
+                    apply()
+                }
+            }else{
+                with (sharedPref.edit()) {
+                    putBoolean("enabledPreview", false)
+                    apply()
+                }
             }
         }
 

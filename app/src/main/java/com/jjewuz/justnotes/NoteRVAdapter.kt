@@ -18,6 +18,7 @@ class NoteRVAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val noteTV = itemView.findViewById<TextView>(R.id.idTVNote)
+        val descTV = itemView.findViewById<TextView>(R.id.notedesc)
         val dateTV = itemView.findViewById<TextView>(R.id.idTVDate)
     }
 
@@ -31,6 +32,7 @@ class NoteRVAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.noteTV.text = allNotes.get(position).noteTitle
+        holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription)
         holder.dateTV.setText(context.getString(R.string.lastedit)+ allNotes.get(position).timeStamp)
 
 

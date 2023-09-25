@@ -85,4 +85,5 @@
     <string name="backup_warn">Внимание! Данные задач не сохраняются.</string>
     <string name="backup_txt2">Для использования резервного копирования понадобиться доступ к файлам с утройства.</string>
     <string name="not_encrypted">Внимание! Резервная копия не зашифрована.</string>
+    <string name="preview">Предпросмотр текста заметки</string>
 </resources>

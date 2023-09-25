@@ -136,6 +136,36 @@
 
                         <ImageView
                             android:layout_width="wrap_content"
+                            android:src="@drawable/preview"
+                            app:tint="?colorOnSecondaryContainer"
+                            android:scaleY="0.8"
+                            android:scaleX="0.8"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:id="@+id/previewtoggle"
+                            android:text="@string/preview"/>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
                             android:src="@drawable/opening"
                             app:tint="?colorOnSecondaryContainer"
                             android:scaleY="0.8"
