@@ -1,6 +1,7 @@
 package com.jjewuz.justnotes
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +15,14 @@ class NoteRVAdapter(
 ) :
     RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
+    lateinit var sharedPref: SharedPreferences
+
     private val allNotes = ArrayList<Note>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noteTV = itemView.findViewById<TextView>(R.id.idTVNote)
-        val descTV = itemView.findViewById<TextView>(R.id.notedesc)
-        val dateTV = itemView.findViewById<TextView>(R.id.idTVDate)
+        val noteTV: TextView = itemView.findViewById(R.id.idTVNote)
+        val descTV: TextView = itemView.findViewById(R.id.notedesc)
+        val dateTV: TextView = itemView.findViewById(R.id.idTVDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,10 +34,17 @@ class NoteRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        sharedPref = holder.descTV.context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val isPreview = sharedPref.getBoolean("enabledPreview", false)
+
         holder.noteTV.text = allNotes.get(position).noteTitle
-        holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription)
         holder.dateTV.setText(context.getString(R.string.lastedit)+ allNotes.get(position).timeStamp)
 
+        if (isPreview){
+            holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription)
+        } else{
+            holder.descTV.visibility = View.GONE
+        }
 
         holder.itemView.setOnClickListener {
             noteClickInterface.onNoteClick(allNotes.get(position))

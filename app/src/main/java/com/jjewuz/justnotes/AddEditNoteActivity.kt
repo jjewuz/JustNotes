@@ -18,6 +18,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.transition.Explode
+import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
@@ -63,7 +64,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            saveNote()
+            saveNote(true)
         }
     }
 
@@ -198,7 +199,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveNote() {
+    private fun saveNote(exit: Boolean) {
         if (hasChanges) {
             val noteType = intent.getStringExtra("noteType")
             val emptyTitle = getString(R.string.note)
@@ -230,11 +231,12 @@ class AddEditNoteActivity : AppCompatActivity() {
                 savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
         }
-        this.finishAfterTransition()
+        if (exit) {
+            this.finishAfterTransition()
+        }
     }
 
     private fun saveOurDoc() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
         {
             noteEdt = findViewById(R.id.idEdtNoteDesc)
@@ -254,8 +256,6 @@ class AddEditNoteActivity : AppCompatActivity() {
             createAndSaveWordDoc(this, noteTitle, noteText)
 
         }
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -276,8 +276,6 @@ class AddEditNoteActivity : AppCompatActivity() {
                 }
             }
             Toast.makeText(context, R.string.docMade, Toast.LENGTH_SHORT).show()
-        } ?: run {
-            Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -325,23 +323,25 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
+
+    //Auto-saving note
     override fun onPause() {
-        saveNote()
+        saveNote(false)
         super.onPause()
     }
 
     override fun onStop(){
-        saveNote()
+        saveNote(false)
         super.onStop()
     }
 
     override fun onDestroy() {
-        saveNote()
+        saveNote(false)
         super.onDestroy()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        saveNote()
+        saveNote(true)
         return false
     }
 

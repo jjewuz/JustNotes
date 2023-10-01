@@ -70,6 +70,7 @@ class SettingsFragment : Fragment() {
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
         monetSwitch.isChecked = enabledMonet
+        previewSwitch.isChecked = preview
         reverseSwitch.isChecked = reversed
 
         if (tasksOpen){

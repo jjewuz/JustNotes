@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        backup = RoomBackup(this)
+        //backup = RoomBackup(this)
 
         val notesTxt = resources.getString(R.string.notes)
         val todoTxt = resources.getString(R.string.todo)
@@ -188,31 +188,4 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
     }
-
-    fun checkDeviceHasBiometric() {
-        val biometricManager = BiometricManager.from(this)
-        when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                Log.d("MY_APP_TAG", "App can authenticate using biometrics.")
-
-            }
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                Log.e("MY_APP_TAG", "No biometric features available on this device.")
-
-            }
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
-            }
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
-                    putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-                        BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
-                }
-
-                startActivityForResult(enrollIntent, 100)
-            }
-        }
-    }
-
-
 }
