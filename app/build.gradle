@@ -13,8 +13,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 26
         targetSdk 34
-        versionCode 130
-        versionName "3.7.3"
+        versionCode 132
+        versionName "3.7.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -99,5 +99,8 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
     implementation 'de.raphaelebner:roomdatabasebackup:1.0.0-beta12'
+
+    implementation 'com.google.android.play:core:1.8.0'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
 
 }

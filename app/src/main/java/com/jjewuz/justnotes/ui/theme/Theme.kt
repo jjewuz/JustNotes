@@ -3,12 +3,16 @@ package com.jjewuz.justnotes.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.jjewuz.justnotes.R
 
 
 private val LightColors = lightColorScheme(
@@ -78,11 +82,13 @@ private val DarkColors = darkColorScheme(
 
 @Composable
 fun AppTheme(
-  useDarkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable() () -> Unit
+    useDynamicColor: Boolean = true,
+    useCustomFont: Boolean = true,
+    useDarkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable() () -> Unit
 ) {
   val colors = when {
-      (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) ->{
+      useDynamicColor && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) ->{
           val context = LocalContext.current
           if (useDarkTheme) dynamicDarkColorScheme(context)
           else dynamicLightColorScheme(context)
@@ -91,8 +97,41 @@ fun AppTheme(
       else -> LightColors
   }
 
+    val font = FontFamily(
+        Font(R.font.raleway)
+    )
+
+    val defaultTypography = Typography()
+    val typo = when {
+        !useCustomFont ->{
+            Typography(
+                displayLarge = defaultTypography.displayLarge.copy(fontFamily = font),
+                displayMedium = defaultTypography.displayMedium.copy(fontFamily = font),
+                displaySmall = defaultTypography.displaySmall.copy(fontFamily = font),
+
+                bodyLarge = defaultTypography.bodyLarge.copy(fontFamily = font),
+                bodyMedium = defaultTypography.bodyMedium.copy(fontFamily = font),
+                bodySmall = defaultTypography.bodySmall.copy(fontFamily = font),
+
+                headlineLarge = defaultTypography.headlineLarge.copy(fontFamily = font),
+                headlineMedium = defaultTypography.headlineMedium.copy(fontFamily = font),
+                headlineSmall = defaultTypography.headlineSmall.copy(fontFamily = font),
+
+                titleLarge = defaultTypography.titleLarge.copy(fontFamily = font),
+                titleMedium = defaultTypography.titleMedium.copy(fontFamily = font),
+                titleSmall = defaultTypography.titleSmall.copy(fontFamily = font),
+
+                labelLarge = defaultTypography.labelLarge.copy(fontFamily = font),
+                labelMedium = defaultTypography.labelMedium.copy(fontFamily = font),
+                labelSmall = defaultTypography.labelSmall.copy(fontFamily = font),
+            )
+        }
+        else -> Typography()
+    }
+
   MaterialTheme(
-    colorScheme = colors,
-    content = content
+        colorScheme = colors,
+        typography = typo,
+        content = content
   )
 }

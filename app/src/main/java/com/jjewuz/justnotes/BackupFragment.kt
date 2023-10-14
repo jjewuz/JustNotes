@@ -2,7 +2,9 @@ package com.jjewuz.justnotes
 
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.compose.material3.Text
@@ -32,15 +34,22 @@ import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 
 class BackupFragment : Fragment() {
 
+    private lateinit var sharedPref: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+
+        val isDynamicColor = sharedPref.getBoolean("enabledMonet", true)
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                AppTheme() {
+                AppTheme(isDynamicColor, enabledFont) {
                     Column ( horizontalAlignment = Alignment.CenterHorizontally) {
                         WarningText()
                         BackupFun()
