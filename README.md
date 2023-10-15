@@ -13,7 +13,6 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - Text formatting
 
 ## Planned
- - Migrate to Jetpack Compose
  - Cloud backup
  - Text's color change
 
