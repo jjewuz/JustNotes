@@ -12,7 +12,7 @@
     <string name="inf">Informacije</string>
     <string name="count1">Brojač znakova</string>
     <string name="count2">Vrijeme čitanja</string>
-    <string name="minuts">min.</string>
+    <string name="minutes">min.</string>
     <string name="hint">Upišite ovdje</string>
     <string name="tasks">Zadaci</string>
     <string name="rate">Ocijenite aplikaciju</string>
@@ -23,7 +23,6 @@
     <string name="option1">Očisti tekst</string>
     <string name="option2">Informacije o tekstu</string>
     <string name="option3">Spremi i izlaz</string>
-    <string name="verison">Razvijatelj: jjewuz</string>
     <string name="lastedit">Zadnja izmjena: </string>
     <string name="Title">Naziv bilješke</string>
     <string name="deleted">Izbrisano</string>
@@ -33,6 +32,7 @@
     <string name="delWarn">Jeste li sigurni da želite izbrisati bilješku?</string>
     <string name="export">Izvoz u .txt</string>
     <string name="docMade">Datoteka je spremljena u mapu za preuzimanje!</string>
+    <string name="version">Razvijatelj: jjewuz</string>
     <string name="note">Bilješka</string>
     <string name="error">Greška</string>
     <string name="countSymb">Broj znakova:</string>
