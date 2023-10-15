@@ -23,8 +23,8 @@
     <string name="option1">Očisti tekst</string>
     <string name="option2">Informacije o tekstu</string>
     <string name="option3">Spremi i izlaz</string>
-    <string name="lastedit">Zadnja izmjena: </string>
     <string name="verison">Razvijatelj: jjewuz</string>
+    <string name="lastedit">Zadnja izmjena: </string>
     <string name="Title">Naziv bilješke</string>
     <string name="deleted">Izbrisano</string>
     <string name="saved">Spremljeno</string>
