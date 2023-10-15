@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        backup = RoomBackup(this)
+        //backup = RoomBackup(this)
 
         val notesTxt = resources.getString(R.string.notes)
         val todoTxt = resources.getString(R.string.todo)

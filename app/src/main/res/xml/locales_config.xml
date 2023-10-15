@@ -5,5 +5,4 @@
     <locale android:name="es"/>
     <locale android:name="ru"/>
     <locale android:name="zh"/>
-    <locale android:name="hr"/>
 </locale-config>

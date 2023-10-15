@@ -28,12 +28,9 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import android.window.OnBackInvokedCallback
-import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.BuildCompat
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
@@ -96,6 +93,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
+
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         viewModal = ViewModelProvider(
@@ -155,6 +153,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt.addTextChangedListener(watcher)
         noteEdt.addTextChangedListener(watcher)
     }
+
     private fun getThemeAccentColor(context: Context): Int {
         val value = TypedValue()
         context.theme.resolveAttribute(R.attr.colorSecondaryContainer, value, true)
