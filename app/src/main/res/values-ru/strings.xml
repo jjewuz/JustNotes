@@ -69,7 +69,7 @@
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
     <string name="delWarnTodo">Вы уверены, что хотите удалить задачу?</string>
-    <string name="openTask">Открывать по умолчанию</string>
+    <string name="openTask">Открывать заметки по умолчанию</string>
     <string name="change_view">Изменить стиль</string>
     <string name="backup_title">Резервное копирование</string>
     <string name="do_backup">Сделать копию</string>

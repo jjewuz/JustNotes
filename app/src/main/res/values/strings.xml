@@ -68,7 +68,7 @@
     <string name="enterTodo">Enter To-Do text</string>
     <string name="add">Add</string>
     <string name="delWarnTodo">Are you sure you want to delete the task?</string>
-    <string name="openTask">Open by default</string>
+    <string name="openTask">Open tasks by default</string>
     <string name="change_view">Change view</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
