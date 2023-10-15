@@ -24,7 +24,6 @@
     <string name="option2">Informacije o tekstu</string>
     <string name="option3">Spremi i izlaz</string>
     <string name="lastedit">Zadnja izmjena: </string>
-    <string name="verison">Razvijatelj: jjewuz</string>
     <string name="Title">Naziv bilješke</string>
     <string name="deleted">Izbrisano</string>
     <string name="saved">Spremljeno</string>
@@ -33,6 +32,7 @@
     <string name="delWarn">Jeste li sigurni da želite izbrisati bilješku?</string>
     <string name="export">Izvoz u .txt</string>
     <string name="docMade">Datoteka je spremljena u mapu za preuzimanje!</string>
+    <string name="version">Razvijatelj: jjewuz</string>
     <string name="note">Bilješka</string>
     <string name="error">Greška</string>
     <string name="countSymb">Broj znakova:</string>
