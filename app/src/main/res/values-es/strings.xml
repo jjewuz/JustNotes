@@ -85,4 +85,5 @@
     <string name="backup_warn">¡Atención! Los datos de la tarea no se guardan.</string>
     <string name="backup_txt2">Para usar la copia de seguridad, debe acceder a los archivos desde el dispositivo.</string>
     <string name="not_encrypted">¡Atención! La copia de seguridad no está cifrada.</string>
+    <string name="preview">Vista previa del texto de la nota</string>
 </resources>

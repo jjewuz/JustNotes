@@ -85,4 +85,5 @@
     <string name="backup_warn">Achtung! Aufgabendaten werden nicht gespeichert.</string>
     <string name="backup_txt2">Um die Sicherung verwenden zu können, müssen Sie auf die Dateien des Geräts zugreifen.</string>
     <string name="not_encrypted">Achtung! Das Backup ist nicht verschlüsselt.</string>
+    <string name="preview">Vorschau des Notiztextes</string>
 </resources>

@@ -68,7 +68,7 @@
     <string name="enterTodo">Enter To-Do text</string>
     <string name="add">Add</string>
     <string name="delWarnTodo">Are you sure you want to delete the task?</string>
-    <string name="openTask">Open by default</string>
+    <string name="openTask">Open tasks by default</string>
     <string name="change_view">Change view</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
@@ -79,7 +79,7 @@
     <string name="android_room_database_backup" translatable="false">Android Room Database Backup</string>
     <string name="dbbackup_license" translatable="false">MIT License  Copyright (c) 2023 Raphael Ebner</string>
     <string name="github" translatable="false">Github</string>
-    <string name="my_license" translatable="false">MIT License  Copyright (c) 2022 Maksim jjewuz Denisov  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+    <string name="my_license" translatable="false">MIT License  Copyright (c) 2023 Maksim jjewuz Denisov  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
     <string name="thx_license">This app uses third-party libraries. Thanks to their developers.</string>
     <string name="backup_desc">Worry about the security of your notes</string>
     <string name="report_desc">If you encounter app error</string>
@@ -90,4 +90,5 @@
     <string name="backup_warn">Attention! Task data is not saved.</string>
     <string name="backup_txt2">To use backup, you need to access files from the device.</string>
     <string name="not_encrypted">Attention! The backup is not encrypted.</string>
+    <string name="preview">Preview note text</string>
 </resources>

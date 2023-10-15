@@ -69,7 +69,7 @@
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
     <string name="delWarnTodo">Вы уверены, что хотите удалить задачу?</string>
-    <string name="openTask">Открывать по умолчанию</string>
+    <string name="openTask">Открывать заметки по умолчанию</string>
     <string name="change_view">Изменить стиль</string>
     <string name="backup_title">Резервное копирование</string>
     <string name="do_backup">Сделать копию</string>
@@ -85,4 +85,5 @@
     <string name="backup_warn">Внимание! Данные задач не сохраняются.</string>
     <string name="backup_txt2">Для использования резервного копирования понадобиться доступ к файлам с утройства.</string>
     <string name="not_encrypted">Внимание! Резервная копия не зашифрована.</string>
+    <string name="preview">Предпросмотр текста заметки</string>
 </resources>

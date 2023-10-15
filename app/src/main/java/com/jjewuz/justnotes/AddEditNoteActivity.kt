@@ -18,6 +18,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.transition.Explode
+import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
@@ -27,9 +28,12 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.BuildCompat
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
@@ -63,7 +67,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            saveNote()
+            saveNote(true)
         }
     }
 
@@ -91,7 +95,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
-
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
@@ -152,7 +155,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt.addTextChangedListener(watcher)
         noteEdt.addTextChangedListener(watcher)
     }
-
     private fun getThemeAccentColor(context: Context): Int {
         val value = TypedValue()
         context.theme.resolveAttribute(R.attr.colorSecondaryContainer, value, true)
@@ -198,7 +200,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveNote() {
+    private fun saveNote(exit: Boolean) {
         if (hasChanges) {
             val noteType = intent.getStringExtra("noteType")
             val emptyTitle = getString(R.string.note)
@@ -230,11 +232,12 @@ class AddEditNoteActivity : AppCompatActivity() {
                 savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
         }
-        this.finishAfterTransition()
+        if (exit) {
+            this.finishAfterTransition()
+        }
     }
 
     private fun saveOurDoc() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
         {
             noteEdt = findViewById(R.id.idEdtNoteDesc)
@@ -254,8 +257,6 @@ class AddEditNoteActivity : AppCompatActivity() {
             createAndSaveWordDoc(this, noteTitle, noteText)
 
         }
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -276,8 +277,6 @@ class AddEditNoteActivity : AppCompatActivity() {
                 }
             }
             Toast.makeText(context, R.string.docMade, Toast.LENGTH_SHORT).show()
-        } ?: run {
-            Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -325,23 +324,25 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
+
+    //Auto-saving note
     override fun onPause() {
-        saveNote()
+        saveNote(false)
         super.onPause()
     }
 
     override fun onStop(){
-        saveNote()
+        saveNote(false)
         super.onStop()
     }
 
     override fun onDestroy() {
-        saveNote()
+        saveNote(false)
         super.onDestroy()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        saveNote()
+        saveNote(true)
         return false
     }
 

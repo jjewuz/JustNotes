@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import androidx.compose.foundation.Image
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,168 +13,143 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
+import com.jjewuz.justnotes.ui.theme.AppTheme
 
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var passSwitch: MaterialSwitch
-    private lateinit var secCard: LinearLayout
-    private lateinit var fontSwitch: MaterialSwitch
-    private lateinit var monetSwitch: MaterialSwitch
-    private lateinit var monetCard: MaterialCardView
-    private lateinit var reverseSwitch: MaterialSwitch
-    private lateinit var openGroup: MaterialButtonToggleGroup
-    private lateinit var backBtn: Button
-
     private lateinit var sharedPref: SharedPreferences
 
+    private var customFont: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val v = inflater.inflate(R.layout.fragment_settings, container, false)
+    ): View {
+        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
-        passSwitch = v.findViewById(R.id.passwordtoggle)
-        fontSwitch = v.findViewById(R.id.fonttoggle)
-        monetSwitch = v.findViewById(R.id.monettoggle)
-        monetCard = v.findViewById(R.id.monet)
-        secCard = v.findViewById(R.id.security)
-        reverseSwitch = v.findViewById(R.id.reversetoggle)
-        openGroup = v.findViewById(R.id.toggleButton)
-        backBtn = v.findViewById(R.id.backBtn)
+        val isDynamicColor = sharedPref.getBoolean("enabledMonet", true)
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
 
-
+        var securitySupport = true
+        var monetSupport = true
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            secCard.visibility = View.GONE
+            securitySupport = false
         }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
-            monetCard.visibility = View.GONE
+            monetSupport = false
         }
 
-        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
-        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        customFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val preview = sharedPref.getBoolean("enabledPreview", false)
         val reversed = sharedPref.getBoolean("reversed", false)
         val tasksOpen = sharedPref.getBoolean("isTask", false)
-        val isGrid = sharedPref.getBoolean("grid", false)
 
-        passSwitch.isChecked = enabledpass
-        fontSwitch.isChecked = enabledFont
-        monetSwitch.isChecked = enabledMonet
-        reverseSwitch.isChecked = reversed
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                AppTheme(isDynamicColor, enabledFont) {
+                    Column ( modifier = Modifier
+                        .padding(10.dp, 0.dp)
+                        .verticalScroll(
+                        rememberScrollState()
+                    ), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(text = resources.getString(R.string.appearance), color = MaterialTheme.colorScheme.primary)
+                        CardSetting(R.drawable.font, R.string.fontToggle, enabledFont, "enabledFont")
+                        if(monetSupport) CardSetting(R.drawable.palette, R.string.monet, enabledMonet, "enabledMonet")
+                        CardSetting(R.drawable.sort, R.string.reverseSetting, reversed, "reversed")
+                        CardSetting(R.drawable.preview, R.string.preview, preview, "enabledPreview")
+                        CardSetting(R.drawable.opening, R.string.openTask, tasksOpen, "isTask")
+                        if(securitySupport) {
+                            Divider()
+                            Text(
+                                text = resources.getString(R.string.security),
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                            CardSetting(
+                                R.drawable.security,
+                                R.string.passwordSettings,
+                                enabledpass,
+                                "enabledPassword"
+                            )
+                        }
 
-        if (tasksOpen){
-            openGroup.check(R.id.openTasks)
-        } else {
-            openGroup.check(R.id.yesnotes)
+                        Button({ replaceFragment(OtherFragment()) },
+                            modifier = Modifier.padding(0.dp, 15.dp)){
+                            Text(text = stringResource(id = R.string.back))
+                        }
+                    }
+                }
+            }
         }
+    }
 
-        backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
-
-
-
-        openGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
-            Log.i("BUG", "Button $checkedId")
-            when (checkedId){
-                R.id.yesnotes -> {
-                    if (isChecked) {
+    @Composable
+    fun CardSetting(image: Int, text: Int, checked: Boolean, param: String){
+        val checkedState = remember { mutableStateOf(checked)}
+        Card(modifier = Modifier
+            .fillMaxWidth()
+            .padding(0.dp, 5.dp)) {
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+                Image(painter = painterResource(id = image), contentDescription = null,)
+                Text(text = resources.getString(text))
+                Switch(checked = checkedState.value, onCheckedChange =
+                { checkedState.value = it
+                    if (checkedState.value) {
                         with (sharedPref.edit()) {
-                            putBoolean("isTask", false)
+                            putBoolean(param, true)
+                            apply()
+                        }
+                    } else {
+                        with (sharedPref.edit()) {
+                            putBoolean(param, false)
                             apply()
                         }
                     }
-
-                }
-                R.id.openTasks -> {
-                    if (isChecked) {
-                        with(sharedPref.edit()) {
-                            putBoolean("isTask", true)
-                            apply()
-                        }
+                    if (param == "enabledFont" || param == "enabledMonet"){
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle(resources.getString(R.string.needRestart))
+                            .setPositiveButton("OK") { dialog, which -> killAndRestartApp(requireActivity())
+                            }
+                            .show()
                     }
-                }
-
+                })
             }
         }
-
-        reverseSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("reversed", true)
-                    apply()
-                }
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("reversed", false)
-                    apply()
-                }
-            }
-        }
-
-        passSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("enabledPassword", true)
-                    apply()
-                }
-                Snackbar.make(v, resources.getString(R.string.passEnable), Snackbar.LENGTH_SHORT)
-                    .show()
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("enabledPassword", false)
-                    apply()
-                }
-                Snackbar.make(v, resources.getString(R.string.passDisabled), Snackbar.LENGTH_SHORT)
-                    .show()
-            }
-        }
-
-        fontSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("enabledFont", true)
-                    apply()
-                }
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("enabledFont", false)
-                    apply()
-                }
-            }
-            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
-                .setAction(R.string.restart) {
-                    killAndRestartApp(requireActivity())
-                }
-                .show()
-        }
-
-        monetSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("enabledMonet", true)
-                    apply()
-                }
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("enabledMonet", false)
-                    apply()
-                }
-            }
-            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
-                .setAction(R.string.restart) {
-                    killAndRestartApp(requireActivity())
-                }
-                .show()
-        }
-
-        return v
     }
 
     private fun replaceFragment(fragment : Fragment){
@@ -184,7 +160,7 @@ class SettingsFragment : Fragment() {
         fragmentTransaction.commit ()
     }
 
-    fun killAndRestartApp(activity: Activity) {
+    private fun killAndRestartApp(activity: Activity) {
 
         val intent = Intent(requireActivity(), MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
