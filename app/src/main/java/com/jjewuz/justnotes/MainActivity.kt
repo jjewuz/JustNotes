@@ -8,14 +8,17 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.navigation.NavigationView
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
@@ -30,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     private lateinit var sharedPref: SharedPreferences
+
+    private lateinit var actionBarToggle: ActionBarDrawerToggle
+    private lateinit var navView: NavigationView
 
     lateinit var backup: RoomBackup
 
@@ -56,7 +62,17 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
-        //backup = RoomBackup(this)
+        actionBarToggle = ActionBarDrawerToggle(this, binding.drawer, 0, 0)
+
+        binding.drawer.addDrawerListener(actionBarToggle)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        actionBarToggle.syncState()
+
+        navView = findViewById(R.id.nv)
+
+        backup = RoomBackup(this)
 
         val notesTxt = resources.getString(R.string.notes)
         val todoTxt = resources.getString(R.string.todo)
@@ -64,8 +80,7 @@ class MainActivity : AppCompatActivity() {
 
         if (tasksDefault) {
             supportActionBar?.title = todoTxt
-            binding.bottomNavView?.selectedItemId = R.id.todo
-            binding.navigationRail?.selectedItemId = R.id.todo
+            binding.nv.setCheckedItem(R.id.todo)
             replaceFragment(TodoFragment())
         } else {
             replaceFragment(NotesFragment())
@@ -81,43 +96,42 @@ class MainActivity : AppCompatActivity() {
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
 
-        binding.bottomNavView?.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.notes -> {
-                    supportActionBar?.title = notesTxt
-                    replaceFragment(NotesFragment())
+        binding.apply {
+            nv.setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.notes -> {
+                        supportActionBar?.title = notesTxt
+                        replaceFragment(NotesFragment())
+                        drawer.closeDrawer(GravityCompat.START)
+                        true
+                    }
+                    R.id.todo ->{
+                        supportActionBar?.title = todoTxt
+                        replaceFragment(TodoFragment())
+                        drawer.closeDrawer(GravityCompat.START)
+                        true
+                    }
+                    R.id.back_up ->{
+                        supportActionBar?.title = backupTxt
+                        replaceFragment(BackupFragment())
+                        drawer.closeDrawer(GravityCompat.START)
+                        true
+                    }
+                    R.id.settings ->{
+                        supportActionBar?.title = resources.getString(R.string.settingsText)
+                        replaceFragment(SettingsFragment())
+                        drawer.closeDrawer(GravityCompat.START)
+                        true
+                    }
+                    R.id.info ->{
+                        supportActionBar?.title = resources.getString(R.string.inf)
+                        replaceFragment(InfoFragment())
+                        drawer.closeDrawer(GravityCompat.START)
+                        true
+                    }
+                    else -> { true}
                 }
-                R.id.todo -> {
-                    supportActionBar?.title = todoTxt
-                    replaceFragment(TodoFragment())
-                }
-                R.id.other -> {
-                    supportActionBar?.title = backupTxt
-                    replaceFragment(OtherFragment())
-                }
-                else -> {}
             }
-            true
-        }
-
-        binding.navigationRail?.setOnItemSelectedListener {  menuItem ->
-            when(menuItem.itemId){
-                R.id.notes -> {
-                    supportActionBar?.title = notesTxt
-                    replaceFragment(NotesFragment())
-                }
-                R.id.todo -> {
-                    supportActionBar?.title = todoTxt
-                    replaceFragment(TodoFragment())
-                }
-                R.id.other -> {
-                    supportActionBar?.title = backupTxt
-                    replaceFragment(OtherFragment())
-                }
-                else -> {}
-            }
-
-            true
         }
 
 
@@ -179,6 +193,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        binding.drawer.openDrawer(navView)
+        return true
     }
 
     private fun replaceFragment(fragment : Fragment){

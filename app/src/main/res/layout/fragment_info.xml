@@ -68,13 +68,6 @@
                             android:text="@string/site" />
 
                         <Button
-                            android:id="@+id/rate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/rate" />
-
-                        <Button
                             android:id="@+id/licenses"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -134,27 +127,11 @@
                                 android:scaleType="fitXY"
                                 app:srcCompat="@drawable/vk" />
 
-                            <ImageButton
-                                android:id="@+id/ds"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
-                                android:background="@drawable/buttonc"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/discord" />
-
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
-
-                <Button
-                    android:id="@+id/backBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/back"/>
 
             </LinearLayout>
 

@@ -21,8 +21,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         val binding = view.let { FragmentBackupBinding.bind(it) }
         fragmentBackupBinding = binding
 
-        binding.backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
-
 
         binding.backup.setOnClickListener {
             val mainActivity = (activity as MainActivity)
@@ -68,14 +66,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         activity.startActivity(intent)
         activity.finish()
         Runtime.getRuntime().exit(0)
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = parentFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-        fragmentTransaction.replace(R.id.place_holder, fragment)
-        fragmentTransaction.commit ()
     }
 
 }

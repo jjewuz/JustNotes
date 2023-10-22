@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.card.MaterialCardView
@@ -29,7 +31,8 @@ class SettingsFragment : Fragment() {
     private lateinit var previewSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
-    private lateinit var backBtn: Button
+    private lateinit var reportBtn: MaterialCardView
+    private lateinit var version: TextView
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -48,7 +51,7 @@ class SettingsFragment : Fragment() {
         previewSwitch = v.findViewById(R.id.previewtoggle)
         reverseSwitch = v.findViewById(R.id.reversetoggle)
         openGroup = v.findViewById(R.id.toggleButton)
-        backBtn = v.findViewById(R.id.backBtn)
+        reportBtn = v.findViewById(R.id.report)
 
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -79,7 +82,13 @@ class SettingsFragment : Fragment() {
             openGroup.check(R.id.yesnotes)
         }
 
-        backBtn.setOnClickListener { replaceFragment(OtherFragment()) }
+        reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
+            startActivity(i) }
+
+        version = v.findViewById(R.id.version)
+        val ver = resources.getString(R.string.appversion)
+        val build = resources.getString(R.string.buildn)
+        version.text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
 
 
 
@@ -192,14 +201,6 @@ class SettingsFragment : Fragment() {
         }
 
         return v
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = parentFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-        fragmentTransaction.replace(R.id.place_holder, fragment)
-        fragmentTransaction.commit ()
     }
 
     fun killAndRestartApp(activity: Activity) {

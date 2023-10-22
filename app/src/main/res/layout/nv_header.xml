@@ -7,20 +7,51 @@
     android:gravity="start"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:paddingStart="30dp"
-        android:textColor="?colorOnSurface"
-        android:fontFamily="@font/raleway" />
-
-    <com.google.android.material.divider.MaterialDivider
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@mipmap/ic_launcher"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            android:padding="8dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/version"
+                android:textSize="24sp"
+                android:text="@string/app_name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/author"
+                android:textSize="18sp"
+                android:text="@string/verison"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
 
 
 </LinearLayout>

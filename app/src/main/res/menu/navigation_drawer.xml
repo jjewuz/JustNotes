@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/notes"
@@ -13,9 +14,19 @@
             android:title="@string/todo">
         </item>
         <item
-            android:id="@+id/other"
-            android:icon="@drawable/more"
-            android:title="@string/more">
+            android:id="@+id/back_up"
+            android:icon="@drawable/backup"
+            android:title="@string/backup_title">
+        </item>
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settingsText">
+        </item>
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/info"
+            android:title="@string/inf">
         </item>
     </group>
 </menu>
