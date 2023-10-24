@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="transition_fab"
     android:id="@+id/holder"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
@@ -34,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:transitionName="transition_fab"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -53,6 +53,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="25dp"
+                android:transitionName="transition"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

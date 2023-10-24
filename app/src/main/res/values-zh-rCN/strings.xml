@@ -16,7 +16,7 @@
     <string name="rate">为应用程序评分</string>
     <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">添加小组件</string>
-    <string name="app_widget_description">这是一个 JustNotes 的小组件</string>
+    <string name="app_widget_description">显示注释</string>
     <string name="counters">字数 | 阅读时间 (mins.)</string>
     <string name="option1">清楚文本</string>
     <string name="option2">文本信息</string>
@@ -84,4 +84,7 @@
     <string name="backup_txt2">要使用备份，你需要从设备访问文件。</string>
     <string name="not_encrypted">注意！备份未加密。</string>
     <string name="preview">预览注释文本</string>
+    <string name="set_on_widget">将注释设置到小部件</string>
+    <string name="delete_warn">删除笔记后您将无法恢复！</string>
+    <string name="note_set_to_widget">该注释已安装在小部件中</string>
 </resources>

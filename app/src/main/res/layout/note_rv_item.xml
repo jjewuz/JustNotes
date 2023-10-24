@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="25dp"
-    android:transitionName="transition_fab"
+    android:transitionName="transition"
     style="?attr/materialCardViewFilledStyle">
 
     <RelativeLayout

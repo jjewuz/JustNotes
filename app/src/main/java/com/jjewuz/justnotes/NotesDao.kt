@@ -2,7 +2,6 @@ package com.jjewuz.justnotes
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteQuery
 
 
 @Dao
@@ -15,6 +14,9 @@ interface NotesDao {
 
     @Query("Select * from notesTable order by id ASC")
     fun getAllNotes(): LiveData<List<Note>>
+
+    @Query("Select * from notesTable where id = :noteId")
+    fun getNoteById(noteId: Int): Note?
 
     @Update
     suspend fun update(note: Note)

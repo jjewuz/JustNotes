@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">JustNotes</string>
     <string name="about">Dobrodošli u aplikaciju JustNotes!</string>
     <string name="about2">Aplikacija je stvorena za brzo i jednostavno uređivanje teksta. Dodirnite "+" da biste stvorili novu bilješku. Držite prst na kartici da biste izbrisali bilješku.</string>
     <string name="changes">Društvene mreže:</string>
@@ -18,7 +17,7 @@
     <string name="rate">Ocijenite aplikaciju</string>
     <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Dodaj widget</string>
-    <string name="app_widget_description">Ovo je običan widget :)</string>
+    <string name="app_widget_description">Prikazuje bilješku</string>
     <string name="counters">Brojač znakova | Vrijeme čitanja (min.)</string>
     <string name="option1">Očisti tekst</string>
     <string name="option2">Informacije o tekstu</string>
@@ -86,4 +85,7 @@
     <string name="backup_txt2">Da biste koristili rezervno kopiranje, potrebno je pristupiti datotekama s uređaja.</string>
     <string name="not_encrypted">Pozor! Rezervna kopija nije šifrirana.</string>
     <string name="preview">Pregled teksta bilješke</string>
+    <string name="set_on_widget">Postavite bilješku na widget</string>
+    <string name="delete_warn">Nećete moći oporaviti bilješku nakon brisanja!</string>
+    <string name="note_set_to_widget">Bilješka je instalirana u widgetu</string>
 </resources>

@@ -140,9 +140,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         return v
     }
 
-    override fun onNoteClick(note: Note) {
+    override fun onNoteClick(note: Note, num: Int) {
         val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
-        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
+        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity(),
+            notesRV.layoutManager?.findViewByPosition(num), "transition")
         intent.putExtra("noteType", "Edit")
         intent.putExtra("noteTitle", note.noteTitle)
         intent.putExtra("noteDescription", note.noteDescription)
@@ -155,6 +156,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     override fun onNoteLongClick(note: Note) {
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.delWarn)
+            .setMessage(R.string.delete_warn)
             .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
             }
             .setPositiveButton(R.string.pos) { dialog, which ->

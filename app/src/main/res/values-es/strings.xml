@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">JustNotes</string>
     <string name="about">bienvenido a JustNotes!</string>
     <string name="about2">La aplicación está diseñada para la edición de texto rápida y fácil. Haga clic en el \"más\" para crear una nueva nota. Mantén presionada la tarjeta para eliminar la nota.</string>
     <string name="changes">Redes sociales:</string>
@@ -18,7 +17,7 @@
     <string name="rate">Califica la aplicación</string>
     <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Añadir widget</string>
-    <string name="app_widget_description">Es solo un artilugio :)</string>
+    <string name="app_widget_description">Muestra nota</string>
     <string name="counters">Número de caracteres | Tiempo de lectura (min.)</string>
     <string name="option1">Borrar texto</string>
     <string name="option2">Información de texto</string>
@@ -86,4 +85,7 @@
     <string name="backup_txt2">Para usar la copia de seguridad, debe acceder a los archivos desde el dispositivo.</string>
     <string name="not_encrypted">¡Atención! La copia de seguridad no está cifrada.</string>
     <string name="preview">Vista previa del texto de la nota</string>
+    <string name="set_on_widget">Establecer la nota en el widget</string>
+    <string name="delete_warn">¡No podrás recuperar una nota después de eliminarla!</string>
+    <string name="note_set_to_widget">La nota se ha instalado en el widget.</string>
 </resources>

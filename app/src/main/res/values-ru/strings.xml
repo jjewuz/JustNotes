@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">JustNotes</string>
     <string name="about">Добро пожаловать в приложение JustNotes!</string>
     <string name="about2">Приложение создано для быстрого и удобного редактирования текста. Нажмите на \"плюс\", чтобы создать новую заметку. Удержите на карточке, что бы удалить заметку.</string>
     <string name="changes">Социальные сети:</string>
@@ -18,7 +17,7 @@
     <string name="rate">Оцените приложение</string>
     <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Добавить виджет</string>
-    <string name="app_widget_description">Это обычный виджет :)</string>
+    <string name="app_widget_description">Отображает заметку</string>
     <string name="counters">Количество символов | Время чтения (мин.)</string>
     <string name="option1">Очистить текст</string>
     <string name="option2">Информация о тексте</string>
@@ -86,4 +85,7 @@
     <string name="backup_txt2">Для использования резервного копирования понадобиться доступ к файлам с утройства.</string>
     <string name="not_encrypted">Внимание! Резервная копия не зашифрована.</string>
     <string name="preview">Предпросмотр текста заметки</string>
+    <string name="set_on_widget">Отправить заметку в виджет</string>
+    <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
+    <string name="note_set_to_widget">Заметка установлена в виджет</string>
 </resources>

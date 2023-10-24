@@ -17,7 +17,7 @@
     <string name="rate">Rate app</string>
     <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Add widget</string>
-    <string name="app_widget_description">This is an JustNotes App widget</string>
+    <string name="app_widget_description">Displays note</string>
     <string name="counters">Character count | Reading time (mins.)</string>
     <string name="option1">Clear text</string>
     <string name="option2">Text info</string>
@@ -91,4 +91,7 @@
     <string name="backup_txt2">To use backup, you need to access files from the device.</string>
     <string name="not_encrypted">Attention! The backup is not encrypted.</string>
     <string name="preview">Preview note text</string>
+    <string name="set_on_widget">Set the note to the widget</string>
+    <string name="delete_warn">You will not be able to recover a note after deleting it!</string>
+    <string name="note_set_to_widget">The note has been installed in the widget</string>
 </resources>

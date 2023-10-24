@@ -47,7 +47,7 @@ class NoteRVAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            noteClickInterface.onNoteClick(allNotes.get(position))
+            noteClickInterface.onNoteClick(allNotes.get(position), position)
         }
 
         holder.itemView.setOnLongClickListener {
@@ -70,7 +70,7 @@ class NoteRVAdapter(
 
 
 interface NoteClickInterface {
-    fun onNoteClick(note: Note)
+    fun onNoteClick(note: Note, num: Int)
 }
 
 interface NoteLongClickInterface {

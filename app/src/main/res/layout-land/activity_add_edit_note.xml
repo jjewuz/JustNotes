@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="transition_fab"
+    android:transitionName="transition"
     android:id="@+id/holder"
     android:orientation="vertical"
     android:fitsSystemWindows="true"

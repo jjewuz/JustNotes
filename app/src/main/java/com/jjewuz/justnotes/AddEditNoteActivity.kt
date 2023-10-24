@@ -1,8 +1,11 @@
 package com.jjewuz.justnotes
 
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Build
@@ -18,6 +21,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.transition.Explode
+import android.transition.Fade
 import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
@@ -74,7 +78,8 @@ class AddEditNoteActivity : AppCompatActivity() {
         window.navigationBarColor = getThemeAccentColor(this)
         with(window) {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-            exitTransition = Explode()
+            enterTransition = Fade()
+            exitTransition = Fade()
         }
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
@@ -195,8 +200,25 @@ class AddEditNoteActivity : AppCompatActivity() {
                 saveOurDoc()
                 true
             }
+            R.id.widget -> {
+                val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putInt("note_id", noteID)
+                editor.apply()
+                pushWidget()
+                Toast.makeText(this, R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun pushWidget(){
+        val intent = Intent(this, NoteWidget::class.java)
+        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        val ids: IntArray = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(application, NoteWidget::class.java))
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        sendBroadcast(intent)
     }
 
     private fun saveNote(exit: Boolean) {
@@ -230,6 +252,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 }
                 savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
+            pushWidget()
         }
         if (exit) {
             this.finishAfterTransition()
