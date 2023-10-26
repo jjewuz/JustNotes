@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
@@ -47,12 +49,11 @@ class MainActivity : AppCompatActivity() {
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
         val tasksDefault = sharedPref.getBoolean("isTask", false)
-        if (enabledFont and enabledMonet){
+        if (enabledFont and enabledMonet) {
             setTheme(R.style.AppTheme)
-        } else if (!enabledFont and enabledMonet){
+        } else if (!enabledFont and enabledMonet) {
             setTheme(R.style.FontMonet)
-        }
-        else if (!enabledFont and !enabledMonet){
+        } else if (!enabledFont and !enabledMonet) {
             setTheme(R.style.Font)
         } else {
             setTheme(R.style.Nothing)
@@ -71,6 +72,11 @@ class MainActivity : AppCompatActivity() {
         actionBarToggle.syncState()
 
         navView = findViewById(R.id.nv)
+        val head = navView.getHeaderView(0)
+
+        val ver = resources.getString(R.string.appversion)
+
+        head.findViewById<TextView>(R.id.author).text = "$ver ${BuildConfig.VERSION_NAME}"
 
         backup = RoomBackup(this)
 
@@ -84,6 +90,18 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(TodoFragment())
         } else {
             replaceFragment(NotesFragment())
+        }
+
+        if (sharedPref.getInt("update1", 0) == 0) {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("${resources.getString(R.string.what_new_update)} ${BuildConfig.VERSION_NAME}?")
+                .setMessage("${resources.getString(R.string.what_new_desc)}:  \"${resources.getString(R.string.set_on_widget)}\".")
+                .setNegativeButton(R.string.notshowanymore) { dialog, which ->
+                    sharedPref.edit().putInt("update1", 1).apply()
+                }
+                .setPositiveButton("OK") { dialog, which ->
+                }
+                .show()
         }
 
 

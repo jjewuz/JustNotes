@@ -86,9 +86,9 @@ class SettingsFragment : Fragment() {
             startActivity(i) }
 
         version = v.findViewById(R.id.version)
-        val ver = resources.getString(R.string.appversion)
+        val ver = resources.getString(R.string.verison)
         val build = resources.getString(R.string.buildn)
-        version.text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
+        version.text = "$ver \n$build ${BuildConfig.VERSION_CODE}"
 
 
 

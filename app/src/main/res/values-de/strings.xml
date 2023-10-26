@@ -88,4 +88,10 @@
     <string name="set_on_widget">Legen Sie die Notiz für das Widget fest</string>
     <string name="delete_warn">Sie können eine Notiz nach dem Löschen nicht wiederherstellen!</string>
     <string name="note_set_to_widget">Die Notiz wurde im Widget installiert</string>
+    <string name="what_new_update">Was ist neu in</string>
+    <string name="what_new_desc">Im neuen Update gibt es ein neues Notiz-Widget! Um eine Notiz darauf zu setzen, gehen Sie zur Notiz, klicken Sie auf die drei Punkte und klicken Sie auf</string>
+    <string name="notshowanymore">Nicht mehr anzeigen</string>
+    <string name="empty">Leer</string>
+    <string name="no_note">Sie haben die anzuzeigende Notiz nicht ausgewählt.</string>
+    <string name="choose_note">Wählen Sie die anzuzeigende Notiz aus.</string>
 </resources>

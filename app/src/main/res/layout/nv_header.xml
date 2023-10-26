@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/author"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:text="@string/verison"/>
 
         </LinearLayout>

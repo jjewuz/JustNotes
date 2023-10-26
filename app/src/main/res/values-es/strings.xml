@@ -88,4 +88,10 @@
     <string name="set_on_widget">Establecer la nota en el widget</string>
     <string name="delete_warn">¡No podrás recuperar una nota después de eliminarla!</string>
     <string name="note_set_to_widget">La nota se ha instalado en el widget.</string>
+    <string name="what_new_update">¿Qué hay de nuevo en</string>
+    <string name="what_new_desc">¡En la nueva actualización hay un nuevo widget de notas! Para establecer una nota, vaya a nota, haga clic en tres puntos y haga clic en</string>
+    <string name="notshowanymore">no mostrar mas</string>
+    <string name="empty">Vacía</string>
+    <string name="no_note">No seleccionó la nota para mostrar.</string>
+    <string name="choose_note">Elija Nota para mostrar.</string>
 </resources>

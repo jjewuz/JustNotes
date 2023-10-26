@@ -87,4 +87,10 @@
     <string name="set_on_widget">将注释设置到小部件</string>
     <string name="delete_warn">删除笔记后您将无法恢复！</string>
     <string name="note_set_to_widget">该注释已安装在小部件中</string>
+    <string name="what_new_update">有什么新内容</string>
+    <string name="what_new_desc">在新的更新中有新的笔记小部件！ 要对其设置注释，请转到注释，单击三个点，然后单击</string>
+    <string name="notshowanymore">不再显示</string>
+    <string name="empty">空的</string>
+    <string name="no_note">您没有选择要显示的注释。</string>
+    <string name="choose_note">选择要显示的注释。</string>
 </resources>

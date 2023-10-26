@@ -88,4 +88,10 @@
     <string name="set_on_widget">Postavite bilješku na widget</string>
     <string name="delete_warn">Nećete moći oporaviti bilješku nakon brisanja!</string>
     <string name="note_set_to_widget">Bilješka je instalirana u widgetu</string>
+    <string name="what_new_update">Što je novo u</string>
+    <string name="what_new_desc">U novom ažuriranju postoji novi widget za bilješke! Za postavljanje bilješke na nju, idite na bilješku, kliknite na tri točkice i kliknite na</string>
+    <string name="notshowanymore">Ne pokazuj više</string>
+    <string name="empty">Prazan</string>
+    <string name="no_note">Niste odabrali bilješku za prikaz.</string>
+    <string name="choose_note">Odaberite bilješku za prikaz.</string>
 </resources>

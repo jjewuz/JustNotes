@@ -88,4 +88,10 @@
     <string name="set_on_widget">Отправить заметку в виджет</string>
     <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
     <string name="note_set_to_widget">Заметка установлена в виджет</string>
+    <string name="what_new_update">Что нового в</string>
+    <string name="what_new_desc">В новом обновлении добавлен виджет заметки. Что бы его установить, перейдите в заметку, нажмите на 3 точки и выберите</string>
+    <string name="notshowanymore">Не показывать больше</string>
+    <string name="empty">Пусто</string>
+    <string name="no_note">Вы не выбрали заметку для просмотра.</string>
+    <string name="choose_note">Выберите заметку для просмотра.</string>
 </resources>

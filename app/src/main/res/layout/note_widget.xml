@@ -24,14 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/appwidget_text"
-            android:text="@string/appwidget_text"
+            android:text="@string/app_name"
             android:textSize="20sp"
             android:singleLine="true"
             android:layout_marginStart="3dp"
             android:ellipsize="end"
             android:textStyle="bold" />
     </LinearLayout>
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,6 +40,6 @@
         android:layout_marginTop="5dp"
         android:maxLines="8"
         android:ellipsize="end"
-        android:text="@string/app_name" />
+        android:text="@string/choose_note" />
 
 </LinearLayout>

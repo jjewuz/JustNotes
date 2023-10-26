@@ -94,4 +94,10 @@
     <string name="set_on_widget">Set the note to the widget</string>
     <string name="delete_warn">You will not be able to recover a note after deleting it!</string>
     <string name="note_set_to_widget">The note has been installed in the widget</string>
+    <string name="what_new_update">"What's new in "</string>
+    <string name="what_new_desc">In new update there are new note widget! To set note on it, go to note, click on three dots and click on</string>
+    <string name="notshowanymore">Don\'t show anymore</string>
+    <string name="empty">Empty</string>
+    <string name="no_note">You did not select note to display.</string>
+    <string name="choose_note">Choose note to display.</string>
 </resources>

@@ -36,11 +36,13 @@ class NoteWidget : AppWidgetProvider() {
 
     private fun getNoteTextFromDB(context: Context, noteId: Int, callback: (String, String) -> Unit){
         val database = Room.databaseBuilder(context, NoteDatabase::class.java, "note_database").build()
+        val empty = context.resources.getString(R.string.empty)
+        val desc = context.resources.getString(R.string.no_note)
 
         GlobalScope.launch(Dispatchers.IO) {
             val note = database.getNotesDao().getNoteById(noteId)
-            val noteText = note?.noteTitle ?: "Null"
-            val noteDesc = note?.noteDescription ?: "Null"
+            val noteText = note?.noteTitle ?: empty
+            val noteDesc = note?.noteDescription ?: desc
 
             callback(noteText, noteDesc)
         }
