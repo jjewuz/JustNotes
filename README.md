@@ -27,7 +27,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - [Github Releases](https://github.com/jjewuz/JustNotes/releases)
 
 ## App errors
-If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, steps on how to get the error.
+If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, app build number and version and steps on how to get the error.
 
 ## License
 - All code is licensed under MIT License.
