@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">JustNotes</string>
     <string name="about">Welcome to JustNotes!</string>
     <string name="about2">This app created for fast and comfortable text editing. Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
     <string name="changes">Social media:</string>
     <string name="vk">VK group</string>
-    <string name="gh">Github</string>
+    <string name="gh">GitHub</string>
     <string name="back">Back</string>
     <string name="inf">Information</string>
     <string name="site">Site</string>
@@ -29,9 +30,9 @@
     <string name="saved">Saved</string>
     <string name="pos">Yes</string>
     <string name="neg">No</string>
-    <string name="delWarn">Are you sure you want to delete the note?</string>
+    <string name="delWarn">Delete the note\?</string>
     <string name="export">Export to .txt</string>
-    <string name="docMade">File was saved to Downloads folder!</string>
+    <string name="docMade">File saved in Downloads</string>
     <string name="note">Note</string>
     <string name="error">Error</string>
     <string name="countSymb">Character count:</string>
@@ -41,19 +42,19 @@
     <string name="loginText">Please authenticate</string>
     <string name="settingsText">Settings</string>
     <string name="passwordSettings">Biometric authentication</string>
-    <string name="passEnable">Protection enabled</string>
-    <string name="passDisabled">Protection disabled</string>
+    <string name="passEnable">Protection on</string>
+    <string name="passDisabled">Protection off</string>
     <string name="authFail">Authentication failed</string>
     <string name="authSuc">Authentication succeeded</string>
     <string name="authError">Authentication error:</string>
-    <string name="noPassError">Enable password on phone or reset JustNotes data!</string>
+    <string name="noPassError">Set a password on the device, or reset JustNotes data!</string>
     <string name="notes">Notes</string>
     <string name="menu_home">Home</string>
     <string name="add_button">New note</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">System font</string>
-    <string name="needRestart">Changes will be applied after restarting the application</string>
-    <string name="monet">Wallpaper based colors</string>
+    <string name="needRestart">Restart the app to use the new changes</string>
+    <string name="monet">Wallpaper-based colors</string>
     <string name="reverseSetting">Reverse sort notes</string>
     <string name="reportBug">Report app issue</string>
     <string name="buildn">Build bumber:</string>
@@ -64,10 +65,10 @@
     <string name="restart">Restart</string>
     <string name="nothingTxt">It\'s empty here...</string>
     <string name="socialLinksText">Subscribe to social networks:</string>
-    <string name="todo">To-do list</string>
-    <string name="enterTodo">Enter To-Do text</string>
+    <string name="todo">Task list</string>
+    <string name="enterTodo">Enter task text</string>
     <string name="add">Add</string>
-    <string name="delWarnTodo">Are you sure you want to delete the task?</string>
+    <string name="delWarnTodo">Delete the task\?</string>
     <string name="openTask">Open by default</string>
     <string name="change_view">Change view</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -80,10 +81,10 @@
     <string name="dbbackup_license" translatable="false">MIT License  Copyright (c) 2023 Raphael Ebner</string>
     <string name="github" translatable="false">Github</string>
     <string name="my_license" translatable="false">MIT License  Copyright (c) 2023 Maksim jjewuz Denisov  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
-    <string name="thx_license">This app uses third-party libraries. Thanks to their developers.</string>
+    <string name="thx_license">Thanks to all developers of used third-party libraries.</string>
     <string name="backup_desc">Worry about the security of your notes</string>
-    <string name="report_desc">If you encounter app error</string>
-    <string name="settings_desc">Appearance, security...</string>
+    <string name="report_desc">If encountering errors</string>
+    <string name="settings_desc">Appearance, security…</string>
     <string name="info_desc">Social links, licences...</string>
     <string name="more">More</string>
     <string name="backup_txt">In this section, you can make a local backup of your data.</string>
