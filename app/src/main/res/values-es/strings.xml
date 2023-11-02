@@ -118,4 +118,5 @@
     <string name="app_name" translatable="false"></string>
     <string name="android_room_database_backup" translatable="false"></string>
     <string name="my_license" translatable="false"></string>
+    <string name="update_downloaded"></string>
 </resources>
