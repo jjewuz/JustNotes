@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">欢迎来到 JustNotes!</string>
     <string name="about2">JustNotes为快速、舒适的文本编辑而创建。 点击 \"plus\" 创建新笔记。按住卡片可删除笔记。</string>
     <string name="changes">联系我们:</string>
     <string name="vk">VK 群组</string>
-    <string name="gh">Github</string>
+    <string name="gh">GitHub</string>
     <string name="back">返回</string>
     <string name="inf">信息</string>
     <string name="site">网站</string>
@@ -76,8 +77,8 @@
     <string name="thx_license">本应用程序使用第三方库。感谢他们的开发者。</string>
     <string name="backup_desc">请注意你的笔记数据安全！</string>
     <string name="report_desc">如果你遇到应用程序错误</string>
-    <string name="settings_desc">外观、安全...</string>
-    <string name="info_desc">社交媒体、许可证...</string>
+    <string name="settings_desc">外观、安全…</string>
+    <string name="info_desc">社交媒体、许可证…</string>
     <string name="more">更多</string>
     <string name="backup_txt">在这里，你可以将数据备份并导出到本地</string>
     <string name="backup_warn">注意！任务数据不会被保存。</string>
