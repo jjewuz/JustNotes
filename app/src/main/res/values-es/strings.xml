@@ -4,7 +4,7 @@
     <string name="about2">Esta aplicación creada para la edición de texto rápido y cómodo. Pulsa el \"más\" para crear una nueva nota. Mantenga pulsada la tarjeta para eliminar la nota.</string>
     <string name="changes">Redes sociales:</string>
     <string name="vk">Grupo VK</string>
-    <string name="gh">Github</string>
+    <string name="gh">GitHub</string>
     <string name="back">atrás</string>
     <string name="inf">Información</string>
     <string name="site">Página web</string>
@@ -77,7 +77,7 @@
     <string name="thx_license">Gracias a todos los desarrolladores de las bibliotecas de terceros utilizadas.</string>
     <string name="backup_desc">Preocúpate por la seguridad de tus notas</string>
     <string name="report_desc">Si se producen errores</string>
-    <string name="settings_desc">Apariencia, seguridad...</string>
+    <string name="settings_desc">Apariencia, seguridad…</string>
     <string name="info_desc">Enlaces sociales, licencias...</string>
     <string name="more">Más</string>
     <string name="backup_txt">En esta sección, puede hacer una copia de seguridad local de sus datos.</string>
