@@ -27,7 +27,7 @@
     <string name="saved">Spremljeno</string>
     <string name="pos">Da</string>
     <string name="neg">Ne</string>
-    <string name="delWarn">Jeste li sigurni da želite izbrisati bilješku?</string>
+    <string name="delWarn">Jeste li sigurni da želite izbrisati bilješku\?</string>
     <string name="export">Izvoz u .txt</string>
     <string name="docMade">Datoteka je spremljena u mapu za preuzimanje!</string>
     <string name="note">Bilješka</string>
@@ -64,7 +64,7 @@
     <string name="todo">Zadaci</string>
     <string name="enterTodo">Unesite tekst zadatka</string>
     <string name="add">Dodaj</string>
-    <string name="delWarnTodo">Jeste li sigurni da želite izbrisati zadatak?</string>
+    <string name="delWarnTodo">Jeste li sigurni da želite izbrisati zadatak\?</string>
     <string name="openTask">Otvori prema zadanim postavkama</string>
     <string name="change_view">Promijeni stil</string>
     <string name="backup_title">Rezervno kopiranje</string>
