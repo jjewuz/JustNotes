@@ -5,7 +5,7 @@
     <string name="changes">Sozialen Medien:</string>
     <string name="vk">Vkontakte</string>
     <string name="tg">Telegram</string>
-    <string name="gh">Github</string>
+    <string name="gh">GitHub</string>
     <string name="site">Webseite</string>
     <string name="back">zurück</string>
     <string name="inf">Information</string>
@@ -23,7 +23,7 @@
     <string name="option2">Textinformationen</string>
     <string name="option3">Speichern und schließen</string>
     <string name="lastedit">"Zuletzt bearbeitet: "</string>
-    <string name="verison" >Entwickler: jjewuz</string>
+    <string name="verison">Entwickler: jjewuz</string>
     <string name="Title">Titel beachten</string>
     <string name="deleted">Gelöscht</string>
     <string name="saved">Gespeichert</string>
@@ -77,7 +77,7 @@
     <string name="thx_license">Diese App verwendet Bibliotheken von Drittanbietern. Vielen Dank an ihre Entwickler.</string>
     <string name="backup_desc">Sorgen Sie sich um die Sicherheit Ihrer Notizen</string>
     <string name="report_desc">Wenn ein App-Fehler auftritt</string>
-    <string name="settings_desc">Aussehen, Sicherheit...</string>
+    <string name="settings_desc">Aussehen, Sicherheit…</string>
     <string name="info_desc">Soziale Links, Lizenzen...</string>
     <string name="more">Mehr</string>
     <string name="backup_txt">In diesem Abschnitt können Sie eine lokale Sicherung Ihrer Daten erstellen.</string>
