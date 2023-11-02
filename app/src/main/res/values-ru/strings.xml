@@ -5,7 +5,7 @@
     <string name="changes">Социальные сети:</string>
     <string name="vk">Группа ВК</string>
     <string name="tg">Канал Телеграм</string>
-    <string name="gh">Исходный код</string>
+    <string name="gh">GitHub</string>
     <string name="site">Сайт</string>
     <string name="back">Назад</string>
     <string name="inf">Информация</string>
@@ -31,7 +31,7 @@
     <string name="delWarn">Вы действительно хотите удалить заметку?</string>
     <string name="export">Экспорт в .txt</string>
     <string name="docMade">Файл был сохранён в папку загрузок!</string>
-    <string name="verison" >Разработчик: jjewuz</string>
+    <string name="verison">Разработчик: jjewuz</string>
     <string name="note">Заметка</string>
     <string name="error">Ошибка</string>
     <string name="countSymb">Количество символов:</string>
