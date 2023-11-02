@@ -90,4 +90,5 @@
     <string name="thx_license">Takk til utviklerne av alle anvendte tredjepartsbibliotek.</string>
     <string name="authFail">Identitetsbekreftelse mislyktes</string>
     <string name="site">Nettside</string>
+    <string name="appwidget_text" translatable="false"></string>
 </resources>
