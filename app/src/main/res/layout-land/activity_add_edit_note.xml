@@ -122,6 +122,15 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
+                android:id="@+id/menubtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?colorSecondaryContainer"
+                android:src="@drawable/menu"
+                app:tint="?colorOnPrimaryContainer" />
+
+            <ImageButton
                 android:id="@+id/clearbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -6,25 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/holder"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".AddEditNoteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:elevation="0dp"
-                app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/ic_back"
-                app:theme="@style/Toolbar"
-                app:menu="@menu/mymenu" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="0dp"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@drawable/ic_back"
+            app:theme="@style/Toolbar"
+            app:menu="@menu/mymenu" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -52,8 +52,8 @@
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="25dp"
                 android:transitionName="transition"
+                app:cardCornerRadius="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -99,7 +99,7 @@
                         android:gravity="start|top"
                         android:hint="@string/hint"
                         android:isScrollContainer="true"
-                        android:paddingBottom="20dp"
+                        android:paddingBottom="100dp"
                         android:textCursorDrawable="@drawable/color_cursor" />
 
                 </LinearLayout>
@@ -119,7 +119,8 @@
         android:background="?colorSecondaryContainer"
         android:orientation="horizontal"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp">
+        android:paddingEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView">
 
         <LinearLayout
             android:id="@+id/linearLayout"

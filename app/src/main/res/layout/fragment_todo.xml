@@ -50,7 +50,7 @@
             style="@style/Widget.Material3.BottomSheet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:behavior_peekHeight="450dp"
+            app:behavior_peekHeight="550dp"
             app:behavior_saveFlags="all"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

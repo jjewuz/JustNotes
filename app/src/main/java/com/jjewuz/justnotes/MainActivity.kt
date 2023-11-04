@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import androidx.room.RoomDatabase
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -74,9 +75,7 @@ class MainActivity : AppCompatActivity() {
         navView = findViewById(R.id.nv)
         val head = navView.getHeaderView(0)
 
-        val ver = resources.getString(R.string.appversion)
-
-        head.findViewById<TextView>(R.id.author).text = "$ver ${BuildConfig.VERSION_NAME}"
+        head.findViewById<TextView>(R.id.author).text = "${BuildConfig.VERSION_NAME}"
 
         backup = RoomBackup(this)
 
@@ -225,4 +224,5 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
     }
+
 }

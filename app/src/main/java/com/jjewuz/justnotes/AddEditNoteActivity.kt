@@ -7,6 +7,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Rect
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
@@ -20,9 +21,7 @@ import android.text.style.CharacterStyle
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
-import android.transition.Explode
 import android.transition.Fade
-import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuInflater
@@ -35,8 +34,10 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
@@ -47,18 +48,17 @@ import java.util.*
 
 class AddEditNoteActivity : AppCompatActivity() {
 
-    lateinit var noteTitleEdt: EditText
-    lateinit var noteEdt: EditText
-    lateinit var boldBtn: ImageButton
-    lateinit var italicBtn: ImageButton
-    lateinit var strikeBtn: ImageButton
-    lateinit var underBtn: ImageButton
-    lateinit var clearBtn: ImageButton
-    lateinit var savedTxt: TextView
+    private lateinit var noteTitleEdt: EditText
+    private lateinit var noteEdt: EditText
+    private lateinit var boldBtn: ImageButton
+    private lateinit var italicBtn: ImageButton
+    private lateinit var strikeBtn: ImageButton
+    private lateinit var underBtn: ImageButton
+    private lateinit var clearBtn: ImageButton
+    private lateinit var savedTxt: TextView
 
-
-    lateinit var viewModal: NoteViewModal
-    var noteID = -1;
+    private lateinit var viewModal: NoteViewModal
+    private var noteID = -1;
 
     private var added = false
 
@@ -75,9 +75,9 @@ class AddEditNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        window.navigationBarColor = getThemeAccentColor(this)
         with(window) {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            navigationBarColor = getThemeAccentColor(this@AddEditNoteActivity)
             enterTransition = Fade()
             exitTransition = Fade()
         }
@@ -114,7 +114,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         underBtn = findViewById(R.id.underbtn)
         clearBtn = findViewById(R.id.clearbtn)
         savedTxt = findViewById(R.id.savedtxt)
-
 
         boldBtn.setOnClickListener { textFormatting("bold") }
         italicBtn.setOnClickListener { textFormatting("italic") }
