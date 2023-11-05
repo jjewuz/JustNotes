@@ -1,2 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="countSymb">Nombre de caractères :</string>
+    <string name="deleted">Supprimé</string>
+    <string name="hint">Écrivez ici</string>
+    <string name="vk">Groupe VKontakte</string>
+    <string name="rate">Évaluez l\'appli</string>
+    <string name="tasks">Tâches</string>
+    <string name="settingsText">Paramètres</string>
+    <string name="add_widget">Ajouter un widget</string>
+    <string name="loginText">Veuillez vous authentifier</string>
+    <string name="loginTitle">JustNotes est verrouillé</string>
+    <string name="saved">Enregistré</string>
+    <string name="count1">Nombre de caractères</string>
+    <string name="counters">Nombre de caractères | Temps de lecture (min)</string>
+    <string name="boosty">Abonnez-vous à Boosty !</string>
+    <string name="passwordSettings">Authentification biométrique</string>
+    <string name="count2">Temps de lecture</string>
+    <string name="tg">Groupe Telegram</string>
+    <string name="appwidget_text">JustNotes</string>
+    <string name="export">Exporter en tant que .txt</string>
+    <string name="gh">GitHub</string>
+    <string name="neg">Non</string>
+    <string name="inf">Informations</string>
+    <string name="app_widget_description">Affiche une note</string>
+    <string name="option2">Infos sur le texte</string>
+    <string name="option1">Effacer le texte</string>
+    <string name="back">Retour</string>
+    <string name="verison">Développeur : jjewuz</string>
+    <string name="other">Autre</string>
+    <string name="option3">Enregistrer et quitter</string>
+    <string name="lastedit">"Dernière modification : "</string>
+    <string name="Title">Titre de la note</string>
+    <string name="about">Bienvenue dans JustNotes !</string>
+    <string name="restart">Redémarrer</string>
+    <string name="countTime">Temps de lecture (min) :</string>
+    <string name="minuts">min</string>
+    <string name="menu_home">Accueil</string>
+    <string name="error">Erreur</string>
+    <string name="delWarn">Supprimer cette note \?</string>
+    <string name="docMade">Fichier enregistré dans Téléchargements</string>
+    <string name="security">Sécurité</string>
+    <string name="pos">Oui</string>
+    <string name="about2">Cette application a été créée pour éditer des textes rapidement et confortablement. Cliquez sur le plus pour créer une nouvelle note. Tenez la carte pour supprimer la note.</string>
+    <string name="changes">Médias sociaux :</string>
+    <string name="note">Note</string>
+    <string name="site">Site Web</string>
+</resources>
