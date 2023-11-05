@@ -8,7 +8,6 @@ JustNotes is simple android app for taking notes, like there have been tens of t
  - Export note to txt document
  - Lock app with system biometry
  - Custom font setting
- - Multi-language (English, Deutsch, Espanol, Russian, Chinese, Croatian)
  - To-do list creation
  - Text formatting
 
@@ -28,6 +27,9 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 
 ## App errors
 If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, app build number, app version and steps on how to get the error.
+
+## Translations
+The application is translated into different languages thanks to the community using [Weblate](https://hosted.weblate.org/).
 
 ## License
 - All code is licensed under MIT License.
