@@ -97,4 +97,6 @@
     <string name="import_txt">Importar txt</string>
     <string name="underlined">Sublinhado</string>
     <string name="italic">Itálico</string>
+    <string name="appwidget_text" translatable="false"></string>
+    <string name="update_downloaded"></string>
 </resources>
