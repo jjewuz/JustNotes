@@ -47,7 +47,7 @@
     <string name="authSuc">Authentifizierung erfolgreich</string>
     <string name="authError">Authentifizierungsfehler:</string>
     <string name="noPassError">Aktivieren Sie das Passwort auf dem Telefon oder setzen Sie die JustNotes-Daten zurück!</string>
-    <string name="menu_home">Heim</string>
+    <string name="menu_home">Startseite</string>
     <string name="notes">Anmerkungen</string>
     <string name="add_button">Neuer Hinweis</string>
     <string name="logo">Logo</string>
