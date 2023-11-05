@@ -42,7 +42,7 @@
     <string name="minuts">min</string>
     <string name="menu_home">Início</string>
     <string name="error">Erro</string>
-    <string name="delWarn">Excluir a nota?</string>
+    <string name="delWarn">Excluir a nota\?</string>
     <string name="docMade">Arquivo salvo em Downloads</string>
     <string name="buildn">Build bumber:</string>
     <string name="passEnable">Proteção ativada</string>
@@ -62,7 +62,7 @@
     <string name="do_restore">Restaurar</string>
     <string name="settings_desc">Aparência, segurança…</string>
     <string name="licenses">Licenças</string>
-    <string name="delWarnTodo">Excluir a tarefa?</string>
+    <string name="delWarnTodo">Excluir a tarefa\?</string>
     <string name="report_desc">Se encontrar erros</string>
     <string name="enterTodo">Insira o texto da tarefa</string>
     <string name="note_set_to_widget">A nota foi definida no widget</string>
@@ -98,4 +98,5 @@
     <string name="import_txt">Importar txt</string>
     <string name="underlined">Sublinhado</string>
     <string name="italic">Itálico</string>
+    <string name="appwidget_text" translatable="false"></string>
 </resources>
