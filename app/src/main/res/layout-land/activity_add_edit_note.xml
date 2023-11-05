@@ -206,19 +206,37 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:id="@+id/clear_txt"
+                            app:icon="@drawable/clear_text"
                             android:layout_height="wrap_content"
                             android:text="@string/option1"/>
 
-                        <Button
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:id="@+id/exporttxt"
                             android:layout_height="wrap_content"
-                            android:text="@string/export"/>
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:id="@+id/importtxt"
+                                app:icon="@drawable/load"
+                                android:layout_height="wrap_content"
+                                android:text="@string/import_txt"/>
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:id="@+id/exporttxt"
+                                app:icon="@drawable/export_txt"
+                                android:layout_marginStart="10dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/export"/>
+
+                        </LinearLayout>
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/towidget"
+                            app:icon="@drawable/widget"
                             android:text="@string/set_on_widget"/>
 
                     </LinearLayout>

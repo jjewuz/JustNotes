@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         navView = findViewById(R.id.nv)
         val head = navView.getHeaderView(0)
 
-        head.findViewById<TextView>(R.id.author).text = "${BuildConfig.VERSION_NAME}"
+        head.findViewById<TextView>(R.id.author).text = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
 
         backup = RoomBackup(this)
 

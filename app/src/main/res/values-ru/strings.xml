@@ -97,4 +97,5 @@
     <string name="striked">Перечеркнутый</string>
     <string name="underlined">Подчеркнутый</string>
     <string name="clear_f">Обычный</string>
+    <string name="import_txt">Импорт из .txt</string>
 </resources>

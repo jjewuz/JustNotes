@@ -7,11 +7,14 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Rect
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.Spannable
@@ -22,29 +25,25 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.transition.Fade
-import android.util.TypedValue
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.Window
+import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
-import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
+import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,6 +56,11 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var countTxt: TextView
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var bottomSheet: FrameLayout
+
+    private lateinit var importTxtBtn: Button
+    private lateinit var exportTxtBtn: Button
+    private lateinit var clearBtn: Button
+    private lateinit var toWidgetBtn: Button
 
     private lateinit var viewModal: NoteViewModal
     private var noteID = -1;
@@ -113,19 +117,86 @@ class AddEditNoteActivity : AppCompatActivity() {
         countTxt = findViewById(R.id.counttxt)
         bottomAppBar = findViewById(R.id.bottomAppBar)
         bottomSheet = findViewById(R.id.standard_bottom_sheet)
+
+        importTxtBtn = findViewById(R.id.importtxt)
+        exportTxtBtn = findViewById(R.id.exporttxt)
+        clearBtn = findViewById(R.id.clear_txt)
+        toWidgetBtn = findViewById(R.id.towidget)
+
         val standardBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
+        importTxtBtn.setOnClickListener {
+            getTxtFile.launch("text/plain")
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        exportTxtBtn.setOnClickListener {
+            saveOurDoc()
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        clearBtn.setOnClickListener {
+            noteEdt.setText("")
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        toWidgetBtn.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putInt("note_id", noteID)
+            editor.apply()
+            pushWidget()
+            Toast.makeText(this, R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        val vib = if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.S) {
+            val vMan = (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager)
+            vMan.defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        }
+
+
+
         bottomAppBar.setNavigationOnClickListener {
-            val thisnote = noteEdt
+            vib.vibrate(VibrationEffect.createOneShot(100, 30))
             val countS: String = getString(R.string.count1)
             val countT: String = getString(R.string.count2)
             val countM: String = getString(R.string.minuts)
-            val count = thisnote.text.length
+            val count = noteEdt.text.length
             val time = count / 512
 
             countTxt.text = "$countS: $count \n$countT ≈$time $countM"
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        bottomAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.boldbtn -> {
+                    textFormatting("bold")
+                    true
+                }
+                R.id.italicbtn -> {
+                    textFormatting("italic")
+                    true
+                }
+                R.id.underlinedbtn -> {
+                    textFormatting("under")
+                    true
+                }
+                R.id.strikebtn -> {
+                    textFormatting("strike")
+                    true
+                }
+                R.id.clearformat -> {
+                    textFormatting("null")
+                    true
+                }
+                else -> false
+            }
         }
 
 
@@ -138,7 +209,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteTitleEdt.setText(noteTitle)
             supportActionBar?.title = ""
             savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime?.takeLast(6)
-            noteEdt.setText(Utils.fromHtml(noteDescription))
+            noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
         }
 
         val watcher: TextWatcher = object : TextWatcher {
@@ -166,59 +237,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteEdt.addTextChangedListener(watcher)
     }
 
-    private fun getThemeAccentColor(context: Context): Int {
-        val value = TypedValue()
-        context.theme.resolveAttribute(R.attr.colorSecondaryContainer, value, true)
-        return value.data
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.mymenu, menu)
-
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.first -> {
-                val thisnote = findViewById<EditText>(R.id.idEdtNoteDesc)
-                val text = ""
-                thisnote.text = Editable.Factory.getInstance().newEditable(text)
-                true
-            }
-            R.id.second -> {
-                val thisnote = findViewById<EditText>(R.id.idEdtNoteDesc)
-                val countS: String = getString(R.string.countSymb)
-                val countT: String = getString(R.string.countTime)
-                val count = thisnote.text.length
-                val time = count / 512
-
-                MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.inf)
-                    .setMessage("$countS $count \n$countT ≈$time")
-                    .setPositiveButton("OK") { dialog, which ->
-                    }
-                    .show()
-
-                true
-            }
-            R.id.export -> {
-                saveOurDoc()
-                true
-            }
-            R.id.widget -> {
-                val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putInt("note_id", noteID)
-                editor.apply()
-                pushWidget()
-                Toast.makeText(this, R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
     private fun pushWidget(){
         val intent = Intent(this, NoteWidget::class.java)
@@ -238,7 +256,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
 
                 val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
-                val currentDateAndTime: String = sdf.format(Date())
+                val currentDateAndTime: String = sdf.format(Date().time)
 
                 if (noteType.equals("Edit")) {
                     if (noteTitle.isEmpty()) {
@@ -257,13 +275,34 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
 
                 }
-                //savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
+                savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
             pushWidget()
         }
         if (exit) {
             this.finishAfterTransition()
         }
+    }
+
+    private val getTxtFile = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        val text = uri?.let { readTxt(this, it) }
+        noteEdt.setText(text)
+    }
+
+    private fun readTxt(context: Context, fileUri: Uri): String {
+        val content = StringBuilder()
+        try {
+            val inputStream = context.contentResolver.openInputStream(fileUri)
+            val reader = BufferedReader (InputStreamReader(inputStream))
+            var line: String?
+            while (reader.readLine().also { line = it } != null){
+                content.append(line).append("\n")
+            }
+            inputStream?.close()
+        } catch (_: Exception) {
+
+        }
+        return content.toString()
     }
 
     private fun saveOurDoc() {

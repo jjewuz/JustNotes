@@ -93,10 +93,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         nothing = v.findViewById(R.id.nothing)
 
         if (isGrid){
-            val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
+            val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, !reverse)
             notesRV.layoutManager = layoutManager
         }else{
-            val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, reverse)
+            val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, !reverse)
             notesRV.layoutManager = layoutManager
         }
 
@@ -142,14 +142,12 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
     override fun onNoteClick(note: Note, num: Int) {
         val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
-        val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity(),
-            notesRV.layoutManager?.findViewByPosition(num), "transition")
         intent.putExtra("noteType", "Edit")
         intent.putExtra("noteTitle", note.noteTitle)
         intent.putExtra("noteDescription", note.noteDescription)
         intent.putExtra("timestamp", note.timeStamp)
         intent.putExtra("noteId", note.id)
-        startActivity(intent, options.toBundle())
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
     }
 
 

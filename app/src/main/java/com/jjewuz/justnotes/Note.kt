@@ -1,6 +1,5 @@
 package com.jjewuz.justnotes
 
-import android.text.Spannable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

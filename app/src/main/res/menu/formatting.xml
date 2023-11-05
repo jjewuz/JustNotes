@@ -26,9 +26,9 @@
         app:showAsAction="always"
         android:id="@+id/strikebtn" />
     <item
-        android:icon="@drawable/clear"
+        android:icon="@drawable/clear_text"
         android:iconTint="?colorOnBackground"
         android:title="@string/clear_f"
         app:showAsAction="ifRoom"
-        android:id="@+id/clarformat" />
+        android:id="@+id/clearformat" />
 </menu>

@@ -1,14 +1,10 @@
 package com.jjewuz.justnotes
 
 import androidx.lifecycle.LiveData
-import androidx.sqlite.db.SimpleSQLiteQuery
-
-
-
 
 class NoteRepository(private val notesDao: NotesDao) {
 
-    val allNotes: LiveData<List<Note>> = notesDao.getAllNotes()
+    val allNotes: LiveData<List<Note>> = notesDao.getAllSortedByTime()
 
     suspend fun insert(note: Note) {
         notesDao.insert(note)
