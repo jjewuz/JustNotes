@@ -26,7 +26,7 @@
     <string name="saved">Последнее сохранение</string>
     <string name="pos">Да</string>
     <string name="neg">Нет</string>
-    <string name="delWarn">Удалить заметку\?</string>
+    <string name="delWarn">Удалить заметку?</string>
     <string name="export">Экспорт в .txt</string>
     <string name="docMade">Файл был сохранён в Загрузки!</string>
     <string name="verison">Разработчик: jjewuz</string>
@@ -64,7 +64,7 @@
     <string name="todo">Задачи</string>
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
-    <string name="delWarnTodo">Удалить задачу\?</string>
+    <string name="delWarnTodo">Удалить задачу?</string>
     <string name="openTask">Открывать по умолчанию</string>
     <string name="change_view">Изменить стиль</string>
     <string name="backup_title">Резервное копирование</string>
