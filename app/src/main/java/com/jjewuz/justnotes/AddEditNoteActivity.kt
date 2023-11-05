@@ -28,6 +28,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.Window
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -39,6 +40,8 @@ import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 import java.io.FileOutputStream
@@ -50,12 +53,10 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var noteTitleEdt: EditText
     private lateinit var noteEdt: EditText
-    private lateinit var boldBtn: ImageButton
-    private lateinit var italicBtn: ImageButton
-    private lateinit var strikeBtn: ImageButton
-    private lateinit var underBtn: ImageButton
-    private lateinit var clearBtn: ImageButton
     private lateinit var savedTxt: TextView
+    private lateinit var countTxt: TextView
+    private lateinit var bottomAppBar: BottomAppBar
+    private lateinit var bottomSheet: FrameLayout
 
     private lateinit var viewModal: NoteViewModal
     private var noteID = -1;
@@ -77,7 +78,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         with(window) {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-            navigationBarColor = getThemeAccentColor(this@AddEditNoteActivity)
             enterTransition = Fade()
             exitTransition = Fade()
         }
@@ -97,6 +97,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
+        supportActionBar?.title = ""
 
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
@@ -108,18 +109,25 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
-        boldBtn = findViewById(R.id.boldbtn)
-        italicBtn = findViewById(R.id.italicbtn)
-        strikeBtn = findViewById(R.id.strikebtn)
-        underBtn = findViewById(R.id.underbtn)
-        clearBtn = findViewById(R.id.clearbtn)
         savedTxt = findViewById(R.id.savedtxt)
+        countTxt = findViewById(R.id.counttxt)
+        bottomAppBar = findViewById(R.id.bottomAppBar)
+        bottomSheet = findViewById(R.id.standard_bottom_sheet)
+        val standardBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
-        boldBtn.setOnClickListener { textFormatting("bold") }
-        italicBtn.setOnClickListener { textFormatting("italic") }
-        underBtn.setOnClickListener { textFormatting("under") }
-        strikeBtn.setOnClickListener { textFormatting("strike") }
-        clearBtn.setOnClickListener { textFormatting("null") }
+        bottomAppBar.setNavigationOnClickListener {
+            val thisnote = noteEdt
+            val countS: String = getString(R.string.count1)
+            val countT: String = getString(R.string.count2)
+            val countM: String = getString(R.string.minuts)
+            val count = thisnote.text.length
+            val time = count / 512
+
+            countTxt.text = "$countS: $count \n$countT ≈$time $countM"
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
 
         val noteType = intent.getStringExtra("noteType")
         if (noteType.equals("Edit")) {
@@ -249,7 +257,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
 
                 }
-                savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
+                //savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
             }
             pushWidget()
         }

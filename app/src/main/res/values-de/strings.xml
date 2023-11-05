@@ -15,10 +15,8 @@
     <string name="hint">Hier schreiben</string>
     <string name="tasks">Aufgaben</string>
     <string name="rate">Bewerte die App</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Widget hinzufügen</string>
     <string name="app_widget_description">Zeigt eine Notiz an</string>
-    <string name="counters">Anzahl der Zeichen | Lesezeit (Min.)</string>
     <string name="option1">Klartext</string>
     <string name="option2">Textinformationen</string>
     <string name="option3">Speichern und schließen</string>
@@ -36,7 +34,6 @@
     <string name="error">Fehler</string>
     <string name="countSymb">Anzahl der Zeichen:</string>
     <string name="countTime">Lesezeit (Min.):</string>
-    <string name="boosty">Abonniere Boosty!</string>
     <string name="loginTitle">JustNotes ist gesperrt</string>
     <string name="loginText">Bitte authentifizieren Sie sich</string>
     <string name="settingsText">Einstellungen</string>

@@ -12,12 +12,9 @@
     <string name="loginTitle">JustNotes est verrouillé</string>
     <string name="saved">Enregistré</string>
     <string name="count1">Nombre de caractères</string>
-    <string name="counters">Nombre de caractères | Temps de lecture (min)</string>
-    <string name="boosty">Abonnez-vous à Boosty !</string>
     <string name="passwordSettings">Authentification biométrique</string>
     <string name="count2">Temps de lecture</string>
     <string name="tg">Groupe Telegram</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="export">Exporter en tant que .txt</string>
     <string name="gh">GitHub</string>
     <string name="neg">Non</string>
@@ -37,7 +34,7 @@
     <string name="minuts">min</string>
     <string name="menu_home">Accueil</string>
     <string name="error">Erreur</string>
-    <string name="delWarn">Supprimer cette note \?</string>
+    <string name="delWarn">Supprimer cette note?</string>
     <string name="docMade">Fichier enregistré dans Téléchargements</string>
     <string name="security">Sécurité</string>
     <string name="pos">Oui</string>

@@ -15,10 +15,8 @@
     <string name="tg">Grupo de Telegram</string>
     <string name="tasks">Tareas</string>
     <string name="rate">Valore la aplicación</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Añadir widget</string>
     <string name="app_widget_description">Muestra la nota</string>
-    <string name="counters">Número de caracteres | Tiempo de lectura (min.)</string>
     <string name="option1">Borrar texto</string>
     <string name="option2">Información de texto</string>
     <string name="option3">Guardar y Salir</string>
@@ -29,14 +27,13 @@
     <string name="saved">Guardado</string>
     <string name="pos">Sí</string>
     <string name="neg">No</string>
-    <string name="delWarn">¿Borrar la nota\?</string>
+    <string name="delWarn">¿Borrar la nota?</string>
     <string name="export">Exportar a .txt</string>
     <string name="docMade">El archivo se guardo en Descargas</string>
     <string name="note">Nota</string>
     <string name="error">Error</string>
     <string name="countSymb">Número de caracteres:</string>
     <string name="countTime">Tiempo de lectura (min.):</string>
-    <string name="boosty">¡Suscríbete a Boosty!</string>
     <string name="loginText">Por favor registrese</string>
     <string name="loginTitle">JustNotes está bloqueado</string>
     <string name="settingsText">Ajustes</string>
@@ -67,7 +64,7 @@
     <string name="todo">Lista de tareas</string>
     <string name="enterTodo">Escriba el texto para la tarea</string>
     <string name="add">Agregar</string>
-    <string name="delWarnTodo">¿Borrar la tarea\?</string>
+    <string name="delWarnTodo">¿Borrar la tarea?</string>
     <string name="openTask">Abrir por defecto</string>
     <string name="change_view">Cambia estilo</string>
     <string name="backup_title">Copia de seguridad</string>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/bold"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/bold"
+        app:showAsAction="always"
+        android:id="@+id/boldbtn" />
+    <item
+        android:icon="@drawable/italic"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/italic"
+        app:showAsAction="always"
+        android:id="@+id/italicbtn" />
+    <item
+        android:icon="@drawable/under"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/underlined"
+        app:showAsAction="always"
+        android:id="@+id/underlinedbtn" />
+    <item
+        android:icon="@drawable/strike"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/striked"
+        app:showAsAction="always"
+        android:id="@+id/strikebtn" />
+    <item
+        android:icon="@drawable/clear"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/clear_f"
+        app:showAsAction="ifRoom"
+        android:id="@+id/clarformat" />
+</menu>

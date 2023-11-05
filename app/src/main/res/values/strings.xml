@@ -16,10 +16,9 @@
     <string name="tg">Telegram Group</string>
     <string name="tasks">Tasks</string>
     <string name="rate">Rate app</string>
-    <string name="appwidget_text">JustNotes</string>
+    <string name="appwidget_text" translatable="false">JustNotes</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">Displays note</string>
-    <string name="counters">Character count | Reading time (mins.)</string>
     <string name="option1">Clear text</string>
     <string name="option2">Text info</string>
     <string name="option3">Save and exit</string>
@@ -27,17 +26,16 @@
     <string name="lastedit">"Last edited: "</string>
     <string name="Title">Note Title</string>
     <string name="deleted">Deleted</string>
-    <string name="saved">Saved</string>
+    <string name="saved">Last save</string>
     <string name="pos">Yes</string>
     <string name="neg">No</string>
-    <string name="delWarn">Delete the note\?</string>
+    <string name="delWarn">Delete the note?</string>
     <string name="export">Export to .txt</string>
     <string name="docMade">File saved in Downloads</string>
     <string name="note">Note</string>
     <string name="error">Error</string>
     <string name="countSymb">Character count:</string>
     <string name="countTime">Reading time (mins):</string>
-    <string name="boosty">Subscribe to Boosty!</string>
     <string name="loginTitle">JustNotes is locked</string>
     <string name="loginText">Please authenticate</string>
     <string name="settingsText">Settings</string>
@@ -68,7 +66,7 @@
     <string name="todo">Task list</string>
     <string name="enterTodo">Enter task text</string>
     <string name="add">Add</string>
-    <string name="delWarnTodo">Delete the task\?</string>
+    <string name="delWarnTodo">Delete the task?</string>
     <string name="openTask">Open by default</string>
     <string name="change_view">Change view</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -79,7 +77,6 @@
     <string name="licenses">Licenses</string>
     <string name="android_room_database_backup" translatable="false">Android Room Database Backup</string>
     <string name="dbbackup_license" translatable="false">MIT License  Copyright (c) 2023 Raphael Ebner</string>
-    <string name="github" translatable="false">Github</string>
     <string name="my_license" translatable="false">MIT License  Copyright (c) 2023 Maksim jjewuz Denisov  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
     <string name="thx_license">Thanks to all developers of used third-party libraries.</string>
     <string name="backup_desc">Worry about the security of your notes</string>
@@ -101,4 +98,10 @@
     <string name="empty">Empty</string>
     <string name="no_note">You did not select note to display.</string>
     <string name="choose_note">Choose note to display.</string>
+    <string name="actions">Actions</string>
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
+    <string name="striked">Striked</string>
+    <string name="underlined">Underlined</string>
+    <string name="clear_f">No format</string>
 </resources>

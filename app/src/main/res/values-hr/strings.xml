@@ -15,10 +15,8 @@
     <string name="hint">Upišite ovdje</string>
     <string name="tasks">Zadaci</string>
     <string name="rate">Ocijenite aplikaciju</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Dodaj widget</string>
     <string name="app_widget_description">Prikazuje bilješku</string>
-    <string name="counters">Brojač znakova | Vrijeme čitanja (min.)</string>
     <string name="option1">Očisti tekst</string>
     <string name="option2">Informacije o tekstu</string>
     <string name="option3">Spremi i izlaz</string>
@@ -36,7 +34,6 @@
     <string name="error">Greška</string>
     <string name="countSymb">Broj znakova:</string>
     <string name="countTime">Vrijeme čitanja (min.):</string>
-    <string name="boosty">Pretplatite se na Boosty!</string>
     <string name="loginTitle">JustNotes osiguran</string>
     <string name="loginText">Molimo vas da se autenticirate</string>
     <string name="settingsText">Postavke</string>

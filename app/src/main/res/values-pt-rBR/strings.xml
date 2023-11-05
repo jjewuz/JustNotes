@@ -13,12 +13,9 @@
     <string name="loginTitle">JustNotes está bloqueado</string>
     <string name="saved">Salvado</string>
     <string name="count1">Contador de caracteres</string>
-    <string name="counters">Contagem de caracteres | Tempo de leitura (minutos)</string>
-    <string name="boosty">Inscreva-se no Boosty!</string>
     <string name="passwordSettings">Autenticação biométrica</string>
     <string name="count2">Tempo de leitura</string>
     <string name="tg">Grupo do Telegram</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="passDisabled">Proteção desativada</string>
     <string name="export">Exportar em .txt</string>
     <string name="gh">GitHub</string>
@@ -45,7 +42,7 @@
     <string name="minuts">min</string>
     <string name="menu_home">Início</string>
     <string name="error">Erro</string>
-    <string name="delWarn">Excluir a nota\?</string>
+    <string name="delWarn">Excluir a nota?</string>
     <string name="docMade">Arquivo salvo em Downloads</string>
     <string name="buildn">Build bumber:</string>
     <string name="passEnable">Proteção ativada</string>
@@ -65,7 +62,7 @@
     <string name="do_restore">Restaurar</string>
     <string name="settings_desc">Aparência, segurança…</string>
     <string name="licenses">Licenças</string>
-    <string name="delWarnTodo">Excluir a tarefa\?</string>
+    <string name="delWarnTodo">Excluir a tarefa?</string>
     <string name="report_desc">Se encontrar erros</string>
     <string name="enterTodo">Insira o texto da tarefa</string>
     <string name="note_set_to_widget">A nota foi definida no widget</string>

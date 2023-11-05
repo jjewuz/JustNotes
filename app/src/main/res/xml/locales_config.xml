@@ -7,4 +7,6 @@
     <locale android:name="zh"/>
     <locale android:name="hr"/>
     <locale android:name="nb"/>
+    <locale android:name="fr"/>
+    <locale android:name="pt"/>
 </locale-config>

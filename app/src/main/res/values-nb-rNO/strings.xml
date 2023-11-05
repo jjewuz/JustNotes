@@ -20,16 +20,13 @@
     <string name="loginText">Bekreft hvem du er</string>
     <string name="loginTitle">JustNotes er låst</string>
     <string name="saved">Lagret</string>
-    <string name="delWarnTodo">Slett gjøremålet\?</string>
+    <string name="delWarnTodo">Slett gjøremålet?</string>
     <string name="count1">Antall tegn</string>
     <string name="report_desc">Hvis du finner feil</string>
-    <string name="counters">Antall tegn | Lesetid (min)</string>
-    <string name="boosty">Abonner på Boosty.</string>
     <string name="passwordSettings">Biometrisk identitetsbekreftelse</string>
     <string name="count2">Lesetid</string>
     <string name="tg">Telegram-gruppe</string>
     <string name="enterTodo">Skriv inn gjøremålstekst</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="passDisabled">Beskyttelse av</string>
     <string name="note_set_to_widget">Notatet har blitt installert i miniprogrammet</string>
     <string name="export">Eksporter til .txt</string>
@@ -73,7 +70,7 @@
     <string name="backup_txt">I denne delen kan du lage en lokal sikkerhetskopi av dataen din.</string>
     <string name="menu_home">Hjem</string>
     <string name="error">Feil</string>
-    <string name="delWarn">Slett notatet\?</string>
+    <string name="delWarn">Slett notatet?</string>
     <string name="not_encrypted">Sikkerhetskopien er ikke kryptert.</string>
     <string name="docMade">Fil lagret i Nedlastinger</string>
     <string name="notshowanymore">Ikke vis igjen</string>

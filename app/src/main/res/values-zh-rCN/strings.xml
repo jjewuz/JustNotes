@@ -15,10 +15,8 @@
     <string name="tg">Telegram 群组</string>
     <string name="tasks">任务</string>
     <string name="rate">为应用程序评分</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">添加小组件</string>
     <string name="app_widget_description">显示注释</string>
-    <string name="counters">字数 | 阅读时间 (mins.)</string>
     <string name="option1">清楚文本</string>
     <string name="option2">文本信息</string>
     <string name="option3">保存并退出</string>
@@ -36,7 +34,6 @@
     <string name="error">错误</string>
     <string name="countSymb">字数:</string>
     <string name="countTime">阅读时间:</string>
-    <string name="boosty">订阅 Boosty!</string>
     <string name="loginTitle">JustNotes 已锁定</string>
     <string name="loginText">请验证</string>
     <string name="settingsText">设置</string>

@@ -17,7 +17,7 @@
         </item>
 
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
-        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlNormal">?colorOnBackground</item>
 
         <item name="android:windowLayoutInDisplayCutoutMode">
             shortEdges <!-- default, shortEdges, or never -->
@@ -49,6 +49,8 @@
             @android:color/transparent
         </item>
 
+        <item name="colorControlNormal">?colorOnBackground</item>
+
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
 
@@ -63,6 +65,8 @@
         <item name="android:statusBarColor">
             @android:color/transparent
         </item>
+
+        <item name="colorControlNormal">?colorOnBackground</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -111,6 +115,8 @@
             @android:color/transparent
         </item>
 
+        <item name="colorControlNormal">?colorOnBackground</item>
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -131,6 +137,7 @@
         <item name="android:statusBarColor">
             @android:color/transparent
         </item>
+        <item name="colorControlNormal">?colorOnBackground</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

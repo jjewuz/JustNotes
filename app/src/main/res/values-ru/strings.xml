@@ -15,17 +15,15 @@
     <string name="hint">Пишите здесь</string>
     <string name="tasks">Задачи</string>
     <string name="rate">Оцените приложение</string>
-    <string name="appwidget_text">JustNotes</string>
     <string name="add_widget">Добавить виджет</string>
     <string name="app_widget_description">Отображает заметку</string>
-    <string name="counters">Количество символов | Время чтения (мин.)</string>
     <string name="option1">Очистить текст</string>
     <string name="option2">Информация о тексте</string>
     <string name="option3">Сохранить и выйти</string>
     <string name="lastedit">"Последнее изменение: "</string>
     <string name="Title">Название заметки</string>
     <string name="deleted">Удалено</string>
-    <string name="saved">Сохранено</string>
+    <string name="saved">Последнее сохранение</string>
     <string name="pos">Да</string>
     <string name="neg">Нет</string>
     <string name="delWarn">Вы действительно хотите удалить заметку?</string>
@@ -36,7 +34,6 @@
     <string name="error">Ошибка</string>
     <string name="countSymb">Количество символов:</string>
     <string name="countTime">Время чтения (мин.):</string>
-    <string name="boosty">Подпишитесь на Boosty!</string>
     <string name="loginTitle">JustNotes защищен</string>
     <string name="loginText">Пожалуйста аутентифицируйтесь</string>
     <string name="settingsText">Настройки</string>
@@ -94,4 +91,10 @@
     <string name="empty">Пусто</string>
     <string name="no_note">Вы не выбрали заметку для просмотра.</string>
     <string name="choose_note">Выберите заметку для просмотра.</string>
+    <string name="actions">Действия</string>
+    <string name="bold">Жирный</string>
+    <string name="italic">Курсив</string>
+    <string name="striked">Перечеркнутый</string>
+    <string name="underlined">Подчеркнутый</string>
+    <string name="clear_f">Обычный</string>
 </resources>
