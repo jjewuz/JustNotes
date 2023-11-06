@@ -24,7 +24,7 @@
     <string name="Title">Título de la nota</string>
     <string name="verison">Desarrollador: jjewuz</string>
     <string name="deleted">Eliminada</string>
-    <string name="saved">Guardado</string>
+    <string name="saved">Última grabación</string>
     <string name="pos">Sí</string>
     <string name="neg">No</string>
     <string name="delWarn">¿Borrar la nota?</string>
@@ -91,4 +91,10 @@
     <string name="empty">Vacía</string>
     <string name="no_note">No ha seleccionado la nota a mostrar.</string>
     <string name="choose_note">Elija Nota para mostrar.</string>
+    <string name="clear_f">Sin formato</string>
+    <string name="bold">Negrita</string>
+    <string name="actions">Acciones</string>
+    <string name="import_txt">Importar desde un txt</string>
+    <string name="underlined">Subrayado</string>
+    <string name="italic">Itálica</string>
 </resources>

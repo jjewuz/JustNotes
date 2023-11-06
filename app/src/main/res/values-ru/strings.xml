@@ -26,9 +26,9 @@
     <string name="saved">Последнее сохранение</string>
     <string name="pos">Да</string>
     <string name="neg">Нет</string>
-    <string name="delWarn">Вы действительно хотите удалить заметку?</string>
+    <string name="delWarn">Удалить заметку\?</string>
     <string name="export">Экспорт в .txt</string>
-    <string name="docMade">Файл был сохранён в папку загрузок!</string>
+    <string name="docMade">Файл был сохранён в Загрузки!</string>
     <string name="verison">Разработчик: jjewuz</string>
     <string name="note">Заметка</string>
     <string name="error">Ошибка</string>
@@ -59,12 +59,12 @@
     <string name="security">Безопасность</string>
     <string name="other">Прочее</string>
     <string name="restart">Перезапуск</string>
-    <string name="nothingTxt">Тут пока пусто...</string>
+    <string name="nothingTxt">Тут пока пусто…</string>
     <string name="socialLinksText">Подпишитесь на социальные сети:</string>
     <string name="todo">Задачи</string>
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
-    <string name="delWarnTodo">Вы уверены, что хотите удалить задачу?</string>
+    <string name="delWarnTodo">Удалить задачу\?</string>
     <string name="openTask">Открывать по умолчанию</string>
     <string name="change_view">Изменить стиль</string>
     <string name="backup_title">Резервное копирование</string>
