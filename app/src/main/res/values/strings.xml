@@ -69,8 +69,6 @@
     <string name="delWarnTodo">Delete the task?</string>
     <string name="openTask">Open by default</string>
     <string name="change_view">Change view</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="backup_title">Backup</string>
     <string name="do_backup">Backup</string>
     <string name="do_restore">Restore</string>
@@ -101,7 +99,7 @@
     <string name="actions">Actions</string>
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
-    <string name="striked">Striked</string>
+    <string name="striked">Strikethrought</string>
     <string name="underlined">Underlined</string>
     <string name="clear_f">No format</string>
     <string name="import_txt">Import from txt</string>

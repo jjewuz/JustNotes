@@ -9,7 +9,7 @@ import androidx.room.Update
 
 @Dao
 interface TodoDao {
-    @Query("SELECT * FROM todos")
+    @Query("SELECT * FROM todos ORDER BY id DESC")
     fun getAllTodos(): LiveData<List<Todo>>
 
     @Insert

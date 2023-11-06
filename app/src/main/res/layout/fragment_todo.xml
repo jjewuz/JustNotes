@@ -14,14 +14,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:layout_width="wrap_content"
-                android:id="@+id/notasks"
                 android:text="@string/nothingTxt"
+                android:textSize="24sp"
+                android:id="@+id/notasks"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:textSize="20sp"
                 android:textColor="?colorPrimary"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                app:drawableTopCompat="@drawable/empty" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -52,6 +57,7 @@
             android:layout_height="match_parent"
             app:behavior_peekHeight="550dp"
             app:behavior_saveFlags="all"
+            tools:layout_height="1dp"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
             <com.google.android.material.bottomsheet.BottomSheetDragHandleView

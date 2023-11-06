@@ -1,5 +1,6 @@
 package com.jjewuz.justnotes
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -22,6 +23,12 @@ import androidx.room.RoomDatabase
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
@@ -91,18 +98,9 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(NotesFragment())
         }
 
-        if (sharedPref.getInt("update1", 0) == 0) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle("${resources.getString(R.string.what_new_update)} ${BuildConfig.VERSION_NAME}?")
-                .setMessage("${resources.getString(R.string.what_new_desc)}:  \"${resources.getString(R.string.set_on_widget)}\".")
-                .setNegativeButton(R.string.notshowanymore) { dialog, which ->
-                    sharedPref.edit().putInt("update1", 1).apply()
-                }
-                .setPositiveButton("OK") { dialog, which ->
-                }
-                .show()
+        if (sharedPref.getInt("reviewed1", 0) == 0) {
+            requestReviewFlow(this)
         }
-
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
 
@@ -210,6 +208,35 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
+        val appUpdateManager = AppUpdateManagerFactory.create(this)
+
+        appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    AppUpdateType.FLEXIBLE,
+                    this,
+                    1
+                )
+            }
+
+            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                Snackbar.make(
+                    binding.root,
+                    "An update has just been downloaded from Google Play",
+                    Snackbar.LENGTH_INDEFINITE
+                ).apply {
+                    setAction("RELOAD") { appUpdateManager.completeUpdate() }
+                    show()
+                }
+            }
+        }
+            .addOnFailureListener { e ->
+                //TODO
+            }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -223,6 +250,28 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
+    }
+
+    private fun requestReviewFlow(activity: Activity) {
+
+        val reviewManager = ReviewManagerFactory.create(activity)
+
+        val requestReviewFlow = reviewManager.requestReviewFlow()
+
+        requestReviewFlow.addOnCompleteListener { request ->
+
+            if (request.isSuccessful) {
+
+                val reviewInfo = request.result
+
+                val flow = reviewManager.launchReviewFlow(activity, reviewInfo)
+
+                flow.addOnCompleteListener {
+                    sharedPref.edit().putInt("reviewed1", 1).apply()
+                }
+
+            }
+        }
     }
 
 }

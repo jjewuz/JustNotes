@@ -93,10 +93,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         nothing = v.findViewById(R.id.nothing)
 
         if (isGrid){
-            val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, !reverse)
+            val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
             notesRV.layoutManager = layoutManager
         }else{
-            val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, !reverse)
+            val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, reverse)
             notesRV.layoutManager = layoutManager
         }
 

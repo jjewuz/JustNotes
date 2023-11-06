@@ -18,7 +18,7 @@ interface NotesDao {
     @Query("Select * from notesTable where id = :noteId")
     fun getNoteById(noteId: Int): Note?
 
-    @Query("Select * FROM notesTable Order By timeStamp ASC " )
+    @Query("Select * FROM notesTable Order By timeStamp DESC " )
     fun getAllSortedByTime(): LiveData<List<Note>>
 
     @Update
