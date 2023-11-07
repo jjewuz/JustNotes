@@ -95,7 +95,10 @@
     <string name="bold">Negrita</string>
     <string name="actions">Acciones</string>
     <string name="import_txt">Importar desde un txt</string>
+<<<<<<< HEAD
     <string name="striked">Tachado</string>
+=======
+>>>>>>> weblate/master
     <string name="underlined">Subrayado</string>
     <string name="italic">Itálica</string>
 </resources>

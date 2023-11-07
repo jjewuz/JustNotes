@@ -11,7 +11,7 @@
     <string name="add_widget">Adicionar widget</string>
     <string name="loginText">Por favor, autentique</string>
     <string name="loginTitle">JustNotes está bloqueado</string>
-    <string name="saved">Salvado</string>
+    <string name="saved">Última vez salvo</string>
     <string name="count1">Contador de caracteres</string>
     <string name="passwordSettings">Autenticação biométrica</string>
     <string name="count2">Tempo de leitura</string>
@@ -91,4 +91,11 @@
     <string name="add">Adicionar</string>
     <string name="set_on_widget">Defina a nota no widget</string>
     <string name="thx_license">Obrigado a todos os desenvolvedores das bibliotecas de terceiros usadas.</string>
+    <string name="clear_f">Sem formatação</string>
+    <string name="striked">Riscado</string>
+    <string name="bold">Negrito</string>
+    <string name="actions">Ações</string>
+    <string name="import_txt">Importar txt</string>
+    <string name="underlined">Sublinhado</string>
+    <string name="italic">Itálico</string>
 </resources>
