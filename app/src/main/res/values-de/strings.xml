@@ -27,7 +27,7 @@
     <string name="saved">Gespeichert</string>
     <string name="pos">Ja</string>
     <string name="neg">Nein</string>
-    <string name="delWarn">Möchten Sie die Notiz wirklich löschen?</string>
+    <string name="delWarn">Möchten Sie die Notiz wirklich löschen\?</string>
     <string name="export">In .txt exportieren</string>
     <string name="docMade">Datei wurde im Downloads-Ordner gespeichert!</string>
     <string name="note">die Notiz</string>
@@ -64,7 +64,7 @@
     <string name="todo">Aufgabenliste</string>
     <string name="enterTodo">Geben Sie den Aufgabentext ein</string>
     <string name="add">Hinzufügen</string>
-    <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
+    <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten\?</string>
     <string name="openTask">Standardmäßig geöffnet</string>
     <string name="change_view">Stil ändern</string>
     <string name="backup_title">Sicherung</string>
