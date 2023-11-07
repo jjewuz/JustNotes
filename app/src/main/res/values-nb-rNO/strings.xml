@@ -91,17 +91,4 @@
     <string name="thx_license">Takk til utviklerne av alle anvendte tredjepartsbibliotek.</string>
     <string name="authFail">Identitetsbekreftelse mislyktes</string>
     <string name="site">Nettside</string>
-    <string name="appwidget_text" translatable="false"></string>
-    <string name="clear_f"></string>
-    <string name="striked"></string>
-    <string name="dbbackup_license" translatable="false"></string>
-    <string name="bold"></string>
-    <string name="actions"></string>
-    <string name="import_txt"></string>
-    <string name="hello_blank_fragment" translatable="false"></string>
-    <string name="underlined"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="italic"></string>
-    <string name="android_room_database_backup" translatable="false"></string>
-    <string name="my_license" translatable="false"></string>
 </resources>

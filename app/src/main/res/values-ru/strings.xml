@@ -98,10 +98,4 @@
     <string name="underlined">Подчеркнутый</string>
     <string name="clear_f">Обычный</string>
     <string name="import_txt">Импорт из .txt</string>
-    <string name="appwidget_text" translatable="false"></string>
-    <string name="dbbackup_license" translatable="false"></string>
-    <string name="hello_blank_fragment" translatable="false"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="android_room_database_backup" translatable="false"></string>
-    <string name="my_license" translatable="false"></string>
 </resources>
