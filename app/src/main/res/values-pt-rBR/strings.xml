@@ -92,7 +92,7 @@
     <string name="set_on_widget">Defina a nota no widget</string>
     <string name="thx_license">Obrigado a todos os desenvolvedores das bibliotecas de terceiros usadas.</string>
     <string name="clear_f">Sem formatação</string>
-    <string name="striked">Riscado</string>
+    <string name="striked">Tachado</string>
     <string name="bold">Negrito</string>
     <string name="actions">Ações</string>
     <string name="import_txt">Importar txt</string>
