@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 
 class InfoFragment : Fragment() {
@@ -34,7 +35,7 @@ class InfoFragment : Fragment() {
 
         ghBtn.setOnClickListener { gh_a() }
         siteBtn.setOnClickListener{ site_a() }
-        licenseBtn.setOnClickListener { replaceFragment(LicensesFragment()) }
+        licenseBtn.setOnClickListener { startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java)) }
         tgBtn.setOnClickListener { tg_a() }
         vkBtn.setOnClickListener { vk_a() }
 

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -14,8 +15,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 26
         targetSdk 34
-        versionCode 140upd
-        versionName "3.9.0"
+        versionCode 142
+        versionName "3.9.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -68,6 +69,7 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
     implementation 'com.google.android.play:core:1.10.3'
     implementation 'com.google.android.play:core-ktx:1.8.1'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
 

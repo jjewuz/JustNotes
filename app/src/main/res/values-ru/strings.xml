@@ -98,4 +98,5 @@
     <string name="underlined">Подчеркнутый</string>
     <string name="clear_f">Обычный</string>
     <string name="import_txt">Импорт из .txt</string>
+    <string name="update_downloaded">Обновление только что было скачано из Google Play</string>
 </resources>

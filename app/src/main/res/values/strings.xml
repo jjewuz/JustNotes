@@ -103,4 +103,5 @@
     <string name="underlined">Underlined</string>
     <string name="clear_f">No format</string>
     <string name="import_txt">Import from txt</string>
+    <string name="update_downloaded">An update has just been downloaded from Google Play.</string>
 </resources>

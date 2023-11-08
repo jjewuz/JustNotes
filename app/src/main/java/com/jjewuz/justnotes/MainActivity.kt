@@ -1,34 +1,28 @@
 package com.jjewuz.justnotes
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.room.RoomDatabase
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.android.play.core.review.ReviewManagerFactory
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
@@ -96,10 +90,6 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(TodoFragment())
         } else {
             replaceFragment(NotesFragment())
-        }
-
-        if (sharedPref.getInt("reviewed1", 0) == 0) {
-            requestReviewFlow(this)
         }
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
@@ -220,14 +210,13 @@ class MainActivity : AppCompatActivity() {
                     1
                 )
             }
-
             if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
                 Snackbar.make(
                     binding.root,
-                    "An update has just been downloaded from Google Play",
+                    resources.getString(R.string.update_downloaded),
                     Snackbar.LENGTH_INDEFINITE
                 ).apply {
-                    setAction("RELOAD") { appUpdateManager.completeUpdate() }
+                    setAction(resources.getString(R.string.restart)) { appUpdateManager.completeUpdate() }
                     show()
                 }
             }
@@ -235,8 +224,6 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 //TODO
             }
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -250,28 +237,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
-    }
-
-    private fun requestReviewFlow(activity: Activity) {
-
-        val reviewManager = ReviewManagerFactory.create(activity)
-
-        val requestReviewFlow = reviewManager.requestReviewFlow()
-
-        requestReviewFlow.addOnCompleteListener { request ->
-
-            if (request.isSuccessful) {
-
-                val reviewInfo = request.result
-
-                val flow = reviewManager.launchReviewFlow(activity, reviewInfo)
-
-                flow.addOnCompleteListener {
-                    sharedPref.edit().putInt("reviewed1", 1).apply()
-                }
-
-            }
-        }
     }
 
 }

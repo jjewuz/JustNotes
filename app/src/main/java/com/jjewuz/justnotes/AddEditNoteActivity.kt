@@ -1,13 +1,13 @@
 package com.jjewuz.justnotes
 
 
+import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,13 +17,7 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.MediaStore
 import android.text.Editable
-import android.text.Spannable
-import android.text.SpannableString
 import android.text.TextWatcher
-import android.text.style.CharacterStyle
-import android.text.style.StrikethroughSpan
-import android.text.style.StyleSpan
-import android.text.style.UnderlineSpan
 import android.transition.Fade
 import android.view.Window
 import android.widget.Button
@@ -40,6 +34,9 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.play.core.review.ReviewManagerFactory
+import com.jjewuz.justnotes.Utils.hideKeyboard
+import com.jjewuz.justnotes.Utils.textFormatting
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
@@ -170,29 +167,30 @@ class AddEditNoteActivity : AppCompatActivity() {
             val time = count / 512
 
             countTxt.text = "$countS: $count \n$countT ≈$time $countM"
+            countTxt.hideKeyboard()
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.boldbtn -> {
-                    textFormatting("bold")
+                    textFormatting("bold", noteEdt)
                     true
                 }
                 R.id.italicbtn -> {
-                    textFormatting("italic")
+                    textFormatting("italic", noteEdt)
                     true
                 }
                 R.id.underlinedbtn -> {
-                    textFormatting("under")
+                    textFormatting("under", noteEdt)
                     true
                 }
                 R.id.strikebtn -> {
-                    textFormatting("strike")
+                    textFormatting("strike", noteEdt)
                     true
                 }
                 R.id.clearformat -> {
-                    textFormatting("null")
+                    textFormatting("null", noteEdt)
                     true
                 }
                 else -> false
@@ -208,7 +206,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteID = intent.getIntExtra("noteId", -1)
             noteTitleEdt.setText(noteTitle)
             supportActionBar?.title = ""
-            savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime?.takeLast(6)
+            savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
             noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
         }
 
@@ -239,6 +237,9 @@ class AddEditNoteActivity : AppCompatActivity() {
 
 
     private fun pushWidget(){
+        if (sharedPref.getInt("reviewed1", 0) == 0) {
+            requestReviewFlow(this)
+        }
         val intent = Intent(this, NoteWidget::class.java)
         intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         val ids: IntArray = AppWidgetManager.getInstance(this).getAppWidgetIds(ComponentName(application, NoteWidget::class.java))
@@ -275,7 +276,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
 
                 }
-                savedTxt.text = resources.getString(R.string.saved) + ":" + currentDateAndTime.takeLast(6)
+                savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
             }
             pushWidget()
         }
@@ -309,21 +310,16 @@ class AddEditNoteActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
         {
             noteEdt = findViewById(R.id.idEdtNoteDesc)
-
             val noteText = noteEdt.text.toString()
-
             val noteTitle = noteTitleEdt.text.toString()
 
             createAndSaveWordDocScoped(this, noteTitle, noteText)
         } else {
-
-            val noteTitle = noteTitleEdt.text.toString()
             noteEdt = findViewById(R.id.idEdtNoteDesc)
-
+            val noteTitle = noteTitleEdt.text.toString()
             val noteText = noteEdt.text.toString()
 
             createAndSaveWordDoc(this, noteTitle, noteText)
-
         }
     }
 
@@ -366,32 +362,27 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun textFormatting(param: String){
-        val selectedTextStart = noteEdt.selectionStart
-        val selectedTextEnd = noteEdt.selectionEnd
+    private fun requestReviewFlow(activity: Activity) {
 
-        if (selectedTextStart != -1 && selectedTextEnd != -1) {
-            val spannable = SpannableString(noteEdt.text)
-            if (param == "bold"){
-                spannable.setSpan(StyleSpan(Typeface.BOLD), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "italic"){
-                spannable.setSpan(StyleSpan(Typeface.ITALIC), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "under"){
-                spannable.setSpan(UnderlineSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "strike"){
-                spannable.setSpan(StrikethroughSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "null"){
-                val spans = spannable.getSpans(
-                    selectedTextStart, selectedTextEnd,
-                    CharacterStyle::class.java
-                )
-                for (selectSpan in spans) spannable.removeSpan(selectSpan)
+        val reviewManager = ReviewManagerFactory.create(activity)
+
+        val requestReviewFlow = reviewManager.requestReviewFlow()
+
+        requestReviewFlow.addOnCompleteListener { request ->
+
+            if (request.isSuccessful) {
+
+                val reviewInfo = request.result
+
+                val flow = reviewManager.launchReviewFlow(activity, reviewInfo)
+
+                flow.addOnCompleteListener {
+                    sharedPref.edit().putInt("reviewed1", 1).apply()
+                }
+
             }
-
-            noteEdt.setText(spannable)
         }
     }
-
 
     //Auto-saving note
     override fun onPause() {
