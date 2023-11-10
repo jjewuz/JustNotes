@@ -111,4 +111,12 @@
     <string name="account_delete_info"></string>
     <string name="sign_out"></string>
     <string name="my_license" translatable="false"></string>
+    <string name="clear_f"></string>
+    <string name="striked"></string>
+    <string name="update_downloaded"></string>
+    <string name="bold"></string>
+    <string name="actions"></string>
+    <string name="import_txt"></string>
+    <string name="underlined"></string>
+    <string name="italic"></string>
 </resources>
