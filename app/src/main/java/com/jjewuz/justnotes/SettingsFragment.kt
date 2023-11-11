@@ -93,7 +93,6 @@ class SettingsFragment : Fragment() {
 
 
         openGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
-            Log.i("BUG", "Button $checkedId")
             when (checkedId){
                 R.id.yesnotes -> {
                     if (isChecked) {

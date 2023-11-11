@@ -1,7 +1,9 @@
 package com.jjewuz.justnotes
 
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +13,20 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.firebase.messaging.FirebaseMessaging
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
@@ -65,6 +69,12 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this, arrayOf(POST_NOTIFICATIONS), 100)
+        }
+
         actionBarToggle = ActionBarDrawerToggle(this, binding.drawer, 0, 0)
 
         binding.drawer.addDrawerListener(actionBarToggle)
@@ -80,9 +90,19 @@ class MainActivity : AppCompatActivity() {
 
         backup = RoomBackup(this)
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@OnCompleteListener
+            }
+            val token = task.result
+
+            Log.d("TOKEN", token.toString())
+        })
+
+
         val notesTxt = resources.getString(R.string.notes)
         val todoTxt = resources.getString(R.string.todo)
-        val backupTxt = resources.getString(R.string.app_name)
+        val backupTxt = resources.getString(R.string.backup_title)
 
         if (tasksDefault) {
             supportActionBar?.title = todoTxt

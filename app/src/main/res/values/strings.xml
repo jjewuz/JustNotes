@@ -85,7 +85,7 @@
     <string name="backup_txt">In this section, you can make a local backup of your data.</string>
     <string name="backup_warn">Attention! Task data is not saved.</string>
     <string name="backup_txt2">To use backup, you need to access files from the device.</string>
-    <string name="not_encrypted">Attention! The backup is not encrypted.</string>
+    <string name="not_encrypted">Attention! The local backup is not encrypted.</string>
     <string name="preview">Preview note text</string>
     <string name="set_on_widget">Set the note to the widget</string>
     <string name="delete_warn">You will not be able to recover a note after deleting it!</string>

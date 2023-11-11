@@ -80,7 +80,7 @@
     <string name="backup_txt">В данном разделе вы можете сделать локальную резервную копию ваших данных.</string>
     <string name="backup_warn">Внимание! Данные задач не сохраняются.</string>
     <string name="backup_txt2">Для использования резервного копирования понадобиться доступ к файлам с утройства.</string>
-    <string name="not_encrypted">Внимание! Резервная копия не зашифрована.</string>
+    <string name="not_encrypted">Внимание! Локальная резервная копия не зашифрована.</string>
     <string name="preview">Предпросмотр текста заметки</string>
     <string name="set_on_widget">Отправить заметку в виджет</string>
     <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
