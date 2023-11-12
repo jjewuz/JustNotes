@@ -27,7 +27,7 @@
     <string name="saved">Última grabación</string>
     <string name="pos">Sí</string>
     <string name="neg">No</string>
-    <string name="delWarn">¿Borrar la nota\?</string>
+    <string name="delWarn">¿Borrar la nota?</string>
     <string name="export">Exportar a .txt</string>
     <string name="docMade">El archivo se guardo en Descargas</string>
     <string name="note">Nota</string>
@@ -64,7 +64,7 @@
     <string name="todo">Lista de tareas</string>
     <string name="enterTodo">Escriba el texto para la tarea</string>
     <string name="add">Agregar</string>
-    <string name="delWarnTodo">¿Borrar la tarea\?</string>
+    <string name="delWarnTodo">¿Borrar la tarea?</string>
     <string name="openTask">Abrir por defecto</string>
     <string name="change_view">Cambia estilo</string>
     <string name="backup_title">Copia de seguridad</string>
