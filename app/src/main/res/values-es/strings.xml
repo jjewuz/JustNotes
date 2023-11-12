@@ -113,10 +113,4 @@
     <string name="reset_email_sent">Se ha enviado un correo electrónico con instrucciones.</string>
     <string name="send_email">Enviar una carta</string>
     <string name="cloud_backup_beta">La copia de seguridad en la nube se encuentra actualmente en prueba. No confíe en este método hasta nuevo aviso.</string>
-    <string name="appwidget_text" translatable="false"></string>
-    <string name="dbbackup_license" translatable="false"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="android_room_database_backup" translatable="false"></string>
-    <string name="my_license" translatable="false"></string>
-    <string name="update_downloaded"></string>
 </resources>

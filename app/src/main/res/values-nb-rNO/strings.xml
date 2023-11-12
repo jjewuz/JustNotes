@@ -90,33 +90,4 @@
     <string name="thx_license">Takk til utviklerne av alle anvendte tredjepartsbibliotek.</string>
     <string name="authFail">Identitetsbekreftelse mislyktes</string>
     <string name="site">Nettside</string>
-    <string name="appwidget_text" translatable="false"></string>
-    <string name="password"></string>
-    <string name="delete_account"></string>
-    <string name="local_backup"></string>
-    <string name="clear_f"></string>
-    <string name="email"></string>
-    <string name="cloud_backup"></string>
-    <string name="forgot_pass"></string>
-    <string name="register"></string>
-    <string name="striked"></string>
-    <string name="send_email"></string>
-    <string name="update_downloaded"></string>
-    <string name="backup_rules"></string>
-    <string name="no_info"></string>
-    <string name="reset_email_sent"></string>
-    <string name="cloud_backup_beta"></string>
-    <string name="dbbackup_license" translatable="false"></string>
-    <string name="bold"></string>
-    <string name="actions"></string>
-    <string name="login"></string>
-    <string name="import_txt"></string>
-    <string name="underlined"></string>
-    <string name="no_account"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="italic"></string>
-    <string name="android_room_database_backup" translatable="false"></string>
-    <string name="account_delete_info"></string>
-    <string name="sign_out"></string>
-    <string name="my_license" translatable="false"></string>
 </resources>
