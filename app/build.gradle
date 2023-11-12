@@ -15,12 +15,10 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 26
         targetSdk 34
-        versionCode 143
-        versionName "3.9.2"
+        versionCode 144
+        versionName "3.10.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
     }
 
     buildTypes {
@@ -80,13 +78,13 @@ dependencies {
 
     implementation "androidx.activity:activity-ktx:1.8.0"
 
-    implementation "androidx.room:room-ktx:2.5.2"
-    kapt "androidx.room:room-compiler:2.5.2"
-    androidTestImplementation "androidx.room:room-testing:2.5.2"
+    implementation "androidx.room:room-ktx:2.6.0"
+    kapt "androidx.room:room-compiler:2.6.0"
+    androidTestImplementation "androidx.room:room-testing:2.6.0"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.2"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
@@ -100,6 +98,6 @@ dependencies {
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
-    implementation 'de.raphaelebner:roomdatabasebackup:1.0.0-beta12'
+    implementation 'de.raphaelebner:roomdatabasebackup:1.0.0-beta13'
     implementation "androidx.core:core-splashscreen:1.0.1"
 }

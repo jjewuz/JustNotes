@@ -79,7 +79,6 @@
     <string name="more">更多</string>
     <string name="backup_txt">在这里，你可以将数据备份并导出到本地</string>
     <string name="backup_warn">注意！任务数据不会被保存。</string>
-    <string name="backup_txt2">要使用备份，你需要从设备访问文件。</string>
     <string name="not_encrypted">注意！备份未加密。</string>
     <string name="preview">预览注释文本</string>
     <string name="set_on_widget">将注释设置到小部件</string>

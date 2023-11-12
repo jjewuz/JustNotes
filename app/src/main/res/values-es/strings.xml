@@ -79,7 +79,6 @@
     <string name="more">Más</string>
     <string name="backup_txt">En esta sección, puede hacer una copia de seguridad local de sus datos.</string>
     <string name="backup_warn">¡Atención! Los datos de la tarea no se guardan.</string>
-    <string name="backup_txt2">Para usar la copia de seguridad, debe acceder a los archivos desde el dispositivo.</string>
     <string name="not_encrypted">¡Atención! La copia de seguridad no está cifrada.</string>
     <string name="preview">Vista previa del texto de la nota</string>
     <string name="set_on_widget">Establecer la nota en el widget</string>
@@ -98,4 +97,20 @@
     <string name="underlined">Subrayado</string>
     <string name="italic">Itálica</string>
     <string name="striked">Tachada</string>
+    <string name="backup_rules">Puede hacer una copia de seguridad de sus notas aquí. Para utilizar la copia de seguridad local, la aplicación necesita acceso a los archivos del dispositivo. Para utilizar la copia de seguridad en la nube, debe crear una cuenta.</string>
+    <string name="local_backup">Copia de seguridad local</string>
+    <string name="cloud_backup">Respaldo en la nube</string>
+    <string name="no_account">Sin cuenta</string>
+    <string name="sign_out">desconectar</string>
+    <string name="delete_account">Borrar cuenta</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Acceso</string>
+    <string name="register">Registro</string>
+    <string name="forgot_pass">¿Has olvidado tu contraseña?</string>
+    <string name="no_info">No hay suficiente información</string>
+    <string name="account_delete_info">Para eliminar una cuenta, escriba un correo electrónico con el asunto: “Deleting a JustNotes account”, y en el mensaje de la carta indique el correo electrónico de su cuenta. La eliminación de la cuenta se producirá sin previo aviso. Tus notas se eliminarán permanentemente del servidor.</string>
+    <string name="reset_email_sent">Se ha enviado un correo electrónico con instrucciones.</string>
+    <string name="send_email">Enviar una carta</string>
+    <string name="cloud_backup_beta">La copia de seguridad en la nube se encuentra actualmente en prueba. No confíe en este método hasta nuevo aviso.</string>
 </resources>

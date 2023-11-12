@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,6 +22,9 @@ import com.google.firebase.storage.storage
 import com.jjewuz.justnotes.databinding.FragmentBackupBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class BackupFragment : Fragment(R.layout.fragment_backup) {
@@ -28,86 +33,68 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
 
     private lateinit var auth: FirebaseAuth
 
-    private var isLocal = false
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = view.let { FragmentBackupBinding.bind(it) }
         fragmentBackupBinding = binding
 
-        val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        isLocal = sharedPref.getBoolean("isLocal", true)
-
         auth = Firebase.auth
         
-        binding.deleteBtn?.visibility = View.GONE
+        binding.deleteBtn.visibility = View.GONE
+        binding.logoutBtn.visibility = View.GONE
+        binding.cloudButtons.visibility = View.GONE
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            binding.authLayout?.visibility = View.GONE
-            binding.deleteBtn?.visibility = View.VISIBLE
             updateUI(currentUser, binding)
         }
 
-        if (isLocal) {
-            binding.toggleButton?.check(R.id.button1)
-            binding.cloudLayout?.visibility = View.GONE
-            binding.localLayout?.visibility = View.VISIBLE
-        } else {
-            binding.toggleButton?.check(R.id.button2)
-            binding.cloudLayout?.visibility = View.VISIBLE
-            binding.localLayout?.visibility = View.GONE
+        binding.regBtn.setOnClickListener {
+            register(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString(), binding)
         }
 
-        binding.toggleButton?.addOnButtonCheckedListener { _, checkedId, isChecked ->
-            when (checkedId) {
-                R.id.button1 -> {
-                    if (isChecked) {
-                        with(sharedPref.edit()) {
-                            putBoolean("isLocal", true)
-                            apply()
-                        }
-                        binding.cloudLayout?.visibility = View.GONE
-                        binding.localLayout?.visibility = View.VISIBLE
-                        isLocal = true
-                    }
-
-                }
-
-                R.id.button2 -> {
-                    if (isChecked) {
-                        with(sharedPref.edit()) {
-                            putBoolean("isLocal", false)
-                            apply()
-                        }
-                        binding.cloudLayout?.visibility = View.VISIBLE
-                        binding.localLayout?.visibility = View.GONE
-                        isLocal = false
-                    }
-                }
-            }
+        binding.logBtn.setOnClickListener {
+            login(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString(), binding)
         }
 
-        binding.regBtn?.setOnClickListener {
-            register(binding.emailEditText?.text.toString(), binding.passwordEditText?.text.toString(), binding)
-        }
-
-        binding.logBtn?.setOnClickListener {
-            login(binding.emailEditText?.text.toString(), binding.passwordEditText?.text.toString(), binding)
-        }
-
-        binding.resetBtn?.setOnClickListener {
-            resetPassword(binding.emailEditText?.text.toString())
+        binding.resetBtn.setOnClickListener {
+            resetPassword(binding.emailEditText.text.toString())
         }
 
         binding.backup.setOnClickListener {
-            backup(isLocal)
+            backup(true)
         }
 
         binding.rest.setOnClickListener {
-            restore(isLocal)
+            restore(true)
+        }
+
+        binding.backupCloud.setOnClickListener {
+            backup(false)
+        }
+
+        binding.restCloud.setOnClickListener {
+            restore(false)
+        }
+
+        binding.logoutBtn.setOnClickListener {
+            auth.signOut()
+            binding.userEmailTxt.text = resources.getString(R.string.no_account)
+            binding.authLayout.visibility = View.VISIBLE
+            binding.logoutBtn.visibility = View.GONE
+            binding.deleteBtn.visibility = View.GONE
+            binding.cloudButtons.visibility = View.GONE
+        }
+
+        binding.deleteBtn.setOnClickListener {
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(R.string.delete_account)
+                .setMessage(R.string.account_delete_info)
+                .setPositiveButton(R.string.send_email) { dialog, which ->
+                    sendEmail(currentUser)
+                }
+                .show()
         }
 
     }
@@ -117,10 +104,15 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         val backup = mainActivity.backup
         val storageRef = Firebase.storage.reference
 
+        val sdf = SimpleDateFormat("dd.mm.yyyy_HH:mm", Locale.getDefault())
+        val currentDateAndTime: String = sdf.format(Date().time)
+
         if (local) {
             backup
                 .database(NoteDatabase.getDatabase(requireContext()))
                 .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_CUSTOM_DIALOG)
+                .customBackupFileName("JustNotes_Backup_$currentDateAndTime.sqlite")
+                .backupIsEncrypted(false)
                 .apply {
                     onCompleteListener { success, message, exitCode ->
                         Log.d(ContentValues.TAG, "success: $success, message: $message, exitCode: $exitCode")
@@ -133,7 +125,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             backup
                 .database(NoteDatabase.getDatabase(requireContext()))
                 .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
-                .customBackupFileName("database_test")
+                .customBackupFileName("database")
                 .backupIsEncrypted(true)
                 .customEncryptPassword(userId.toString())
                 .apply {
@@ -148,10 +140,10 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 }
                 .backup()
 
-            storageRef.child("user/$userId/test.aes").putFile(
+            storageRef.child("user/$userId/database.aes").putFile(
                 File(
                     requireContext().filesDir,
-                    "databasebackup/database_test.aes"
+                    "databasebackup/database.aes"
                 ).toUri()
             )
         }
@@ -182,9 +174,9 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 storagePath.mkdirs()
             }
 
-            val myFile = File(storagePath, "database_test.aes")
+            val myFile = File(storagePath, "database.aes")
 
-            val dbRef = storageRef.child("user/$userId/test.aes")
+            val dbRef = storageRef.child("user/$userId/database.aes")
             dbRef.getFile(myFile)
 
             backup
@@ -205,47 +197,81 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
     }
 
     private fun register(email: String, password: String, binding: FragmentBackupBinding){
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    updateUI(user, binding)
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    updateUI(null, binding)
+        if (email != "" && password != "") {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        updateUI(user, binding)
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.authSuc,
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.authFail,
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                        updateUI(null, binding)
+                    }
                 }
-            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                 R.string.no_info,
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
     }
 
     private fun login(email: String, password: String, binding: FragmentBackupBinding){
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    updateUI(user, binding)
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    updateUI(null, binding)
+        if (email != "" && password != "") {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        updateUI(user, binding)
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.authSuc,
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.authFail,
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                        updateUI(null, binding)
+                    }
                 }
-            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                R.string.no_info,
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
 
     }
 
     private fun resetPassword(email: String){
-        auth.sendPasswordResetEmail(email)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(requireContext(), "Email sent.", Toast.LENGTH_SHORT).show()
+        if (email != "") {
+            auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(requireContext(), R.string.reset_email_sent, Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                R.string.no_info,
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
     }
 
     private fun updateUI(user: FirebaseUser?, binding: FragmentBackupBinding){
@@ -254,16 +280,28 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             val email = it.email
             val photoUrl = it.photoUrl
 
-            binding.userEmailTxt?.text = email
-            binding.authLayout?.visibility = View.GONE
+            binding.userEmailTxt.text = email
+            binding.authLayout.visibility = View.GONE
+            binding.logoutBtn.visibility = View.VISIBLE
+            binding.deleteBtn.visibility = View.VISIBLE
+            binding.cloudButtons.visibility = View.VISIBLE
 
             val emailVerified = it.isEmailVerified
             val uid = it.uid
         }
     }
 
-    private fun killAndRestartApp(activity: Activity) {
+    private fun sendEmail(user: FirebaseUser?) {
+        val mIntent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:mdenisov.work@gmail.com")
+            putExtra(Intent.EXTRA_SUBJECT, "JustNotes account deletion")
+            putExtra(Intent.EXTRA_TEXT, user?.email)
+        }
 
+        startActivity(mIntent)
+    }
+
+    private fun killAndRestartApp(activity: Activity) {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)

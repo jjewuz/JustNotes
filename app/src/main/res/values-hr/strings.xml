@@ -79,7 +79,6 @@
     <string name="more">Više</string>
     <string name="backup_txt">U ovom dijelu možete napraviti lokalnu rezervnu kopiju svojih podataka.</string>
     <string name="backup_warn">Pozor! Podaci o zadacima se ne spremaju.</string>
-    <string name="backup_txt2">Da biste koristili rezervno kopiranje, potrebno je pristupiti datotekama s uređaja.</string>
     <string name="not_encrypted">Pozor! Rezervna kopija nije šifrirana.</string>
     <string name="preview">Pregled teksta bilješke</string>
     <string name="set_on_widget">Postavite bilješku na widget</string>

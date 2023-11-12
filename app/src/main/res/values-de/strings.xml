@@ -79,7 +79,6 @@
     <string name="more">Mehr</string>
     <string name="backup_txt">In diesem Abschnitt können Sie eine lokale Sicherung Ihrer Daten erstellen.</string>
     <string name="backup_warn">Achtung! Aufgabendaten werden nicht gespeichert.</string>
-    <string name="backup_txt2">Um die Sicherung verwenden zu können, müssen Sie auf die Dateien des Geräts zugreifen.</string>
     <string name="not_encrypted">Achtung! Das Backup ist nicht verschlüsselt.</string>
     <string name="preview">Vorschau des Notiztextes</string>
     <string name="set_on_widget">Legen Sie die Notiz für das Widget fest</string>
@@ -91,4 +90,20 @@
     <string name="empty">Leer</string>
     <string name="no_note">Sie haben die anzuzeigende Notiz nicht ausgewählt.</string>
     <string name="choose_note">Wählen Sie die anzuzeigende Notiz aus.</string>
+    <string name="backup_rules">Hier können Sie Ihre Notizen sichern. Um die lokale Sicherung nutzen zu können, benötigt die App Zugriff auf die Dateien auf dem Gerät. Um Cloud-Backup nutzen zu können, müssen Sie ein Konto erstellen.</string>
+    <string name="local_backup">Lokales Backup</string>
+    <string name="cloud_backup">Cloud-Backup</string>
+    <string name="no_account">Kein Account</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="delete_account">Konto löschen</string>
+    <string name="email">Email</string>
+    <string name="password">Passwort</string>
+    <string name="login">Anmeldung</string>
+    <string name="register">Registrieren</string>
+    <string name="forgot_pass">Passwort vergessen?</string>
+    <string name="no_info">Nicht genug Information</string>
+    <string name="account_delete_info">Um ein Konto zu löschen, schreiben Sie eine E-Mail mit dem Betreff: „Deleting a JustNotes account“ und geben Sie in der Nachricht des Briefes die E-Mail-Adresse Ihres Kontos an. Die Löschung des Kontos erfolgt ohne Vorankündigung. Ihre Notizen werden dauerhaft vom Server gelöscht.</string>
+    <string name="reset_email_sent">Eine E-Mail mit Anweisungen wurde gesendet.</string>
+    <string name="send_email">einen Brief schicken</string>
+    <string name="cloud_backup_beta">Das Cloud-Backup wird derzeit getestet. Bitte verlassen Sie sich bis auf Weiteres nicht auf diese Methode.</string>
 </resources>

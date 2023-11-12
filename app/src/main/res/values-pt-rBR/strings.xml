@@ -58,7 +58,6 @@
     <string name="what_new_update">"Novidades "</string>
     <string name="nothingTxt">Está vazio por aqui…</string>
     <string name="change_view">Alterar visualização</string>
-    <string name="backup_txt2">Para usar o backup, você precisa acessar os arquivos do dispositivo.</string>
     <string name="do_restore">Restaurar</string>
     <string name="settings_desc">Aparência, segurança…</string>
     <string name="licenses">Licenças</string>
