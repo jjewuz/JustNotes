@@ -114,4 +114,9 @@
     <string name="reset_email_sent">Письмо с инструкциями было отправлено.</string>
     <string name="send_email">Отправить письмо</string>
     <string name="cloud_backup_beta">На данный момент облачное резервное копирование находится в тестировании. Пожалуйста, не опирайтесь на этот метод до соответсвующего уведомления.</string>
+    <string name="appwidget_text" translatable="false"></string>
+    <string name="dbbackup_license" translatable="false"></string>
+    <string name="app_name" translatable="false"></string>
+    <string name="android_room_database_backup" translatable="false"></string>
+    <string name="my_license" translatable="false"></string>
 </resources>
