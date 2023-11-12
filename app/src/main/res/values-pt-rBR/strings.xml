@@ -97,26 +97,4 @@
     <string name="import_txt">Importar txt</string>
     <string name="underlined">Sublinhado</string>
     <string name="italic">Itálico</string>
-    <string name="appwidget_text" translatable="false"></string>
-    <string name="update_downloaded"></string>
-    <string name="password"></string>
-    <string name="delete_account"></string>
-    <string name="local_backup"></string>
-    <string name="email"></string>
-    <string name="cloud_backup"></string>
-    <string name="forgot_pass"></string>
-    <string name="register"></string>
-    <string name="send_email"></string>
-    <string name="backup_rules"></string>
-    <string name="no_info"></string>
-    <string name="reset_email_sent"></string>
-    <string name="cloud_backup_beta"></string>
-    <string name="dbbackup_license" translatable="false"></string>
-    <string name="login"></string>
-    <string name="no_account"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="android_room_database_backup" translatable="false"></string>
-    <string name="account_delete_info"></string>
-    <string name="sign_out"></string>
-    <string name="my_license" translatable="false"></string>
 </resources>
