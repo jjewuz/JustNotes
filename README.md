@@ -31,5 +31,9 @@ If you faced some app issue, you can report it with GitHub issues page. Do not f
 ## Translations
 The application is translated into different languages thanks to the community using [Weblate](https://hosted.weblate.org/).
 
+## Support chat
+
+https://t.me/jjewuz_support
+
 ## License
 - All code is licensed under MIT License.
