@@ -24,6 +24,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 ## Download
  - [Google Play Store](https://play.google.com/store/apps/details?id=com.jjewuz.justnotes)
  - [Github Releases](https://github.com/jjewuz/JustNotes/releases)
+- [IzzySoft](https://apt.izzysoft.de/fdroid/index/apk/com.jjewuz.justnotes/)
 
 ## App errors
 If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, app build number, app version and steps on how to get the error.
