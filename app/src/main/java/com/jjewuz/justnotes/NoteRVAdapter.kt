@@ -41,7 +41,7 @@ class NoteRVAdapter(
         holder.dateTV.setText(context.getString(R.string.lastedit)+ allNotes.get(position).timeStamp)
 
         if (isPreview){
-            holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription).take(73)
+            holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription.take(350))
         } else{
             holder.descTV.visibility = View.GONE
         }

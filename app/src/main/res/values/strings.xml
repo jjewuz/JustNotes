@@ -119,4 +119,7 @@
     <string name="reset_email_sent">An email with instructions has been sent.</string>
     <string name="send_email">Send email</string>
     <string name="cloud_backup_beta">Cloud backup is currently in testing. Please do not rely on this method until further notice.</string>
+    <string name="set_password">Set password</string>
+    <string name="enter_password">Enter password</string>
+    <string name="pass_hint">Leave the field blank or write \'0\' to remove the password.</string>
 </resources>

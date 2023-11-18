@@ -91,6 +91,8 @@
                 android:layout_width="match_parent"
                 android:id="@+id/cloud_layout"
                 android:layout_marginTop="10dp"
+                android:animateLayoutChanges="true"
+                android:paddingBottom="10dp"
                 style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_height="wrap_content">
 
@@ -98,6 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="15dp"
+                        android:animateLayoutChanges="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -195,6 +198,7 @@
                             android:layout_width="match_parent"
                             android:id="@+id/passwordEditText"
                             android:hint="@string/password"
+                            android:inputType="textPassword"
                             android:layout_height="wrap_content"/>
 
                     </com.google.android.material.textfield.TextInputLayout>

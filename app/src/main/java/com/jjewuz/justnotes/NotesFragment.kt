@@ -146,6 +146,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         intent.putExtra("noteTitle", note.noteTitle)
         intent.putExtra("noteDescription", note.noteDescription)
         intent.putExtra("timestamp", note.timeStamp)
+        intent.putExtra("security", note.security)
         intent.putExtra("noteId", note.id)
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
     }

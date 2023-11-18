@@ -2,23 +2,24 @@ package com.jjewuz.justnotes
 
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.transition.Fade
+import android.util.Log
+import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
@@ -29,11 +30,16 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.jjewuz.justnotes.Utils.hideKeyboard
 import com.jjewuz.justnotes.Utils.textFormatting
@@ -58,9 +64,11 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var exportTxtBtn: Button
     private lateinit var clearBtn: Button
     private lateinit var toWidgetBtn: Button
+    private lateinit var passBtn: Button
 
     private lateinit var viewModal: NoteViewModal
     private var noteID = -1;
+    private var noteLock = "";
 
     private var added = false
 
@@ -119,6 +127,16 @@ class AddEditNoteActivity : AppCompatActivity() {
         exportTxtBtn = findViewById(R.id.exporttxt)
         clearBtn = findViewById(R.id.clear_txt)
         toWidgetBtn = findViewById(R.id.towidget)
+        passBtn = findViewById(R.id.pass_btn)
+
+        //Receive text from share sheet
+        when (intent?.action) {
+            Intent.ACTION_SEND -> {
+                val text = intent.getStringExtra(Intent.EXTRA_TEXT)
+                noteEdt.setText(text)
+                hasChanges = true
+            }
+        }
 
         val standardBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -148,18 +166,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         }
 
-        val vib = if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.S) {
-            val vMan = (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager)
-            vMan.defaultVibrator
-        } else {
-            @Suppress("DEPRECATION")
-            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        }
-
-
-
         bottomAppBar.setNavigationOnClickListener {
-            vib.vibrate(VibrationEffect.createOneShot(100, 30))
             val countS: String = getString(R.string.count1)
             val countT: String = getString(R.string.count2)
             val countM: String = getString(R.string.minuts)
@@ -204,10 +211,31 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteDescription = intent.getStringExtra("noteDescription")
             val currentDateAndTime = intent.getStringExtra("timestamp")
             noteID = intent.getIntExtra("noteId", -1)
+            noteLock = intent.getStringExtra("security").toString()
             noteTitleEdt.setText(noteTitle)
             supportActionBar?.title = ""
             savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
             noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
+        }
+
+        passBtn.setOnClickListener {
+            val builder = MaterialAlertDialogBuilder(this)
+            val inflater = this.layoutInflater.inflate(R.layout.dialog_password, null)
+            val pass = inflater.findViewById<TextInputEditText>(R.id.input)
+            val text = inflater.findViewById<TextView>(R.id.setter)
+            text.text = resources.getString(R.string.set_password)
+            pass.setText(noteLock)
+            builder.setView(inflater)
+                .setPositiveButton("OK") { dialog, id ->
+                    if (pass.text.toString().length <= 5) {
+                        noteLock = pass.text.toString()
+                        hasChanges = true
+                    }
+                }
+                .setNegativeButton(R.string.back) { dialog, id ->
+                    dialog.cancel()
+                }
+            builder.create().show()
         }
 
         val watcher: TextWatcher = object : TextWatcher {
@@ -233,6 +261,29 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         noteTitleEdt.addTextChangedListener(watcher)
         noteEdt.addTextChangedListener(watcher)
+
+        if (noteLock != "" && noteLock != "0"){
+            noteEdt.visibility = View.GONE
+            val builder = MaterialAlertDialogBuilder(this)
+            val inflater = this.layoutInflater.inflate(R.layout.dialog_password, null)
+            val pass = inflater.findViewById<TextInputEditText>(R.id.input)
+            val text = inflater.findViewById<TextView>(R.id.setter)
+            text.text = resources.getString(R.string.enter_password)
+            val hint = inflater.findViewById<TextView>(R.id.pass_hint)
+            hint.visibility = View.GONE
+            builder.setView(inflater)
+                .setCancelable(false)
+                .setPositiveButton("OK") { dialog, id ->
+                        if (noteLock != pass.text.toString()){
+                            this.finish()
+                        }
+                        noteEdt.visibility = View.VISIBLE
+                    }
+                .setNegativeButton(R.string.back ) { dialog, id ->
+                       this.finish()
+                    }
+            builder.create().show()
+        }
     }
 
 
@@ -263,7 +314,8 @@ class AddEditNoteActivity : AppCompatActivity() {
                     if (noteTitle.isEmpty()) {
                         noteTitle = emptyTitle
                     }
-                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), currentDateAndTime)
+                    Log.e("save", noteLock.toString())
+                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), currentDateAndTime, noteLock)
                     updatedNote.id = noteID
                     viewModal.updateNote(updatedNote)
                 } else {
@@ -271,7 +323,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                         if (noteTitle.isEmpty()) {
                             noteTitle = emptyTitle
                         }
-                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), currentDateAndTime))
+                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), currentDateAndTime, noteLock))
                         added = true
                     }
 

@@ -210,9 +210,17 @@
                         android:layout_height="wrap_content"
                         android:text="@string/option1"/>
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:id="@+id/pass_btn"
+                        app:icon="@drawable/security"
+                        android:layout_height="wrap_content"
+                        android:text="@string/set_password"/>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <Button

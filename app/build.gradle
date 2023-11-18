@@ -16,9 +16,15 @@ android {
         minSdk 26
         targetSdk 34
         versionCode 144
-        versionName "3.10.0"
+        versionName "3.9.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
