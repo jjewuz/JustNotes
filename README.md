@@ -4,15 +4,15 @@
 JustNotes is simple android app for taking notes, like there have been tens of thousands before. App uses Room database.
 
 ## Features
- - Monet theming support
- - Export note to txt document
+ - Material You Design
+ - Import, export .txt documents
  - Lock app with system biometry
- - Custom font setting
- - To-do list creation
+ - Lock notes with pin-code
+ - Tasks Organizer 
  - Text formatting
+ - Cloud backup
 
 ## Planned
- - Cloud backup
  - Text's color change
 
 ## Screenshots
