@@ -110,11 +110,23 @@
     <string name="register">Зарегистрироваться</string>
     <string name="forgot_pass">Забыли проль?</string>
     <string name="no_info">Недостаточно информации</string>
-    <string name="account_delete_info">Чтобы удалить аккаунт, напишите письмо с темой: «Удаление аккаунта JustNotes», а в сообщении письма укажите адрес электронной почты вашего аккаунта. Удаление учетной записи произойдет без предварительного уведомления. Ваши заметки будут навсегда удалены с сервера.</string>
+    <string name="account_delete_info">Вы действительно хотите удалить аккаунт?</string>
     <string name="reset_email_sent">Письмо с инструкциями было отправлено.</string>
-    <string name="send_email">Отправить письмо</string>
     <string name="cloud_backup_beta">На данный момент облачное резервное копирование находится в тестировании. Пожалуйста, не опирайтесь на этот метод до соответствующего уведомления.</string>
     <string name="set_password">Установить пароль</string>
     <string name="enter_password">Введите пароль</string>
     <string name="pass_hint">Оставьте поле пустым или напишите \"0\", чтобы убрать пароль.</string>
+    <string name="privacy_policy">Политика конфиндициальности</string>
+    <string name="deletion_error">Ошибка удаления аккаунта!</string>
+    <string name="deletion_succes">Аккаунт успешно удалён!</string>
+    <string name="auth_need">Подтвердите пароль</string>
+    <string name="backup_complete">Резервное копирование завершено</string>
+    <string name="restore_fail">Ошибка загрузки резервной копии!</string>
+    <string name="terms_of_use">Условия использования</string>
+    <string name="donate">Сделать пожертвование</string>
+    <string name="for_users">Используя приложение, вы соглашаетесь с:</string>
+    <string name="agree">Согласен</string>
+    <string name="decline">Отклонить</string>
+    <string name="app_updated">Приложение обновлено!</string>
+    <string name="new_conditions">С этим обновлением в силу вступают новые условия использования и политика конфинденциальности. Если вы не согласны с условиями, вы должны перестать использовать приложение.</string>
 </resources>

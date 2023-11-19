@@ -14,12 +14,16 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 class InfoFragment : Fragment() {
 
-    lateinit var ghBtn: Button
-    lateinit var siteBtn: Button
-    lateinit var licenseBtn: Button
+    private lateinit var ghBtn: Button
+    private lateinit var siteBtn: Button
+    private lateinit var licenseBtn: Button
 
-    lateinit var  tgBtn: ImageButton
-    lateinit var  vkBtn: ImageButton
+    private lateinit var tou: Button
+    private lateinit var pp: Button
+
+    private lateinit var donate: Button
+    private lateinit var  tgBtn: ImageButton
+    private lateinit var  vkBtn: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,48 +34,28 @@ class InfoFragment : Fragment() {
         siteBtn = v.findViewById(R.id.site)
         licenseBtn = v.findViewById(R.id.licenses)
 
+        tou = v.findViewById(R.id.terms_of_use)
+        pp = v.findViewById(R.id.privacy_policy)
+
+        donate = v.findViewById(R.id.donate)
         tgBtn = v.findViewById(R.id.tg)
         vkBtn = v.findViewById(R.id.vk)
 
-        ghBtn.setOnClickListener { gh_a() }
-        siteBtn.setOnClickListener{ site_a() }
+        ghBtn.setOnClickListener { openLink("https://github.com/jjewuz/JustNotes") }
+        siteBtn.setOnClickListener{ openLink("https://jjewuz.ru/justnotes/justnotes.html") }
         licenseBtn.setOnClickListener { startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java)) }
-        tgBtn.setOnClickListener { tg_a() }
-        vkBtn.setOnClickListener { vk_a() }
+        tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }
+        pp.setOnClickListener { openLink("https://jjewuz.ru/justnotes/privacypolicy.html") }
+        donate.setOnClickListener { openLink("https://www.donationalerts.com/r/jjewuz") }
+        tgBtn.setOnClickListener { openLink("https://t.me/jjewuz_support") }
+        vkBtn.setOnClickListener { openLink("https://vk.com/jjewuzhub") }
 
         return v
     }
 
-    fun vk_a(){
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/jjewuzhub"))
+    private fun openLink(url: String){
+        val i = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(i)
-    }
-
-    fun tg_a(){
-
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/jjewuzhub"))
-        startActivity(i)
-    }
-
-    fun gh_a(){
-
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes"))
-        startActivity(i)
-    }
-
-    fun site_a(){
-
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://jjewuz.github.io/"))
-        startActivity(i)
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = parentFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-        fragmentTransaction.replace(R.id.place_holder, fragment)
-        fragmentTransaction.addToBackStack( "tag" )
-        fragmentTransaction.commit ()
     }
 
 }

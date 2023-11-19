@@ -109,9 +109,7 @@
     <string name="register">Registro</string>
     <string name="forgot_pass">¿Has olvidado tu contraseña?</string>
     <string name="no_info">No hay suficiente información</string>
-    <string name="account_delete_info">Para eliminar una cuenta, escriba un correo electrónico con el asunto \"Deleting a JustNotes account\", y en el mensaje indique el correo electrónico de su cuenta. La eliminación de la cuenta se producirá sin previo aviso. Sus notas se borrarán permanentemente del servidor.</string>
     <string name="reset_email_sent">Se ha enviado un correo electrónico con instrucciones.</string>
-    <string name="send_email">Enviar un correo electrónico</string>
     <string name="cloud_backup_beta">La copia de seguridad en la nube está actualmente en pruebas. Por favor, no confíe en este método hasta nuevo aviso.</string>
     <string name="update_downloaded">Se acaba de descargar una actualización desde la Google Play.</string>
 </resources>

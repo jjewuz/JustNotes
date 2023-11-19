@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/local_layout"
                 android:layout_marginTop="10dp"
-                style="@style/Widget.Material3.CardView.Elevated"
+                style="?attr/materialCardViewFilledStyle"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -60,6 +60,8 @@
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        app:dividerColor="?colorSecondary"
                         android:layout_height="wrap_content"/>
 
 
@@ -93,7 +95,7 @@
                 android:layout_marginTop="10dp"
                 android:animateLayoutChanges="true"
                 android:paddingBottom="10dp"
-                style="@style/Widget.Material3.CardView.Elevated"
+                style="?attr/materialCardViewFilledStyle"
                 android:layout_height="wrap_content">
 
                     <LinearLayout
@@ -149,6 +151,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:paddingBottom="2dp"
+                            android:gravity="center"
                             android:layout_height="wrap_content">
 
                             <Button
@@ -170,6 +173,8 @@
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
+                            app:dividerColor="?colorSecondary"
                             android:layout_height="wrap_content"/>
 
                 <LinearLayout

@@ -101,7 +101,7 @@
     <string name="striked">Strikethrought</string>
     <string name="underlined">Underlined</string>
     <string name="clear_f">No format</string>
-    <string name="import_txt">Import from txt</string>
+    <string name="import_txt">Import from .txt</string>
     <string name="update_downloaded">An update has just been downloaded from Google Play.</string>
     <string name="backup_rules">You can back up your notes here. To use local backup, the app needs access to the files on the device. To use cloud backup, you need to create an account.</string>
     <string name="local_backup">Local backup</string>
@@ -115,11 +115,23 @@
     <string name="register">Register</string>
     <string name="forgot_pass">Forgot password?</string>
     <string name="no_info">Not enough information</string>
-    <string name="account_delete_info">To delete an account, write an email with the subject: “Deleting a JustNotes account”, and in the message of the letter indicate your account email. Account deletion will occur without notice. Your notes will be permanently deleted from the server.</string>
+    <string name="account_delete_info">Are you sure you want to delete your account?</string>
     <string name="reset_email_sent">An email with instructions has been sent.</string>
-    <string name="send_email">Send email</string>
     <string name="cloud_backup_beta">Cloud backup is currently in testing. Please do not rely on this method until further notice.</string>
     <string name="set_password">Set password</string>
     <string name="enter_password">Enter password</string>
     <string name="pass_hint">Leave the field blank or write \'0\' to remove the password.</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="deletion_error">Error deleting account!</string>
+    <string name="deletion_succes">Account successfully deleted!</string>
+    <string name="auth_need">Need verification</string>
+    <string name="backup_complete">Backup complete</string>
+    <string name="restore_fail">Error downloading backup!</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="donate">Donate to developer</string>
+    <string name="for_users">By using the application you agree with:</string>
+    <string name="agree">Agree</string>
+    <string name="decline">Decline</string>
+    <string name="app_updated">The app has been updated!</string>
+    <string name="new_conditions">With this update, new terms of use and privacy policy come to effect. If you do not agree with the terms, you must stop using the app.</string>
 </resources>

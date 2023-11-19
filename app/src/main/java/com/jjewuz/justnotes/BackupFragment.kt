@@ -8,13 +8,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
+import com.google.firebase.auth.EmailAuthCredential
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
@@ -91,8 +95,55 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             MaterialAlertDialogBuilder(requireActivity())
                 .setTitle(R.string.delete_account)
                 .setMessage(R.string.account_delete_info)
-                .setPositiveButton(R.string.send_email) { dialog, which ->
-                    sendEmail(currentUser)
+                .setPositiveButton(R.string.delete_account) { _, _ ->
+                    val userId = Firebase.auth.currentUser?.uid
+                    val userEmail = Firebase.auth.currentUser?.email
+                    val storageRef = Firebase.storage.reference
+                    storageRef.child("user/$userId/database.aes").delete()
+                    auth.currentUser?.delete()?.addOnSuccessListener {
+                        binding.userEmailTxt.text = resources.getString(R.string.no_account)
+                        binding.authLayout.visibility = View.VISIBLE
+                        binding.logoutBtn.visibility = View.GONE
+                        binding.deleteBtn.visibility = View.GONE
+                        binding.cloudButtons.visibility = View.GONE
+                        Toast.makeText(requireContext(), R.string.deletion_succes, Toast.LENGTH_SHORT).show()
+                    }?.addOnFailureListener {
+                        Toast.makeText(requireContext(), R.string.auth_need, Toast.LENGTH_SHORT).show()
+                        val builder = MaterialAlertDialogBuilder(requireActivity())
+                        val inflater = requireActivity().layoutInflater.inflate(R.layout.auth_credential, null)
+                        val pass = inflater.findViewById<TextInputEditText>(R.id.input)
+                        builder.setView(inflater)
+                            .setPositiveButton(R.string.delete_account) { dialog, id ->
+                                val credential = userEmail?.let { it1 ->
+                                    EmailAuthProvider.getCredential(
+                                        it1, pass.text.toString())
+                                }
+                                if (credential != null) {
+                                    auth.currentUser?.reauthenticate(credential)!!.addOnSuccessListener {
+                                        auth.currentUser?.delete()?.addOnSuccessListener {
+                                            binding.userEmailTxt.text = resources.getString(R.string.no_account)
+                                            binding.authLayout.visibility = View.VISIBLE
+                                            binding.logoutBtn.visibility = View.GONE
+                                            binding.deleteBtn.visibility = View.GONE
+                                            binding.cloudButtons.visibility = View.GONE
+                                            Toast.makeText(requireContext(), R.string.deletion_succes, Toast.LENGTH_SHORT).show()
+                                        }
+                                    }.addOnFailureListener {
+                                        Toast.makeText(requireContext(), R.string.deletion_error, Toast.LENGTH_SHORT).show()
+                                    }
+
+                                }
+                            }
+                            .setNegativeButton(R.string.back) { dialog, _ ->
+                                dialog.cancel()
+                            }
+                        builder.create().show()
+
+                    }
+
+                }
+                .setNegativeButton(R.string.back) { _, _ ->
+
                 }
                 .show()
         }
@@ -145,7 +196,9 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                     requireContext().filesDir,
                     "databasebackup/database.aes"
                 ).toUri()
-            )
+            ).addOnSuccessListener {
+                Toast.makeText(requireContext(), R.string.backup_complete, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -177,22 +230,25 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             val myFile = File(storagePath, "database.aes")
 
             val dbRef = storageRef.child("user/$userId/database.aes")
-            dbRef.getFile(myFile)
-
-            backup
-                .database(NoteDatabase.getDatabase(requireContext()))
-                .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
-                .backupIsEncrypted(true)
-                .customEncryptPassword(userId.toString())
-                .apply {
-                    onCompleteListener { success, message, exitCode ->
-                        Log.d(ContentValues.TAG, "success: $success, message: $message, exitCode: $exitCode")
-                        if (success) {
-                            killAndRestartApp(requireActivity())
+            dbRef.getFile(myFile).addOnSuccessListener {
+                backup
+                    .database(NoteDatabase.getDatabase(requireContext()))
+                    .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
+                    .backupIsEncrypted(true)
+                    .customEncryptPassword(userId.toString())
+                    .apply {
+                        onCompleteListener { success, message, exitCode ->
+                            Log.d(ContentValues.TAG, "success: $success, message: $message, exitCode: $exitCode")
+                            if (success) {
+                                killAndRestartApp(requireActivity())
+                            }
                         }
                     }
-                }
-                .restore()
+                    .restore()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), R.string.restore_fail, Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 
@@ -289,16 +345,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             val emailVerified = it.isEmailVerified
             val uid = it.uid
         }
-    }
-
-    private fun sendEmail(user: FirebaseUser?) {
-        val mIntent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:mdenisov.work@gmail.com")
-            putExtra(Intent.EXTRA_SUBJECT, "JustNotes account deletion")
-            putExtra(Intent.EXTRA_TEXT, user?.email)
-        }
-
-        startActivity(mIntent)
     }
 
     private fun killAndRestartApp(activity: Activity) {

@@ -104,7 +104,6 @@
     <string name="cloud_backup">Backup na nuvem</string>
     <string name="forgot_pass">Esqueceu sua senha?</string>
     <string name="register">Registrar</string>
-    <string name="send_email">Enviar email</string>
     <string name="update_downloaded">Uma atualização acabou de ser baixada do Google Play.</string>
     <string name="backup_rules">Você pode fazer backup de suas anotações aqui. Use o backup local, o aplicativo precisa de acesso aos arquivos do dispositivo. Para usar o backup na nuvem, você precisa criar uma conta.</string>
     <string name="no_info">Não é informação suficiente</string>
@@ -112,6 +111,5 @@
     <string name="cloud_backup_beta">O backup na nuvem está atualmente em teste. Por favor, não confie neste método até novo aviso.</string>
     <string name="login">Login</string>
     <string name="no_account">Nenhuma conta</string>
-    <string name="account_delete_info">Para excluir uma conta, escreva um e-mail com o assunto: “Excluindo uma conta JustNotes”, e na mensagem da carta indique o e-mail da sua conta. A exclusão da conta ocorrerá sem aviso prévio. Suas notas serão excluídas permanentemente do servidor.</string>
     <string name="sign_out">Sair</string>
 </resources>
