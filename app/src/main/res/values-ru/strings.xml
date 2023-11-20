@@ -28,7 +28,7 @@
     <string name="neg">Нет</string>
     <string name="delWarn">Удалить заметку?</string>
     <string name="export">Экспорт в .txt</string>
-    <string name="docMade">Файл был сохранён в Загрузки!</string>
+    <string name="docMade">Файл был сохранён в Загрузки</string>
     <string name="verison">Разработчик: jjewuz</string>
     <string name="note">Заметка</string>
     <string name="error">Ошибка</string>
@@ -43,7 +43,7 @@
     <string name="authFail">Вход не удался</string>
     <string name="authSuc">Вход выполнен</string>
     <string name="authError">Ошибка входа:</string>
-    <string name="noPassError">Настройте пароль или сбросьте данные JustNotes</string>
+    <string name="noPassError">Настройте пароль или сбросьте данные JustNotes!</string>
     <string name="notes">Заметки</string>
     <string name="menu_home">Дом</string>
     <string name="add_button">Новая заметка</string>
@@ -61,7 +61,7 @@
     <string name="restart">Перезапуск</string>
     <string name="nothingTxt">Тут пока пусто…</string>
     <string name="socialLinksText">Подпишитесь на социальные сети:</string>
-    <string name="todo">Задачи</string>
+    <string name="todo">Список заметок</string>
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
     <string name="delWarnTodo">Удалить задачу?</string>
@@ -74,8 +74,8 @@
     <string name="thx_license">В данной программе используются сторонние библиотеки. Спасибо их разработчикам.</string>
     <string name="backup_desc">Локальное резервирование заметок</string>
     <string name="report_desc">Если вы встретили ошибку в приложении</string>
-    <string name="settings_desc">Внешний вид, безопасность</string>
-    <string name="info_desc">Полезные ссылки, лицензии</string>
+    <string name="settings_desc">Внешний вид, безопасность…</string>
+    <string name="info_desc">Полезные ссылки, лицензии...</string>
     <string name="more">Ещё</string>
     <string name="backup_txt">В данном разделе вы можете сделать локальную резервную копию ваших данных.</string>
     <string name="backup_warn">Внимание! Данные задач не сохраняются.</string>
@@ -84,7 +84,7 @@
     <string name="set_on_widget">Отправить заметку в виджет</string>
     <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
     <string name="note_set_to_widget">Заметка установлена в виджет</string>
-    <string name="what_new_update">Что нового в</string>
+    <string name="what_new_update">"Что нового в "</string>
     <string name="what_new_desc">В новом обновлении добавлен виджет заметки. Что бы его установить, перейдите в заметку, нажмите на 3 точки и выберите</string>
     <string name="notshowanymore">Не показывать больше</string>
     <string name="empty">Пусто</string>
@@ -97,7 +97,7 @@
     <string name="underlined">Подчеркнутый</string>
     <string name="clear_f">Обычный</string>
     <string name="import_txt">Импорт из .txt</string>
-    <string name="update_downloaded">Обновление только что было скачано из Google Play</string>
+    <string name="update_downloaded">Обновление только что было скачано из Google Play.</string>
     <string name="backup_rules">Здесь можно сделать резервную копию ваших заметок. Чтобы использовать локальное резервное копирование, приложению необходим доступ к файлам на устройстве. Что бы использовать облачное резервное копирование, вам необходимо создать аккаунт.</string>
     <string name="local_backup">Локальное копирование</string>
     <string name="cloud_backup">Облачное копирование</string>
