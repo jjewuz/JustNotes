@@ -276,8 +276,10 @@ class AddEditNoteActivity : AppCompatActivity() {
                 .setPositiveButton("OK") { dialog, id ->
                         if (noteLock != pass.text.toString()){
                             this.finish()
+                        } else {
+                            noteEdt.visibility = View.VISIBLE
                         }
-                        noteEdt.visibility = View.VISIBLE
+
                     }
                 .setNegativeButton(R.string.back ) { dialog, id ->
                        this.finish()

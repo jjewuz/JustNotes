@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity() {
             val pp = inflater.findViewById<Button>(R.id.privacy_policy)
             pp.setOnClickListener { openLink("https://jjewuz.ru/justnotes/privacypolicy.html") }
             builder.setView(inflater)
+                .setCancelable(false)
                 .setPositiveButton(R.string.agree) { dialog, id ->
                     sharedPref.edit().putBoolean("agree_conditions2023", true).apply()
                 }
