@@ -93,7 +93,7 @@
     <string name="clear_f">Sin formato</string>
     <string name="bold">Negrita</string>
     <string name="actions">Acciones</string>
-    <string name="import_txt">Importar desde un txt</string>
+    <string name="import_txt">Importar desde .txt</string>
     <string name="underlined">Subrayado</string>
     <string name="italic">Itálica</string>
     <string name="striked">Tachada</string>
@@ -115,4 +115,18 @@
     <string name="pass_hint">Deje el campo en blanco o escriba \"0\" para eliminar la contraseña.</string>
     <string name="set_password">Establecer la contraseña</string>
     <string name="enter_password">Introduzca la contraseña</string>
+    <string name="restore_fail">¡Error al descargar la copia de seguridad!</string>
+    <string name="terms_of_use">Condiciones de uso</string>
+    <string name="deletion_error">¡Error al eliminar la cuenta!</string>
+    <string name="agree">Estoy de acuerdo</string>
+    <string name="decline">No estoy de acuerdo</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="new_conditions">Con esta actualización, entran en vigor las nuevas condiciones de uso y la política de privacidad. Si no estás de acuerdo con los términos, debes dejar de usar la aplicación.</string>
+    <string name="for_users">Al utilizar la aplicación usted acepta:</string>
+    <string name="donate">Donar al desarrollador</string>
+    <string name="backup_complete">Copia de seguridad finalizada</string>
+    <string name="deletion_succes">¡Cuenta eliminada correctamente!</string>
+    <string name="auth_need">Necesita verificación</string>
+    <string name="app_updated">¡La aplicación se ha actualizado!</string>
+    <string name="account_delete_info">¿Seguro que quieres eliminar tu cuenta?</string>
 </resources>
