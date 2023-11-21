@@ -112,4 +112,7 @@
     <string name="reset_email_sent">Se ha enviado un correo electrónico con instrucciones.</string>
     <string name="cloud_backup_beta">La copia de seguridad en la nube está actualmente en pruebas. Por favor, no confíe en este método hasta nuevo aviso.</string>
     <string name="update_downloaded">Se acaba de descargar una actualización desde la Google Play.</string>
+    <string name="pass_hint">Deje el campo en blanco o escriba \"0\" para eliminar la contraseña.</string>
+    <string name="set_password">Establecer la contraseña</string>
+    <string name="enter_password">Introduzca la contraseña</string>
 </resources>
