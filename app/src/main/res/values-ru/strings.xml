@@ -61,7 +61,7 @@
     <string name="restart">Перезапуск</string>
     <string name="nothingTxt">Тут пока пусто…</string>
     <string name="socialLinksText">Подпишитесь на социальные сети:</string>
-    <string name="todo">Список заметок</string>
+    <string name="todo">Список задач</string>
     <string name="enterTodo">Введите текст задачи</string>
     <string name="add">Добавить</string>
     <string name="delWarnTodo">Удалить задачу?</string>
