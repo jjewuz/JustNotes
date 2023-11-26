@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -21,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.DynamicColors
@@ -107,13 +109,17 @@ class MainActivity : AppCompatActivity() {
         val todoTxt = resources.getString(R.string.todo)
         val backupTxt = resources.getString(R.string.backup_title)
 
-        if (tasksDefault) {
-            supportActionBar?.title = todoTxt
-            binding.nv.setCheckedItem(R.id.todo)
-            replaceFragment(TodoFragment())
-        } else {
-            replaceFragment(NotesFragment())
+
+        if (savedInstanceState == null) {
+            if (tasksDefault) {
+                supportActionBar?.title = todoTxt
+                binding.nv.setCheckedItem(R.id.todo)
+                replaceFragment(TodoFragment())
+            } else {
+                replaceFragment(NotesFragment())
+            }
         }
+
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
         val newPP = sharedPref.getBoolean("agree_conditions2023", false)
@@ -266,6 +272,24 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 //TODO
             }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.place_holder)
+        outState.putString("currentFragmentTag", currentFragment?.tag)
+    }
+
+    override fun onRestoreInstanceState(
+        savedInstanceState: Bundle?,
+        persistentState: PersistableBundle?
+    ) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+        val currentFragmentTag = savedInstanceState?.getString("currentFragmentTag")
+        val fragment = supportFragmentManager.findFragmentByTag(currentFragmentTag)
+        if (fragment != null) {
+            replaceFragment(fragment)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

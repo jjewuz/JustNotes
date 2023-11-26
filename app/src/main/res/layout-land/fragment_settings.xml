@@ -225,7 +225,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="55dp"
                 android:layout_marginRight="55dp"
-                android:id="@+id/security"
                 android:orientation="vertical">
 
 
@@ -241,6 +240,37 @@
                     android:layout_width="match_parent"
                     style="@style/Widget.Material3.CardView.Filled"
                     android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/screenshot"
+                            app:tint="?colorOnSecondaryContainer"
+                            android:scaleY="0.8"
+                            android:scaleX="0.8"
+                            android:layout_height="wrap_content"/>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:id="@+id/screenshottoggle"
+                            android:text="@string/screenshot_secured_notes"/>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/security"
                     android:layout_height="wrap_content">
 
                     <LinearLayout

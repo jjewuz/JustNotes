@@ -24,7 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 class SettingsFragment : Fragment() {
 
     private lateinit var passSwitch: MaterialSwitch
-    private lateinit var secCard: LinearLayout
+    private lateinit var secCard: MaterialCardView
     private lateinit var fontSwitch: MaterialSwitch
     private lateinit var monetSwitch: MaterialSwitch
     private lateinit var monetCard: MaterialCardView
@@ -33,6 +33,7 @@ class SettingsFragment : Fragment() {
     private lateinit var openGroup: MaterialButtonToggleGroup
     private lateinit var reportBtn: MaterialCardView
     private lateinit var version: TextView
+    private lateinit var screenSecuredNotes: MaterialSwitch
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -52,6 +53,7 @@ class SettingsFragment : Fragment() {
         reverseSwitch = v.findViewById(R.id.reversetoggle)
         openGroup = v.findViewById(R.id.toggleButton)
         reportBtn = v.findViewById(R.id.report)
+        screenSecuredNotes = v.findViewById(R.id.screenshottoggle)
 
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -69,12 +71,14 @@ class SettingsFragment : Fragment() {
         val reversed = sharedPref.getBoolean("reversed", false)
         val tasksOpen = sharedPref.getBoolean("isTask", false)
         val isGrid = sharedPref.getBoolean("grid", false)
+        val isSecuredScreen = sharedPref.getBoolean("screenSecurity", false)
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
         monetSwitch.isChecked = enabledMonet
         previewSwitch.isChecked = preview
         reverseSwitch.isChecked = reversed
+        screenSecuredNotes.isChecked = isSecuredScreen
 
         if (tasksOpen){
             openGroup.check(R.id.openTasks)
@@ -143,6 +147,20 @@ class SettingsFragment : Fragment() {
             }
         }
 
+        screenSecuredNotes.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                with (sharedPref.edit()) {
+                    putBoolean("screenSecurity", true)
+                    apply()
+                }
+            }else{
+                with (sharedPref.edit()) {
+                    putBoolean("screenSecurity", false)
+                    apply()
+                }
+            }
+        }
+
         passSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 with (sharedPref.edit()) {
@@ -173,11 +191,7 @@ class SettingsFragment : Fragment() {
                     apply()
                 }
             }
-            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
-                .setAction(R.string.restart) {
-                    killAndRestartApp(requireActivity())
-                }
-                .show()
+            activity?.recreate()
         }
 
         monetSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -192,22 +206,10 @@ class SettingsFragment : Fragment() {
                     apply()
                 }
             }
-            Snackbar.make(v, resources.getString(R.string.needRestart), Snackbar.LENGTH_LONG)
-                .setAction(R.string.restart) {
-                    killAndRestartApp(requireActivity())
-                }
-                .show()
+            activity?.recreate()
         }
 
         return v
     }
 
-    fun killAndRestartApp(activity: Activity) {
-
-        val intent = Intent(requireActivity(), MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        activity.startActivity(intent)
-        activity.finish()
-        Runtime.getRuntime().exit(0)
-    }
 }

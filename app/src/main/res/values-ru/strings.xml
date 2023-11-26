@@ -129,4 +129,7 @@
     <string name="decline">Отклонить</string>
     <string name="app_updated">Приложение обновлено!</string>
     <string name="new_conditions">С этим обновлением в силу вступают новые условия использования и политика конфинденциальности. Если вы не согласны с условиями, вы должны перестать использовать приложение.</string>
+    <string name="undo">Отменить</string>
+    <string name="redo">Вернуть</string>
+    <string name="screenshot_secured_notes">Разрешить скриншот в защищеных заметках</string>
 </resources>

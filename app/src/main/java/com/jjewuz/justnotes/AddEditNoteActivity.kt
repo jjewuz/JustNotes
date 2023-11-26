@@ -19,8 +19,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.transition.Fade
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.view.WindowManager.LayoutParams
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -74,6 +78,8 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private var hasChanges = false
 
+    private lateinit var textEditor: TextHelper
+
     private lateinit var sharedPref: SharedPreferences
 
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -93,6 +99,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val securedNote = sharedPref.getBoolean("screenSecurity", false)
         if (enabledFont and enabledMonet){
             setTheme(R.style.AppTheme)
         } else if (!enabledFont and enabledMonet){
@@ -261,8 +268,12 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         noteTitleEdt.addTextChangedListener(watcher)
         noteEdt.addTextChangedListener(watcher)
+        textEditor = TextHelper(noteEdt)
 
         if (noteLock != "" && noteLock != "0"){
+            if (!securedNote){
+                this.window.setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE)
+            }
             noteEdt.visibility = View.GONE
             val builder = MaterialAlertDialogBuilder(this)
             val inflater = this.layoutInflater.inflate(R.layout.dialog_password, null)
@@ -288,6 +299,25 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.text_editor, menu)
+
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.undo -> {
+                textEditor.undo()
+                true
+            }
+            R.id.redo -> {
+                textEditor.redo()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     private fun pushWidget(){
         if (sharedPref.getInt("reviewed1", 0) == 0) {

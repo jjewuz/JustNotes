@@ -134,4 +134,7 @@
     <string name="decline">Decline</string>
     <string name="app_updated">The app has been updated!</string>
     <string name="new_conditions">With this update, new terms of use and privacy policy come to effect. If you do not agree with the terms, you must stop using the app.</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="screenshot_secured_notes">Allow screenshot in secured notes</string>
 </resources>
