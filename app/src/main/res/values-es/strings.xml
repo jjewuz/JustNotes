@@ -129,4 +129,7 @@
     <string name="auth_need">Necesita verificación</string>
     <string name="app_updated">¡La aplicación se ha actualizado!</string>
     <string name="account_delete_info">¿Seguro que quieres eliminar tu cuenta?</string>
+    <string name="screenshot_secured_notes">Permitir capturas de pantalla en notas seguras</string>
+    <string name="undo">Deshacer</string>
+    <string name="redo">Rehacer</string>
 </resources>
