@@ -6,7 +6,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Note::class), version = 2, exportSchema = true, autoMigrations = [ AutoMigration (1,2)])
+@Database(entities = arrayOf(Note::class), version = 3, exportSchema = true, autoMigrations = [ AutoMigration (1,2), AutoMigration(2,3)])
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun getNotesDao(): NotesDao

@@ -1,11 +1,13 @@
 package com.jjewuz.justnotes
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.text.Html
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.CharacterStyle
+import android.text.style.ForegroundColorSpan
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
@@ -42,6 +44,45 @@ object Utils {
                     CharacterStyle::class.java
                 )
                 for (selectSpan in spans) spannable.removeSpan(selectSpan)
+            }
+            noteEdt.setText(spannable)
+        }
+    }
+
+    fun colorFormatting(param: String, noteEdt: EditText){
+        val selectedTextStart = noteEdt.selectionStart
+        val selectedTextEnd = noteEdt.selectionEnd
+
+        if (selectedTextStart != -1 && selectedTextEnd != -1) {
+            val spannable = SpannableString(noteEdt.text)
+            if (param == "red") {
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.rgb(193, 22, 22)),
+                    selectedTextStart,
+                    selectedTextEnd,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }else if(param == "yellow"){
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.rgb(227, 174, 18)),
+                    selectedTextStart,
+                    selectedTextEnd,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }else if(param == "blue"){
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.rgb(15, 68, 202)),
+                    selectedTextStart,
+                    selectedTextEnd,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }else if(param == "green"){
+                spannable.setSpan(
+                    ForegroundColorSpan(Color.rgb(113, 219, 165)),
+                    selectedTextStart,
+                    selectedTextEnd,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             }
             noteEdt.setText(spannable)
         }

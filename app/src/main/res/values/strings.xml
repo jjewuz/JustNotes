@@ -137,4 +137,7 @@
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     <string name="screenshot_secured_notes">Allow screenshot in secured notes</string>
+    <string name="close">Close</string>
+    <string name="color_picker">Choose color</string>
+    <string name="color">Color</string>
 </resources>

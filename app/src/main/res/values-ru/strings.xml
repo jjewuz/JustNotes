@@ -132,4 +132,7 @@
     <string name="undo">Отменить</string>
     <string name="redo">Вернуть</string>
     <string name="screenshot_secured_notes">Разрешить скриншот в защищеных заметках</string>
+    <string name="close">Закрыть</string>
+    <string name="color_picker">Выбрать цвет</string>
+    <string name="color">Цвет</string>
 </resources>

@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class NoteRVAdapter(
     val context: Context,
@@ -38,20 +41,28 @@ class NoteRVAdapter(
         val isPreview = sharedPref.getBoolean("enabledPreview", false)
 
         holder.noteTV.text = allNotes.get(position).noteTitle
-        holder.dateTV.setText(context.getString(R.string.lastedit)+ allNotes.get(position).timeStamp)
+        val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
+        val date = allNotes[position].timeStamp
+        val currentDateAndTime: String = try {
+            sdf.format(date.toLong())
+        } catch (e: Exception){
+            date
+        }
+
+        holder.dateTV.text = context.getString(R.string.lastedit) + currentDateAndTime
 
         if (isPreview){
-            holder.descTV.text = Utils.fromHtml(allNotes.get(position).noteDescription.take(350))
+            holder.descTV.text = Utils.fromHtml(allNotes[position].noteDescription.take(400))
         } else{
             holder.descTV.visibility = View.GONE
         }
 
         holder.itemView.setOnClickListener {
-            noteClickInterface.onNoteClick(allNotes.get(position), position)
+            noteClickInterface.onNoteClick(allNotes[position], position)
         }
 
         holder.itemView.setOnLongClickListener {
-            noteLongClickInterface.onNoteLongClick(allNotes.get(position))
+            noteLongClickInterface.onNoteLongClick(allNotes[position])
             return@setOnLongClickListener true
         }
     }

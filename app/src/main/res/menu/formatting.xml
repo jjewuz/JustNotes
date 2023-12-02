@@ -31,4 +31,10 @@
         android:title="@string/clear_f"
         app:showAsAction="ifRoom"
         android:id="@+id/clearformat" />
+    <item
+        android:icon="@drawable/palette"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/color"
+        app:showAsAction="ifRoom"
+        android:id="@+id/color" />
 </menu>

@@ -45,6 +45,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
+import com.jjewuz.justnotes.Utils.colorFormatting
 import com.jjewuz.justnotes.Utils.hideKeyboard
 import com.jjewuz.justnotes.Utils.textFormatting
 import java.io.BufferedReader
@@ -207,6 +208,32 @@ class AddEditNoteActivity : AppCompatActivity() {
                     textFormatting("null", noteEdt)
                     true
                 }
+                R.id.color -> {
+                    val builder = MaterialAlertDialogBuilder(this)
+                    val inflater = this.layoutInflater.inflate(R.layout.color_picker, null)
+                    val red = inflater.findViewById<Button>(R.id.red)
+                    val yellow = inflater.findViewById<Button>(R.id.yellow)
+                    val blue = inflater.findViewById<Button>(R.id.blue)
+                    val green = inflater.findViewById<Button>(R.id.green)
+
+                    builder.setIcon(R.drawable.palette)
+                    builder.setTitle(R.string.color_picker)
+                    builder.setView(inflater)
+                        .setPositiveButton(R.string.close) { _, _ ->
+                        }
+                    builder.create()
+                    val dialog = builder.show()
+                    red.setOnClickListener { colorFormatting("red", noteEdt)
+                        dialog.dismiss()}
+                    yellow.setOnClickListener { colorFormatting("yellow", noteEdt)
+                        dialog.dismiss()}
+                    blue.setOnClickListener { colorFormatting("blue", noteEdt)
+                        dialog.dismiss()}
+                    green.setOnClickListener { colorFormatting("green", noteEdt)
+                        dialog.dismiss()}
+                    hasChanges = true
+                    true
+                }
                 else -> false
             }
         }
@@ -216,7 +243,16 @@ class AddEditNoteActivity : AppCompatActivity() {
         if (noteType.equals("Edit")) {
             val noteTitle = intent.getStringExtra("noteTitle")
             val noteDescription = intent.getStringExtra("noteDescription")
-            val currentDateAndTime = intent.getStringExtra("timestamp")
+            val date = intent.getStringExtra("timestamp")
+            val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
+            var currentDateAndTime = ""
+            try {
+                currentDateAndTime = sdf.format(date?.toLong()).toString()
+            } catch (e: Exception){
+                if (date != null) {
+                    currentDateAndTime = date
+                }
+            }
             noteID = intent.getIntExtra("noteId", -1)
             noteLock = intent.getStringExtra("security").toString()
             noteTitleEdt.setText(noteTitle)
@@ -229,9 +265,9 @@ class AddEditNoteActivity : AppCompatActivity() {
             val builder = MaterialAlertDialogBuilder(this)
             val inflater = this.layoutInflater.inflate(R.layout.dialog_password, null)
             val pass = inflater.findViewById<TextInputEditText>(R.id.input)
-            val text = inflater.findViewById<TextView>(R.id.setter)
-            text.text = resources.getString(R.string.set_password)
             pass.setText(noteLock)
+            builder.setIcon(R.drawable.security)
+            builder.setTitle(R.string.set_password)
             builder.setView(inflater)
                 .setPositiveButton("OK") { dialog, id ->
                     if (pass.text.toString().length <= 5) {
@@ -278,10 +314,10 @@ class AddEditNoteActivity : AppCompatActivity() {
             val builder = MaterialAlertDialogBuilder(this)
             val inflater = this.layoutInflater.inflate(R.layout.dialog_password, null)
             val pass = inflater.findViewById<TextInputEditText>(R.id.input)
-            val text = inflater.findViewById<TextView>(R.id.setter)
-            text.text = resources.getString(R.string.enter_password)
             val hint = inflater.findViewById<TextView>(R.id.pass_hint)
             hint.visibility = View.GONE
+            builder.setIcon(R.drawable.security)
+            builder.setTitle(R.string.enter_password)
             builder.setView(inflater)
                 .setCancelable(false)
                 .setPositiveButton("OK") { dialog, id ->
@@ -340,14 +376,14 @@ class AddEditNoteActivity : AppCompatActivity() {
             if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
 
                 val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
-                val currentDateAndTime: String = sdf.format(Date().time)
+                val date = Date().time
+                val currentDateAndTime: String = sdf.format(date)
 
                 if (noteType.equals("Edit")) {
                     if (noteTitle.isEmpty()) {
                         noteTitle = emptyTitle
                     }
-                    Log.e("save", noteLock.toString())
-                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), currentDateAndTime, noteLock)
+                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), date.toString(), noteLock, "")
                     updatedNote.id = noteID
                     viewModal.updateNote(updatedNote)
                 } else {
@@ -355,7 +391,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                         if (noteTitle.isEmpty()) {
                             noteTitle = emptyTitle
                         }
-                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), currentDateAndTime, noteLock))
+                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), date.toString(), noteLock, ""))
                         added = true
                     }
 
