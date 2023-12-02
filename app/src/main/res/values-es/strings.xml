@@ -132,4 +132,7 @@
     <string name="screenshot_secured_notes">Permitir capturas de pantalla en notas seguras</string>
     <string name="undo">Deshacer</string>
     <string name="redo">Rehacer</string>
+    <string name="close">Cerrar</string>
+    <string name="color_picker">Elegir el color</string>
+    <string name="color">Color</string>
 </resources>
