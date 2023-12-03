@@ -135,4 +135,12 @@
     <string name="close">Закрыть</string>
     <string name="color_picker">Выбрать цвет</string>
     <string name="color">Цвет</string>
+    <string name="label">Ярлыки</string>
+    <string name="save">Сохранить</string>
+    <string name="important">Важное</string>
+    <string name="hobby">Хобби</string>
+    <string name="extra_label">Доп. ярлык</string>
+    <string name="useful">Полезное</string>
+    <string name="agreement">Соглашение необходимо</string>
+    <string name="set_labels">Установить имена доп. ярлыков</string>
 </resources>

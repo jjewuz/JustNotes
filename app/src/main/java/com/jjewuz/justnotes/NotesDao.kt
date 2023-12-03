@@ -21,6 +21,9 @@ interface NotesDao {
     @Query("Select * FROM notesTable Order By timeStamp DESC " )
     fun getAllSortedByTime(): LiveData<List<Note>>
 
+    @Query("Select * FROM notesTable where label = :customLabel Order By timeStamp DESC")
+    fun getItemsWithLabel(customLabel: String): LiveData<List<Note>>
+
     @Update
     suspend fun update(note: Note)
 }

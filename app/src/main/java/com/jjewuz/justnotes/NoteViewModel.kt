@@ -18,6 +18,13 @@ class NoteViewModal (application: Application) :AndroidViewModel(application) {
         allNotes = repository.allNotes
     }
 
+    fun getLabeled(label: String): LiveData<List<Note>>{
+        return repository.getLabeled(label)
+    }
+
+    fun getNotes(): LiveData<List<Note>>{
+        return repository.getNotes()
+    }
 
     fun deleteNote (note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(note)

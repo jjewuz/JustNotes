@@ -140,4 +140,12 @@
     <string name="close">Close</string>
     <string name="color_picker">Choose color</string>
     <string name="color">Color</string>
+    <string name="label">Labels</string>
+    <string name="save">Save</string>
+    <string name="important">Important</string>
+    <string name="hobby">Hobby</string>
+    <string name="extra_label">Extra label</string>
+    <string name="useful">Useful</string>
+    <string name="agreement">Agreement is necessary</string>
+    <string name="set_labels">Set extra labels name</string>
 </resources>

@@ -12,6 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -297,6 +298,60 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="?colorPrimary"
+                android:text="@string/label"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/label"
+                        app:tint="?colorOnSecondaryContainer"
+                        android:scaleY="0.8"
+                        android:scaleX="0.8"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:id="@+id/set_labels"
+                        android:text="@string/set_labels"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
 
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -353,12 +408,12 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:text="@string/reportBug"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="20dp"
+                                android:layout_height="18dp"
                                 android:text="@string/report_desc"/>
                         </LinearLayout>
 

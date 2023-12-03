@@ -12,18 +12,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/setter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/app_updated"/>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/dop_info"
-            android:text="@string/new_conditions"/>
+            android:text="@string/for_users"/>
 
         <Button
             android:id="@+id/terms_of_use"

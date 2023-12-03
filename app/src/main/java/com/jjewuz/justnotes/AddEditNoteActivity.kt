@@ -42,6 +42,8 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -64,6 +66,11 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var countTxt: TextView
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var bottomSheet: FrameLayout
+
+    private lateinit var labelGroup: ChipGroup
+    private lateinit var label1: Chip
+    private lateinit var label2: Chip
+    private var label = ""
 
     private lateinit var importTxtBtn: Button
     private lateinit var exportTxtBtn: Button
@@ -122,7 +129,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(NoteViewModal::class.java)
+        )[NoteViewModal::class.java]
 
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
@@ -130,6 +137,13 @@ class AddEditNoteActivity : AppCompatActivity() {
         countTxt = findViewById(R.id.counttxt)
         bottomAppBar = findViewById(R.id.bottomAppBar)
         bottomSheet = findViewById(R.id.standard_bottom_sheet)
+
+        labelGroup = findViewById(R.id.chipGroup)
+        label1 = findViewById(R.id.label1)
+        label2 = findViewById(R.id.label2)
+
+        label1.text = sharedPref.getString("label1", resources.getString(R.string.extra_label))
+        label2.text = sharedPref.getString("label2", resources.getString(R.string.extra_label))
 
         importTxtBtn = findViewById(R.id.importtxt)
         exportTxtBtn = findViewById(R.id.exporttxt)
@@ -148,6 +162,29 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         val standardBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+        labelGroup.setOnCheckedStateChangeListener { group, checkedID ->
+            when(group.checkedChipId) {
+                R.id.important -> {
+                    label = "important"
+                }
+                R.id.useful -> {
+                    label = "useful"
+                }
+                R.id.hobby -> {
+                    label = "hobby"
+                }
+                R.id.label1 -> {
+                    label = "label1"
+                }
+                R.id.label2 -> {
+                    label = "label2"
+                }
+                else -> label = ""
+            }
+            hasChanges = true
+        }
+
 
         importTxtBtn.setOnClickListener {
             getTxtFile.launch("text/plain")
@@ -244,6 +281,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteTitle = intent.getStringExtra("noteTitle")
             val noteDescription = intent.getStringExtra("noteDescription")
             val date = intent.getStringExtra("timestamp")
+            val label = intent.getStringExtra("label")
             val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
             var currentDateAndTime = ""
             try {
@@ -252,6 +290,17 @@ class AddEditNoteActivity : AppCompatActivity() {
                 if (date != null) {
                     currentDateAndTime = date
                 }
+            }
+            if (label == "important"){
+                labelGroup.check(R.id.important)
+            } else if (label == "useful"){
+                labelGroup.check(R.id.useful)
+            }else if (label == "hobby"){
+                labelGroup.check(R.id.hobby)
+            }else if (label == "label1"){
+                labelGroup.check(R.id.label1)
+            }else if (label == "label2"){
+                labelGroup.check(R.id.label2)
             }
             noteID = intent.getIntExtra("noteId", -1)
             noteLock = intent.getStringExtra("security").toString()
@@ -383,7 +432,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                     if (noteTitle.isEmpty()) {
                         noteTitle = emptyTitle
                     }
-                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), date.toString(), noteLock, "")
+                    val updatedNote = Note(noteTitle, noteDescription.toHtml(), date.toString(), noteLock, label)
                     updatedNote.id = noteID
                     viewModal.updateNote(updatedNote)
                 } else {
@@ -391,7 +440,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                         if (noteTitle.isEmpty()) {
                             noteTitle = emptyTitle
                         }
-                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), date.toString(), noteLock, ""))
+                        viewModal.addNote(Note(noteTitle,  noteDescription.toHtml(), date.toString(), noteLock, label))
                         added = true
                     }
 

@@ -6,6 +6,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NotesFragment">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            app:singleLine="true"
+            android:paddingStart="72dp"
+            android:paddingEnd="72dp"
+            app:singleSelection="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/important"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:text="@string/important"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/useful"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:text="@string/useful"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hobby"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:text="@string/hobby"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label1"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:text="@string/extra_label"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label2"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:text="@string/extra_label"/>
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
@@ -60,5 +117,7 @@
             android:contentDescription="@string/add_button" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

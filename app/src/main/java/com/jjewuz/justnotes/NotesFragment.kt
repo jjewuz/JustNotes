@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,6 +18,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,6 +26,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -36,6 +40,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
     lateinit var viewIcon: MenuItem
+
+    private lateinit var labelGroup: ChipGroup
+    private lateinit var label1: Chip
+    private lateinit var label2: Chip
 
     lateinit var sharedPref: SharedPreferences
 
@@ -53,7 +61,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar, menu)
-
                 viewIcon = menu.findItem(R.id.view_change)
             }
 
@@ -91,6 +98,12 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         notesRV = v.findViewById(R.id.notes)
         addFAB = v.findViewById(R.id.idFAB)
         nothing = v.findViewById(R.id.nothing)
+        labelGroup = v.findViewById(R.id.chipGroup)
+        label1 = v.findViewById(R.id.label1)
+        label2 = v.findViewById(R.id.label2)
+
+        label1.text = sharedPref.getString("label1", resources.getString(R.string.extra_label))
+        label2.text = sharedPref.getString("label2", resources.getString(R.string.extra_label))
 
         if (isGrid){
             val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
@@ -107,9 +120,40 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        ).get(NoteViewModal::class.java)
+        )[NoteViewModal::class.java]
 
-        viewModal.allNotes.observe(viewLifecycleOwner, Observer { list ->
+        var allItems: LiveData<List<Note>> = viewModal.getNotes()
+
+        labelGroup.setOnCheckedStateChangeListener { group, checkedID ->
+            when(group.checkedChipId) {
+                R.id.important -> {
+                    allItems = viewModal.getLabeled("important")
+                }
+                R.id.useful -> {
+                    allItems = viewModal.getLabeled("useful")
+                }
+                R.id.hobby -> {
+                    allItems = viewModal.getLabeled("hobby")
+                }
+                R.id.label1 -> {
+                    allItems = viewModal.getLabeled("label1")
+                }
+                R.id.label2 -> {
+                    allItems = viewModal.getLabeled("label1")
+                }
+
+                else -> allItems = viewModal.getNotes()
+            }
+            allItems.observe(viewLifecycleOwner, Observer { list ->
+                list?.let {
+                    noteRVAdapter.updateList(it)
+                }
+            })
+        }
+
+
+
+        allItems.observe(viewLifecycleOwner, Observer { list ->
               list?.let {
                 noteRVAdapter.updateList(it)
             }
@@ -147,6 +191,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         intent.putExtra("noteDescription", note.noteDescription)
         intent.putExtra("timestamp", note.timeStamp)
         intent.putExtra("security", note.security)
+        intent.putExtra("label", note.label)
         intent.putExtra("noteId", note.id)
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
     }
@@ -155,6 +200,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     override fun onNoteLongClick(note: Note) {
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.delWarn)
+            .setIcon(R.drawable.delete)
             .setMessage(R.string.delete_warn)
             .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
             }

@@ -22,7 +22,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
             android:padding="4dp"
-            android:text="Note"
+            android:text="@string/note"
             android:ellipsize="end"
             android:singleLine="true"
             android:textSize="18sp" />
@@ -35,7 +35,7 @@
             android:layout_below="@id/idTVNote"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
-            android:text="Blah blah blah"
+            android:text="@string/notes"
             android:ellipsize="end"
             android:singleLine="true"
             android:textSize="13sp" />
@@ -51,6 +51,14 @@
             android:text="@string/lastedit"
             android:textSize="13sp" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/category"
+            android:text="No Category"
+            style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+            android:layout_below="@id/idTVDate"
+            android:checkable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
     </RelativeLayout>
