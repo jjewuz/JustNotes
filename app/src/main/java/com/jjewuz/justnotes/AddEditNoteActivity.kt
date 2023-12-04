@@ -106,17 +106,20 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
-        val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val theme = sharedPref.getString("theme", "standart")
         val securedNote = sharedPref.getBoolean("screenSecurity", false)
-        if (enabledFont and enabledMonet){
+        if (enabledFont and (theme=="monet")) {
             setTheme(R.style.AppTheme)
-        } else if (!enabledFont and enabledMonet){
+        } else if (!enabledFont and (theme=="monet")) {
             setTheme(R.style.FontMonet)
-        }
-        else if (!enabledFont and !enabledMonet){
+        } else if (!enabledFont and (theme=="standart")) {
             setTheme(R.style.Font)
-        } else {
+        } else if (enabledFont and (theme=="standart")) {
             setTheme(R.style.Nothing)
+        } else if (!enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIceFont)
+        } else if (enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIce)
         }
         setContentView(R.layout.activity_add_edit_note)
         WindowCompat.setDecorFitsSystemWindows(window, false)

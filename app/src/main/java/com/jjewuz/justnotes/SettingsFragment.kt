@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 
@@ -26,13 +27,11 @@ class SettingsFragment : Fragment() {
     private lateinit var passSwitch: MaterialSwitch
     private lateinit var secCard: MaterialCardView
     private lateinit var fontSwitch: MaterialSwitch
-    private lateinit var monetSwitch: MaterialSwitch
     private lateinit var monetCard: MaterialCardView
     private lateinit var previewSwitch: MaterialSwitch
     private lateinit var reverseSwitch: MaterialSwitch
     private lateinit var openGroup: MaterialButtonToggleGroup
     private lateinit var reportBtn: MaterialCardView
-    private lateinit var version: TextView
     private lateinit var screenSecuredNotes: MaterialSwitch
 
     private lateinit var sharedPref: SharedPreferences
@@ -46,7 +45,6 @@ class SettingsFragment : Fragment() {
 
         passSwitch = v.findViewById(R.id.passwordtoggle)
         fontSwitch = v.findViewById(R.id.fonttoggle)
-        monetSwitch = v.findViewById(R.id.monettoggle)
         monetCard = v.findViewById(R.id.monet)
         secCard = v.findViewById(R.id.security)
         previewSwitch = v.findViewById(R.id.previewtoggle)
@@ -58,9 +56,6 @@ class SettingsFragment : Fragment() {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             secCard.visibility = View.GONE
-        }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
-            monetCard.visibility = View.GONE
         }
 
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
@@ -75,7 +70,6 @@ class SettingsFragment : Fragment() {
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
-        monetSwitch.isChecked = enabledMonet
         previewSwitch.isChecked = preview
         reverseSwitch.isChecked = reversed
         screenSecuredNotes.isChecked = isSecuredScreen
@@ -88,11 +82,6 @@ class SettingsFragment : Fragment() {
 
         reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
             startActivity(i) }
-
-        version = v.findViewById(R.id.version)
-        val ver = resources.getString(R.string.verison)
-        val build = resources.getString(R.string.buildn)
-        version.text = "$ver \n$build ${BuildConfig.VERSION_CODE}"
 
 
 
@@ -194,19 +183,41 @@ class SettingsFragment : Fragment() {
             activity?.recreate()
         }
 
-        monetSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
+        monetCard.setOnClickListener {
+            val builder = MaterialAlertDialogBuilder(requireContext())
+            val inf = requireActivity().layoutInflater.inflate(R.layout.theme_chooser, null)
+            val standart = inf.findViewById<MaterialCardView>(R.id.standart)
+            val monet = inf.findViewById<MaterialCardView>(R.id.monet)
+            val ice = inf.findViewById<MaterialCardView>(R.id.ice)
+
+            builder.setIcon(R.drawable.palette)
+            builder.setTitle(R.string.select_theme)
+            builder.setView(inf)
+                .setPositiveButton(R.string.close) { _, _ ->
+                }
+            builder.create()
+            val dialog = builder.show()
+            standart.setOnClickListener {
                 with (sharedPref.edit()) {
-                    putBoolean("enabledMonet", true)
+                    putString("theme", "standart")
                     apply()
                 }
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("enabledMonet", false)
-                    apply()
-                }
+                activity?.recreate()
             }
-            activity?.recreate()
+            monet.setOnClickListener {
+                with (sharedPref.edit()) {
+                    putString("theme", "monet")
+                    apply()
+                }
+                activity?.recreate()
+            }
+            ice.setOnClickListener {
+                with (sharedPref.edit()) {
+                    putString("theme", "ice")
+                    apply()
+                }
+                activity?.recreate()
+            }
         }
 
         return v

@@ -9,7 +9,7 @@
         <item name="android:statusBarColor">
             @android:color/transparent
         </item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
 
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
 
@@ -45,6 +45,123 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
+    <style name="BlackIce" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
+
+        <item name="colorPrimary">#9A6C4D</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryContainer">#2177D1</item>
+        <item name="colorOnPrimaryContainer">@color/black</item>
+        <item name="colorSecondary">#5487A5</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryContainer">#79B1D1</item>
+        <item name="colorOnSecondaryContainer">@color/black</item>
+        <item name="colorTertiary">#5E9BBF</item>
+        <item name="colorOnTertiary">@color/black</item>
+        <item name="colorTertiaryContainer">@color/ice_on</item>
+        <item name="colorOnTertiaryContainer">@color/black</item>
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnError">@color/ice_on</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+        <item name="android:colorBackground">@color/ice_on</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorSurface">@color/ice_on</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorSurfaceVariant">#5A99BF</item>
+        <item name="colorOnSurfaceVariant">@color/black</item>
+        <item name="colorOutline">@color/black</item>
+        <item name="colorOnSurfaceInverse">@color/black</item>
+        <item name="colorSurfaceInverse">@color/black</item>
+        <item name="colorPrimaryInverse">@color/black</item>
+        <item name="textColor">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button.TextButton</item>
+    </style>
+
+    <style name="BlackIceFont" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="popupMenuBackground">@drawable/custom_popup</item>
+        <item name="android:fontFamily">@font/raleway</item>
+
+        <item name="colorPrimary">#9A6C4D</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryContainer">#2177D1</item>
+        <item name="colorOnPrimaryContainer">@color/black</item>
+        <item name="colorSecondary">#5487A5</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryContainer">#79B1D1</item>
+        <item name="colorOnSecondaryContainer">@color/black</item>
+        <item name="colorTertiary">#5E9BBF</item>
+        <item name="colorOnTertiary">@color/black</item>
+        <item name="colorTertiaryContainer">@color/ice_on</item>
+        <item name="colorOnTertiaryContainer">@color/black</item>
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnError">@color/ice_on</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+        <item name="android:colorBackground">@color/ice_on</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorSurface">@color/ice_on</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorSurfaceVariant">#5A99BF</item>
+        <item name="colorOnSurfaceVariant">@color/black</item>
+        <item name="colorOutline">@color/black</item>
+        <item name="colorOnSurfaceInverse">@color/black</item>
+        <item name="colorSurfaceInverse">@color/black</item>
+        <item name="colorPrimaryInverse">@color/black</item>
+        <item name="textColor">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button.TextButton</item>
+    </style>
+
+    <style name="Widget.App.Button.TextButton" parent = "Widget.Material3.Button.TextButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">15dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button.TextButton" parent="ThemeOverlay.Material3.Button.TextButton">
+        <item name="colorContainer">?colorPrimary</item>
+        <item name="colorOnContainer">?colorOnBackground</item>
+    </style>
+
 
     <style name="Threedotsmenu" parent="Widget.AppCompat.Light.ActionButton.Overflow">
         <item name="tint">@color/black</item>

@@ -144,8 +144,13 @@
     <string name="save">Save</string>
     <string name="important">Important</string>
     <string name="hobby">Hobby</string>
-    <string name="extra_label">Extra label</string>
+    <string name="extra_label">Label</string>
     <string name="useful">Useful</string>
     <string name="agreement">Agreement is necessary</string>
     <string name="set_labels">Set extra labels name</string>
+    <string name="select_theme">Select theme</string>
+    <string name="default_theme">Default</string>
+    <string name="monet_theme">Dynamic colors</string>
+    <string name="coffee_theme">Iced coffee</string>
+    <string name="app_theme">App theme</string>
 </resources>

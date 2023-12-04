@@ -70,4 +70,10 @@
     <color name="light_blue_200">#FF81D4FA</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
+
+    <color name="background">#000000</color>
+    <color name="ice_accent">#6f4e37</color>
+    <color name="ice_second">#315164</color>
+    <color name="ice_second_variant">#263E4C</color>
+    <color name="ice_on">#edddd4</color>
 </resources>

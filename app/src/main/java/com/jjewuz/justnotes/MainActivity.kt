@@ -29,7 +29,6 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
@@ -61,16 +60,20 @@ class MainActivity : AppCompatActivity() {
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
-        val enabledMonet = sharedPref.getBoolean("enabledMonet", true)
+        val theme = sharedPref.getString("theme", "standart")
         val tasksDefault = sharedPref.getBoolean("isTask", false)
-        if (enabledFont and enabledMonet) {
+        if (enabledFont and (theme=="monet")) {
             setTheme(R.style.AppTheme)
-        } else if (!enabledFont and enabledMonet) {
+        } else if (!enabledFont and (theme=="monet")) {
             setTheme(R.style.FontMonet)
-        } else if (!enabledFont and !enabledMonet) {
+        } else if (!enabledFont and (theme=="standart")) {
             setTheme(R.style.Font)
-        } else {
+        } else if (enabledFont and (theme=="standart")) {
             setTheme(R.style.Nothing)
+        } else if (!enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIceFont)
+        } else if (enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIce)
         }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -93,8 +96,10 @@ class MainActivity : AppCompatActivity() {
 
         navView = findViewById(R.id.nv)
         val head = navView.getHeaderView(0)
+        val ver = resources.getString(R.string.appversion)
+        val build = resources.getString(R.string.buildn)
 
-        head.findViewById<TextView>(R.id.author).text = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+        head.findViewById<TextView>(R.id.author).text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
 
         backup = RoomBackup(this)
 

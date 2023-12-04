@@ -139,8 +139,13 @@
     <string name="save">Сохранить</string>
     <string name="important">Важное</string>
     <string name="hobby">Хобби</string>
-    <string name="extra_label">Доп. ярлык</string>
+    <string name="extra_label">Ярлык</string>
     <string name="useful">Полезное</string>
     <string name="agreement">Соглашение необходимо</string>
     <string name="set_labels">Установить имена доп. ярлыков</string>
+    <string name="select_theme">Выберите тему</string>
+    <string name="default_theme">Стандартная</string>
+    <string name="monet_theme">Динамические цвета</string>
+    <string name="coffee_theme">Кофе со льдом</string>
+    <string name="app_theme">Тема приложения</string>
 </resources>

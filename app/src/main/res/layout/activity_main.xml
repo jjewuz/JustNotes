@@ -26,7 +26,7 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:tint="?colorOnPrimaryContainer"
+            app:titleTextColor="?colorOnBackground"
             app:title="@string/notes" />
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -60,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:textColor="?colorOnBackground"
                     android:background="@android:color/transparent"
                     android:hint="@string/Title"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +94,7 @@
                 android:autofillHints=""
                 android:background="@android:color/transparent"
                 android:gravity="start|top"
+                android:textColor="?colorOnBackground"
                 android:hint="@string/hint"
                 android:inputType="textMultiLine"
                 android:isScrollContainer="true"
@@ -284,6 +286,7 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/pass_btn"
                         app:icon="@drawable/security"
+                        app:iconSize="24dp"
                         android:layout_height="wrap_content"
                         android:text="@string/set_password"/>
 

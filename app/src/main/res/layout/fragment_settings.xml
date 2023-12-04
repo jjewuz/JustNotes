@@ -55,6 +55,9 @@
                             android:layout_height="match_parent"
                             android:checked="false"
                             android:id="@+id/fonttoggle"
+                            tools:checked="true"
+                            app:thumbIcon="@drawable/check"
+                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/fontToggle"/>
 
                     </LinearLayout>
@@ -72,6 +75,7 @@
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:padding="5dp"
+                        android:gravity="center_vertical"
                         android:layout_height="match_parent">
 
                         <ImageView
@@ -82,12 +86,11 @@
                             android:scaleX="0.8"
                             android:layout_height="wrap_content"/>
 
-                        <com.google.android.material.materialswitch.MaterialSwitch
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:checked="false"
-                            android:id="@+id/monettoggle"
-                            android:text="@string/monet"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@string/app_theme"/>
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -118,6 +121,8 @@
                             android:layout_height="match_parent"
                             android:checked="false"
                             android:id="@+id/reversetoggle"
+                            app:thumbIcon="@drawable/check"
+                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/reverseSetting"/>
 
                     </LinearLayout>
@@ -148,6 +153,8 @@
                             android:layout_height="match_parent"
                             android:checked="false"
                             android:id="@+id/previewtoggle"
+                            app:thumbIcon="@drawable/check"
+                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/preview"/>
 
                     </LinearLayout>
@@ -261,6 +268,8 @@
                             android:layout_height="match_parent"
                             android:checked="false"
                             android:id="@+id/screenshottoggle"
+                            app:thumbIcon="@drawable/check"
+                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/screenshot_secured_notes"/>
 
                     </LinearLayout>
@@ -292,6 +301,8 @@
                             android:layout_height="match_parent"
                             android:checked="false"
                             android:id="@+id/passwordtoggle"
+                            app:thumbIcon="@drawable/check"
+                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/passwordSettings"/>
 
                     </LinearLayout>
@@ -343,7 +354,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:id="@+id/set_labels"
                         android:text="@string/set_labels"/>
 
@@ -408,60 +419,13 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:text="@string/reportBug"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="18dp"
-                                android:text="@string/report_desc"/>
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                style="@style/Widget.Material3.CardView.Filled"
-                android:layout_height="wrap_content">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/info"
-                        app:tint="?colorOnSecondaryContainer"
-                        android:scaleY="0.8"
-                        android:scaleX="0.8"
-                        android:layout_height="wrap_content"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/version"
-                            android:textSize="18sp"
-                            android:text="@string/appversion"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 
