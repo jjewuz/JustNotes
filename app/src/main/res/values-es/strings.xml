@@ -135,4 +135,12 @@
     <string name="close">Cerrar</string>
     <string name="color_picker">Elegir el color</string>
     <string name="color">Color</string>
+    <string name="save">Guardar</string>
+    <string name="extra_label">Etiqueta adicional</string>
+    <string name="set_labels">Establecer el nombre de las etiquetas adicionales</string>
+    <string name="hobby">Afición</string>
+    <string name="important">Importante</string>
+    <string name="agreement">Es necesario un acuerdo</string>
+    <string name="label">Etiquetas</string>
+    <string name="useful">Útil</string>
 </resources>
