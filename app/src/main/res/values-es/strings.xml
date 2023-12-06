@@ -136,11 +136,16 @@
     <string name="color_picker">Elegir el color</string>
     <string name="color">Color</string>
     <string name="save">Guardar</string>
-    <string name="extra_label">Etiqueta adicional</string>
+    <string name="extra_label">Etiqueta</string>
     <string name="set_labels">Establecer el nombre de las etiquetas adicionales</string>
     <string name="hobby">Afición</string>
     <string name="important">Importante</string>
     <string name="agreement">Es necesario un acuerdo</string>
     <string name="label">Etiquetas</string>
     <string name="useful">Útil</string>
+    <string name="default_theme">Por defecto</string>
+    <string name="monet_theme">Colores dinámicos</string>
+    <string name="coffee_theme">Café con hielo</string>
+    <string name="select_theme">Seleccionar tema</string>
+    <string name="app_theme">Tema de la aplicación</string>
 </resources>
