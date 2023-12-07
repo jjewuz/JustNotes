@@ -1,2 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="close">Zavřít</string>
+    <string name="save">Uložit</string>
+    <string name="tasks">Úkoly</string>
+    <string name="do_restore">Obnovit</string>
+    <string name="password">Heslo</string>
+    <string name="settingsText">Nastavení</string>
+    <string name="licenses">Licence</string>
+    <string name="default_theme">Výchozí</string>
+    <string name="delWarnTodo">Smazat tento úkol?</string>
+    <string name="count1">Počet znaků</string>
+    <string name="clear_f">Žádný formát</string>
+    <string name="agree">Potvrdit</string>
+    <string name="email">Email</string>
+    <string name="appearance">Vzhled</string>
+    <string name="gh">GitHub</string>
+    <string name="neg">Ne</string>
+    <string name="add_button">Nová poznámka</string>
+    <string name="inf">Informace</string>
+    <string name="back">Zpátky</string>
+    <string name="decline">Odmítnout</string>
+    <string name="notes">Poznámky</string>
+    <string name="verison">Vývojář: jjewuz</string>
+    <string name="other">Ostatní</string>
+    <string name="backup_title">Záloha</string>
+    <string name="select_theme">Vybrat motiv</string>
+    <string name="more">Více</string>
+    <string name="minuts">minuty</string>
+    <string name="todo">Seznam úkolů</string>
+    <string name="no_info">Nedostatek informací</string>
+    <string name="error">Chyba</string>
+    <string name="delWarn">Smazat tuto poznámku?</string>
+    <string name="bold">Tučné</string>
+    <string name="actions">Akce</string>
+    <string name="login">Přihlásit se</string>
+    <string name="color_picker">Vybrat barvu</string>
+    <string name="empty">Prázný</string>
+    <string name="useful">Užitečné</string>
+    <string name="appversion">Verze aplikace:</string>
+    <string name="security">Bezpečnost</string>
+    <string name="no_account">Žádný účet</string>
+    <string name="pos">Ano</string>
+    <string name="app_theme">Motiv aplikace</string>
+    <string name="do_backup">Záloha</string>
+    <string name="add">Přidat</string>
+    <string name="note">Poznámka</string>
+    <string name="color">Barva</string>
+</resources>
