@@ -33,7 +33,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, app build number, app version and steps on how to get the error.
 
 ## Translations
-The application is translated into different languages thanks to the community using [Weblate](https://hosted.weblate.org/).
+The application is translated into different languages thanks to the community using [Weblate](https://hosted.weblate.org/projects/justnotes/).
 
 ## Support chat
 
