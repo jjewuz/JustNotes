@@ -6,10 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TodoFragment">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -26,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
+                android:visibility="gone"
                 app:drawableTopCompat="@drawable/empty" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -35,6 +32,17 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             tools:listitem="@layout/todo_item" />
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:hideOnScroll="true"
+                android:foregroundTintMode="multiply"
+                style="@style/Widget.Material3.BottomAppBar"
+                app:navigationIcon="@drawable/menu"
+                />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addTodoButton"
@@ -49,57 +57,6 @@
                 android:contentDescription="@string/add_button" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-        <FrameLayout
-            android:id="@+id/standard_bottom_sheet"
-            style="@style/Widget.Material3.BottomSheet"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:behavior_peekHeight="550dp"
-            app:behavior_saveFlags="all"
-            tools:layout_height="1dp"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:id="@+id/drag_handle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="?attr/textInputFilledStyle"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="40dp"
-                    android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/color_cursor"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="40"
-                    android:hint="@string/enterTodo" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:id="@+id/todoEditText"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add"/>
-
-            </LinearLayout>
-
-        </FrameLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </FrameLayout>

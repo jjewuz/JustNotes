@@ -14,25 +14,45 @@
         android:orientation="vertical"
         android:layout_margin="12dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
         <TextView
             android:id="@+id/idTVNote"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginStart="3dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
-            android:padding="4dp"
-            android:text="@string/note"
             android:ellipsize="end"
+            android:padding="4dp"
             android:singleLine="true"
+            android:layout_weight="1"
+            android:text="@string/note"
             android:textSize="18sp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/category"
+            android:layout_weight="0"
+            style="@style/Widget.Material3.Chip.Assist.Elevated"
+            app:chipIcon="@drawable/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="@string/label" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/notedesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:layout_below="@id/idTVNote"
+            android:layout_below="@id/name"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:text="@string/notes"
@@ -50,15 +70,6 @@
             android:padding="4dp"
             android:text="@string/lastedit"
             android:textSize="13sp" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/category"
-            android:text="No Category"
-            style="@style/Widget.Material3.Chip.Suggestion.Elevated"
-            android:layout_below="@id/idTVDate"
-            android:checkable="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
 
     </RelativeLayout>

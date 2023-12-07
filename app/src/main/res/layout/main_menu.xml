@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <include
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            layout="@layout/nv_header"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:id="@+id/backup_card"
+            android:clickable="true"
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/backup_title"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                app:drawableTopCompat="@drawable/backup" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:id="@+id/settings_card"
+            android:clickable="true"
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/settingsText"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                app:drawableTopCompat="@drawable/settings" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:id="@+id/info_card"
+            android:clickable="true"
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/inf"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                app:drawableTopCompat="@drawable/info" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/app_build"
+        android:text="@string/buildn"/>
+
+    </LinearLayout>
+
+</FrameLayout>

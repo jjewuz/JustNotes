@@ -16,7 +16,7 @@ android {
         minSdk 26
         targetSdk 34
         versionCode 150
-        versionName "4.2.0"
+        versionName "5.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -32,28 +32,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-        }
-    }
-
-    flavorDimensions "version"
-    productFlavors {
-        gms {
-            dimension "version"
-        }
-        free {
-            dimension "version"
-            versionNameSuffix "f"
-        }
-    }
-    sourceSets {
-        gms {
-            java.srcDirs = ['main/java']
-            res.srcDirs = ['main/res']
-        }
-        free {
-            setRoot 'src/free'
-            java.srcDirs = ['free/java']
-            res.srcDirs = ['free/res']
         }
     }
     compileOptions {

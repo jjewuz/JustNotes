@@ -5,7 +5,6 @@
     <string name="deleted">Slettet</string>
     <string name="what_new_update">"Hva er nytt i "</string>
     <string name="nothingTxt">Tomhetens motstykke føles fraværende medgitt …</string>
-    <string name="change_view">Endre visning</string>
     <string name="reportBug">Rapporter problem</string>
     <string name="hint">Skriv her</string>
     <string name="vk">VK-gruppe</string>
@@ -19,13 +18,11 @@
     <string name="loginText">Bekreft hvem du er</string>
     <string name="loginTitle">JustNotes er låst</string>
     <string name="saved">Lagret</string>
-    <string name="delWarnTodo">Slett gjøremålet?</string>
     <string name="count1">Antall tegn</string>
     <string name="report_desc">Hvis du finner feil</string>
     <string name="passwordSettings">Biometrisk identitetsbekreftelse</string>
     <string name="count2">Lesetid</string>
     <string name="tg">Telegram-gruppe</string>
-    <string name="enterTodo">Skriv inn gjøremålstekst</string>
     <string name="passDisabled">Beskyttelse av</string>
     <string name="note_set_to_widget">Notatet har blitt installert i miniprogrammet</string>
     <string name="export">Eksporter til .txt</string>
@@ -47,7 +44,6 @@
     <string name="verison">Utvikler: jjewuz</string>
     <string name="info_desc">Sosiale lenker, lisenser …</string>
     <string name="authError">Identitetbekreftelsesfeil:</string>
-    <string name="monet">Bakgrunnsbildebaserte farger</string>
     <string name="other">Annet</string>
     <string name="option3">Lagre og avslutt</string>
     <string name="logo">Logo</string>
@@ -56,11 +52,8 @@
     <string name="backup_title">Sikkerhetskopi</string>
     <string name="backup_desc">Uroe deg om dine notaters sikkerhet</string>
     <string name="what_new_desc">I en ny oppdatering er det et nytt notatsminiprogram. For å sette et notat i det kan du gå til notatet, klikke de tre prikkene, og så klikke på</string>
-    <string name="about">Velkommen til JustNotes.</string>
     <string name="authSuc">Identitetsbekreftet</string>
     <string name="restart">Programomstart</string>
-    <string name="needRestart">Start programmet på ny for å bruke nye endringer</string>
-    <string name="countTime">Lesetid (min):</string>
     <string name="more">Mer</string>
     <string name="minuts">min</string>
     <string name="todo">Gjøremålsliste</string>
@@ -82,7 +75,6 @@
     <string name="do_backup">Sikkerhetskopier</string>
     <string name="fontToggle">Systemskrift</string>
     <string name="about2">Laget for rask og komfortabel redigering. Klikk pluss-tegnet for å opprette et nytt notat. Hold notat nedtrykt for å slette det.</string>
-    <string name="reverseSetting">Omvendt sortering</string>
     <string name="add">Legg til</string>
     <string name="changes">Sosiale media:</string>
     <string name="note">Notat</string>

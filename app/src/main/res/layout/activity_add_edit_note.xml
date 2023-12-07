@@ -159,12 +159,18 @@
                     android:padding="20dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/info"
+                        android:layout_height="40dp"
+                        android:contentDescription="@string/inf" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:text="@string/inf"/>
+                        android:text="@string/inf" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -198,17 +204,25 @@
                     android:padding="20dp"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/label"
+                        android:layout_height="40dp"
+                        android:contentDescription="@string/label" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textSize="20sp"
-                        android:text="@string/label"/>
+                        android:text="@string/labels"/>
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chipGroup"
                         app:singleSelection="true"
                         android:layout_gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -216,35 +230,54 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/important"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            app:chipIcon="@drawable/star"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
                             android:text="@string/important"/>
 
                         <com.google.android.material.chip.Chip
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/useful"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            app:chipIcon="@drawable/useful"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
                             android:text="@string/useful"/>
 
                         <com.google.android.material.chip.Chip
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/hobby"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            app:chipIcon="@drawable/person"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
                             android:text="@string/hobby"/>
 
                         <com.google.android.material.chip.Chip
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/label1"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            app:chipIcon="@drawable/label"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
                             android:text="@string/extra_label"/>
 
                         <com.google.android.material.chip.Chip
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/label2"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            app:chipIcon="@drawable/label"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
+                            android:text="@string/extra_label"/>
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label3"
+                            app:chipIcon="@drawable/label"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:checkable="true"
                             android:text="@string/extra_label"/>
 
                     </com.google.android.material.chip.ChipGroup>
@@ -267,6 +300,12 @@
                     android:gravity="center_horizontal"
                     android:padding="20dp"
                     android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/note"
+                        android:layout_height="40dp"
+                        android:contentDescription="@string/actions" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/labels_edit_text"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:textCursorDrawable="@drawable/color_cursor"
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
+        android:layout_weight="1"
+        android:paddingEnd="10dp"
+        android:hint="@string/label" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/label1_edit"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/check"
+                    android:id="@+id/save1"
+                    android:background="@drawable/buttonc"
+                    android:layout_height="50dp"
+                    app:tint="?colorOnPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    android:layout_weight="1"
+                    android:paddingEnd="10dp"
+                    android:hint="@string/label" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/label2_edit"
+                        android:layout_height="wrap_content"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/check"
+                    android:id="@+id/save2"
+                    android:background="@drawable/buttonc"
+                    android:layout_height="50dp"
+                    app:tint="?colorOnPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    android:layout_weight="1"
+                    android:paddingEnd="10dp"
+                    android:hint="@string/label" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/label3_edit"
+                        android:layout_height="wrap_content"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/check"
+                    android:id="@+id/save3"
+                    android:background="@drawable/buttonc"
+                    android:layout_height="50dp"
+                    app:tint="?colorOnPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

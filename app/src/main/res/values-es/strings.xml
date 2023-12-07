@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about">¡Bienvenido a JustNotes!</string>
     <string name="about2">Esta aplicación ha sido creada para la edición del texto, de forma rápida y cómoda. Haga clic en \"más\" para crear una nueva nota. Mantenga presionada la tarjeta para eliminar la nota.</string>
     <string name="changes">Redes sociales:</string>
     <string name="vk">Grupo VK</string>
@@ -33,7 +32,6 @@
     <string name="note">Nota</string>
     <string name="error">Error</string>
     <string name="countSymb">Número de caracteres:</string>
-    <string name="countTime">Tiempo de lectura (min.):</string>
     <string name="loginText">Por favor registrese</string>
     <string name="loginTitle">JustNotes está bloqueado</string>
     <string name="settingsText">Ajustes</string>
@@ -49,9 +47,6 @@
     <string name="add_button">Nueva nota</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">Fuente del sistema</string>
-    <string name="needRestart">Reinicie la aplicación para utilizar los nuevos cambios</string>
-    <string name="monet">Colores basados en el fondo de pantalla</string>
-    <string name="reverseSetting">Notas de ordenación inversa</string>
     <string name="reportBug">Informar de un problema con la aplicación</string>
     <string name="buildn">Número de compilación:</string>
     <string name="appversion">Version de aplicacion:</string>
@@ -62,11 +57,8 @@
     <string name="nothingTxt">Aquí está vacío…</string>
     <string name="socialLinksText">Suscríbete a las redes sociales:</string>
     <string name="todo">Lista de tareas</string>
-    <string name="enterTodo">Escriba el texto para la tarea</string>
     <string name="add">Agregar</string>
-    <string name="delWarnTodo">¿Borrar la tarea?</string>
     <string name="openTask">Abrir por defecto</string>
-    <string name="change_view">Cambia estilo</string>
     <string name="backup_title">Copia de seguridad</string>
     <string name="do_backup">Copia de seguridad</string>
     <string name="do_restore">Restaurar</string>
@@ -121,13 +113,11 @@
     <string name="agree">Estoy de acuerdo</string>
     <string name="decline">No estoy de acuerdo</string>
     <string name="privacy_policy">Política de privacidad</string>
-    <string name="new_conditions">Con esta actualización, entran en vigor las nuevas condiciones de uso y la política de privacidad. Si no estás de acuerdo con los términos, debes dejar de usar la aplicación.</string>
     <string name="for_users">Al utilizar la aplicación usted acepta:</string>
     <string name="donate">Donar al desarrollador</string>
     <string name="backup_complete">Copia de seguridad finalizada</string>
     <string name="deletion_succes">¡Cuenta eliminada correctamente!</string>
     <string name="auth_need">Necesita verificación</string>
-    <string name="app_updated">¡La aplicación se ha actualizado!</string>
     <string name="account_delete_info">¿Seguro que quieres eliminar tu cuenta?</string>
     <string name="screenshot_secured_notes">Permitir capturas de pantalla en notas seguras</string>
     <string name="undo">Deshacer</string>
@@ -141,7 +131,6 @@
     <string name="hobby">Afición</string>
     <string name="important">Importante</string>
     <string name="agreement">Es necesario un acuerdo</string>
-    <string name="label">Etiquetas</string>
     <string name="useful">Útil</string>
     <string name="default_theme">Por defecto</string>
     <string name="monet_theme">Colores dinámicos</string>

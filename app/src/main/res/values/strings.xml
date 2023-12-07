@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">JustNotes</string>
-    <string name="about">Welcome to JustNotes!</string>
     <string name="about2">This app created for fast and comfortable text editing. Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
     <string name="changes">Social media:</string>
     <string name="vk">VK group</string>
@@ -35,7 +34,6 @@
     <string name="note">Note</string>
     <string name="error">Error</string>
     <string name="countSymb">Character count:</string>
-    <string name="countTime">Reading time (mins):</string>
     <string name="loginTitle">JustNotes is locked</string>
     <string name="loginText">Please authenticate</string>
     <string name="settingsText">Settings</string>
@@ -51,9 +49,6 @@
     <string name="add_button">New note</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">System font</string>
-    <string name="needRestart">Restart the app to use the new changes</string>
-    <string name="monet">Wallpaper-based colors</string>
-    <string name="reverseSetting">Reverse sort notes</string>
     <string name="reportBug">Report app issue</string>
     <string name="buildn">Build bumber:</string>
     <string name="appversion">App version:</string>
@@ -64,11 +59,8 @@
     <string name="nothingTxt">It\'s empty here…</string>
     <string name="socialLinksText">Subscribe to social networks:</string>
     <string name="todo">Task list</string>
-    <string name="enterTodo">Enter task text</string>
     <string name="add">Add</string>
-    <string name="delWarnTodo">Delete the task?</string>
     <string name="openTask">Open by default</string>
-    <string name="change_view">Change view</string>
     <string name="backup_title">Backup</string>
     <string name="do_backup">Backup</string>
     <string name="do_restore">Restore</string>
@@ -83,7 +75,7 @@
     <string name="info_desc">Social links, licences...</string>
     <string name="more">More</string>
     <string name="backup_txt">In this section, you can make a local backup of your data.</string>
-    <string name="backup_warn">Attention! Task data is not saved.</string>
+    <string name="backup_warn">Attention! Reminders are not saved.</string>
     <string name="not_encrypted">Attention! The local backup is not encrypted.</string>
     <string name="preview">Preview note text</string>
     <string name="set_on_widget">Set the note to the widget</string>
@@ -132,15 +124,13 @@
     <string name="for_users">By using the application you agree with:</string>
     <string name="agree">Agree</string>
     <string name="decline">Decline</string>
-    <string name="app_updated">The app has been updated!</string>
-    <string name="new_conditions">With this update, new terms of use and privacy policy come to effect. If you do not agree with the terms, you must stop using the app.</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     <string name="screenshot_secured_notes">Allow screenshot in secured notes</string>
     <string name="close">Close</string>
     <string name="color_picker">Choose color</string>
     <string name="color">Color</string>
-    <string name="label">Labels</string>
+    <string name="label">Label</string>
     <string name="save">Save</string>
     <string name="important">Important</string>
     <string name="hobby">Hobby</string>
@@ -153,4 +143,19 @@
     <string name="monet_theme">Dynamic colors</string>
     <string name="coffee_theme">Iced coffee</string>
     <string name="app_theme">App theme</string>
+    <string name="push_notification">Select time when push notification</string>
+    <string name="add_reminder">Add a reminder</string>
+    <string name="reminders">Reminders</string>
+    <string name="style">Style</string>
+    <string name="sort">Sort</string>
+    <string name="change_page">Switch page</string>
+    <string name="remind_hint">Remind me about...</string>
+    <string name="select_time">Remind time</string>
+    <string name="delete_reminder">Delete reminder?</string>
+    <string name="labels_edit_text">Empty field will hide label.</string>
+    <string name="labels">Labels</string>
+    <string name="error_saving_labels">Error saving labels name</string>
+    <string name="is_saved">Saved</string>
+    <string name="beta_mode_activated">Beta features activated!</string>
+    <string name="beta_mode">Beta mode</string>
 </resources>

@@ -70,7 +70,9 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var labelGroup: ChipGroup
     private lateinit var label1: Chip
     private lateinit var label2: Chip
+    private lateinit var label3: Chip
     private var label = ""
+    private var oldLabel = ""
 
     private lateinit var importTxtBtn: Button
     private lateinit var exportTxtBtn: Button
@@ -144,9 +146,21 @@ class AddEditNoteActivity : AppCompatActivity() {
         labelGroup = findViewById(R.id.chipGroup)
         label1 = findViewById(R.id.label1)
         label2 = findViewById(R.id.label2)
+        label3 = findViewById(R.id.label3)
 
-        label1.text = sharedPref.getString("label1", resources.getString(R.string.extra_label))
-        label2.text = sharedPref.getString("label2", resources.getString(R.string.extra_label))
+        label1.text = sharedPref.getString("label1", "")
+        label2.text = sharedPref.getString("label2", "")
+        label3.text = sharedPref.getString("label3", "")
+
+        if (label1.text == ""){
+            label1.visibility = View.GONE
+        }
+        if (label2.text == ""){
+            label2.visibility = View.GONE
+        }
+        if (label3.text == ""){
+            label3.visibility = View.GONE
+        }
 
         importTxtBtn = findViewById(R.id.importtxt)
         exportTxtBtn = findViewById(R.id.exporttxt)
@@ -183,7 +197,11 @@ class AddEditNoteActivity : AppCompatActivity() {
                 R.id.label2 -> {
                     label = "label2"
                 }
+                R.id.label3 -> {
+                    label = "label3"
+                }
                 else -> label = ""
+
             }
             hasChanges = true
         }
@@ -304,7 +322,10 @@ class AddEditNoteActivity : AppCompatActivity() {
                 labelGroup.check(R.id.label1)
             }else if (label == "label2"){
                 labelGroup.check(R.id.label2)
+            } else if (label == "label3"){
+                labelGroup.check(R.id.label3)
             }
+            hasChanges = false
             noteID = intent.getIntExtra("noteId", -1)
             noteLock = intent.getStringExtra("security").toString()
             noteTitleEdt.setText(noteTitle)
@@ -353,10 +374,10 @@ class AddEditNoteActivity : AppCompatActivity() {
 
             override fun afterTextChanged(editable: Editable) {}
         }
-
+        textEditor = TextHelper(noteEdt)
         noteTitleEdt.addTextChangedListener(watcher)
         noteEdt.addTextChangedListener(watcher)
-        textEditor = TextHelper(noteEdt)
+
 
         if (noteLock != "" && noteLock != "0"){
             if (!securedNote){

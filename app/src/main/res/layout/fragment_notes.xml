@@ -29,35 +29,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/important"
-                style="@style/Widget.Material3.Chip.Filter"
+                app:chipIcon="@drawable/star"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
                 android:text="@string/important"/>
 
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/useful"
-                style="@style/Widget.Material3.Chip.Filter"
+                app:chipIcon="@drawable/useful"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
                 android:text="@string/useful"/>
 
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/hobby"
-                style="@style/Widget.Material3.Chip.Filter"
+                app:chipIcon="@drawable/person"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
                 android:text="@string/hobby"/>
 
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label1"
-                style="@style/Widget.Material3.Chip.Filter"
+                app:chipIcon="@drawable/label"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
                 android:text="@string/extra_label"/>
 
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label2"
-                style="@style/Widget.Material3.Chip.Filter"
+                app:chipIcon="@drawable/label"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
+                android:text="@string/extra_label"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label3"
+                app:chipIcon="@drawable/label"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:checkable="true"
                 android:text="@string/extra_label"/>
 
         </com.google.android.material.chip.ChipGroup>
@@ -78,7 +97,14 @@
             android:layout_height="wrap_content"
             android:scaleX="0.7"
             android:scaleY="0.7"
+            android:visibility="gone"
             app:drawableTopCompat="@drawable/empty" />
+
+            <ProgressBar
+                android:layout_gravity="center"
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView2"
@@ -105,6 +131,18 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:hideOnScroll="true"
+                android:foregroundTintMode="multiply"
+                style="@style/Widget.Material3.BottomAppBar"
+                app:menu="@menu/notes_items"
+                app:navigationIcon="@drawable/menu"
+                />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/idFAB"

@@ -10,6 +10,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +27,8 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -38,6 +42,67 @@ import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.util.concurrent.Executor
 
+class ModalBottomSheet: BottomSheetDialogFragment(){
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.main_menu, container, false)
+
+    companion object {
+        const val TAG = "ModalBottomSheet"
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var k = 0
+
+        val appCard = view.findViewById<MaterialCardView>(R.id.app_card)
+        val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val already = sharedPref.getBoolean("is_dev", false)
+        appCard.setOnClickListener {
+            k+=1
+            if (k==6 && !already){
+                with(sharedPref.edit()){
+                    putBoolean("is_dev", true)
+                    apply()
+                }
+                Toast.makeText(requireContext(), resources.getString(R.string.beta_mode_activated), Toast.LENGTH_LONG).show()
+            }
+        }
+        val appVer = view.findViewById<TextView>(R.id.app_build)
+        val appLabel = view.findViewById<TextView>(R.id.app_label)
+        if (already){
+            appLabel.text = "${resources.getString(R.string.app_name)} β"
+            appVer.text = "v${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+        } else{
+            appVer.text = "v${BuildConfig.VERSION_NAME}"
+        }
+
+
+
+        val backupCard = view.findViewById<MaterialCardView>(R.id.backup_card)
+        val settingsCard = view.findViewById<MaterialCardView>(R.id.settings_card)
+        val infoCard = view.findViewById<MaterialCardView>(R.id.info_card)
+
+        backupCard.setOnClickListener { replaceFragment(BackupFragment())
+            this.dismiss()}
+        settingsCard.setOnClickListener { replaceFragment(SettingsFragment())
+            this.dismiss()}
+        infoCard.setOnClickListener { replaceFragment(InfoFragment())
+            this.dismiss()}
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.addToBackStack(fragment.tag)
+        fragmentTransaction.commit ()
+    }
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -86,20 +151,6 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(POST_NOTIFICATIONS), 100)
         }
 
-        actionBarToggle = ActionBarDrawerToggle(this, binding.drawer, 0, 0)
-
-        binding.drawer.addDrawerListener(actionBarToggle)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        actionBarToggle.syncState()
-
-        navView = findViewById(R.id.nv)
-        val head = navView.getHeaderView(0)
-        val ver = resources.getString(R.string.appversion)
-        val build = resources.getString(R.string.buildn)
-
-        head.findViewById<TextView>(R.id.author).text = "$ver ${BuildConfig.VERSION_NAME} \n$build ${BuildConfig.VERSION_CODE}"
 
         backup = RoomBackup(this)
 
@@ -110,21 +161,13 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-        val notesTxt = resources.getString(R.string.notes)
-        val todoTxt = resources.getString(R.string.todo)
-        val backupTxt = resources.getString(R.string.backup_title)
-
-
         if (savedInstanceState == null) {
             if (tasksDefault) {
-                supportActionBar?.title = todoTxt
-                binding.nv.setCheckedItem(R.id.todo)
                 replaceFragment(TodoFragment())
             } else {
                 replaceFragment(NotesFragment())
             }
         }
-
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
         val newPP = sharedPref.getBoolean("agree_conditions2023", false)
@@ -155,44 +198,6 @@ class MainActivity : AppCompatActivity() {
 
         val loginErr = resources.getString(R.string.authError)
         val noPasswordErr = resources.getString(R.string.noPassError)
-
-        binding.apply {
-            nv.setNavigationItemSelectedListener {
-                when(it.itemId){
-                    R.id.notes -> {
-                        supportActionBar?.title = notesTxt
-                        replaceFragment(NotesFragment())
-                        drawer.closeDrawer(GravityCompat.START)
-                        true
-                    }
-                    R.id.todo ->{
-                        supportActionBar?.title = todoTxt
-                        replaceFragment(TodoFragment())
-                        drawer.closeDrawer(GravityCompat.START)
-                        true
-                    }
-                    R.id.back_up ->{
-                        supportActionBar?.title = backupTxt
-                        replaceFragment(BackupFragment())
-                        drawer.closeDrawer(GravityCompat.START)
-                        true
-                    }
-                    R.id.settings ->{
-                        supportActionBar?.title = resources.getString(R.string.settingsText)
-                        replaceFragment(SettingsFragment())
-                        drawer.closeDrawer(GravityCompat.START)
-                        true
-                    }
-                    R.id.info ->{
-                        supportActionBar?.title = resources.getString(R.string.inf)
-                        replaceFragment(InfoFragment())
-                        drawer.closeDrawer(GravityCompat.START)
-                        true
-                    }
-                    else -> { true}
-                }
-            }
-        }
 
 
         executor = ContextCompat.getMainExecutor(this)
@@ -297,11 +302,6 @@ class MainActivity : AppCompatActivity() {
         if (fragment != null) {
             replaceFragment(fragment)
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        binding.drawer.openDrawer(navView)
-        return true
     }
 
     private fun openLink(url: String){

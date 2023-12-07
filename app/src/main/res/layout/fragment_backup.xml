@@ -232,6 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/reset_btn"
+                            android:textColor="?colorOnBackground"
                             style="?attr/materialButtonOutlinedStyle"
                             android:text="@string/forgot_pass"/>
                     </LinearLayout>

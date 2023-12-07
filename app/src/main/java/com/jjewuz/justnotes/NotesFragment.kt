@@ -12,10 +12,12 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
@@ -26,24 +28,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-
 
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
     lateinit var notesRV: RecyclerView
+    lateinit var progressBar: ProgressBar
     lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
     lateinit var viewIcon: MenuItem
 
+    private lateinit var bottomAppBar: BottomAppBar
+
     private lateinit var labelGroup: ChipGroup
     private lateinit var label1: Chip
     private lateinit var label2: Chip
+    private lateinit var label3: Chip
 
     lateinit var sharedPref: SharedPreferences
 
@@ -52,10 +56,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         savedInstanceState: Bundle?
     ): View? {
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        val reverse = sharedPref.getBoolean("reversed", false)
-        val isGrid = sharedPref.getBoolean("grid", false)
-
-
+        var reverse = sharedPref.getBoolean("reversed", false)
+        var isGrid = sharedPref.getBoolean("grid", false)
 
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
@@ -66,26 +68,13 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
             override fun onPrepareMenu(menu: Menu) {
                 super.onPrepareMenu(menu)
-                if (isGrid){
-                    viewIcon.setIcon(R.drawable.list_icon)
-                } else {
-                    viewIcon.setIcon(R.drawable.grid_icon)
-                }
-
+                viewIcon.setIcon(R.drawable.reminders)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.view_change -> {
-                        with (sharedPref.edit()) {
-                            putBoolean("grid", !isGrid)
-                            apply()
-                        }
-                        val fragmentManager = requireActivity().supportFragmentManager
-                        val fragmentTransaction = fragmentManager.beginTransaction()
-                        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                        fragmentTransaction.replace(R.id.place_holder, NotesFragment())
-                        fragmentTransaction.commit ()
+                        replaceFragment(TodoFragment())
                         true
                     }
                     else -> false
@@ -95,15 +84,30 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         val v = inflater.inflate(R.layout.fragment_notes, container, false)
 
+        bottomAppBar = v.findViewById(R.id.bottomAppBar)
         notesRV = v.findViewById(R.id.notes)
+        progressBar = v.findViewById(R.id.progress_bar)
         addFAB = v.findViewById(R.id.idFAB)
         nothing = v.findViewById(R.id.nothing)
         labelGroup = v.findViewById(R.id.chipGroup)
         label1 = v.findViewById(R.id.label1)
         label2 = v.findViewById(R.id.label2)
+        label3 = v.findViewById(R.id.label3)
 
-        label1.text = sharedPref.getString("label1", resources.getString(R.string.extra_label))
-        label2.text = sharedPref.getString("label2", resources.getString(R.string.extra_label))
+        label1.text = sharedPref.getString("label1", "")
+        label2.text = sharedPref.getString("label2", "")
+        label3.text = sharedPref.getString("label3", "")
+
+        if (label1.text == ""){
+            label1.visibility = View.GONE
+        }
+        if (label2.text == ""){
+            label2.visibility = View.GONE
+        }
+        if (label3.text == ""){
+            label3.visibility = View.GONE
+        }
+
 
         if (isGrid){
             val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
@@ -139,9 +143,11 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                     allItems = viewModal.getLabeled("label1")
                 }
                 R.id.label2 -> {
-                    allItems = viewModal.getLabeled("label1")
+                    allItems = viewModal.getLabeled("label2")
                 }
-
+                R.id.label3 -> {
+                    allItems = viewModal.getLabeled("label3")
+                }
                 else -> allItems = viewModal.getNotes()
             }
             allItems.observe(viewLifecycleOwner, Observer { list ->
@@ -151,7 +157,37 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             })
         }
 
+        bottomAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.sorting -> {
+                    reverse = !reverse
+                    with (sharedPref.edit()){
+                        putBoolean("reversed", reverse)
+                        apply()
+                    }
+                    val fragmentManager = parentFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.place_holder, NotesFragment())
+                    fragmentTransaction.commit ()
+                    true
+                }
+                R.id.style -> {
+                    isGrid = !isGrid
+                    with (sharedPref.edit()){
+                        putBoolean("grid", isGrid)
+                        apply()
+                    }
+                    val fragmentManager = parentFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.place_holder, NotesFragment())
+                    fragmentTransaction.commit ()
+                    true
+                }
 
+                else -> false
+            }
+
+        }
 
         allItems.observe(viewLifecycleOwner, Observer { list ->
               list?.let {
@@ -161,7 +197,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         noteRVAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
             override fun onChanged() {
-                val count = noteRVAdapter.getItemCount()
+                progressBar.visibility = View.GONE
+                val count = noteRVAdapter.itemCount
                 if (count == 0){
                     notesRV.visibility = View.GONE
                     nothing.visibility = View.VISIBLE
@@ -172,8 +209,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             }
         })
 
-
-
+        bottomAppBar.setNavigationOnClickListener {
+            val modalBottomSheet = ModalBottomSheet()
+            modalBottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
+        }
 
         addFAB.setOnClickListener {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
@@ -209,6 +248,14 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
             }
             .show()
+    }
+
+    fun replaceFragment(fragment : Fragment){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.commit ()
     }
 
 }

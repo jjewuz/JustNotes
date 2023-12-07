@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about">欢迎来到 JustNotes!</string>
     <string name="about2">JustNotes 是一个快速、舒适的文本编辑器。 点击加号新建笔记。按住卡片可删除笔记。</string>
     <string name="changes">联系我们:</string>
     <string name="vk">VK</string>
@@ -33,7 +32,6 @@
     <string name="note">笔记</string>
     <string name="error">错误</string>
     <string name="countSymb">字数:</string>
-    <string name="countTime">阅读时间:</string>
     <string name="loginTitle">JustNotes 已锁定</string>
     <string name="loginText">请验证</string>
     <string name="settingsText">设置</string>
@@ -49,9 +47,6 @@
     <string name="add_button">新笔记</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">系统字体</string>
-    <string name="needRestart">更改将在应用程序重启后应用</string>
-    <string name="monet">壁纸取色</string>
-    <string name="reverseSetting">按时间倒序排列笔记</string>
     <string name="reportBug">报告问题</string>
     <string name="buildn">构建版本:</string>
     <string name="appversion">应用版本:</string>
@@ -62,11 +57,8 @@
     <string name="nothingTxt">无内容…</string>
     <string name="socialLinksText">订阅我们：</string>
     <string name="todo">待办事项</string>
-    <string name="enterTodo">待办事项</string>
     <string name="add">添加</string>
-    <string name="delWarnTodo">你想删除这个待办事项吗？</string>
     <string name="openTask">默认打开视图</string>
-    <string name="change_view">修改视图</string>
     <string name="backup_title">备份</string>
     <string name="do_backup">备份</string>
     <string name="do_restore">还原</string>
@@ -107,7 +99,6 @@
     <string name="register">注册</string>
     <string name="striked">删除线</string>
     <string name="privacy_policy">隐私政策</string>
-    <string name="new_conditions">更新后，新的使用条款和隐私政策生效。如果您不同意这些条款，请停止使用本应用程序。</string>
     <string name="update_downloaded">从 Google Play 下载更新。</string>
     <string name="backup_rules">在此，您可以备份笔记。要使用本地备份，需要允许 JustNotes 需要访问设备上的文件。要使用云备份，您需要创建一个账户。</string>
     <string name="no_info">信息不足</string>
@@ -125,7 +116,6 @@
     <string name="deletion_succes">账户已删除！</string>
     <string name="auth_need">需要核查</string>
     <string name="italic">斜体</string>
-    <string name="app_updated">应用程序已更新！</string>
     <string name="enter_password">确认密码</string>
     <string name="account_delete_info">您确定要删除账户吗？</string>
     <string name="sign_out">登出</string>

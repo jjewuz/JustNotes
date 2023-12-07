@@ -28,9 +28,7 @@
     <string name="option3">Enregistrer et quitter</string>
     <string name="lastedit">"Dernière modification : "</string>
     <string name="Title">Titre de la note</string>
-    <string name="about">Bienvenue dans JustNotes !</string>
     <string name="restart">Redémarrer</string>
-    <string name="countTime">Temps de lecture (min) :</string>
     <string name="minuts">min</string>
     <string name="menu_home">Accueil</string>
     <string name="error">Erreur</string>

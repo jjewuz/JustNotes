@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about">Willkommen bei JustNotes!</string>
     <string name="about2">Diese App wurde für die schnelle und komfortable Textbearbeitung erstellt. Klicken Sie auf das „Plus“, um eine neue Notiz zu erstellen. Halten Sie die Karte gedrückt, um die Notiz zu löschen.</string>
     <string name="changes">Sozialen Medien:</string>
     <string name="vk">Vkontakte</string>
@@ -33,7 +32,6 @@
     <string name="note">die Notiz</string>
     <string name="error">Fehler</string>
     <string name="countSymb">Anzahl der Zeichen:</string>
-    <string name="countTime">Lesezeit (Min.):</string>
     <string name="loginTitle">JustNotes ist gesperrt</string>
     <string name="loginText">Bitte authentifizieren Sie sich</string>
     <string name="settingsText">Einstellungen</string>
@@ -49,9 +47,6 @@
     <string name="add_button">Neuer Hinweis</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">Systemschriftart</string>
-    <string name="needRestart">Änderungen werden nach dem Neustart der Anwendung übernommen</string>
-    <string name="monet">Tapetenbasierte Farben</string>
-    <string name="reverseSetting">Notizen umkehren</string>
     <string name="reportBug">App-Problem melden</string>
     <string name="buildn">Build-Nummer:</string>
     <string name="appversion">App Version:</string>
@@ -62,11 +57,8 @@
     <string name="nothingTxt">Hier ist es leer...</string>
     <string name="socialLinksText">Folgen Sie unseren sozialen Netzwerken:</string>
     <string name="todo">Aufgabenliste</string>
-    <string name="enterTodo">Geben Sie den Aufgabentext ein</string>
     <string name="add">Hinzufügen</string>
-    <string name="delWarnTodo">Sind Sie sicher, dass Sie die Aufgabe löschen möchten?</string>
     <string name="openTask">Standardmäßig geöffnet</string>
-    <string name="change_view">Stil ändern</string>
     <string name="backup_title">Sicherung</string>
     <string name="do_backup">Sicherung</string>
     <string name="do_restore">Wiederherstellen</string>
@@ -90,6 +82,14 @@
     <string name="empty">Leer</string>
     <string name="no_note">Sie haben die anzuzeigende Notiz nicht ausgewählt.</string>
     <string name="choose_note">Wählen Sie die anzuzeigende Notiz aus.</string>
+    <string name="actions">Aktionen</string>
+    <string name="bold">Deutlich</string>
+    <string name="italic">Kursiv</string>
+    <string name="striked">Durchgestrichen</string>
+    <string name="underlined">Unterstrichen</string>
+    <string name="clear_f">Kein Format</string>
+    <string name="import_txt">Aus .txt importieren</string>
+    <string name="update_downloaded">Ein Update wurde gerade von Google Play heruntergeladen.</string>
     <string name="backup_rules">Hier können Sie Ihre Notizen sichern. Um die lokale Sicherung nutzen zu können, benötigt die App Zugriff auf die Dateien auf dem Gerät. Um Cloud-Backup nutzen zu können, müssen Sie ein Konto erstellen.</string>
     <string name="local_backup">Lokales Backup</string>
     <string name="cloud_backup">Cloud-Backup</string>
@@ -102,6 +102,40 @@
     <string name="register">Registrieren</string>
     <string name="forgot_pass">Passwort vergessen?</string>
     <string name="no_info">Nicht genug Information</string>
+    <string name="account_delete_info">Sind Sie sicher, dass Sie Ihr Konto löschen möchten?</string>
     <string name="reset_email_sent">Eine E-Mail mit Anweisungen wurde gesendet.</string>
     <string name="cloud_backup_beta">Das Cloud-Backup wird derzeit getestet. Bitte verlassen Sie sich bis auf Weiteres nicht auf diese Methode.</string>
+    <string name="set_password">Passwort festlegen</string>
+    <string name="enter_password">Passwort eingeben</string>
+    <string name="pass_hint">Lassen Sie das Feld leer oder schreiben Sie „0“, um das Passwort zu entfernen.</string>
+    <string name="privacy_policy">Datenschutzrichtlinie</string>
+    <string name="deletion_error">Fehler beim Löschen des Kontos!</string>
+    <string name="deletion_succes">Konto erfolgreich gelöscht!</string>
+    <string name="auth_need">Brauchen Sie eine Verifizierung</string>
+    <string name="backup_complete">Sicherung komplett</string>
+    <string name="restore_fail">Fehler beim Herunterladen des Backups!</string>
+    <string name="terms_of_use">Nutzungsbedingungen</string>
+    <string name="donate">Spenden Sie an den Entwickler</string>
+    <string name="for_users">Durch die Nutzung der Anwendung stimmen Sie Folgendem zu:</string>
+    <string name="agree">Zustimmen</string>
+    <string name="decline">Abfall</string>
+    <string name="undo">Rückgängig machen</string>
+    <string name="redo">Wiederholen</string>
+    <string name="screenshot_secured_notes">Screenshot in gesicherten Notizen zulassen</string>
+    <string name="close">Schließen</string>
+    <string name="color_picker">Wähle eine Farbe</string>
+    <string name="color">Farbe</string>
+    <string name="save">Speichern</string>
+    <string name="important">Wichtig</string>
+    <string name="hobby">Hobby</string>
+    <string name="extra_label">Etikett</string>
+    <string name="useful">Nützlich</string>
+    <string name="agreement">Vereinbarung ist notwendig</string>
+    <string name="set_labels">Legen Sie den Namen eines zusätzlichen Labels fest</string>
+    <string name="select_theme">Thema wählen</string>
+    <string name="default_theme">Standard</string>
+    <string name="monet_theme">Dynamische Farben</string>
+    <string name="coffee_theme">Eiskaffee</string>
+    <string name="app_theme">App-Thema</string>
+    <string name="select_time">Zeit erinnern</string>
 </resources>

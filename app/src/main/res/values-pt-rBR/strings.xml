@@ -30,15 +30,11 @@
     <string name="notes">Notas</string>
     <string name="verison">Desenvolvedor: jjewuz</string>
     <string name="authError">Erro de autenticação:</string>
-    <string name="monet">Cores baseadas no papel de parede</string>
     <string name="option3">Salvar e sair</string>
     <string name="logo">Logo</string>
     <string name="lastedit">"Última edição: "</string>
     <string name="Title">Título da Nota</string>
-    <string name="about">Bem-vindo ao JustNotes!</string>
     <string name="authSuc">Autenticação bem-sucedida</string>
-    <string name="needRestart">Reinicie o aplicativo para usar as novas alterações</string>
-    <string name="countTime">Tempo de leitura (min):</string>
     <string name="minuts">min</string>
     <string name="menu_home">Início</string>
     <string name="error">Erro</string>
@@ -49,7 +45,6 @@
     <string name="pos">Sim</string>
     <string name="fontToggle">Fonte do sistema</string>
     <string name="about2">Este aplicativo foi criado para edição de texto rápida e confortável. Clique no \"mais\" para criar uma nova nota. Segure o cartão para excluir a nota.</string>
-    <string name="reverseSetting">Inverter ordem das notas</string>
     <string name="changes">Mídia Social:</string>
     <string name="note">Nota</string>
     <string name="authFail">Falha na autenticação</string>
@@ -57,13 +52,10 @@
     <string name="preview">Prévia da nota</string>
     <string name="what_new_update">"Novidades "</string>
     <string name="nothingTxt">Está vazio por aqui…</string>
-    <string name="change_view">Alterar visualização</string>
     <string name="do_restore">Restaurar</string>
     <string name="settings_desc">Aparência, segurança…</string>
     <string name="licenses">Licenças</string>
-    <string name="delWarnTodo">Excluir a tarefa?</string>
     <string name="report_desc">Se encontrar erros</string>
-    <string name="enterTodo">Insira o texto da tarefa</string>
     <string name="note_set_to_widget">A nota foi definida no widget</string>
     <string name="choose_note">Escolha a nota a ser exibida.</string>
     <string name="appearance">Aparência</string>
@@ -94,7 +86,7 @@
     <string name="striked">Tachado</string>
     <string name="bold">Negrito</string>
     <string name="actions">Ações</string>
-    <string name="import_txt">Importar txt</string>
+    <string name="import_txt">Importar .txt</string>
     <string name="underlined">Sublinhado</string>
     <string name="italic">Itálico</string>
     <string name="password">Senha</string>

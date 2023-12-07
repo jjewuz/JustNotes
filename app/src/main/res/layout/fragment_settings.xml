@@ -95,39 +95,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:src="@drawable/sort"
-                            app:tint="?colorOnSecondaryContainer"
-                            android:scaleY="0.8"
-                            android:scaleX="0.8"
-                            android:layout_height="wrap_content"/>
-
-                        <com.google.android.material.materialswitch.MaterialSwitch
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:checked="false"
-                            android:id="@+id/reversetoggle"
-                            app:thumbIcon="@drawable/check"
-                            app:thumbIconTint="?colorPrimary"
-                            android:text="@string/reverseSetting"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     style="@style/Widget.Material3.CardView.Filled"
@@ -212,7 +179,7 @@
                                     android:id="@+id/openTasks"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/todo"
+                                    android:text="@string/reminders"
                                     />
                             </com.google.android.material.button.MaterialButtonToggleGroup>
                         </LinearLayout>
@@ -309,15 +276,11 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:id="@+id/labels_layout"
             android:layout_marginRight="15dp"
             android:orientation="vertical">
 
@@ -328,12 +291,13 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="?colorPrimary"
-                android:text="@string/label"/>
+                android:text="@string/labels"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 style="@style/Widget.Material3.CardView.Filled"
                 android:layout_marginTop="10dp"
+                android:id="@+id/labels_edit"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -385,6 +349,43 @@
                         android:textStyle="bold"
                         android:textColor="?colorPrimary"
                         android:text="@string/other"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:animateLayoutChanges="true"
+                        android:id="@+id/betacard"
+                        style="@style/Widget.Material3.CardView.Filled"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:src="@drawable/bug_report"
+                                app:tint="?colorOnSecondaryContainer"
+                                android:scaleY="0.8"
+                                android:scaleX="0.8"
+                                android:layout_height="wrap_content"/>
+
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/betatoggle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:checked="true"
+                                android:text="@string/beta_mode"
+                                app:thumbIcon="@drawable/check"
+                                app:thumbIconTint="?colorPrimary" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"

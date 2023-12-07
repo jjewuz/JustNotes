@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about">Dobrodošli u aplikaciju JustNotes!</string>
     <string name="about2">Aplikacija je stvorena za brzo i jednostavno uređivanje teksta. Dodirnite + da biste stvorili novu bilješku. Držite prst na kartici da biste izbrisali bilješku.</string>
     <string name="changes">Društvene mreže:</string>
     <string name="vk">VK Grupa</string>
@@ -33,7 +32,6 @@
     <string name="note">Bilješka</string>
     <string name="error">Greška</string>
     <string name="countSymb">Broj znakova:</string>
-    <string name="countTime">Vrijeme čitanja (min.):</string>
     <string name="loginTitle">JustNotes osiguran</string>
     <string name="loginText">Molimo vas da se autenticirate</string>
     <string name="settingsText">Postavke</string>
@@ -49,9 +47,6 @@
     <string name="add_button">Nova bilješka</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">Sistemski font</string>
-    <string name="needRestart">Promjene će se primijeniti nakon ponovnog pokretanja aplikacije</string>
-    <string name="monet">Boje temeljene na pozadini</string>
-    <string name="reverseSetting">Obrnuto sortiranje bilješki</string>
     <string name="reportBug">Prijavi problem</string>
     <string name="buildn">Verzija aplikacije:</string>
     <string name="appversion">Inačica aplikacije:</string>
@@ -62,11 +57,8 @@
     <string name="nothingTxt">Ovdje je trenutno prazno...</string>
     <string name="socialLinksText">Pretplatite se na društvene mreže:</string>
     <string name="todo">Zadaci</string>
-    <string name="enterTodo">Unesite tekst zadatka</string>
     <string name="add">Dodaj</string>
-    <string name="delWarnTodo">Jeste li sigurni da želite izbrisati zadatak?</string>
     <string name="openTask">Otvori prema zadanim postavkama</string>
-    <string name="change_view">Promijeni stil</string>
     <string name="backup_title">Rezervno kopiranje</string>
     <string name="do_backup">Napravi kopiju</string>
     <string name="do_restore">Vrati kopiju</string>

@@ -167,23 +167,6 @@
         <item name="tint">@android:color/white</item>
     </style>
 
-    <style name="DarkTheme" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-
-
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
-
-        <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
-
-
-    </style>
-
     <style name="Font" parent="Theme.Material3.Dark.NoActionBar">
         <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
