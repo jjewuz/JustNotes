@@ -17,6 +17,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 - [x] Text formatting
 - [x] Import and export .txt documents
 - [x] Lock app with system biometry
+- [x] Widget for homescreen
 - [x] Lock notes with pin-code (4.1.0)
 - [x] Local and cloud backup (4.0.0)
 - [x] Change text color (4.2.0)
