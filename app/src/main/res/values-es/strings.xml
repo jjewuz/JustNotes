@@ -70,7 +70,7 @@
     <string name="info_desc">Enlaces sociales, licencias...</string>
     <string name="more">Más</string>
     <string name="backup_txt">En esta sección, puede hacer una copia de seguridad local de sus datos.</string>
-    <string name="backup_warn">¡Atención! Los datos de la tarea no se guardan.</string>
+    <string name="backup_warn">¡Atención! Los recordatorios no se guardan.</string>
     <string name="not_encrypted">¡Atención! La copia de seguridad local no está cifrada.</string>
     <string name="preview">Vista previa del texto de la nota</string>
     <string name="set_on_widget">Establecer la nota en el widget</string>
@@ -137,4 +137,20 @@
     <string name="coffee_theme">Café con hielo</string>
     <string name="select_theme">Seleccionar tema</string>
     <string name="app_theme">Tema de la aplicación</string>
+    <string name="is_saved">Salvado</string>
+    <string name="change_page">Cambiar de página</string>
+    <string name="add_reminder">Añadir un recordatorio</string>
+    <string name="delete_reminder">¿Eliminar recordatorio?</string>
+    <string name="beta_mode">modo beta</string>
+    <string name="beta_mode_activated">¡Funciones beta activadas!</string>
+    <string name="style">Estilo</string>
+    <string name="push_notification">Seleccione la hora en la que recibirá la notificación push</string>
+    <string name="labels">Etiquetas</string>
+    <string name="remind_hint">Recuérdame sobre...</string>
+    <string name="label">Etiqueta</string>
+    <string name="sort">Clasificar</string>
+    <string name="error_saving_labels">Error al guardar el nombre de las etiquetas</string>
+    <string name="labels_edit_text">El campo vacío ocultará la etiqueta.</string>
+    <string name="select_time">recordar el tiempo</string>
+    <string name="reminders">Recordatorios</string>
 </resources>
