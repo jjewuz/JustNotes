@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">JustNotes</string>
-    <string name="about2">This app created for fast and comfortable text editing. Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
+    <string name="about2">This app is created for fast and comfortable text editing. Click on the \"plus\" to create a new note. Hold on the card to delete the note.</string>
     <string name="changes">Social media:</string>
     <string name="vk">VK group</string>
     <string name="gh">GitHub</string>
@@ -50,7 +50,7 @@
     <string name="logo">Logo</string>
     <string name="fontToggle">System font</string>
     <string name="reportBug">Report app issue</string>
-    <string name="buildn">Build bumber:</string>
+    <string name="buildn">Build number:</string>
     <string name="appversion">App version:</string>
     <string name="appearance">Appearance</string>
     <string name="security">Security</string>
@@ -90,7 +90,7 @@
     <string name="actions">Actions</string>
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
-    <string name="striked">Strikethrought</string>
+    <string name="striked">Strikethrough</string>
     <string name="underlined">Underlined</string>
     <string name="clear_f">No format</string>
     <string name="import_txt">Import from .txt</string>
