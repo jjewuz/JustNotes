@@ -40,7 +40,7 @@
     <string name="error">Erro</string>
     <string name="delWarn">Excluir a nota?</string>
     <string name="docMade">Arquivo salvo em Downloads</string>
-    <string name="buildn">Build bumber:</string>
+    <string name="buildn">Build number:</string>
     <string name="passEnable">Proteção ativada</string>
     <string name="pos">Sim</string>
     <string name="fontToggle">Fonte do sistema</string>
