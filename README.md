@@ -22,13 +22,13 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 - [x] Local and cloud backup
 - [x] Change text color 
 - [x] Labels for notes 
-- [ ] Reminders for tasks
+- [ ] Reminders for tasks (With notifications)
 
 ## Screenshots
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/614337f7-5fdd-4c44-a60d-ef3f8cf6b157" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/9925b2e3-e2b7-410b-8368-9498ee20c306" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/b384527e-d492-435d-9448-aa2768e44945" width="180" height="320" />
-<img src="https://github.com/jjewuz/JustNotes/assets/53698992/3eef03af-a0fb-4b6c-af95-608a68ce5b55" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/262a8ffe-f810-4c7c-886c-485b9eb780ba" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/2187a162-7cee-40e2-aa50-e7b5d55d707b" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/0532553c-65d7-4ef5-aeb1-9ac0cfc2b7e9" width="180" height="320" />
+<img src="https://github.com/jjewuz/JustNotes/assets/53698992/9f64f93e-b66a-4a11-8013-a0f1f742137a" width="180" height="320" />
 
 ## App errors
 If you faced some app issue, you can report it with GitHub issues page. Do not forget to write the name of your device, android version, app build number, app version and steps on how to get the error.
