@@ -148,4 +148,9 @@
     <string name="account_delete_info">Tem certeza de que deseja excluir sua conta?</string>
     <string name="color">Cor</string>
     <string name="reminders">Lembretes</string>
+    <string name="is_saved">Salvou</string>
+    <string name="beta_mode">Modo beta</string>
+    <string name="beta_mode_activated">Recursos beta ativados!</string>
+    <string name="labels">Etiquetas</string>
+    <string name="error_saving_labels">Erro ao salvar o nome dos rótulos</string>
 </resources>
