@@ -40,7 +40,7 @@
     <string name="error">Erro</string>
     <string name="delWarn">Excluir a nota?</string>
     <string name="docMade">Arquivo salvo em Downloads</string>
-    <string name="buildn">Build bumber:</string>
+    <string name="buildn">Build number:</string>
     <string name="passEnable">Proteção ativada</string>
     <string name="pos">Sim</string>
     <string name="fontToggle">Fonte do sistema</string>
@@ -148,4 +148,9 @@
     <string name="account_delete_info">Tem certeza de que deseja excluir sua conta?</string>
     <string name="color">Cor</string>
     <string name="reminders">Lembretes</string>
+    <string name="is_saved">Salvou</string>
+    <string name="beta_mode">Modo beta</string>
+    <string name="beta_mode_activated">Recursos beta ativados!</string>
+    <string name="labels">Etiquetas</string>
+    <string name="error_saving_labels">Erro ao salvar o nome dos rótulos</string>
 </resources>

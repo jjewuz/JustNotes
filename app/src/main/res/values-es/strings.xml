@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">Esta aplicación ha sido creada para la edición del texto, de forma rápida y cómoda. Haga clic en \"más\" para crear una nueva nota. Mantenga presionada la tarjeta para eliminar la nota.</string>
+    <string name="about2">Esta aplicación se ha creado para editar texto de forma rápida y cómoda. Pulsa el \"más\" para crear una nueva nota. Mantén pulsada la tarjeta para borrar la nota.</string>
     <string name="changes">Redes sociales:</string>
     <string name="vk">Grupo VK</string>
     <string name="gh">GitHub</string>
@@ -88,7 +88,7 @@
     <string name="import_txt">Importar desde .txt</string>
     <string name="underlined">Subrayado</string>
     <string name="italic">Itálica</string>
-    <string name="striked">Tachada</string>
+    <string name="striked">Tachado</string>
     <string name="backup_rules">Puede hacer una copia de seguridad de sus notas aquí. Para utilizar la copia de seguridad local, la aplicación necesita acceso a los archivos del dispositivo. Para utilizar la copia de seguridad en la nube, debe crear una cuenta.</string>
     <string name="local_backup">Copia de seguridad local</string>
     <string name="cloud_backup">Copia de seguridad en la nube</string>
