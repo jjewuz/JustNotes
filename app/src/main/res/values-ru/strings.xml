@@ -151,6 +151,6 @@
     <string name="labels">Ярлыки</string>
     <string name="error_saving_labels">Ошибка сохранения ярлыков</string>
     <string name="is_saved">Сохранено</string>
-    <string name="beta_mode_activated">Бета-возможности активированы</string>
+    <string name="beta_mode_activated">Бета-возможности активированы!</string>
     <string name="beta_mode">Бета-режим</string>
 </resources>
