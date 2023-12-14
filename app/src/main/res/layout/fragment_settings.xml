@@ -52,7 +52,7 @@
 
                         <com.google.android.material.materialswitch.MaterialSwitch
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/fonttoggle"
                             tools:checked="true"
@@ -117,7 +117,7 @@
 
                         <com.google.android.material.materialswitch.MaterialSwitch
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/previewtoggle"
                             app:thumbIcon="@drawable/check"
@@ -147,15 +147,18 @@
                             android:scaleX="0.8"
                             android:layout_height="wrap_content"/>
 
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:gravity="center_vertical"
+                            android:gravity="center"
+                            android:orientation="vertical"
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:gravity="center"
                                 android:textColor="?colorOnSurface"
                                 android:text="@string/openTask"/>
 
@@ -232,7 +235,7 @@
 
                         <com.google.android.material.materialswitch.MaterialSwitch
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/screenshottoggle"
                             app:thumbIcon="@drawable/check"
@@ -265,7 +268,7 @@
 
                         <com.google.android.material.materialswitch.MaterialSwitch
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/passwordtoggle"
                             app:thumbIcon="@drawable/check"
@@ -377,7 +380,7 @@
                             <com.google.android.material.materialswitch.MaterialSwitch
                                 android:id="@+id/betatoggle"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:checked="true"
                                 android:text="@string/beta_mode"
                                 app:thumbIcon="@drawable/check"

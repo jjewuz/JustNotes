@@ -32,8 +32,7 @@
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     app:backgroundTint="@color/md_theme_light_primary"
-                    android:background="@drawable/buttonc"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    android:background="@drawable/buttonc" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -64,9 +63,8 @@
         <Button
             android:layout_width="65dp"
             android:layout_height="65dp"
-            app:backgroundTint="@color/material_dynamic_primary50"
-            android:background="@drawable/buttonc"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:id="@+id/monetcolor"
+            android:background="@drawable/buttonc" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,8 +97,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:backgroundTint="@color/ice_accent"
-            android:background="@drawable/buttonc"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:background="@drawable/buttonc" />
 
         <TextView
             android:layout_width="wrap_content"

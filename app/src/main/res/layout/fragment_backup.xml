@@ -76,12 +76,14 @@
                                 android:layout_width="wrap_content"
                                 android:text="@string/do_backup"
                                 android:layout_margin="5dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"/>
                             <Button
                                 android:id="@+id/rest"
                                 android:layout_width="wrap_content"
                                 android:text="@string/do_restore"
                                 android:layout_margin="5dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
@@ -158,6 +160,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/logout_btn"
+                                android:layout_weight="1"
                                 android:textColor="?colorOnBackground"
                                 style="?attr/materialButtonOutlinedStyle"
                                 android:text="@string/sign_out"/>
@@ -169,6 +172,7 @@
                                 android:textColor="?colorOnBackground"
                                 style="?attr/materialButtonOutlinedStyle"
                                 android:layout_marginStart="5dp"
+                                android:layout_weight="1"
                                 android:text="@string/delete_account"/>
 
                         </LinearLayout>
@@ -251,12 +255,14 @@
                                 android:layout_width="wrap_content"
                                 android:text="@string/do_backup"
                                 android:layout_margin="5dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"/>
                             <Button
                                 android:id="@+id/rest_cloud"
                                 android:layout_width="wrap_content"
                                 android:text="@string/do_restore"
                                 android:layout_margin="5dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
