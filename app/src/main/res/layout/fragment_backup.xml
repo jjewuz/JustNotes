@@ -116,7 +116,8 @@
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:text="@string/cloud_backup_beta"
+                            android:id="@+id/last_backup"
+                            android:text="@string/last_backup"
                             android:layout_height="wrap_content"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout

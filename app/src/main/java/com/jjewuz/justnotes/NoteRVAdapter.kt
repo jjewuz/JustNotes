@@ -64,7 +64,7 @@ class NoteRVAdapter(
         val isPreview = sharedPref.getBoolean("enabledPreview", false)
 
         holder.noteTV.text = allNotes[position].noteTitle
-        val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
         val date = allNotes[position].timeStamp
         val currentDateAndTime: String = try {
             sdf.format(date.toLong())

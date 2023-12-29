@@ -158,4 +158,5 @@
     <string name="is_saved">Saved</string>
     <string name="beta_mode_activated">Beta features activated!</string>
     <string name="beta_mode">Beta mode</string>
+    <string name="last_backup">Last backup:</string>
 </resources>

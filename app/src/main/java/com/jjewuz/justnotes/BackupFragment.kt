@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -35,10 +36,15 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
 
     private var fragmentBackupBinding: FragmentBackupBinding? = null
 
+    private lateinit var lastBackupText: TextView
+    private lateinit var sharedPref: SharedPreferences
+
     private lateinit var auth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
 
         val binding = view.let { FragmentBackupBinding.bind(it) }
         fragmentBackupBinding = binding
@@ -148,6 +154,9 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 .show()
         }
 
+
+        lastBackupText = binding.lastBackup
+        lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
     }
 
     private fun backup(local: Boolean){
@@ -155,7 +164,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         val backup = mainActivity.backup
         val storageRef = Firebase.storage.reference
 
-        val sdf = SimpleDateFormat("dd.mm.yyyy_HH:mm", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd.MM.yyyy_HH:mm", Locale.getDefault())
         val currentDateAndTime: String = sdf.format(Date().time)
 
         if (local) {
@@ -197,6 +206,14 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                     "databasebackup/database.aes"
                 ).toUri()
             ).addOnSuccessListener {
+                val sdf2 = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
+                val currentDateAndTime2: String = sdf2.format(Date().time)
+                val currentTime = "${resources.getString(R.string.last_backup)} $currentDateAndTime2"
+                with (sharedPref.edit()) {
+                    putString("last_backup", currentTime)
+                    apply()
+                }
+                lastBackupText.text = currentTime
                 Toast.makeText(requireContext(), R.string.backup_complete, Toast.LENGTH_SHORT).show()
             }
         }

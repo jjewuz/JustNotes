@@ -448,7 +448,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
             if (noteDescription.isNotEmpty() or noteTitle.isNotEmpty()) {
 
-                val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
+                val sdf = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
                 val date = Date().time
                 val currentDateAndTime: String = sdf.format(date)
 

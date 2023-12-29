@@ -153,4 +153,5 @@
     <string name="is_saved">Сохранено</string>
     <string name="beta_mode_activated">Бета-возможности активированы!</string>
     <string name="beta_mode">Бета-режим</string>
+    <string name="last_backup">Последняя копия:</string>
 </resources>
