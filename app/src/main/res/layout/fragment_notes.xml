@@ -151,7 +151,6 @@
             android:src="@drawable/add"
             android:layout_margin="30dp"
             android:layout_gravity="end|bottom"
-            style="?attr/floatingActionButtonLargeStyle"
             android:transitionName="transition_fab"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             android:contentDescription="@string/add_button" />

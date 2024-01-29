@@ -52,7 +52,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
                 android:layout_margin="30dp"
-                style="?attr/floatingActionButtonLargeStyle"
                 android:layout_gravity="end|bottom"
                 android:contentDescription="@string/add_button" />
 

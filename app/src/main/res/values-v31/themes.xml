@@ -20,10 +20,6 @@
             true
         </item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
-
         <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
 
@@ -73,9 +69,6 @@
             true
         </item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="android:fontFamily">@font/raleway</item>
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
@@ -149,9 +142,6 @@
             true
         </item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>

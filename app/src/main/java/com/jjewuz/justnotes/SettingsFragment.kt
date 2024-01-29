@@ -171,11 +171,13 @@ class SettingsFragment : Fragment() {
             if(isChecked){
                 with (sharedPref.edit()) {
                     putBoolean("enabledFont", true)
+                    putBoolean("recreate", true)
                     apply()
                 }
             }else{
                 with (sharedPref.edit()) {
                     putBoolean("enabledFont", false)
+                    putBoolean("recreate", true)
                     apply()
                 }
             }
@@ -206,6 +208,7 @@ class SettingsFragment : Fragment() {
             standart.setOnClickListener {
                 with (sharedPref.edit()) {
                     putString("theme", "standart")
+                    putBoolean("recreate", true)
                     apply()
                 }
                 activity?.recreate()
@@ -213,6 +216,7 @@ class SettingsFragment : Fragment() {
             monet.setOnClickListener {
                 with (sharedPref.edit()) {
                     putString("theme", "monet")
+                    putBoolean("recreate", true)
                     apply()
                 }
                 activity?.recreate()
@@ -220,6 +224,7 @@ class SettingsFragment : Fragment() {
             ice.setOnClickListener {
                 with (sharedPref.edit()) {
                     putString("theme", "ice")
+                    putBoolean("recreate", true)
                     apply()
                 }
                 activity?.recreate()

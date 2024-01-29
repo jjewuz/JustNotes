@@ -19,9 +19,6 @@
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <item name="colorControlNormal">?colorOnBackground</item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
 
@@ -70,10 +67,6 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="android:fontFamily">@font/raleway</item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
@@ -120,9 +113,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="android:fontFamily">@font/raleway</item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
@@ -142,9 +132,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
