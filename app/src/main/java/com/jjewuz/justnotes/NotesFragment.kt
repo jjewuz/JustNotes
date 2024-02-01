@@ -49,7 +49,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     private lateinit var label2: Chip
     private lateinit var label3: Chip
 
-    lateinit var sharedPref: SharedPreferences
+    lateinit var noteRVAdapter: NoteRVAdapter
+    lateinit var allItems: LiveData<List<Note>>
+
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -117,7 +120,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             notesRV.layoutManager = layoutManager
         }
 
-        val noteRVAdapter = NoteRVAdapter(requireActivity(), this, this)
+        noteRVAdapter = NoteRVAdapter(requireActivity(), this, this)
 
         notesRV.adapter = noteRVAdapter
 
@@ -126,7 +129,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[NoteViewModal::class.java]
 
-        var allItems: LiveData<List<Note>> = viewModal.getNotes()
+        allItems = viewModal.getNotes()
 
         labelGroup.setOnCheckedStateChangeListener { group, checkedID ->
             when(group.checkedChipId) {
@@ -150,11 +153,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 }
                 else -> allItems = viewModal.getNotes()
             }
-            allItems.observe(viewLifecycleOwner, Observer { list ->
-                list?.let {
-                    noteRVAdapter.updateList(it)
-                }
-            })
+            updateList(allItems)
         }
 
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
@@ -189,11 +188,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         }
 
-        allItems.observe(viewLifecycleOwner, Observer { list ->
-              list?.let {
-                noteRVAdapter.updateList(it)
-            }
-        })
+        updateList(allItems)
 
         noteRVAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
             override fun onChanged() {
@@ -245,6 +240,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             }
             .setPositiveButton(R.string.pos) { dialog, which ->
                 viewModal.deleteNote(note)
+                updateList(allItems)
                 Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
             }
             .show()
@@ -256,6 +252,14 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
+    }
+
+    private fun updateList(items: LiveData<List<Note>>){
+       items.observe(viewLifecycleOwner, Observer { list ->
+            list?.let {
+                noteRVAdapter.updateList(it)
+            }
+        })
     }
 
 }
