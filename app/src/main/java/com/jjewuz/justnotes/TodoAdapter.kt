@@ -35,7 +35,7 @@ class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todo
         }
 
 
-        val todoViewModel = ViewModelProvider(viewModelStoreOwner).get(TodoViewModel::class.java)
+        val todoViewModel = ViewModelProvider(viewModelStoreOwner)[TodoViewModel::class.java]
 
         holder.completedCheckBox.setOnCheckedChangeListener { _, isChecked ->
             todo.isCompleted = isChecked

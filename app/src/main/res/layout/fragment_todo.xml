@@ -31,6 +31,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
+            android:paddingBottom="120dp"
             tools:listitem="@layout/todo_item" />
 
             <com.google.android.material.bottomappbar.BottomAppBar
@@ -38,7 +39,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:hideOnScroll="true"
                 android:foregroundTintMode="multiply"
                 style="@style/Widget.Material3.BottomAppBar"
                 app:navigationIcon="@drawable/menu"
@@ -50,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/check"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
                 android:layout_margin="30dp"
                 android:layout_gravity="end|bottom"
                 android:contentDescription="@string/add_button" />

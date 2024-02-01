@@ -124,7 +124,7 @@
                     android:paddingTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="25dp"
+                    android:paddingBottom="120dp"
                     tools:itemCount="0"
                     tools:listitem="@layout/note_rv_item" />
 
@@ -137,7 +137,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:hideOnScroll="true"
                 android:foregroundTintMode="multiply"
                 style="@style/Widget.Material3.BottomAppBar"
                 app:menu="@menu/notes_items"
@@ -152,7 +151,6 @@
             android:layout_margin="30dp"
             android:layout_gravity="end|bottom"
             android:transitionName="transition_fab"
-            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             android:contentDescription="@string/add_button" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
