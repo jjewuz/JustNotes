@@ -25,6 +25,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.view.WindowManager.LayoutParams
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -45,6 +46,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.jjewuz.justnotes.Utils.colorFormatting
@@ -87,10 +89,13 @@ class AddEditNoteActivity : AppCompatActivity() {
     private var added = false
 
     private var hasChanges = false
+    private var isEditable = true
 
     private lateinit var textEditor: TextHelper
 
     private lateinit var sharedPref: SharedPreferences
+
+    private lateinit var fab: FloatingActionButton
 
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -332,6 +337,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             supportActionBar?.title = ""
             savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
             noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
+            isEditable = false
         }
 
         passBtn.setOnClickListener {
@@ -406,6 +412,36 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
             builder.create().show()
         }
+        if (!isEditable){
+            noteEdt.isFocusable = false
+        }
+
+
+        fab = findViewById(R.id.edit_fab)
+
+        fab.setOnClickListener {
+            if (!isEditable){
+                fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.save))
+                noteEdt.requestFocus()
+                noteEdt.focus()
+                isEditable = true
+            }
+            else {
+                fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.edit))
+                saveNote(false)
+                noteEdt.isFocusable = false
+                isEditable = false
+            }
+
+        }
+    }
+
+    fun EditText.focus() {
+        this.isFocusable = true
+        this.isFocusableInTouchMode = true
+        this.visibility = View.VISIBLE
+        this.isEnabled = true
+        this.isCursorVisible = true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

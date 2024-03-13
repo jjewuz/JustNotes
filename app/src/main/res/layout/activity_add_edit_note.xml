@@ -122,6 +122,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="30dp"
         android:src="@drawable/edit"
+        android:id="@+id/edit_fab"
         />
 
     <FrameLayout
