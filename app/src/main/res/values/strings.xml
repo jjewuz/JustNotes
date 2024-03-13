@@ -159,4 +159,5 @@
     <string name="beta_mode_activated">Beta features activated!</string>
     <string name="beta_mode">Beta mode</string>
     <string name="last_backup">Last backup:</string>
+    <string name="total_notes">Total notes:</string>
 </resources>

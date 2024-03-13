@@ -116,6 +116,14 @@
         app:menu="@menu/formatting"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="30dp"
+        android:src="@drawable/edit"
+        />
+
     <FrameLayout
         android:id="@+id/standard_bottom_sheet"
         style="@style/Widget.Material3.BottomSheet"
@@ -123,6 +131,7 @@
         android:layout_height="match_parent"
         app:behavior_peekHeight="550dp"
         app:behavior_saveFlags="all"
+        tools:layout_height="0dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView

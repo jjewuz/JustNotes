@@ -1,5 +1,6 @@
 package com.jjewuz.justnotes
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
@@ -18,6 +19,7 @@ import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.get
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
@@ -213,6 +215,21 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
             val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity(), addFAB, "transition_fab")
             startActivity(intent, options.toBundle())
+        }
+
+        context?.let {
+            bottomAppBar?.setOnTouchListener(object : OnSwipeTouchListener(it) {
+
+                override fun onSwipeLeft() {
+                    replaceFragment(TodoFragment())
+                    super.onSwipeLeft()
+                }
+
+                override fun onSwipeRight() {
+                    replaceFragment(TodoFragment())
+                    super.onSwipeRight()
+                }
+            })
         }
 
         return v

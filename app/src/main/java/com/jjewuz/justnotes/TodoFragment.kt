@@ -70,11 +70,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.view_change -> {
-                        val fragmentManager = parentFragmentManager
-                        val fragmentTransaction = fragmentManager.beginTransaction()
-                        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                        fragmentTransaction.replace(R.id.place_holder, NotesFragment())
-                        fragmentTransaction.commit ()
+                        replaceFragment(NotesFragment())
                         true
                     }
                     else -> false
@@ -163,6 +159,21 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             modalBottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
         }
 
+        context?.let {
+            bottomAppBar?.setOnTouchListener(object : OnSwipeTouchListener(it) {
+
+                override fun onSwipeLeft() {
+                    replaceFragment(NotesFragment())
+                    super.onSwipeLeft()
+                }
+
+                override fun onSwipeRight() {
+                    replaceFragment(NotesFragment())
+                    super.onSwipeRight()
+                }
+            })
+        }
+
         return v
     }
 
@@ -181,6 +192,14 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                 Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
             }
             .show()
+    }
+
+    fun replaceFragment(fragment : Fragment){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+        fragmentTransaction.replace(R.id.place_holder, fragment)
+        fragmentTransaction.commit ()
     }
 
 }

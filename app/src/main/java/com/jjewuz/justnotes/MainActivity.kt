@@ -26,6 +26,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
@@ -80,7 +82,17 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
             appVer.text = "v${BuildConfig.VERSION_NAME}"
         }
 
+        val viewModel = ViewModelProvider(this)[NoteViewModal::class.java]
 
+        val notesCountText = view.findViewById<TextView>(R.id.notes_count)
+        val notesText = resources.getString(R.string.total_notes)
+        val lastBackupText = view.findViewById<TextView>(R.id.last_backup)
+
+        viewModel.getNotes().observe(this, Observer { notes ->
+            val notesCount = notes.size
+            notesCountText.text = "$notesText $notesCount"
+        })
+        lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
 
         val backupCard = view.findViewById<MaterialCardView>(R.id.backup_card)
         val settingsCard = view.findViewById<MaterialCardView>(R.id.settings_card)
@@ -113,9 +125,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     private lateinit var sharedPref: SharedPreferences
-
-    private lateinit var actionBarToggle: ActionBarDrawerToggle
-    private lateinit var navView: NavigationView
 
     lateinit var backup: RoomBackup
 
