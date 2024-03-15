@@ -153,4 +153,6 @@
     <string name="labels_edit_text">El campo vacío ocultará la etiqueta.</string>
     <string name="select_time">recordar el tiempo</string>
     <string name="reminders">Recordatorios</string>
+    <string name="last_backup">Última copia de seguridad:</string>
+    <string name="total_notes">Total de notas:</string>
 </resources>
