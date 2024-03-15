@@ -120,6 +120,12 @@
                             android:text="@string/last_backup"
                             android:layout_height="wrap_content"/>
 
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/auto_backup_switch"
+                            android:text="@string/auto_backup"/>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"

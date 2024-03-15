@@ -9,22 +9,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -34,8 +27,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import com.jjewuz.justnotes.Utils.hideKeyboard
-import org.checkerframework.common.subtyping.qual.Bottom
+import com.jjewuz.justnotes.Notifications.NotificationHelper
+import java.time.LocalDateTime
 import java.util.Calendar
 
 class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
@@ -43,7 +36,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
     private lateinit var todoViewModel: TodoViewModel
     private lateinit var noTasks: TextView
     private lateinit var bottomAppBar: BottomAppBar
-
+    private lateinit var timeText: TextView
     lateinit var viewIcon: MenuItem
 
     override fun onCreateView(
@@ -54,6 +47,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val isDev = sharedPref.getBoolean("is_dev", false)
         bottomAppBar = v.findViewById(R.id.bottomAppBar)
+        noTasks = v.findViewById(R.id.notasks)
 
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
@@ -77,8 +71,6 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
-        noTasks = v.findViewById(R.id.notasks)
 
         val recyclerView: RecyclerView = v.findViewById(R.id.recyclerView)
         val adapter = TodoAdapter(requireActivity(), emptyList(), this, this)
@@ -112,6 +104,8 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             val inf = requireActivity().layoutInflater.inflate(R.layout.todo_add, null)
             val todoText: TextInputEditText = inf.findViewById(R.id.todoEditText)
             val dataPickerButton: Chip = inf.findViewById(R.id.time_pick)
+            var data: String = ""
+            var dateTime = LocalDateTime.of(2024, 3, 17, 10, 0)
             if (!isDev)
                 dataPickerButton.visibility = View.GONE
             dataPickerButton.setOnClickListener {
@@ -134,7 +128,9 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                         val timePick = timePicker.build()
                         timePick.show(parentFragmentManager, "tag")
                         timePick.addOnPositiveButtonClickListener {
-                            dataPickerButton.text = "${calendar.get(Calendar.DAY_OF_MONTH)}.${calendar.get(Calendar.MONTH)}.${calendar.get(Calendar.YEAR)} - ${timePick.hour}:${timePick.minute}"
+                            data =  "${calendar.get(Calendar.DAY_OF_MONTH)}.${calendar.get(Calendar.MONTH)}.${calendar.get(Calendar.YEAR)} - ${timePick.hour}:${timePick.minute}"
+                            dataPickerButton.text = data
+                            dateTime = LocalDateTime.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE))
                         }
                     }
 
@@ -145,8 +141,11 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                 if ((todoText.length() <= 100) and (todoText.length() != 0)) {
                     val newTodo = Todo(
                         todoText.text.toString(),
-                        false
+                        false,
+                        data
                     )
+                    context?.let { it1 -> NotificationHelper(it1) }
+                        ?.createNotification("JustNotes", todoText.text.toString(), newTodo.id, dateTime)
 
                     todoViewModel.insert(newTodo)
                 }

@@ -1,6 +1,8 @@
 package com.jjewuz.justnotes
 
 import android.Manifest.permission.POST_NOTIFICATIONS
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -296,6 +298,16 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 //TODO
             }
+
+        val name = getString(R.string.reminders)
+        val descriptionText = getString(R.string.reminders)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel("0", name, importance).apply {
+            description = descriptionText
+        }
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {

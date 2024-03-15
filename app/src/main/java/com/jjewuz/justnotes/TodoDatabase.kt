@@ -1,11 +1,12 @@
 package com.jjewuz.justnotes
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Todo::class], version = 3, exportSchema = false)
+@Database(entities = [Todo::class], version = 4, exportSchema = true,  autoMigrations = [ AutoMigration (3,4)])
 abstract class TodoDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
 

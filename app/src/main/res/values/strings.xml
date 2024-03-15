@@ -160,4 +160,6 @@
     <string name="beta_mode">Beta mode</string>
     <string name="last_backup">Last backup:</string>
     <string name="total_notes">Total notes:</string>
+    <string name="auto_backup">Auto backup</string>
+    <string name="auto_backup_hint">Auto backup</string>
 </resources>

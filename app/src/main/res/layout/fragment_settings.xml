@@ -56,8 +56,6 @@
                             android:checked="false"
                             android:id="@+id/fonttoggle"
                             tools:checked="true"
-                            app:thumbIcon="@drawable/check"
-                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/fontToggle"/>
 
                     </LinearLayout>
@@ -120,8 +118,6 @@
                             android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/previewtoggle"
-                            app:thumbIcon="@drawable/check"
-                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/preview"/>
 
                     </LinearLayout>
@@ -238,8 +234,6 @@
                             android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/screenshottoggle"
-                            app:thumbIcon="@drawable/check"
-                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/screenshot_secured_notes"/>
 
                     </LinearLayout>
@@ -271,8 +265,6 @@
                             android:layout_height="wrap_content"
                             android:checked="false"
                             android:id="@+id/passwordtoggle"
-                            app:thumbIcon="@drawable/check"
-                            app:thumbIconTint="?colorPrimary"
                             android:text="@string/passwordSettings"/>
 
                     </LinearLayout>
@@ -382,9 +374,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
-                                android:text="@string/beta_mode"
-                                app:thumbIcon="@drawable/check"
-                                app:thumbIconTint="?colorPrimary" />
+                                android:text="@string/beta_mode" />
 
                         </LinearLayout>
 

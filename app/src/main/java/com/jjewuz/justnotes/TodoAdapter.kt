@@ -15,7 +15,7 @@ class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todo
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val completedCheckBox: CheckBox = itemView.findViewById(R.id.completedCheckBox)
-
+        val timeText: TextView = itemView.findViewById(R.id.time_set)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +27,7 @@ class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todo
         val todo = todos[position]
         holder.titleTextView.text = todo.text
         holder.completedCheckBox.isChecked = todo.isCompleted
+        holder.timeText.text = todo.setTime
 
         if (todo.isCompleted){
             holder.titleTextView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG

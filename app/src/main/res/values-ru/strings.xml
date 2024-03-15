@@ -155,4 +155,6 @@
     <string name="beta_mode">Бета-режим</string>
     <string name="last_backup">Последняя копия:</string>
     <string name="total_notes">Всего заметок:</string>
+    <string name="auto_backup">Автоматическое резервирование</string>
+    <string name="auto_backup_hint">Автоматическое резервирование копирует в облако заметки раз в сутки, но этот процесс не является приоритетным для экономии заряда батареи.</string>
 </resources>

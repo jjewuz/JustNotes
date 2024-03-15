@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:layout_height="wrap_content">
 
     <TextView
@@ -29,6 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="23sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/time_set"
+            android:layout_height="wrap_content"
+            android:text="Setted time"/>
 
     </LinearLayout>
 
