@@ -22,7 +22,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 - [x] Local and cloud backup
 - [x] Change text color 
 - [x] Labels for notes 
-- [ ] Reminders for tasks (With notifications)
+- [ ] Reminders (With notifications)
 
 ## Screenshots
 <img src="https://github.com/jjewuz/JustNotes/assets/53698992/262a8ffe-f810-4c7c-886c-485b9eb780ba" width="180" height="320" />
