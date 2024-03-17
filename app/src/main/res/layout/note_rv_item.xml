@@ -33,6 +33,7 @@
             android:singleLine="true"
             android:layout_weight="1"
             android:text="@string/note"
+            android:textStyle="bold"
             android:textSize="18sp" />
 
         <com.google.android.material.chip.Chip

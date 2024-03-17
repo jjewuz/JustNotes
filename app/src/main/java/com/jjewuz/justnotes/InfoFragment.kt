@@ -21,7 +21,6 @@ class InfoFragment : Fragment() {
     private lateinit var tou: Button
     private lateinit var pp: Button
 
-    private lateinit var donate: Button
     private lateinit var  tgBtn: ImageButton
     private lateinit var  vkBtn: ImageButton
 
@@ -36,8 +35,6 @@ class InfoFragment : Fragment() {
 
         tou = v.findViewById(R.id.terms_of_use)
         pp = v.findViewById(R.id.privacy_policy)
-
-        donate = v.findViewById(R.id.donate)
         tgBtn = v.findViewById(R.id.tg)
         vkBtn = v.findViewById(R.id.vk)
 
@@ -46,7 +43,6 @@ class InfoFragment : Fragment() {
         licenseBtn.setOnClickListener { startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java)) }
         tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }
         pp.setOnClickListener { openLink("https://jjewuz.ru/justnotes/privacypolicy.html") }
-        donate.setOnClickListener { openLink("https://www.donationalerts.com/r/jjewuz") }
         tgBtn.setOnClickListener { openLink("https://t.me/jjewuz_support") }
         vkBtn.setOnClickListener { openLink("https://vk.com/jjewuzhub") }
 

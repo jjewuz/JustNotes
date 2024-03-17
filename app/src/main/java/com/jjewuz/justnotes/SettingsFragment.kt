@@ -78,8 +78,6 @@ class SettingsFragment : Fragment() {
 
         if (!isDev){
             betaCardView.visibility = View.GONE
-            val labelsLayout = v.findViewById<LinearLayout>(R.id.labels_layout)
-            labelsLayout.visibility = View.GONE
         }
 
         passSwitch.isChecked = enabledpass

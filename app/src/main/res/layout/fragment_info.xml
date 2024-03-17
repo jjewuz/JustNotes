@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Editor">
@@ -25,6 +24,49 @@
                 android:paddingLeft="5dp"
                 android:paddingBottom="30dp"
                 android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:clickable="true"
+                    style="?attr/materialCardViewFilledStyle"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="@string/for_users"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:id="@+id/terms_of_use"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/terms_of_use" />
+
+                        <Button
+                            android:id="@+id/privacy_policy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/privacy_policy" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -45,12 +87,12 @@
 
 
                         <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="@string/about2"
+                            android:text="@string/verison"
                             android:textSize="18sp" />
 
                         <Button
@@ -73,85 +115,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:text="@string/licenses" />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                style="?attr/materialCardViewFilledStyle"
-                android:focusable="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:padding="15dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:text="@string/for_users"
-                    android:textSize="18sp" />
-
-                <Button
-                    android:id="@+id/terms_of_use"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/terms_of_use" />
-
-                <Button
-                    android:id="@+id/privacy_policy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/privacy_policy" />
-
-            </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:clickable="true"
-                    style="?attr/materialCardViewFilledStyle"
-                    android:focusable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:padding="15dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:gravity="center"
-                            android:text="@string/verison"
-                            android:textSize="18sp" />
-
-                        <Button
-                            android:id="@+id/donate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/donate" />
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -180,6 +143,7 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
 
                 </com.google.android.material.card.MaterialCardView>
 

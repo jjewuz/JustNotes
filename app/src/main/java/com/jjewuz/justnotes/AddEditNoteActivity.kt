@@ -2,12 +2,10 @@ package com.jjewuz.justnotes
 
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -18,14 +16,12 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.transition.Fade
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.view.WindowManager.LayoutParams
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -35,8 +31,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.text.toHtml
 import androidx.core.view.WindowCompat
@@ -57,7 +51,8 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 
 class AddEditNoteActivity : AppCompatActivity() {
@@ -412,12 +407,14 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
             builder.create().show()
         }
-        if (!isEditable){
-            noteEdt.isFocusable = false
-        }
-
 
         fab = findViewById(R.id.edit_fab)
+
+        if (!isEditable){
+            noteEdt.isFocusable = false
+        } else {
+            fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.save))
+        }
 
         fab.setOnClickListener {
             if (!isEditable){
@@ -425,6 +422,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 noteEdt.requestFocus()
                 noteEdt.focus()
                 isEditable = true
+                noteEdt.setSelection(noteEdt.length())
             }
             else {
                 fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.edit))
