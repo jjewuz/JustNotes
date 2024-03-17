@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    private lateinit var sharedPref: SharedPreferences
+    lateinit var sharedPref: SharedPreferences
 
     lateinit var backup: RoomBackup
 

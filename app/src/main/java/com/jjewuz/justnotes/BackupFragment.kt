@@ -15,7 +15,14 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.transition.Fade
 import androidx.transition.TransitionManager
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthCredential
@@ -30,6 +37,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 
 class BackupFragment : Fragment(R.layout.fragment_backup) {
@@ -154,12 +162,36 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 .show()
         }
 
+        val workInfos = WorkManager.getInstance(context as MainActivity).getWorkInfosForUniqueWork("autoBackup").get()
+
+        for (workInfo in workInfos) {
+            if (workInfo.state == WorkInfo.State.RUNNING) {
+                binding.autoBackupSwitch.isChecked = true
+                Log.e("Backuper", "Working")
+            }
+        }
+
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val autoBackup = PeriodicWorkRequestBuilder<Backuper>(
+            24, TimeUnit.HOURS,
+            10, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+
+        WorkManager.getInstance(context as MainActivity).enqueueUniquePeriodicWork(
+            "autoBackup",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            autoBackup)
+
 
         lastBackupText = binding.lastBackup
         lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
     }
 
-    private fun backup(local: Boolean){
+    fun backup(local: Boolean){
         val mainActivity = (activity as MainActivity)
         val backup = mainActivity.backup
         val storageRef = Firebase.storage.reference
