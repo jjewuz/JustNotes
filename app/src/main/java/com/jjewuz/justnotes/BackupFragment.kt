@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,8 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.transition.Fade
-import androidx.transition.TransitionManager
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
@@ -22,10 +19,9 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
-import com.google.firebase.auth.EmailAuthCredential
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -46,6 +42,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
 
     private lateinit var lastBackupText: TextView
     private lateinit var sharedPref: SharedPreferences
+    private lateinit var progressBar: LinearProgressIndicator
 
     private lateinit var auth: FirebaseAuth
 
@@ -58,6 +55,8 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         fragmentBackupBinding = binding
 
         auth = Firebase.auth
+
+        progressBar = binding.progressBar
         
         binding.deleteBtn.visibility = View.GONE
         binding.logoutBtn.visibility = View.GONE
@@ -227,6 +226,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                             "success: $success, message: $message, exitCode: $exitCode"
                         )
                         if (success) {
+                            progressBar.progress = 25
                         }
                     }
                 }
@@ -247,7 +247,11 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 }
                 lastBackupText.text = currentTime
                 Toast.makeText(requireContext(), R.string.backup_complete, Toast.LENGTH_SHORT).show()
+                progressBar.progress = 100
             }
+                .addOnProgressListener {
+                    progressBar.progress = (it.bytesTransferred / it.totalByteCount).toInt() * 50
+                }
         }
     }
 

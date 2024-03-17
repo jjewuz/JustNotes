@@ -273,6 +273,12 @@
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/progress_bar"
+                            android:indeterminate="false" />
+
                 </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
