@@ -37,6 +37,10 @@
         <item name="android:colorBackground">@color/md_theme_light_background</item>
         <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
         <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
         <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
@@ -83,6 +87,10 @@
         <item name="colorSurface">@color/ice_on</item>
         <item name="colorOnSurface">@color/black</item>
         <item name="colorSurfaceVariant">#5A99BF</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/black</item>
         <item name="colorOutline">@color/black</item>
         <item name="colorOnSurfaceInverse">@color/black</item>
@@ -136,6 +144,10 @@
         <item name="colorOnSurface">@color/black</item>
         <item name="colorSurfaceVariant">#5A99BF</item>
         <item name="colorOnSurfaceVariant">@color/black</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOutline">@color/black</item>
         <item name="colorOnSurfaceInverse">@color/black</item>
         <item name="colorSurfaceInverse">@color/black</item>
@@ -218,6 +230,10 @@
         <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
         <item name="colorSurface">@color/md_theme_light_surface</item>
         <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
         <item name="colorOutline">@color/md_theme_light_outline</item>
@@ -264,6 +280,10 @@
         <item name="android:colorBackground">@color/md_theme_light_background</item>
         <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
         <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
         <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
@@ -308,6 +328,10 @@
         <item name="android:colorBackground">@color/md_theme_light_background</item>
         <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
         <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceTint</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceTint</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
         <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>

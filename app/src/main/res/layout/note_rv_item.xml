@@ -6,6 +6,7 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="25dp"
     android:transitionName="transition"
+    android:backgroundTint="?colorSurfaceVariant"
     style="?attr/materialCardViewFilledStyle">
 
     <RelativeLayout

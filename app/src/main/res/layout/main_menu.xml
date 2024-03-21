@@ -28,6 +28,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
+            android:backgroundTint="?colorSurfaceVariant"
             style="@style/Widget.Material3.CardView.Filled"
             android:layout_height="wrap_content">
 
@@ -81,6 +82,7 @@
             android:layout_margin="5dp"
             android:id="@+id/backup_card"
             android:clickable="true"
+            android:backgroundTint="?colorSurfaceVariant"
             style="@style/Widget.Material3.CardView.Filled"
             android:layout_height="fill_parent">
 
@@ -99,6 +101,7 @@
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_margin="5dp"
+            android:backgroundTint="?colorSurfaceVariant"
             android:id="@+id/settings_card"
             android:clickable="true"
             style="@style/Widget.Material3.CardView.Filled"
@@ -122,6 +125,7 @@
             android:id="@+id/info_card"
             android:clickable="true"
             style="@style/Widget.Material3.CardView.Filled"
+            android:backgroundTint="?colorSurfaceVariant"
             android:layout_height="fill_parent">
 
             <TextView

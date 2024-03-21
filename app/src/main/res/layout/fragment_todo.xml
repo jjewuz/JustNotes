@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:foregroundTintMode="multiply"
+                android:backgroundTint="?colorSurfaceVariant"
                 style="@style/Widget.Material3.BottomAppBar"
                 app:navigationIcon="@drawable/menu"
                 />

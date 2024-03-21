@@ -29,6 +29,7 @@
                     android:id="@+id/card4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="?colorSurfaceVariant"
                     android:layout_margin="8dp"
                     android:clickable="true"
                     style="?attr/materialCardViewFilledStyle"
@@ -75,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:backgroundTint="?colorSurfaceVariant"
                     android:clickable="true"
                     android:focusable="true">
 
