@@ -140,7 +140,7 @@
                 android:layout_gravity="bottom"
                 android:foregroundTintMode="multiply"
                 style="@style/Widget.Material3.BottomAppBar"
-                android:backgroundTint="?colorSurfaceVariant"
+                android:backgroundTint="?colorSurfaceContainerHigh"
                 app:menu="@menu/notes_items"
                 app:navigationIcon="@drawable/menu"
                 />

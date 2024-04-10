@@ -264,11 +264,10 @@ class MainActivity : AppCompatActivity() {
                 .build()
         }
 
-        val isRecreate = sharedPref.getBoolean("recreate", false)
+        
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            if (enabledpass && !isRecreate) {
+            if (enabledpass) {
                 biometricPrompt.authenticate(promptInfo)
-                sharedPref.edit().putBoolean("recreate", false).apply()
             }
         }
 

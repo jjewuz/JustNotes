@@ -37,7 +37,6 @@
                 android:id="@+id/local_layout"
                 android:layout_marginTop="10dp"
                 style="?attr/materialCardViewFilledStyle"
-                android:backgroundTint="?colorSurfaceVariant"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
@@ -99,7 +98,6 @@
                 android:animateLayoutChanges="true"
                 android:paddingBottom="10dp"
                 style="?attr/materialCardViewFilledStyle"
-                android:backgroundTint="?colorSurfaceVariant"
                 android:layout_height="wrap_content">
 
                     <LinearLayout
@@ -126,6 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/auto_backup_switch"
+                            android:visibility="gone"
                             android:text="@string/auto_backup"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout

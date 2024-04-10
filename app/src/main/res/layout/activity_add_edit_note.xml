@@ -112,6 +112,7 @@
         app:hideOnScroll="true"
         android:foregroundTintMode="multiply"
         style="@style/Widget.Material3.BottomAppBar"
+        android:backgroundTint="?colorSurfaceContainerHigh"
         app:navigationIcon="@drawable/menu"
         app:menu="@menu/formatting"
         />
