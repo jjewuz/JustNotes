@@ -46,6 +46,7 @@ object Utils {
                 for (selectSpan in spans) spannable.removeSpan(selectSpan)
             }
             noteEdt.setText(spannable)
+            noteEdt.setSelection(selectedTextEnd)
         }
     }
 
@@ -85,6 +86,7 @@ object Utils {
                 )
             }
             noteEdt.setText(spannable)
+            noteEdt.setSelection(selectedTextEnd)
         }
     }
 
