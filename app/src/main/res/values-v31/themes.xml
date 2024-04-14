@@ -63,6 +63,7 @@
         </item>
 
         <item name="windowActionBar">false</item>
+        <item name="android:fontFamily">@font/raleway</item>
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowLightStatusBar">

@@ -13,4 +13,16 @@
         android:title="@string/redo"
         app:showAsAction="always"
         android:id="@+id/redo" />
+    <item
+        android:icon="@drawable/info"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/count1"
+        app:showAsAction="ifRoom"
+        android:id="@+id/info" />
+    <item
+        android:icon="@drawable/label"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/labels"
+        app:showAsAction="ifRoom"
+        android:id="@+id/labels" />
 </menu>

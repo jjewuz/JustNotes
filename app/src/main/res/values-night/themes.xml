@@ -282,7 +282,6 @@
         <item name="android:statusBarColor">
             @android:color/transparent
         </item>
-        <item name="android:fontFamily">@font/raleway</item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>

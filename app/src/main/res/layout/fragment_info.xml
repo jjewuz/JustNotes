@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -131,7 +132,8 @@
                                 android:layout_marginEnd="15dp"
                                 android:background="@drawable/buttonc"
                                 android:scaleType="fitXY"
-                                app:srcCompat="@drawable/tg" />
+                                app:srcCompat="@drawable/tg"
+                                app:tint="?colorSurface" />
 
                             <ImageButton
                                 android:id="@+id/vk"
@@ -140,6 +142,7 @@
                                 android:layout_marginEnd="15dp"
                                 android:background="@drawable/buttonc"
                                 android:scaleType="fitXY"
+                                app:tint="?colorSurface"
                                 app:srcCompat="@drawable/vk" />
 
                         </LinearLayout>

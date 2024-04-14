@@ -161,29 +161,6 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 .show()
         }
 
-        val workInfos = WorkManager.getInstance(context as MainActivity).getWorkInfosForUniqueWork("autoBackup").get()
-
-        for (workInfo in workInfos) {
-            if (workInfo.state == WorkInfo.State.RUNNING) {
-                binding.autoBackupSwitch.isChecked = true
-                Log.e("Backuper", "Working")
-            }
-        }
-
-        val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build()
-
-        val autoBackup = PeriodicWorkRequestBuilder<Backuper>(
-            24, TimeUnit.HOURS,
-            10, TimeUnit.MINUTES)
-            .setConstraints(constraints)
-            .build()
-
-        WorkManager.getInstance(context as MainActivity).enqueueUniquePeriodicWork(
-            "autoBackup",
-            ExistingPeriodicWorkPolicy.UPDATE,
-            autoBackup)
 
 
         lastBackupText = binding.lastBackup

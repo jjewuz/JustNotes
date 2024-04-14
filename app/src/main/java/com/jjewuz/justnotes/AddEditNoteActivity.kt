@@ -55,12 +55,12 @@ import java.util.Date
 import java.util.Locale
 
 
+
 class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var noteTitleEdt: EditText
     private lateinit var noteEdt: EditText
     private lateinit var savedTxt: TextView
-    private lateinit var countTxt: TextView
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var bottomSheet: FrameLayout
 
@@ -139,7 +139,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
         savedTxt = findViewById(R.id.savedtxt)
-        countTxt = findViewById(R.id.counttxt)
         bottomAppBar = findViewById(R.id.bottomAppBar)
         bottomSheet = findViewById(R.id.standard_bottom_sheet)
 
@@ -233,14 +232,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
 
         bottomAppBar.setNavigationOnClickListener {
-            val countS: String = getString(R.string.count1)
-            val countT: String = getString(R.string.count2)
-            val countM: String = getString(R.string.minuts)
-            val count = noteEdt.text.length
-            val time = count / 512
-
-            countTxt.text = "$countS: $count \n$countT ≈$time $countM"
-            countTxt.hideKeyboard()
+            savedTxt.hideKeyboard()
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
@@ -402,7 +394,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                         }
 
                     }
-                .setNegativeButton(R.string.back ) { dialog, id ->
+                .setNegativeButton(R.string.back ) { _, _ ->
                        this.finish()
                     }
             builder.create().show()
@@ -434,7 +426,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    fun EditText.focus() {
+    private fun EditText.focus() {
         this.isFocusable = true
         this.isFocusableInTouchMode = true
         this.visibility = View.VISIBLE
@@ -456,6 +448,24 @@ class AddEditNoteActivity : AppCompatActivity() {
             }
             R.id.redo -> {
                 textEditor.redo()
+                true
+            }
+            R.id.info -> {
+                val countS: String = getString(R.string.count1)
+                val countT: String = getString(R.string.count2)
+                val countM: String = getString(R.string.minuts)
+                val count = noteEdt.text.length
+                val time = count / 512
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.inf)
+                    .setIcon(R.drawable.info)
+                    .setMessage("$countS: $count \n$countT ≈$time $countM")
+                    .setPositiveButton("OK") {_, _ ->
+                    }
+                    .show()
+                true
+            }
+            R.id.labels -> {
                 true
             }
             else -> super.onOptionsItemSelected(item)

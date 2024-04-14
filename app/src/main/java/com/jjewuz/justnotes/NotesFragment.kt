@@ -2,9 +2,13 @@ package com.jjewuz.justnotes
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,9 +17,11 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.get
@@ -31,6 +37,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -235,7 +243,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         return v
     }
 
-    override fun onNoteClick(note: Note, num: Int) {
+    private fun openNote(note: Note){
         val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
         intent.putExtra("noteType", "Edit")
         intent.putExtra("noteTitle", note.noteTitle)
@@ -247,20 +255,59 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
     }
 
+    override fun onNoteClick(note: Note, num: Int) {
+        openNote(note)
+    }
+
 
     override fun onNoteLongClick(note: Note) {
-        MaterialAlertDialogBuilder(requireActivity())
-            .setTitle(R.string.delWarn)
-            .setIcon(R.drawable.delete)
-            .setMessage(R.string.delete_warn)
-            .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        val inf = requireActivity().layoutInflater.inflate(R.layout.note_options, null)
+        val edit = inf.findViewById<MaterialCardView>(R.id.edit)
+        val widget = inf.findViewById<MaterialCardView>(R.id.tohome)
+        val delete = inf.findViewById<MaterialCardView>(R.id.delete)
+
+        builder.setIcon(R.drawable.note)
+        builder.setTitle(note.noteTitle)
+        builder.setView(inf)
+            .setPositiveButton(R.string.close) { _, _ ->
             }
-            .setPositiveButton(R.string.pos) { dialog, which ->
-                viewModal.deleteNote(note)
-                updateList(allItems)
-                Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
-            }
-            .show()
+        builder.create()
+        val editor = builder.show()
+        delete.setOnClickListener {
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(R.string.delWarn)
+                .setIcon(R.drawable.delete)
+                .setMessage(R.string.delete_warn)
+                .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
+                }
+                .setPositiveButton(R.string.pos) { dialog, which ->
+                    viewModal.deleteNote(note)
+                    updateList(allItems)
+                    editor.cancel()
+                    Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
+                }
+                .show()
+        }
+        edit.setOnClickListener {
+            openNote(note)
+            editor.cancel()
+        }
+        widget.setOnClickListener {
+            val sharedPreferences = context?.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+            sharedPreferences?.edit()?.putInt("note_id", note.id)?.apply()
+            pushWidget()
+            Toast.makeText(requireContext(), R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
+            editor.cancel()
+        }
+    }
+
+    private fun pushWidget(){
+        val intent = Intent(requireActivity(), NoteWidget::class.java)
+        intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        val ids: IntArray = AppWidgetManager.getInstance(requireActivity()).getAppWidgetIds(ComponentName(requireActivity(), NoteWidget::class.java))
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+        requireActivity().sendBroadcast(intent)
     }
 
     fun replaceFragment(fragment : Fragment){

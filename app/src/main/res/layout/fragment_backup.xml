@@ -158,6 +158,11 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:layout_width="match_parent"
+                            android:text="@string/auto_backup"
+                            android:layout_height="wrap_content"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:paddingBottom="2dp"

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        style="@style/NestedScrollBarStyle"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:id="@+id/edit"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        app:srcCompat="@drawable/edit"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/edit"
+                        android:paddingStart="25dp"
+                        android:paddingEnd="25dp"
+                        android:textSize="22sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tohome"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        app:srcCompat="@drawable/widget" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/set_on_widget"
+                        android:paddingStart="25dp"
+                        android:paddingEnd="25dp"
+                        android:textSize="22sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_marginTop="10dp"
+                android:id="@+id/delete"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/yellow"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        app:srcCompat="@drawable/delete" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/delete"
+                        android:paddingStart="25dp"
+                        android:paddingEnd="25dp"
+                        android:textSize="22sp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

@@ -73,7 +73,7 @@
     <string name="backup_warn">Внимание! Напоминания не сохраняются.</string>
     <string name="not_encrypted">Внимание! Локальная резервная копия не зашифрована.</string>
     <string name="preview">Предпросмотр текста заметки</string>
-    <string name="set_on_widget">Отправить заметку в виджет</string>
+    <string name="set_on_widget">Установить заметку в виджет</string>
     <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
     <string name="note_set_to_widget">Заметка установлена в виджет</string>
     <string name="what_new_update">"Что нового в "</string>
@@ -157,4 +157,7 @@
     <string name="total_notes">Всего заметок:</string>
     <string name="auto_backup">Автоматическое резервирование</string>
     <string name="auto_backup_hint">Автоматическое резервирование копирует в облако заметки раз в сутки, но этот процесс не является приоритетным для экономии заряда батареи.</string>
+    <string name="edit">Редактировать</string>
+    <string name="pin">Закрепить</string>
+    <string name="delete">Удалить</string>
 </resources>

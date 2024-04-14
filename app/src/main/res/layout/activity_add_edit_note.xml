@@ -133,7 +133,6 @@
         android:layout_height="match_parent"
         app:behavior_peekHeight="550dp"
         app:behavior_saveFlags="all"
-        tools:layout_height="0dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
@@ -152,50 +151,6 @@
             android:paddingTop="20dp"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="25dp"
-                style="@style/Widget.Material3.CardView.Filled"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="20dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:src="@drawable/info"
-                        android:layout_height="40dp"
-                        android:contentDescription="@string/inf" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:text="@string/inf" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/counttxt"
-                        android:gravity="center"
-                        android:text="@string/countSymb"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/savedtxt"
-                    android:gravity="center"
-                    android:text="@string/saved"/>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -371,6 +326,13 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/savedtxt"
+                android:gravity="center"
+                android:text="@string/saved"/>
 
         </LinearLayout>
 
