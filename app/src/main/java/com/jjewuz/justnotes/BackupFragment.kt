@@ -66,6 +66,8 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         binding.cloudButtons.visibility = View.GONE
         autoSwitch.visibility = View.GONE
 
+
+
         val currentUser = auth.currentUser
         if (currentUser != null) {
             updateUI(currentUser, binding)

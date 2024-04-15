@@ -24,5 +24,6 @@
         android:iconTint="?colorOnBackground"
         android:title="@string/labels"
         app:showAsAction="ifRoom"
+        android:visible="false"
         android:id="@+id/labels" />
 </menu>

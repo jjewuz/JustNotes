@@ -20,7 +20,9 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowInsets
 import android.view.WindowManager.LayoutParams
 import android.widget.Button
 import android.widget.EditText
@@ -33,7 +35,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.toHtml
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -401,6 +405,16 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
 
         fab = findViewById(R.id.edit_fab)
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(fab) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.bottomMargin = insets.bottom + 20
+            params.rightMargin = insets.right + 40
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
 
         if (!isEditable){
             noteEdt.isFocusable = false

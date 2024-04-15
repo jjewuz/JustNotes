@@ -13,6 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -97,6 +99,14 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             }
         })
         val addButton: FloatingActionButton = v.findViewById(R.id.addTodoButton)
+        ViewCompat.setOnApplyWindowInsetsListener(addButton) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.bottomMargin = insets.bottom + 20
+            params.rightMargin = insets.right + 40
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
         addButton.setOnClickListener {
             val builder = MaterialAlertDialogBuilder(requireActivity())
             builder.setTitle(R.string.add_reminder)

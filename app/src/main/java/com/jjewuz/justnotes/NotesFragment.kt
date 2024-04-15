@@ -22,9 +22,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.MarginLayoutParamsCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.get
+import androidx.core.view.marginLeft
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -106,6 +112,15 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         label1 = v.findViewById(R.id.label1)
         label2 = v.findViewById(R.id.label2)
         label3 = v.findViewById(R.id.label3)
+
+        ViewCompat.setOnApplyWindowInsetsListener(addFAB) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.bottomMargin = insets.bottom + 20
+            params.rightMargin = insets.right + 40
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
 
         label1.text = sharedPref.getString("label1", "")
         label2.text = sharedPref.getString("label2", "")
