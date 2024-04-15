@@ -320,15 +320,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            if (sharedPref.getBoolean("auto_backup", false)) {
+                val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+                val currDate: String = sdf.format(Date().time)
 
-        val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-        val currDate: String = sdf.format(Date().time)
-
-        if (sharedPref.getString("last_backup_text", "dd MMM yyyy - HH:mm")?.dropLast(8) != currDate ){
-            backup()
-            Log.e("send", sharedPref.getString("last_backup_text", "dd MMM yyyy - HH:mm")?.dropLast(8).toString())
-            Log.e("send", currDate)
-            sharedPref.edit().putString("last_backup_text", currDate).apply()
+                if (sharedPref.getString("last_backup_text", "dd MMM yyyy - HH:mm")
+                        ?.dropLast(8) != currDate
+                ) {
+                    backup()
+                    sharedPref.edit().putString("last_backup_text", currDate).apply()
+                }
+            }
         }
     }
 

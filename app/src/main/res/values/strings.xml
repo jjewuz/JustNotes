@@ -161,8 +161,8 @@
     <string name="last_backup">Last backup:</string>
     <string name="total_notes">Total notes:</string>
     <string name="auto_backup">Auto backup</string>
-    <string name="auto_backup_hint">Auto backup</string>
     <string name="edit">Edit</string>
     <string name="pin">Pin</string>
     <string name="delete">Delete</string>
+    <string name="auto_backup_on">Auto backup enabled</string>
 </resources>

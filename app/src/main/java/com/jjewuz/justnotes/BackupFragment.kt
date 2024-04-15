@@ -19,6 +19,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
@@ -43,6 +44,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
     private lateinit var lastBackupText: TextView
     private lateinit var sharedPref: SharedPreferences
     private lateinit var progressBar: LinearProgressIndicator
+    private lateinit var autoSwitch: MaterialSwitch
 
     private lateinit var auth: FirebaseAuth
 
@@ -57,10 +59,12 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
         auth = Firebase.auth
 
         progressBar = binding.progressBar
+        autoSwitch = binding.autoBackupSwitch
         
         binding.deleteBtn.visibility = View.GONE
         binding.logoutBtn.visibility = View.GONE
         binding.cloudButtons.visibility = View.GONE
+        autoSwitch.visibility = View.GONE
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -102,7 +106,10 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             binding.logoutBtn.visibility = View.GONE
             binding.deleteBtn.visibility = View.GONE
             binding.cloudButtons.visibility = View.GONE
+            autoSwitch.visibility = View.GONE
         }
+
+        autoSwitch.isChecked = sharedPref.getBoolean("auto_backup", false)
 
         binding.deleteBtn.setOnClickListener {
             MaterialAlertDialogBuilder(requireActivity())
@@ -161,8 +168,21 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
                 .show()
         }
 
+        autoSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                with (sharedPref.edit()) {
+                    putBoolean("auto_backup", true)
+                    apply()
+                }
 
-
+                Toast.makeText(requireContext(), R.string.auto_backup_on, Toast.LENGTH_SHORT).show()
+            }else{
+                with (sharedPref.edit()) {
+                    putBoolean("auto_backup", false)
+                    apply()
+                }
+            }
+        }
         lastBackupText = binding.lastBackup
         lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
     }
@@ -371,6 +391,7 @@ class BackupFragment : Fragment(R.layout.fragment_backup) {
             binding.logoutBtn.visibility = View.VISIBLE
             binding.deleteBtn.visibility = View.VISIBLE
             binding.cloudButtons.visibility = View.VISIBLE
+            autoSwitch.visibility = View.VISIBLE
 
             val emailVerified = it.isEmailVerified
             val uid = it.uid

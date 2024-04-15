@@ -156,8 +156,8 @@
     <string name="last_backup">Последняя копия:</string>
     <string name="total_notes">Всего заметок:</string>
     <string name="auto_backup">Автоматическое резервирование</string>
-    <string name="auto_backup_hint">Автоматическое резервирование копирует в облако заметки раз в сутки, но этот процесс не является приоритетным для экономии заряда батареи.</string>
     <string name="edit">Редактировать</string>
     <string name="pin">Закрепить</string>
     <string name="delete">Удалить</string>
+    <string name="auto_backup_on">Автоматическое резервирование включено.</string>
 </resources>
