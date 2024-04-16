@@ -30,6 +30,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.tasks.OnCompleteListener
@@ -318,8 +319,8 @@ class MainActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         val user = Firebase.auth.currentUser
         if (user != null) {
             if (sharedPref.getBoolean("auto_backup", false)) {
@@ -329,6 +330,7 @@ class MainActivity : AppCompatActivity() {
                 if (sharedPref.getString("last_backup_text", "dd MMM yyyy - HH:mm")
                         ?.dropLast(8) != currDate
                 ) {
+
                     backup()
                     sharedPref.edit().putString("last_backup_text", currDate).apply()
                 }
@@ -368,42 +370,42 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun backup(){
+    private fun backup() {
         val backup = this.backup
         val storageRef = Firebase.storage.reference
 
-            val userId = Firebase.auth.currentUser?.uid
-            backup
-                .database(NoteDatabase.getDatabase(this))
-                .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
-                .customBackupFileName("database")
-                .backupIsEncrypted(true)
-                .customEncryptPassword(userId.toString())
-                .apply {
-                    onCompleteListener { success, message, exitCode ->
-                        Log.d(
-                            ContentValues.TAG,
-                            "success: $success, message: $message, exitCode: $exitCode"
-                        )
-                    }
+        val userId = Firebase.auth.currentUser?.uid
+        backup
+            .database(NoteDatabase.getDatabase(this))
+            .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
+            .customBackupFileName("database")
+            .backupIsEncrypted(true)
+            .customEncryptPassword(userId.toString())
+            .apply {
+                onCompleteListener { success, message, exitCode ->
+                    Log.d(
+                        ContentValues.TAG,
+                        "success: $success, message: $message, exitCode: $exitCode"
+                    )
                 }
-                .backup()
+            }
+            .backup()
 
-            storageRef.child("user/$userId/database.aes").putFile(
-                File(
-                    this.filesDir,
-                    "databasebackup/database.aes"
-                ).toUri()
-            ).addOnSuccessListener {
-                val sdf2 = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
-                val currentDateAndTime2: String = sdf2.format(Date().time)
-                val currentTime =
-                    "${resources.getString(R.string.last_backup)} $currentDateAndTime2"
-                with(sharedPref.edit()) {
-                    putString("last_backup_time", currentDateAndTime2)
-                    putString("last_backup", currentTime)
-                    apply()
-                }
+        storageRef.child("user/$userId/database.aes").putFile(
+            File(
+                this.filesDir,
+                "databasebackup/database.aes"
+            ).toUri()
+        ).addOnSuccessListener {
+            val sdf2 = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
+            val currentDateAndTime2: String = sdf2.format(Date().time)
+            val currentTime =
+                "${resources.getString(R.string.last_backup)} $currentDateAndTime2"
+            with(sharedPref.edit()) {
+                putString("last_backup_time", currentDateAndTime2)
+                putString("last_backup", currentTime)
+                apply()
+            }
         }
     }
 
