@@ -156,4 +156,8 @@
     <string name="last_backup">Última copia de seguridad:</string>
     <string name="total_notes">Total de notas:</string>
     <string name="auto_backup">Copia de seguridad automática</string>
+    <string name="edit">Editar</string>
+    <string name="pin">Pin</string>
+    <string name="delete">Borrar</string>
+    <string name="auto_backup_on">Copia de seguridad automática activada</string>
 </resources>
