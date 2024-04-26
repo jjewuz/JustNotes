@@ -9,6 +9,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuHost
@@ -107,6 +108,9 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             vi.layoutParams = params
             WindowInsetsCompat.CONSUMED
         }
+
+
+
         addButton.setOnClickListener {
             val builder = MaterialAlertDialogBuilder(requireActivity())
             builder.setTitle(R.string.add_reminder)

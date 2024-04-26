@@ -18,6 +18,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -118,6 +119,16 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             val params = vi.layoutParams as ViewGroup.MarginLayoutParams
             params.bottomMargin = insets.bottom + 20
             params.rightMargin = insets.right + 40
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
+
+        val searchPanel = v.findViewById<LinearLayout>(R.id.searchBar)
+
+        ViewCompat.setOnApplyWindowInsetsListener(searchPanel) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.topMargin = insets.bottom + 50
             vi.layoutParams = params
             WindowInsetsCompat.CONSUMED
         }
