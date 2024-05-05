@@ -18,11 +18,14 @@ interface NotesDao {
     @Query("Select * from notesTable where id = :noteId")
     fun getNoteById(noteId: Int): Note?
 
-    @Query("Select * FROM notesTable Order By timeStamp DESC " )
+    @Query("Select * from notesTable Order By timeStamp DESC " )
     fun getAllSortedByTime(): LiveData<List<Note>>
 
-    @Query("Select * FROM notesTable where label = :customLabel Order By timeStamp DESC")
+    @Query("Select * from notesTable where label = :customLabel Order By timeStamp DESC")
     fun getItemsWithLabel(customLabel: String): LiveData<List<Note>>
+
+    @Query("Select * from notesTable where description like :search")
+    fun showSearch(search: String?): LiveData<List<Note>>
 
     @Update
     suspend fun update(note: Note)

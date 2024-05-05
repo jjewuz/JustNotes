@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -68,6 +69,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
     lateinit var noteRVAdapter: NoteRVAdapter
     lateinit var allItems: LiveData<List<Note>>
+
+    private lateinit var searchView: SearchView
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -265,6 +268,25 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 }
             })
         }
+
+        searchView = v.findViewById(R.id.search_bar)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                allItems = query?.let { viewModal.getQuery(it) }!!
+                updateList(allItems)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText == ""){
+                    allItems = viewModal.getNotes()
+                } else {
+                    allItems = newText?.let { viewModal.getQuery(it) }!!
+                }
+                updateList(allItems)
+                return false
+            }
+        })
 
         return v
     }

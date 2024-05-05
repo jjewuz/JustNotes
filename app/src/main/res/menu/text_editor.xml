@@ -20,6 +20,12 @@
         app:showAsAction="ifRoom"
         android:id="@+id/info" />
     <item
+        android:icon="@drawable/down"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/jump_toEnd"
+        app:showAsAction="ifRoom"
+        android:id="@+id/jumpToEnd" />
+    <item
         android:icon="@drawable/label"
         android:iconTint="?colorOnBackground"
         android:title="@string/labels"

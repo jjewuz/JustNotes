@@ -165,4 +165,6 @@
     <string name="pin">Pin</string>
     <string name="delete">Delete</string>
     <string name="auto_backup_on">Auto backup enabled</string>
+    <string name="search_hint">Search in JustNotes...</string>
+    <string name="jump_toEnd">Scroll to bottom</string>
 </resources>

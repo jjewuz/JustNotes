@@ -160,4 +160,6 @@
     <string name="pin">Закрепить</string>
     <string name="delete">Удалить</string>
     <string name="auto_backup_on">Автоматическое резервирование включено.</string>
+    <string name="search_hint">Поиск в JustNotes...</string>
+    <string name="jump_toEnd">К концу заметки</string>
 </resources>

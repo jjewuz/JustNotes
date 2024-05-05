@@ -27,6 +27,7 @@ import android.view.WindowManager.LayoutParams
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -38,6 +39,7 @@ import androidx.core.text.toHtml
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -96,6 +98,8 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var fab: FloatingActionButton
 
+    private lateinit var scrollView: NestedScrollView
+
     private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             saveNote(true)
@@ -145,6 +149,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         savedTxt = findViewById(R.id.savedtxt)
         bottomAppBar = findViewById(R.id.bottomAppBar)
         bottomSheet = findViewById(R.id.standard_bottom_sheet)
+        scrollView = findViewById(R.id.nestedScrollView)
 
         labelGroup = findViewById(R.id.chipGroup)
         label1 = findViewById(R.id.label1)
@@ -480,6 +485,10 @@ class AddEditNoteActivity : AppCompatActivity() {
                 true
             }
             R.id.labels -> {
+                true
+            }
+            R.id.jumpToEnd -> {
+                scrollView.fullScroll(View.FOCUS_DOWN)
                 true
             }
             else -> super.onOptionsItemSelected(item)

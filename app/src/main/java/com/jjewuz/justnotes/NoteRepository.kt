@@ -10,6 +10,10 @@ class NoteRepository(private val notesDao: NotesDao) {
         return notesDao.getItemsWithLabel(label)
     }
 
+    fun getQuery(query: String): LiveData<List<Note>> {
+        return notesDao.showSearch(query)
+    }
+
     fun getNotes(): LiveData<List<Note>> {
         return notesDao.getAllSortedByTime()
     }
