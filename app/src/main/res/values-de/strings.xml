@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">Diese App wurde für die schnelle und komfortable Textbearbeitung erstellt. Klicken Sie auf das „Plus“, um eine neue Notiz zu erstellen. Halten Sie die Karte gedrückt, um die Notiz zu löschen.</string>
-    <string name="changes">Sozialen Medien:</string>
-    <string name="vk">Vkontakte</string>
     <string name="tg">Telegram</string>
-    <string name="gh">GitHub</string>
     <string name="site">Webseite</string>
     <string name="back">zurück</string>
     <string name="inf">Information</string>
@@ -49,7 +45,7 @@
     <string name="fontToggle">Systemschriftart</string>
     <string name="reportBug">App-Problem melden</string>
     <string name="buildn">Build-Nummer:</string>
-    <string name="appversion">App Version:</string>
+    <string name="appversion">App Version</string>
     <string name="appearance">Aussehen</string>
     <string name="security">Sicherheit</string>
     <string name="other">Andere</string>
@@ -153,4 +149,9 @@
     <string name="error_saving_labels">Beim Speichern des Labelnamens ist ein Fehler aufgetreten</string>
     <string name="labels_edit_text">Bei leerem Feld wird die Beschriftung ausgeblendet.</string>
     <string name="reminders">Erinnerungen</string>
+    <string name="source_code">Quellcode</string>
+    <string name="links">Links</string>
+    <string name="legal">Legal</string>
+    <string name="app_desc">JustNotes ist eine einfache und funktionale Anwendung zum Notieren. Schönes Design, benutzerfreundliche Oberfläche, alle notwendigen Funktionen – alles in JustNotes!  Schreiben Sie Ideen auf, erstellen Sie Listen, führen Sie ein Tagebuch – JustNotes wird zu Ihrem unverzichtbaren Assistenten.</string>
+    <string name="about_app">Über die App</string>
 </resources>

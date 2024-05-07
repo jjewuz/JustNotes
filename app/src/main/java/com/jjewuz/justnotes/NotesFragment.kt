@@ -18,6 +18,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.SearchView
@@ -71,6 +72,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var allItems: LiveData<List<Note>>
 
     private lateinit var searchView: SearchView
+    private lateinit var reminderButton: ImageView
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -81,29 +83,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         var reverse = sharedPref.getBoolean("reversed", false)
         var isGrid = sharedPref.getBoolean("grid", false)
-
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.toolbar, menu)
-                viewIcon = menu.findItem(R.id.view_change)
-            }
-
-            override fun onPrepareMenu(menu: Menu) {
-                super.onPrepareMenu(menu)
-                viewIcon.setIcon(R.drawable.reminders)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.view_change -> {
-                        replaceFragment(TodoFragment())
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val v = inflater.inflate(R.layout.fragment_notes, container, false)
 
@@ -126,12 +105,16 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             WindowInsetsCompat.CONSUMED
         }
 
+        reminderButton = v.findViewById(R.id.reminders)
+        reminderButton.setOnClickListener {
+            replaceFragment(TodoFragment())
+        }
         val searchPanel = v.findViewById<LinearLayout>(R.id.searchBar)
 
         ViewCompat.setOnApplyWindowInsetsListener(searchPanel) { vi, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             val params = vi.layoutParams as ViewGroup.MarginLayoutParams
-            params.topMargin = insets.bottom + 50
+            params.topMargin = insets.bottom + 90
             vi.layoutParams = params
             WindowInsetsCompat.CONSUMED
         }
@@ -278,10 +261,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText == ""){
-                    allItems = viewModal.getNotes()
+                allItems = if (newText == ""){
+                    viewModal.getNotes()
                 } else {
-                    allItems = newText?.let { viewModal.getQuery(it) }!!
+                    newText?.let { viewModal.getQuery(it) }!!
                 }
                 updateList(allItems)
                 return false

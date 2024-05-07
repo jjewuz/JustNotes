@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
@@ -51,6 +52,8 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         val isDev = sharedPref.getBoolean("is_dev", false)
         bottomAppBar = v.findViewById(R.id.bottomAppBar)
         noTasks = v.findViewById(R.id.notasks)
+
+        (activity as AppCompatActivity).setSupportActionBar(v.findViewById(R.id.topAppBar))
 
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {

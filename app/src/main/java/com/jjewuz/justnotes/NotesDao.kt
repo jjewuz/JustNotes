@@ -24,7 +24,7 @@ interface NotesDao {
     @Query("Select * from notesTable where label = :customLabel Order By timeStamp DESC")
     fun getItemsWithLabel(customLabel: String): LiveData<List<Note>>
 
-    @Query("Select * from notesTable where description like :search")
+    @Query("Select * from notesTable where Title like '%' || :search || '%'")
     fun showSearch(search: String?): LiveData<List<Note>>
 
     @Update

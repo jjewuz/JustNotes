@@ -11,7 +11,6 @@
     <string name="restore_fail">Erro ao descarregar o backup!</string>
     <string name="reportBug">Informar problema na app</string>
     <string name="hint">Escreva aqui</string>
-    <string name="vk">Grupo VK</string>
     <string name="rate">Avalie o app</string>
     <string name="tasks">Tarefas</string>
     <string name="do_restore">Restaurar</string>
@@ -50,7 +49,6 @@
     <string name="screenshot_secured_notes">Permitir captura de ecrã em notas seguras</string>
     <string name="choose_note">Escolha a nota a ser exibida.</string>
     <string name="appearance">Aparência</string>
-    <string name="gh">GitHub</string>
     <string name="noPassError">Defina uma palavra-passe no dispositivo ou restaure os dados do JustNotes!</string>
     <string name="neg">Não</string>
     <string name="add_button">Nova nota</string>
@@ -127,7 +125,7 @@
     <string name="useful">Útil</string>
     <string name="backup_complete">Backup concluído</string>
     <string name="underlined">Sublinhado</string>
-    <string name="appversion">Versão da app:</string>
+    <string name="appversion">Versão da app</string>
     <string name="passEnable">Proteção ativada</string>
     <string name="security">Segurança</string>
     <string name="no_account">Nenhuma conta</string>
@@ -137,11 +135,9 @@
     <string name="do_backup">Backup</string>
     <string name="fontToggle">Fonte do sistema</string>
     <string name="redo">Refazer</string>
-    <string name="about2">Esta app foi criada para a edição rápida e confortável de texto . Clique no \"mais\" para criar uma nova nota. Segure o cartão para apagar a nota.</string>
     <string name="auth_need">Precisa de verificação</string>
     <string name="italic">Itálico</string>
     <string name="add">Adicionar</string>
-    <string name="changes">Mídia Social:</string>
     <string name="enter_password">Digite a palavra-passe</string>
     <string name="select_time">Tempo do lembrete</string>
     <string name="note">Nota</string>

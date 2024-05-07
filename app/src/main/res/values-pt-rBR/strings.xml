@@ -4,7 +4,6 @@
     <string name="deleted">Excluído</string>
     <string name="reportBug">Informar problema no aplicativo</string>
     <string name="hint">Escreva aqui</string>
-    <string name="vk">Grupo VK</string>
     <string name="rate">Avalie o app</string>
     <string name="tasks">Tarefas</string>
     <string name="settingsText">Configurações</string>
@@ -18,7 +17,6 @@
     <string name="tg">Grupo do Telegram</string>
     <string name="passDisabled">Proteção desativada</string>
     <string name="export">Exportar em .txt</string>
-    <string name="gh">GitHub</string>
     <string name="noPassError">Defina uma senha no dispositivo ou restaure os dados do JustNotes!</string>
     <string name="neg">Não</string>
     <string name="add_button">Nova nota</string>
@@ -44,8 +42,6 @@
     <string name="passEnable">Proteção ativada</string>
     <string name="pos">Sim</string>
     <string name="fontToggle">Fonte do sistema</string>
-    <string name="about2">Este aplicativo foi criado para edição de texto rápida e confortável. Clique no \"mais\" para criar uma nova nota. Segure o cartão para excluir a nota.</string>
-    <string name="changes">Mídia Social:</string>
     <string name="note">Nota</string>
     <string name="authFail">Falha na autenticação</string>
     <string name="site">Site</string>
@@ -76,7 +72,7 @@
     <string name="not_encrypted">Atenção! O backup local não está criptografado.</string>
     <string name="notshowanymore">Não mostre de novo</string>
     <string name="empty">Vazio</string>
-    <string name="appversion">Versão do aplicativo:</string>
+    <string name="appversion">Versão do aplicativo</string>
     <string name="security">Segurança</string>
     <string name="do_backup">Backup</string>
     <string name="add">Adicionar</string>

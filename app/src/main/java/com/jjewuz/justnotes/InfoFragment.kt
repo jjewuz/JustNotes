@@ -9,13 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 
 
 class InfoFragment : Fragment() {
 
-    private lateinit var ghBtn: Button
-    private lateinit var siteBtn: Button
+    private lateinit var ghBtn: LinearLayout
+    private lateinit var sourceBtn: LinearLayout
+    private lateinit var siteBtn: LinearLayout
     private lateinit var licenseBtn: Button
 
     private lateinit var tou: Button
@@ -24,12 +27,15 @@ class InfoFragment : Fragment() {
     private lateinit var  tgBtn: ImageButton
     private lateinit var  vkBtn: ImageButton
 
+    private lateinit var versionTxt: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_info, container, false)
-        ghBtn = v.findViewById(R.id.gh)
+        ghBtn = v.findViewById(R.id.github_profile)
+        sourceBtn = v.findViewById(R.id.github_code)
         siteBtn = v.findViewById(R.id.site)
         licenseBtn = v.findViewById(R.id.licenses)
 
@@ -38,7 +44,12 @@ class InfoFragment : Fragment() {
         tgBtn = v.findViewById(R.id.tg)
         vkBtn = v.findViewById(R.id.vk)
 
+        versionTxt = v.findViewById(R.id.version)
+
+        versionTxt.text = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+
         ghBtn.setOnClickListener { openLink("https://github.com/jjewuz/JustNotes") }
+        sourceBtn.setOnClickListener { openLink("https://github.com/jjewuz") }
         siteBtn.setOnClickListener{ openLink("https://jjewuz.ru/justnotes/justnotes.html") }
         licenseBtn.setOnClickListener { startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java)) }
         tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }

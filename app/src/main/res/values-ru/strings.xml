@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">Приложение создано для быстрого и удобного редактирования текста. Нажмите на \"плюс\", чтобы создать новую заметку. Удержите на карточке, что бы удалить заметку.</string>
-    <string name="changes">Социальные сети:</string>
-    <string name="vk">Группа ВК</string>
     <string name="tg">Канал Телеграм</string>
-    <string name="gh">GitHub</string>
     <string name="site">Сайт</string>
     <string name="back">Назад</string>
     <string name="inf">Информация</string>
@@ -15,7 +11,7 @@
     <string name="tasks">Задачи</string>
     <string name="rate">Оцените приложение</string>
     <string name="add_widget">Добавить виджет</string>
-    <string name="app_widget_description">Отображает заметку</string>
+    <string name="app_widget_description">Отображает выбранную заметку</string>
     <string name="option1">Очистить текст</string>
     <string name="option2">Информация о тексте</string>
     <string name="option3">Сохранить и выйти</string>
@@ -49,7 +45,7 @@
     <string name="fontToggle">Системный шрифт</string>
     <string name="reportBug">Сообщить о проблеме</string>
     <string name="buildn">Сборка приложения:</string>
-    <string name="appversion">Версия приложения:</string>
+    <string name="appversion">Версия приложения</string>
     <string name="appearance">Внешний вид</string>
     <string name="security">Безопасность</string>
     <string name="other">Прочее</string>
@@ -160,6 +156,12 @@
     <string name="pin">Закрепить</string>
     <string name="delete">Удалить</string>
     <string name="auto_backup_on">Автоматическое резервирование включено.</string>
-    <string name="search_hint">Поиск в JustNotes...</string>
+    <string name="search_hint">Искать среди названий...</string>
     <string name="jump_toEnd">К концу заметки</string>
+    <string name="source_code">Исходный код</string>
+    <string name="links">Ссылки</string>
+    <string name="gh_profile">Профиль на GitHub</string>
+    <string name="legal">Юридическая информация</string>
+    <string name="app_desc">JustNotes - это простое и функциональное приложение для создания заметок. Красивый дизайн, удобный интерфейс, все необходимые функции - всё это в JustNotes!  Записывайте идеи, составляйте списки, ведите дневник - JustNotes станет вашим незаменимым помощником.</string>
+    <string name="about_app">О приложении</string>
 </resources>

@@ -7,7 +7,6 @@
     <string name="nothingTxt">Tomhetens motstykke føles fraværende medgitt …</string>
     <string name="reportBug">Rapporter problem</string>
     <string name="hint">Skriv her</string>
-    <string name="vk">VK-gruppe</string>
     <string name="rate">Vurder programmet</string>
     <string name="tasks">Gjøremål</string>
     <string name="do_restore">Gjenopprett</string>
@@ -28,7 +27,6 @@
     <string name="export">Eksporter til .txt</string>
     <string name="choose_note">Velg notat å vise.</string>
     <string name="appearance">Utseende</string>
-    <string name="gh">GitHub</string>
     <string name="noPassError">Sett et passord på enheten, eller tilbakestill JustNotes-data!</string>
     <string name="neg">Nei</string>
     <string name="add_button">Nytt notat</string>
@@ -68,15 +66,13 @@
     <string name="notshowanymore">Ikke vis igjen</string>
     <string name="empty">Tomt</string>
     <string name="buildn">Byggnummer:</string>
-    <string name="appversion">Programversjon:</string>
+    <string name="appversion">Programversjon</string>
     <string name="passEnable">Beskyttelse på</string>
     <string name="security">Sikkerhet</string>
     <string name="pos">Ja</string>
     <string name="do_backup">Sikkerhetskopier</string>
     <string name="fontToggle">Systemskrift</string>
-    <string name="about2">Laget for rask og komfortabel redigering. Klikk pluss-tegnet for å opprette et nytt notat. Hold notat nedtrykt for å slette det.</string>
     <string name="add">Legg til</string>
-    <string name="changes">Sosiale media:</string>
     <string name="note">Notat</string>
     <string name="set_on_widget">Send notatet til miniprogrammet</string>
     <string name="thx_license">Takk til utviklerne av alle anvendte tredjepartsbibliotek.</string>

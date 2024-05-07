@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">Aplikacija je stvorena za brzo i jednostavno uređivanje teksta. Dodirnite + da biste stvorili novu bilješku. Držite prst na kartici da biste izbrisali bilješku.</string>
-    <string name="changes">Društvene mreže:</string>
-    <string name="vk">VK Grupa</string>
     <string name="tg">Telegram Kanal</string>
-    <string name="gh">Izvorni kôd</string>
     <string name="site">Web Stranica</string>
     <string name="back">Natrag</string>
     <string name="inf">Informacije</string>
@@ -49,7 +45,7 @@
     <string name="fontToggle">Font sustava</string>
     <string name="reportBug">Prijavi problem</string>
     <string name="buildn">Verzija aplikacije:</string>
-    <string name="appversion">Inačica aplikacije:</string>
+    <string name="appversion">Inačica aplikacije</string>
     <string name="appearance">Izgled</string>
     <string name="security">Sigurnost</string>
     <string name="other">Ostalo</string>

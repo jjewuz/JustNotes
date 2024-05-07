@@ -13,7 +13,6 @@
     <string name="agree">Potvrdit</string>
     <string name="email">Email</string>
     <string name="appearance">Vzhled</string>
-    <string name="gh">GitHub</string>
     <string name="neg">Ne</string>
     <string name="add_button">Nová poznámka</string>
     <string name="inf">Informace</string>
@@ -36,7 +35,7 @@
     <string name="color_picker">Vybrat barvu</string>
     <string name="empty">Prázný</string>
     <string name="useful">Užitečné</string>
-    <string name="appversion">Verze aplikace:</string>
+    <string name="appversion">Verze aplikace</string>
     <string name="security">Bezpečnost</string>
     <string name="no_account">Žádný účet</string>
     <string name="pos">Ano</string>
@@ -51,7 +50,6 @@
     <string name="deleted">Smazáno</string>
     <string name="what_new_update">"Co je nového v "</string>
     <string name="reportBug">Nahlásit problém s aplikací</string>
-    <string name="vk">VK skupina</string>
     <string name="rate">Ohodnoťte aplikaci</string>
     <string name="settings_desc">Vzhled, bezpečnost…</string>
     <string name="add_widget">Přidat widget</string>
@@ -102,9 +100,7 @@
     <string name="underlined">Podtrženo</string>
     <string name="passEnable">Zapnutá ochrana</string>
     <string name="deletion_succes">Účet byl úspěšně smazán!</string>
-    <string name="about2">Tato aplikace je vytvořená pro rychlou a pohodlnou úpravu textu. Klikni na \"plus\" k vytvoření nové poznámky. Hold on kartu ke smazání poznámky.</string>
     <string name="italic">Kurzíva</string>
-    <string name="changes">Sociální média:</string>
     <string name="enter_password">Zadejte heslo</string>
     <string name="account_delete_info">Jste si jistý že si chcete smazat váš účet?</string>
     <string name="sign_out">Odhlásit se</string>

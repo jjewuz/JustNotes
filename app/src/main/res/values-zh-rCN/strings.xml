@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">JustNotes 是一个快速、舒适的文本编辑器。 点击加号新建笔记。按住卡片可删除笔记。</string>
-    <string name="changes">联系我们:</string>
-    <string name="vk">VK</string>
-    <string name="gh">GitHub</string>
     <string name="back">返回</string>
     <string name="inf">信息</string>
     <string name="site">网站</string>
@@ -49,7 +45,7 @@
     <string name="fontToggle">系统字体</string>
     <string name="reportBug">报告问题</string>
     <string name="buildn">构建版本:</string>
-    <string name="appversion">应用版本:</string>
+    <string name="appversion">应用版本</string>
     <string name="appearance">外观</string>
     <string name="security">安全</string>
     <string name="other">其它</string>

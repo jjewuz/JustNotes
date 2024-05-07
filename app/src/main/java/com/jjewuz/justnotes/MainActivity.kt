@@ -85,13 +85,9 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
                 Toast.makeText(requireContext(), resources.getString(R.string.beta_mode_activated), Toast.LENGTH_LONG).show()
             }
         }
-        val appVer = view.findViewById<TextView>(R.id.app_build)
         val appLabel = view.findViewById<TextView>(R.id.app_label)
-        if (already){
+        if (already) {
             appLabel.text = "${resources.getString(R.string.app_name)} β"
-            appVer.text = "v${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
-        } else{
-            appVer.text = "v${BuildConfig.VERSION_NAME}"
         }
 
         val viewModel = ViewModelProvider(this)[NoteViewModal::class.java]

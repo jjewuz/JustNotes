@@ -3,7 +3,6 @@
     <string name="countSymb">Nombre de caractères :</string>
     <string name="deleted">Supprimé</string>
     <string name="hint">Écrivez ici</string>
-    <string name="vk">Groupe VKontakte</string>
     <string name="rate">Évaluez l\'appli</string>
     <string name="tasks">Tâches</string>
     <string name="settingsText">Paramètres</string>
@@ -16,7 +15,6 @@
     <string name="count2">Temps de lecture</string>
     <string name="tg">Groupe Telegram</string>
     <string name="export">Exporter en tant que .txt</string>
-    <string name="gh">GitHub</string>
     <string name="neg">Non</string>
     <string name="inf">Informations</string>
     <string name="app_widget_description">Affiche une note</string>
@@ -36,8 +34,6 @@
     <string name="docMade">Fichier enregistré dans Téléchargements</string>
     <string name="security">Sécurité</string>
     <string name="pos">Oui</string>
-    <string name="about2">Cette application a été créée pour éditer des textes rapidement et confortablement. Cliquez sur le plus pour créer une nouvelle note. Tenez la carte pour supprimer la note.</string>
-    <string name="changes">Médias sociaux :</string>
     <string name="note">Note</string>
     <string name="site">Site Web</string>
     <string name="preview">Aperçu du texte de la note</string>
@@ -77,7 +73,7 @@
     <string name="buildn">Numéro de build :</string>
     <string name="import_txt">Importer depuis .txt</string>
     <string name="underlined">Souligné</string>
-    <string name="appversion">Version de l\'application :</string>
+    <string name="appversion">Version de l\'application</string>
     <string name="passEnable">Protection activée</string>
     <string name="do_backup">Faites des sauvegardes</string>
     <string name="fontToggle">Police système</string>

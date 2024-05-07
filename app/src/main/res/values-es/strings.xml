@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about2">Esta aplicación se ha creado para editar texto de forma rápida y cómoda. Pulsa el \"más\" para crear una nueva nota. Mantén pulsada la tarjeta para borrar la nota.</string>
-    <string name="changes">Redes sociales:</string>
-    <string name="vk">Grupo VK</string>
-    <string name="gh">GitHub</string>
     <string name="back">Atrás</string>
     <string name="inf">Información</string>
     <string name="site">Página web</string>
@@ -49,7 +45,7 @@
     <string name="fontToggle">Fuente del sistema</string>
     <string name="reportBug">Informar de un problema con la aplicación</string>
     <string name="buildn">Número de compilación:</string>
-    <string name="appversion">Version de aplicacion:</string>
+    <string name="appversion">Version de aplicacion</string>
     <string name="appearance">Apariencia</string>
     <string name="security">Seguridad</string>
     <string name="other">Otro</string>
@@ -160,4 +156,9 @@
     <string name="pin">Pin</string>
     <string name="delete">Borrar</string>
     <string name="auto_backup_on">Copia de seguridad automática activada</string>
+    <string name="source_code">Código fuente</string>
+    <string name="links">Enlaces</string>
+    <string name="legal">Legal</string>
+    <string name="app_desc">JustNotes es una aplicación para tomar notas sencilla y funcional. Hermoso diseño, interfaz fácil de usar, todas las funciones necesarias: ¡todo esto en JustNotes!  Escriba ideas, haga listas, lleve un diario: JustNotes se convertirá en su asistente indispensable.</string>
+    <string name="about_app">Acerca de la aplicación</string>
 </resources>
