@@ -19,7 +19,7 @@
     <string name="verison">Razvijatelj: jjewuz</string>
     <string name="Title">Naziv bilješke</string>
     <string name="deleted">Izbrisano</string>
-    <string name="saved">Spremljeno</string>
+    <string name="saved">Zadnje spremljeno</string>
     <string name="pos">Da</string>
     <string name="neg">Ne</string>
     <string name="delWarn">Jeste li sigurni da želite izbrisati bilješku?</string>
@@ -45,7 +45,7 @@
     <string name="fontToggle">Font sustava</string>
     <string name="reportBug">Prijavi problem</string>
     <string name="buildn">Verzija aplikacije:</string>
-    <string name="appversion">Inačica aplikacije</string>
+    <string name="appversion">Verzija aplikacije</string>
     <string name="appearance">Izgled</string>
     <string name="security">Sigurnost</string>
     <string name="other">Ostalo</string>
@@ -156,4 +156,12 @@
     <string name="add_reminder">Dodaj podsjetnik</string>
     <string name="remind_hint">Podsjeti me o …</string>
     <string name="total_notes">Ukupni broj bilježaka:</string>
+    <string name="source_code">Izvorni kod</string>
+    <string name="gh_profile">GitHub profil</string>
+    <string name="legal">Pravno</string>
+    <string name="about_app">O aplikaciji</string>
+    <string name="jump_toEnd">Klizni na kraj stranice</string>
+    <string name="links">Poveznice</string>
+    <string name="search_hint">Traži u naslovima …</string>
+    <string name="app_desc">JustNotes je jednostavna i funkcionalna aplikacija za bilješke. Prekrasan dizajn, korisničko sučelje, sve potrebne funkcije – sve u aplikaciji JustNotes! Zapiši ideje, izradi popise, vodi dnevnik – JustNotes će postati tvoj nezamjenjiv pomoćnik.</string>
 </resources>
