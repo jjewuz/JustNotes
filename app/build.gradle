@@ -12,10 +12,10 @@ android {
 
     defaultConfig {
         applicationId "com.jjewuz.justnotes"
-        minSdk 26
+        minSdk 30
         targetSdk 34
-        versionCode 161
-        versionName "5.3.0"
+        versionCode 162
+        versionName "5.3.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

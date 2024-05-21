@@ -16,25 +16,29 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.transition.Fade
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.view.WindowInsets
 import android.view.WindowManager.LayoutParams
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.BackEventCompat
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.BuildCompat
 import androidx.core.text.toHtml
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -59,7 +63,6 @@ import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
 
 
 class AddEditNoteActivity : AppCompatActivity() {
@@ -100,20 +103,9 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var scrollView: NestedScrollView
 
-    private val onBackPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            saveNote(true)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        with(window) {
-            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-            enterTransition = Fade()
-            exitTransition = Fade()
-        }
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val theme = sharedPref.getString("theme", "standart")
@@ -136,7 +128,47 @@ class AddEditNoteActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.topAppBar))
         supportActionBar?.title = ""
 
+        val rootView = findViewById<View>(R.id.holder) ?: return
 
+        fun animateBackGesture(progress: Float) {
+            val activity = this // Get the activity context
+            val window = activity.window
+            val decorView = window.decorView
+
+            val targetScaleX = 1f - progress * 0.05f // Adjust scale based on progress
+            val targetScaleY = 1f - progress * 0.05f // Adjust scale based on progress
+
+            rootView.animate()
+                .scaleX(targetScaleX)
+                .scaleY(targetScaleY)
+                .setDuration(0L)
+                .alpha(2 - progress * 1.5f)
+                .interpolator = AccelerateDecelerateInterpolator()
+        }
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                saveNote(true)
+            }
+
+            override fun handleOnBackStarted(backEvent: BackEventCompat) {
+                super.handleOnBackStarted(backEvent)
+                Log.d("BACK", "started")
+                animateBackGesture(0f)
+            }
+
+            override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                super.handleOnBackProgressed(backEvent)
+                Log.d("BACK", "proressed")
+                animateBackGesture(backEvent.progress)
+            }
+
+            override fun handleOnBackCancelled() {
+                super.handleOnBackCancelled()
+                Log.d("BACK", "cancel")
+                animateBackGesture(0f)
+            }
+        }
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         viewModal = ViewModelProvider(

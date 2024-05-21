@@ -233,8 +233,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         addFAB.setOnClickListener {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
-            val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity(), addFAB, "transition_fab")
-            startActivity(intent, options.toBundle())
+            startActivity(intent)
         }
 
         context?.let {
