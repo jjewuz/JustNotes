@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Activities
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.NotificationChannel
@@ -19,18 +19,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.tasks.OnCompleteListener
@@ -38,9 +34,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.transition.MaterialSharedAxis
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
@@ -49,6 +43,11 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.storage
+import com.jjewuz.justnotes.Notes.NoteDatabase
+import com.jjewuz.justnotes.Notes.NoteViewModal
+import com.jjewuz.justnotes.Fragments.NotesFragment
+import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Fragments.TodoFragment
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.io.File
@@ -109,18 +108,22 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val settingsCard = view.findViewById<MaterialCardView>(R.id.settings_card)
         val infoCard = view.findViewById<MaterialCardView>(R.id.info_card)
 
-        backupCard.setOnClickListener { replaceFragment(BackupFragment())
+        backupCard.setOnClickListener { val intent = Intent(requireActivity(), BackupActivity::class.java)
+            startActivity(intent)
             this.dismiss()}
-        settingsCard.setOnClickListener { replaceFragment(SettingsFragment())
+        settingsCard.setOnClickListener {
+            val intent = Intent(requireActivity(), SettingsActivity::class.java)
+            startActivity(intent)
             this.dismiss()}
-        infoCard.setOnClickListener { replaceFragment(InfoFragment())
+        infoCard.setOnClickListener {
+            val intent = Intent(requireActivity(), InfoActivity::class.java)
+            startActivity(intent)
             this.dismiss()}
     }
 
     private fun replaceFragment(fragment : Fragment){
         val fragmentManager = parentFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.addToBackStack(fragment.tag)
         fragmentTransaction.commit ()
@@ -143,23 +146,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
-
-        val enabledFont = sharedPref.getBoolean("enabledFont", false)
-        val theme = sharedPref.getString("theme", "standart")
         val tasksDefault = sharedPref.getBoolean("isTask", false)
-        if (enabledFont and (theme=="monet")) {
-            setTheme(R.style.AppTheme)
-        } else if (!enabledFont and (theme=="monet")) {
-            setTheme(R.style.FontMonet)
-        } else if (!enabledFont and (theme=="standart")) {
-            setTheme(R.style.Font)
-        } else if (enabledFont and (theme=="standart")) {
-            setTheme(R.style.Nothing)
-        } else if (!enabledFont and (theme=="ice")){
-            setTheme(R.style.BlackIceFont)
-        } else if (enabledFont and (theme=="ice")){
-            setTheme(R.style.BlackIce)
-        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -406,6 +393,26 @@ class MainActivity : AppCompatActivity() {
                 putString("last_backup", currentTime)
                 apply()
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        val theme = sharedPref.getString("theme", "standart")
+        if (enabledFont and (theme=="monet")) {
+            setTheme(R.style.AppTheme)
+        } else if (!enabledFont and (theme=="monet")) {
+            setTheme(R.style.FontMonet)
+        } else if (!enabledFont and (theme=="standart")) {
+            setTheme(R.style.Font)
+        } else if (enabledFont and (theme=="standart")) {
+            setTheme(R.style.Nothing)
+        } else if (!enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIceFont)
+        } else if (enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIce)
         }
     }
 

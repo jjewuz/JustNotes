@@ -1,24 +1,19 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Fragments
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.BackEventCompat
-import androidx.activity.OnBackPressedCallback
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.jjewuz.justnotes.BuildConfig
+import com.jjewuz.justnotes.R
 
 
 class InfoFragment : Fragment() {
@@ -40,7 +35,7 @@ class InfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_info, container, false)
+        val v = inflater.inflate(R.layout.activity_info, container, false)
         ghBtn = v.findViewById(R.id.github_profile)
         sourceBtn = v.findViewById(R.id.github_code)
         siteBtn = v.findViewById(R.id.site)

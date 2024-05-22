@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +30,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import com.jjewuz.justnotes.Activities.ModalBottomSheet
 import com.jjewuz.justnotes.Notifications.NotificationHelper
+import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
+import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Todos.Todo
+import com.jjewuz.justnotes.Todos.TodoAdapter
+import com.jjewuz.justnotes.Todos.TodoClickInterface
+import com.jjewuz.justnotes.Todos.TodoLongClickInterface
+import com.jjewuz.justnotes.Todos.TodoViewModel
 import java.time.LocalDateTime
 import java.util.Calendar
 

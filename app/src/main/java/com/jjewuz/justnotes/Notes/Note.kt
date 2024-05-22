@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

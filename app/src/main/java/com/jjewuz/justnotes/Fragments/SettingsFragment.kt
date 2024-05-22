@@ -1,22 +1,17 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Fragments
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
-import android.content.res.Resources.Theme
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -26,6 +21,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.jjewuz.justnotes.R
 
 
 class SettingsFragment : Fragment() {
@@ -49,7 +45,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_settings, container, false)
+        val v = inflater.inflate(R.layout.activity_settings, container, false)
 
         passSwitch = v.findViewById(R.id.passwordtoggle)
         fontSwitch = v.findViewById(R.id.fonttoggle)
@@ -194,7 +190,9 @@ class SettingsFragment : Fragment() {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
                 monet.visibility = View.GONE
             } else {
-                colorMonet.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.material_dynamic_primary50))
+                colorMonet.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.material_dynamic_primary50
+                ))
             }
             builder.setIcon(R.drawable.palette)
             builder.setTitle(R.string.select_theme)

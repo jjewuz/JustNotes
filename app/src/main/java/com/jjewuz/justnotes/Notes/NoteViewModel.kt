@@ -1,10 +1,12 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
+import com.jjewuz.justnotes.Notes.Note
+import com.jjewuz.justnotes.Notes.NoteDatabase
+import com.jjewuz.justnotes.Notes.NoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

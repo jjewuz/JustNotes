@@ -1,13 +1,14 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.jjewuz.justnotes.Notes.Note
 
 
 @Dao
 interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(note :Note)
+    suspend fun insert(note : Note)
 
     @Delete
     suspend fun delete(note: Note)

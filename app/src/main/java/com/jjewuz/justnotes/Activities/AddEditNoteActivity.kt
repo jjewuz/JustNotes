@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Activities
 
 
 import android.app.Activity
@@ -15,14 +15,11 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.transition.Fade
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.view.WindowManager.LayoutParams
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
@@ -30,15 +27,13 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
-import android.window.OnBackInvokedDispatcher
 import androidx.activity.BackEventCompat
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.os.BuildCompat
 import androidx.core.text.toHtml
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -47,15 +42,22 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.jjewuz.justnotes.Utils.colorFormatting
-import com.jjewuz.justnotes.Utils.hideKeyboard
-import com.jjewuz.justnotes.Utils.textFormatting
+import com.jjewuz.justnotes.Notes.Note
+import com.jjewuz.justnotes.Notes.NoteViewModal
+import com.jjewuz.justnotes.Notes.NoteWidget
+import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Utils.TextHelper
+import com.jjewuz.justnotes.Utils.Utils
+import com.jjewuz.justnotes.Utils.Utils.colorFormatting
+import com.jjewuz.justnotes.Utils.Utils.textFormatting
+import com.jjewuz.justnotes.Utils.Utils.hideKeyboard
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileOutputStream
@@ -128,48 +130,9 @@ class AddEditNoteActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.topAppBar))
         supportActionBar?.title = ""
 
-        val rootView = findViewById<View>(R.id.holder) ?: return
+        enableEdgeToEdge()
 
-        fun animateBackGesture(progress: Float) {
-            val activity = this // Get the activity context
-            val window = activity.window
-            val decorView = window.decorView
 
-            val targetScaleX = 1f - progress * 0.05f // Adjust scale based on progress
-            val targetScaleY = 1f - progress * 0.05f // Adjust scale based on progress
-
-            rootView.animate()
-                .scaleX(targetScaleX)
-                .scaleY(targetScaleY)
-                .setDuration(0L)
-                .alpha(2 - progress * 1.5f)
-                .interpolator = AccelerateDecelerateInterpolator()
-        }
-
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                saveNote(true)
-            }
-
-            override fun handleOnBackStarted(backEvent: BackEventCompat) {
-                super.handleOnBackStarted(backEvent)
-                Log.d("BACK", "started")
-                animateBackGesture(0f)
-            }
-
-            override fun handleOnBackProgressed(backEvent: BackEventCompat) {
-                super.handleOnBackProgressed(backEvent)
-                Log.d("BACK", "proressed")
-                animateBackGesture(backEvent.progress)
-            }
-
-            override fun handleOnBackCancelled() {
-                super.handleOnBackCancelled()
-                Log.d("BACK", "cancel")
-                animateBackGesture(0f)
-            }
-        }
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         viewModal = ViewModelProvider(
             this,
@@ -435,7 +398,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                         }
 
                     }
-                .setNegativeButton(R.string.back ) { _, _ ->
+                .setNegativeButton(R.string.back) { _, _ ->
                        this.finish()
                     }
             builder.create().show()

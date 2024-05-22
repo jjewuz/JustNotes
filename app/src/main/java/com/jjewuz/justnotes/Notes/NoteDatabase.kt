@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import android.content.Context
 import androidx.room.AutoMigration

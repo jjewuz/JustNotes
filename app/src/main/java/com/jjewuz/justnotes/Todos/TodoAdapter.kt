@@ -1,7 +1,6 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Todos
 
 import android.graphics.Paint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.jjewuz.justnotes.R
 
 class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todos: List<Todo>, val todoClickInterface: TodoClickInterface, private val todoLongClickInterface: TodoLongClickInterface) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

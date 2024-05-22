@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -7,6 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import androidx.room.Room
+import com.jjewuz.justnotes.Activities.MainActivity
+import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,7 +23,7 @@ class NoteWidget : AppWidgetProvider() {
     ) {
         val noteId =  getSelectedNoteID(context)
         for (appWidgetId in appWidgetIds) {
-            getNoteTextFromDB(context, noteId) { textNote, noteDesc -> updateAppWidget(context, appWidgetManager, appWidgetId, textNote, noteDesc)}
+            getNoteTextFromDB(context, noteId) { textNote, noteDesc -> updateAppWidget(context, appWidgetManager, appWidgetId, textNote, noteDesc) }
         }
     }
 

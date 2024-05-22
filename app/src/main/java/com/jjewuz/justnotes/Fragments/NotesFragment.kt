@@ -1,42 +1,25 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Fragments
 
-import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.view.MarginLayoutParamsCompat
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
-import androidx.core.view.marginLeft
-import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -46,12 +29,21 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.jjewuz.justnotes.Activities.AddEditNoteActivity
+import com.jjewuz.justnotes.Activities.ModalBottomSheet
+import com.jjewuz.justnotes.Notes.Note
+import com.jjewuz.justnotes.Notes.NoteClickInterface
+import com.jjewuz.justnotes.Notes.NoteLongClickInterface
+import com.jjewuz.justnotes.Notes.NoteRVAdapter
+import com.jjewuz.justnotes.Notes.NoteViewModal
+import com.jjewuz.justnotes.Notes.NoteWidget
+import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
+import com.jjewuz.justnotes.R
 
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
@@ -282,7 +274,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         intent.putExtra("security", note.security)
         intent.putExtra("label", note.label)
         intent.putExtra("noteId", note.id)
-        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle())
+        startActivity(intent)
     }
 
     override fun onNoteClick(note: Note, num: Int) {

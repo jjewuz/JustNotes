@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Todos
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

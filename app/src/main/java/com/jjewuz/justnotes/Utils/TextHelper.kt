@@ -1,4 +1,4 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Utils
 
 import android.content.SharedPreferences
 import android.text.Editable

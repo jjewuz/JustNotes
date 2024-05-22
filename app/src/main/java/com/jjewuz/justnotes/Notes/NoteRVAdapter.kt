@@ -1,9 +1,7 @@
-package com.jjewuz.justnotes
+package com.jjewuz.justnotes.Notes
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Utils.Utils
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class NoteRVAdapter(
@@ -80,15 +79,21 @@ class NoteRVAdapter(
             when (currCategory) {
                 "important" -> {
                     holder.categoryChip.text = important
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context, R.drawable.star)
+                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
+                        R.drawable.star
+                    )
                 }
                 "useful" -> {
                     holder.categoryChip.text = useful
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context, R.drawable.useful)
+                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
+                        R.drawable.useful
+                    )
                 }
                 "hobby" -> {
                     holder.categoryChip.text = hobby
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context, R.drawable.person)
+                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
+                        R.drawable.person
+                    )
                 }
                 "label1" -> {
                     holder.categoryChip.text = label1
