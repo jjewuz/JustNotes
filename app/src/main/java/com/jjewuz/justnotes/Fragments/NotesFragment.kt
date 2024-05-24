@@ -88,6 +88,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         label2 = v.findViewById(R.id.label2)
         label3 = v.findViewById(R.id.label3)
 
+
         ViewCompat.setOnApplyWindowInsetsListener(addFAB) { vi, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             val params = vi.layoutParams as ViewGroup.MarginLayoutParams

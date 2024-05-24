@@ -26,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:titleTextColor="?colorOnBackground"
+            app:navigationIcon="@drawable/ic_back"
+            app:theme="@style/Toolbar"
             app:title="@string/settingsText" />
 
     </com.google.android.material.appbar.AppBarLayout>

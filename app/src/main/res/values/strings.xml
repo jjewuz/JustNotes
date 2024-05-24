@@ -167,4 +167,6 @@
     <string name="app_desc">JustNotes is a simple and functional note-taking application. Beautiful design, user-friendly interface, all the necessary functions - all this in JustNotes!  Write down ideas, make lists, keep a diary - JustNotes will become your indispensable assistant.</string>
     <string name="about_app">About the App</string>
     <string name="app_restarting">Restarting JustNotes...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

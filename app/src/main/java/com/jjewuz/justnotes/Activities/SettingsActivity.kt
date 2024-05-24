@@ -61,9 +61,11 @@ class SettingsActivity : AppCompatActivity() {
         } else if (enabledFont and (theme=="ice")){
             setTheme(R.style.BlackIce)
         }
-
-        enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
+        enableEdgeToEdge()
+        setSupportActionBar(findViewById(R.id.topAppBar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
 
         passSwitch = findViewById(R.id.passwordtoggle)
@@ -336,5 +338,10 @@ class SettingsActivity : AppCompatActivity() {
             Runtime.getRuntime().exit(0)
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return false
     }
 }

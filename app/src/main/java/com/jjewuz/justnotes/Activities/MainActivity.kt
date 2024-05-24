@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
@@ -29,6 +30,7 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
@@ -43,6 +45,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.storage
+import com.jjewuz.justnotes.BackupFragment
 import com.jjewuz.justnotes.Notes.NoteDatabase
 import com.jjewuz.justnotes.Notes.NoteViewModal
 import com.jjewuz.justnotes.Fragments.NotesFragment
@@ -108,8 +111,7 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val settingsCard = view.findViewById<MaterialCardView>(R.id.settings_card)
         val infoCard = view.findViewById<MaterialCardView>(R.id.info_card)
 
-        backupCard.setOnClickListener { val intent = Intent(requireActivity(), BackupActivity::class.java)
-            startActivity(intent)
+        backupCard.setOnClickListener { replaceFragment(BackupFragment())
             this.dismiss()}
         settingsCard.setOnClickListener {
             val intent = Intent(requireActivity(), SettingsActivity::class.java)
@@ -149,8 +151,23 @@ class MainActivity : AppCompatActivity() {
         val tasksDefault = sharedPref.getBoolean("isTask", false)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        val theme = sharedPref.getString("theme", "standart")
+        if (enabledFont and (theme=="monet")) {
+            setTheme(R.style.AppTheme)
+        } else if (!enabledFont and (theme=="monet")) {
+            setTheme(R.style.FontMonet)
+        } else if (!enabledFont and (theme=="standart")) {
+            setTheme(R.style.Font)
+        } else if (enabledFont and (theme=="standart")) {
+            setTheme(R.style.Nothing)
+        } else if (!enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIceFont)
+        } else if (enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIce)
+        }
         //setSupportActionBar(findViewById(R.id.topAppBar))
+        enableEdgeToEdge()
         actionBar?.hide()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
