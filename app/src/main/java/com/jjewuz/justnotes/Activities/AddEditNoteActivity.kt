@@ -15,6 +15,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -25,6 +26,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.BackEventCompat
@@ -39,9 +41,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.NestedScrollView
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -66,7 +70,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
 class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var noteTitleEdt: EditText
@@ -84,9 +87,9 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var importTxtBtn: Button
     private lateinit var exportTxtBtn: Button
-    private lateinit var clearBtn: Button
-    private lateinit var toWidgetBtn: Button
-    private lateinit var passBtn: Button
+    private lateinit var clearBtn: LinearLayout
+    private lateinit var toWidgetBtn: LinearLayout
+    private lateinit var passBtn: LinearLayout
 
     private lateinit var viewModal: NoteViewModal
     private var noteID = -1;
@@ -237,7 +240,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         bottomAppBar.setNavigationOnClickListener {
             savedTxt.hideKeyboard()
-            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
 
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
@@ -326,7 +329,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteLock = intent.getStringExtra("security").toString()
             noteTitleEdt.setText(noteTitle)
             supportActionBar?.title = ""
-            savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
+            savedTxt.text = resources.getString(R.string.saved) + ": " + currentDateAndTime
             noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
             isEditable = false
         }
@@ -531,7 +534,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                     }
 
                 }
-                savedTxt.text = resources.getString(R.string.saved) + ": \n" + currentDateAndTime
+                savedTxt.text = resources.getString(R.string.saved) + ": " + currentDateAndTime
             }
             pushWidget()
         }

@@ -165,4 +165,5 @@
     <string name="app_desc">JustNotes - это простое и функциональное приложение для создания заметок. Красивый дизайн, удобный интерфейс, все необходимые функции - всё это в JustNotes!  Записывайте идеи, составляйте списки, ведите дневник - JustNotes станет вашим незаменимым помощником.</string>
     <string name="about_app">О приложении</string>
     <string name="app_restarting">JustNotes перезапускается...</string>
+    <string name="changes">Список изменений</string>
 </resources>

@@ -110,6 +110,12 @@
                         android:id="@+id/version"
                         android:text="1.0.0"/>
 
+                        <Button
+                            android:layout_width="match_parent"
+                            android:id="@+id/changes"
+                            android:layout_height="wrap_content"
+                            android:text="@string/changes"/>
+
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
