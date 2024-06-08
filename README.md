@@ -4,7 +4,7 @@
 JustNotes is simple android app for taking notes, like there have been tens of thousands before. App uses Room database.
 
  <a href="https://play.google.com/store/apps/details?id=com.jjewuz.justnotes">
-    <img alt="Get it on Google Play" title="Google Play" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/800px-Google_Play_Store_badge_EN.svg.png" width="160">
+    <img alt="Get it on Google Play" title="Google Play" src="https://camo.githubusercontent.com/8f3d51eaa9e0a12dbf786733ef725a190795d6e2f0eb057c6cf3cedea86e63dd/68747470733a2f2f636f6e766572736174696f6e732e696d2f696d616765732f6765742d69742d6f6e2d706c61792e706e67" width="160">
   </a>
 
    <a href="https://github.com/jjewuz/JustNotes/releases">
