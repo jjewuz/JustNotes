@@ -98,6 +98,15 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             WindowInsetsCompat.CONSUMED
         }
 
+        ViewCompat.setOnApplyWindowInsetsListener(notesRV) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.leftMargin = insets.left
+            params.rightMargin = insets.right
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
+
         reminderButton = v.findViewById(R.id.reminders)
         reminderButton.setOnClickListener {
             replaceFragment(TodoFragment())

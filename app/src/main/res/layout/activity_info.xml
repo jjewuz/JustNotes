@@ -271,6 +271,60 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_translators"
+                    style="?attr/materialCardViewFilledStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/contribuitors"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:scaleType="fitXY"
+                                android:padding="5dp"
+                                android:src="@drawable/translate" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:text="@string/translators"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="fallsdevil, QKIvan, milotype, inson1, comradekingu, SantosSi, wuku0 and other..."/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card4"
                     android:layout_width="match_parent"

@@ -170,4 +170,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="changes">Changelog</string>
+    <string name="contribuitors">Contribuitors</string>
+    <string name="translators">Translators</string>
 </resources>

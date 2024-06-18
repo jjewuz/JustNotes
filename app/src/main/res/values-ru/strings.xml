@@ -166,4 +166,6 @@
     <string name="about_app">О приложении</string>
     <string name="app_restarting">JustNotes перезапускается...</string>
     <string name="changes">Список изменений</string>
+    <string name="contribuitors">Участники</string>
+    <string name="translators">Переводчики</string>
 </resources>
