@@ -164,4 +164,6 @@
     <string name="links">Poveznice</string>
     <string name="search_hint">Traži u naslovima …</string>
     <string name="app_desc">JustNotes je jednostavna i funkcionalna aplikacija za bilješke. Prekrasan dizajn, korisničko sučelje, sve potrebne funkcije – sve u aplikaciji JustNotes! Zapiši ideje, izradi popise, vodi dnevnik – JustNotes će postati tvoj nezamjenjiv pomoćnik.</string>
+    <string name="app_restarting">Ponovno pokretanje aplikacije JustNotes …</string>
+    <string name="changes">Dnevnik promjena</string>
 </resources>
