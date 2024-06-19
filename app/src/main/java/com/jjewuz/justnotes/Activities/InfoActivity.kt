@@ -23,6 +23,7 @@ import com.jjewuz.justnotes.R
 private lateinit var ghBtn: LinearLayout
 private lateinit var sourceBtn: LinearLayout
 private lateinit var siteBtn: LinearLayout
+private lateinit var weblateBtn: LinearLayout
 private lateinit var licenseBtn: Button
 private lateinit var changesBtn: Button
 
@@ -65,6 +66,7 @@ class InfoActivity : AppCompatActivity() {
         ghBtn = findViewById(R.id.github_profile)
         sourceBtn = findViewById(R.id.github_code)
         siteBtn = findViewById(R.id.site)
+        weblateBtn = findViewById(R.id.weblate)
         licenseBtn = findViewById(R.id.licenses)
         changesBtn = findViewById(R.id.changes)
 
@@ -80,6 +82,7 @@ class InfoActivity : AppCompatActivity() {
         ghBtn.setOnClickListener { openLink("https://github.com/jjewuz/JustNotes") }
         sourceBtn.setOnClickListener { openLink("https://github.com/jjewuz") }
         siteBtn.setOnClickListener{ openLink("https://jjewuz.ru/justnotes/justnotes.html") }
+        weblateBtn.setOnClickListener {openLink("https://hosted.weblate.org/engage/justnotes/")}
         changesBtn.setOnClickListener { openLink("https://jjewuz.ru/justnotes/changelog.html") }
         licenseBtn.setOnClickListener { startActivity(Intent(this, OssLicensesMenuActivity::class.java)) }
         tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }

@@ -172,4 +172,5 @@
     <string name="changes">Changelog</string>
     <string name="contribuitors">Contribuitors</string>
     <string name="translators">Translators</string>
+    <string name="weblate" translatable="false">Weblate</string>
 </resources>
