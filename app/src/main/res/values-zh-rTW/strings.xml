@@ -70,5 +70,5 @@
     <string name="do_restore">還原</string>
     <string name="licenses">許可證</string>
     <string name="more">更多</string>
-    <string name="note_set_to_widget">該筆記已經安裝在小工具中</string>
+    <string name="no_label">未标记</string>
 </resources>

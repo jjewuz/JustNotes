@@ -107,4 +107,5 @@
     <string name="authFail">Ověření selhalo</string>
     <string name="reminders">Připomenutí</string>
     <string name="site">Stránka</string>
+    <string name="no_label">Neoznačené</string>
 </resources>

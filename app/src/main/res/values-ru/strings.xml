@@ -168,4 +168,7 @@
     <string name="changes">Список изменений</string>
     <string name="contribuitors">Участники</string>
     <string name="translators">Переводчики</string>
+    <string name="no_label">Без ярылка</string>
+    <string name="manage_labels">Настройка ярлыков</string>
+    <string name="label_selected">Ярлык выбран:</string>
 </resources>

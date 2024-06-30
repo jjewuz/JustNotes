@@ -173,4 +173,7 @@
     <string name="contribuitors">Contribuitors</string>
     <string name="translators">Translators</string>
     <string name="weblate" translatable="false">Weblate</string>
+    <string name="no_label">Unlabeled</string>
+    <string name="manage_labels">Manage labels</string>
+    <string name="label_selected">Label selected:</string>
 </resources>

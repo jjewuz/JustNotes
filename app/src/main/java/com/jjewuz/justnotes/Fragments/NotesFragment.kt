@@ -36,6 +36,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jjewuz.justnotes.Activities.AddEditNoteActivity
 import com.jjewuz.justnotes.Activities.ModalBottomSheet
+import com.jjewuz.justnotes.Category.Category
+import com.jjewuz.justnotes.Category.CategoryViewModel
 import com.jjewuz.justnotes.Notes.Note
 import com.jjewuz.justnotes.Notes.NoteClickInterface
 import com.jjewuz.justnotes.Notes.NoteLongClickInterface
@@ -68,6 +70,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
     private lateinit var sharedPref: SharedPreferences
 
+    private lateinit var categoryViewModel: CategoryViewModel
+    private var selectedCategoryId: Int = -1
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -84,9 +89,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         addFAB = v.findViewById(R.id.idFAB)
         nothing = v.findViewById(R.id.nothing)
         labelGroup = v.findViewById(R.id.chipGroup)
-        label1 = v.findViewById(R.id.label1)
-        label2 = v.findViewById(R.id.label2)
-        label3 = v.findViewById(R.id.label3)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(addFAB) { vi, windowInsets ->
@@ -121,20 +123,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             WindowInsetsCompat.CONSUMED
         }
 
-        label1.text = sharedPref.getString("label1", "")
-        label2.text = sharedPref.getString("label2", "")
-        label3.text = sharedPref.getString("label3", "")
-
-        if (label1.text == ""){
-            label1.visibility = View.GONE
-        }
-        if (label2.text == ""){
-            label2.visibility = View.GONE
-        }
-        if (label3.text == ""){
-            label3.visibility = View.GONE
-        }
-
 
         if (isGrid){
             val layoutManager = GridLayoutManager(requireActivity(), 2, VERTICAL, reverse)
@@ -155,30 +143,14 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         allItems = viewModal.getNotes()
 
-        labelGroup.setOnCheckedStateChangeListener { group, checkedID ->
-            when(group.checkedChipId) {
-                R.id.important -> {
-                    allItems = viewModal.getLabeled("important")
-                }
-                R.id.useful -> {
-                    allItems = viewModal.getLabeled("useful")
-                }
-                R.id.hobby -> {
-                    allItems = viewModal.getLabeled("hobby")
-                }
-                R.id.label1 -> {
-                    allItems = viewModal.getLabeled("label1")
-                }
-                R.id.label2 -> {
-                    allItems = viewModal.getLabeled("label2")
-                }
-                R.id.label3 -> {
-                    allItems = viewModal.getLabeled("label3")
-                }
-                else -> allItems = viewModal.getNotes()
-            }
-            updateList(allItems)
-        }
+        categoryViewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
+
+        categoryViewModel.allCategories.observe(viewLifecycleOwner, { categories ->
+            // В этом месте вы получаете список категорий и используете его
+            setupCategoryChips(categories)
+        })
+
+
 
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -275,6 +247,32 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         return v
     }
 
+    private fun setupCategoryChips(categories: List<Category>) {
+        labelGroup.removeAllViews()
+        val lText = resources.getString(R.string.label_selected)
+
+        for (category in categories) {
+            val chip = Chip(requireContext())
+            chip.text = category.name
+            chip.isClickable = true
+            chip.isCheckable = true
+            chip.isChecked = category.id == selectedCategoryId
+
+            chip.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    Toast.makeText(requireContext(), "${lText} ${chip.text}", Toast.LENGTH_SHORT).show()
+                    selectedCategoryId = category.id
+                    updateList(viewModal.getLabel(selectedCategoryId))
+                } else {
+                    selectedCategoryId = -1
+                    updateList(allItems)
+                }
+            }
+
+            labelGroup.addView(chip)
+        }
+    }
+
     private fun openNote(note: Note){
         val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
         intent.putExtra("noteType", "Edit")
@@ -284,6 +282,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         intent.putExtra("security", note.security)
         intent.putExtra("label", note.label)
         intent.putExtra("noteId", note.id)
+        intent.putExtra("categoryId", note.categoryId)
         startActivity(intent)
     }
 

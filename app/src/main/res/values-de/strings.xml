@@ -154,4 +154,5 @@
     <string name="legal">Legal</string>
     <string name="app_desc">JustNotes ist eine einfache und funktionale Anwendung zum Notieren. Schönes Design, benutzerfreundliche Oberfläche, alle notwendigen Funktionen – alles in JustNotes!  Schreiben Sie Ideen auf, erstellen Sie Listen, führen Sie ein Tagebuch – JustNotes wird zu Ihrem unverzichtbaren Assistenten.</string>
     <string name="about_app">Über die App</string>
+    <string name="no_label">Unbeschriftet</string>
 </resources>

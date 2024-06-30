@@ -6,8 +6,8 @@ class NoteRepository(private val notesDao: NotesDao) {
 
     val allNotes: LiveData<List<Note>> = notesDao.getAllSortedByTime()
 
-    fun getLabeled(label: String): LiveData<List<Note>> {
-        return notesDao.getItemsWithLabel(label)
+    fun getLabeled(id: Int): LiveData<List<Note>> {
+        return notesDao.getNotesByCategory(id)
     }
 
     fun getQuery(query: String): LiveData<List<Note>> {

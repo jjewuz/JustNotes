@@ -78,76 +78,28 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="20sp"
+                            android:id="@+id/curr_label"
                             android:text="@string/labels"/>
 
                     </LinearLayout>
 
 
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chipGroup"
-                        app:singleSelection="true"
-                        android:layout_gravity="center"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:id="@+id/card_spinner"
+                        android:layout_margin="5dp"
+                        style="@style/Widget.Material3.CardView.Elevated"
                         android:layout_height="wrap_content">
 
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/important"
-                            app:chipIcon="@drawable/star"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/important"/>
+                        <Spinner
+                            android:id="@+id/categorySpinner"
+                            android:layout_width="match_parent"
+                            android:padding="5dp"
+                            android:layout_gravity="center"
+                            android:popupBackground="@drawable/rounded_dropdown_item"
+                            android:layout_height="wrap_content" />
 
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/useful"
-                            app:chipIcon="@drawable/useful"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/useful"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/hobby"
-                            app:chipIcon="@drawable/person"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/hobby"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/label1"
-                            app:chipIcon="@drawable/label"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/extra_label"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/label2"
-                            app:chipIcon="@drawable/label"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/extra_label"/>
-
-                        <com.google.android.material.chip.Chip
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/label3"
-                            app:chipIcon="@drawable/label"
-                            style="@style/Widget.Material3.Chip.Assist"
-                            android:checkable="true"
-                            android:text="@string/extra_label"/>
-
-                    </com.google.android.material.chip.ChipGroup>
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </LinearLayout>

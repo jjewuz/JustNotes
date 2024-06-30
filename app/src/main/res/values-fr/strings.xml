@@ -82,4 +82,5 @@
     <string name="set_on_widget">Définir la note sur le widget</string>
     <string name="thx_license">Merci à tous les développeurs de bibliothèques tierces utilisées.</string>
     <string name="authFail">Authentification échouée</string>
+    <string name="no_label">Sans étiquette</string>
 </resources>

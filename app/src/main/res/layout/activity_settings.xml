@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    tools:context=".Fragments.SettingsFragment">
+    android:id="@+id/main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -354,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:id="@+id/set_labels"
-                        android:text="@string/set_labels"/>
+                        android:text="@string/manage_labels"/>
 
                 </LinearLayout>
 

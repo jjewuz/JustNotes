@@ -164,4 +164,5 @@
     <string name="jump_toEnd">Desplazarse hacia abajo</string>
     <string name="search_hint">Buscando entre los títulos...</string>
     <string name="gh_profile">Perfil de GitHub</string>
+    <string name="no_label">Sin etiquetar</string>
 </resources>

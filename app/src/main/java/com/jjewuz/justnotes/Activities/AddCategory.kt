@@ -1,0 +1,87 @@
+package com.jjewuz.justnotes.Activities
+
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
+import com.jjewuz.justnotes.databinding.ActivityAddCategoryBinding
+import com.jjewuz.justnotes.Category.Category
+import com.jjewuz.justnotes.Category.CategoryAdapter
+import com.jjewuz.justnotes.Category.CategoryViewModel
+import com.jjewuz.justnotes.R
+
+class AddCategory : AppCompatActivity() {
+
+    private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var categoryList: LiveData<List<Category>>
+
+    private lateinit var binding: ActivityAddCategoryBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAddCategoryBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left + 10, systemBars.top, systemBars.right + 10, systemBars.bottom)
+            insets
+        }
+
+        categoryViewModel = CategoryViewModel(application)
+
+        categoryAdapter = CategoryAdapter { category ->
+            // Удаление категории
+            deleteCategory(category)
+        }
+
+
+        binding.recyclerView.adapter = categoryAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        categoryViewModel.allCategories.observe(this, Observer { categories ->
+            categories?.let {
+                categoryAdapter.setCategories(it)
+            }
+        })
+
+        binding.addCategory.setOnClickListener {
+            addDialog()
+        }
+    }
+
+    private fun addDialog(){
+        val view = layoutInflater.inflate(R.layout.add_category_dialog, null)
+        val editText = view.findViewById<TextInputEditText>(R.id.edit_text)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(resources.getString(R.string.label))
+            .setView(view)
+            .setNegativeButton(resources.getString(R.string.back)) { dialog, which ->
+                // Respond to negative button press
+            }
+            .setPositiveButton(resources.getString(R.string.add)) { dialog, which ->
+                val categoryName = editText.text.toString().trim()
+
+                if (categoryName.isNotEmpty()) {
+                    val category = Category(name = categoryName)
+                    categoryViewModel.insert(category)
+                    categoryAdapter.addCategory(category)
+                } else {
+
+                }
+            }
+            .show()
+    }
+
+    private fun deleteCategory(category: Category) {
+        categoryAdapter.removeCategory(category)
+        categoryViewModel.delete(category)
+    }
+}

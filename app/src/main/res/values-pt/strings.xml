@@ -149,4 +149,5 @@
     <string name="authFail">Falha na autenticação</string>
     <string name="reminders">Lembretes</string>
     <string name="site">Site</string>
+    <string name="no_label">Sem rótulo</string>
 </resources>

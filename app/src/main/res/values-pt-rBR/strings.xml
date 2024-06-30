@@ -149,4 +149,5 @@
     <string name="beta_mode_activated">Recursos beta ativados!</string>
     <string name="labels">Etiquetas</string>
     <string name="error_saving_labels">Erro ao salvar o nome dos rótulos</string>
+    <string name="no_label">Sem rótulo</string>
 </resources>

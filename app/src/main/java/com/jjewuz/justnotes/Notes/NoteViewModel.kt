@@ -21,8 +21,8 @@ class NoteViewModal (application: Application) :AndroidViewModel(application) {
         allNotes = repository.allNotes
     }
 
-    fun getLabeled(label: String): LiveData<List<Note>>{
-        return repository.getLabeled(label)
+    fun getLabel(categoryId: Int): LiveData<List<Note>> {
+        return repository.getLabeled(categoryId)
     }
 
     fun getQuery(query: String): LiveData<List<Note>>{

@@ -149,4 +149,5 @@
     <string name="select_time">提醒时间</string>
     <string name="color">颜色</string>
     <string name="reminders">提醒</string>
+    <string name="no_label">未标记</string>
 </resources>

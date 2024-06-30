@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,6 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
-import com.google.android.material.textfield.TextInputEditText
 import com.jjewuz.justnotes.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -250,65 +248,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         labelsEdit.setOnClickListener {
-            val builder = MaterialAlertDialogBuilder(this)
-            val inf = this.layoutInflater.inflate(R.layout.label_edit, null)
-            val field1 = inf.findViewById<TextInputEditText>(R.id.label1_edit)
-            val field2 = inf.findViewById<TextInputEditText>(R.id.label2_edit)
-            val field3 = inf.findViewById<TextInputEditText>(R.id.label3_edit)
-
-            field1.setText(sharedPref.getString("label1", ""))
-            field2.setText(sharedPref.getString("label2", ""))
-            field3.setText(sharedPref.getString("label3", ""))
-
-            val save1 = inf.findViewById<ImageButton>(R.id.save1)
-            val save2 = inf.findViewById<ImageButton>(R.id.save2)
-            val save3 = inf.findViewById<ImageButton>(R.id.save3)
-
-            save1.setOnClickListener {
-                if (field1.text?.length!! <= 15){
-                    with (sharedPref.edit()){
-                        putString("label1", field1.text.toString())
-                        apply()
-                    }
-                    Toast.makeText(this, resources.getString(R.string.is_saved), Toast.LENGTH_SHORT ).show()
-                }
-                else {
-                    Toast.makeText(this, resources.getString(R.string.error), Toast.LENGTH_SHORT ).show()
-                }
-            }
-
-            save2.setOnClickListener {
-                if (field2.text?.length!! <= 15){
-                    with (sharedPref.edit()){
-                        putString("label2", field2.text.toString())
-                        apply()
-                    }
-                    Toast.makeText(this, resources.getString(R.string.is_saved), Toast.LENGTH_SHORT ).show()
-                } else {
-                    Toast.makeText(this, resources.getString(R.string.error), Toast.LENGTH_SHORT ).show()
-                }
-            }
-
-            save3.setOnClickListener {
-                if (field3.text?.length!! <= 15){
-                    with (sharedPref.edit()){
-                        putString("label3", field3.text.toString())
-                        apply()
-                    }
-                    Toast.makeText(this, resources.getString(R.string.is_saved), Toast.LENGTH_SHORT ).show()
-                } else {
-                    Toast.makeText(this, resources.getString(R.string.error), Toast.LENGTH_SHORT ).show()
-                }
-            }
-
-            builder.setIcon(R.drawable.label)
-            builder.setTitle(R.string.set_labels)
-            builder.setView(inf)
-                .setPositiveButton(R.string.close) { _, _ ->
-
-                }
-            builder.create()
-            builder.show()
+            val intent = Intent(this, AddCategory::class.java)
+            startActivity(intent)
         }
 
         betaSwitch.setOnCheckedChangeListener { _, isChecked ->
