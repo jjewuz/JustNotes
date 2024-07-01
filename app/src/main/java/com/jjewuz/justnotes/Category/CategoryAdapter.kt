@@ -24,6 +24,9 @@ class CategoryAdapter(
             deleteButton.setOnClickListener {
                 onDeleteClick(category)
             }
+            if (category.id == 1){
+                deleteButton.visibility = View.GONE
+            }
         }
     }
 
@@ -51,7 +54,7 @@ class CategoryAdapter(
 
     fun removeCategory(category: Category) {
         val index = categories.indexOf(category)
-        if (index != -1) {
+        if (index != 1) {
             categories.removeAt(index)
             notifyItemRemoved(index)
         }

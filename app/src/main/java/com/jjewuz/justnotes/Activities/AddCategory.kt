@@ -1,9 +1,12 @@
 package com.jjewuz.justnotes.Activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -23,17 +26,32 @@ class AddCategory : AppCompatActivity() {
     private lateinit var categoryList: LiveData<List<Category>>
 
     private lateinit var binding: ActivityAddCategoryBinding
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCategoryBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left + 10, systemBars.top, systemBars.right + 10, systemBars.bottom)
-            insets
+        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val enabledFont = sharedPref.getBoolean("enabledFont", false)
+        val theme = sharedPref.getString("theme", "standart")
+        if (enabledFont and (theme=="monet")) {
+            setTheme(R.style.AppTheme)
+        } else if (!enabledFont and (theme=="monet")) {
+            setTheme(R.style.FontMonet)
+        } else if (!enabledFont and (theme=="standart")) {
+            setTheme(R.style.Font)
+        } else if (enabledFont and (theme=="standart")) {
+            setTheme(R.style.Nothing)
+        } else if (!enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIceFont)
+        } else if (enabledFont and (theme=="ice")){
+            setTheme(R.style.BlackIce)
         }
+        setContentView(binding.root)
+        enableEdgeToEdge()
+
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         categoryViewModel = CategoryViewModel(application)
 
@@ -55,6 +73,11 @@ class AddCategory : AppCompatActivity() {
         binding.addCategory.setOnClickListener {
             addDialog()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return false
     }
 
     private fun addDialog(){

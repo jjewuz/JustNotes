@@ -17,6 +17,7 @@ import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -254,6 +255,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         for (category in categories) {
             val chip = Chip(requireContext())
             chip.text = category.name
+            if (category.name == "jjewuz" || category.name == "JustNotes"){
+                chip.chipIcon = ResourcesCompat.getDrawable(resources ,R.drawable.star, context?.theme)
+            }
             chip.isClickable = true
             chip.isCheckable = true
             chip.isChecked = category.id == selectedCategoryId

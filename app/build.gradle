@@ -14,8 +14,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 30
         targetSdk 35
-        versionCode 170
-        versionName "5.5.0"
+        versionCode 171
+        versionName "5.5.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -74,7 +74,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
-    implementation 'com.google.android.play:core-ktx:1.8.1'
+    implementation 'com.google.android.play:app-update-ktx:2.1.0'
+    implementation 'com.google.android.play:review-ktx:2.0.1'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.1.0'
     implementation 'com.google.firebase:firebase-messaging:24.0.0'
 

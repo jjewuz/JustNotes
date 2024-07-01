@@ -45,7 +45,6 @@ class SettingsActivity : AppCompatActivity() {
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val theme = sharedPref.getString("theme", "standart")
-        val securedNote = sharedPref.getBoolean("screenSecurity", false)
         if (enabledFont and (theme=="monet")) {
             setTheme(R.style.AppTheme)
         } else if (!enabledFont and (theme=="monet")) {
