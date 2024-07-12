@@ -41,6 +41,7 @@ import com.jjewuz.justnotes.Category.Category
 import com.jjewuz.justnotes.Category.CategoryViewModel
 import com.jjewuz.justnotes.Notes.Note
 import com.jjewuz.justnotes.Notes.NoteClickInterface
+import com.jjewuz.justnotes.Notes.NoteDatabase
 import com.jjewuz.justnotes.Notes.NoteLongClickInterface
 import com.jjewuz.justnotes.Notes.NoteRVAdapter
 import com.jjewuz.justnotes.Notes.NoteViewModal
@@ -132,8 +133,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, reverse)
             notesRV.layoutManager = layoutManager
         }
-
-        noteRVAdapter = NoteRVAdapter(requireActivity(), this, this)
+        val categoryDao = NoteDatabase.getDatabase(requireContext()).getCategoryDao()
+        noteRVAdapter = NoteRVAdapter(requireActivity(), this, this, categoryDao )
 
         notesRV.adapter = noteRVAdapter
 

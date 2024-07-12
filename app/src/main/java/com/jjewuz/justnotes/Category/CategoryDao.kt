@@ -22,6 +22,9 @@ interface CategoryDao {
         }
     }
 
+    @Query("SELECT name FROM categories WHERE id = :categoryId")
+    suspend fun getCategoryNameById(categoryId: Int): String?
+
     @Query("DELETE FROM categories WHERE id = :categoryId")
     suspend fun deleteCategoryByIdInternal(categoryId: Int)
 

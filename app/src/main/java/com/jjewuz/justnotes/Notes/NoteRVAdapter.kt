@@ -7,27 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.jjewuz.justnotes.Category.CategoryDao
+import com.jjewuz.justnotes.Category.CategoryViewModel
 import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Utils.Utils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class NoteRVAdapter(
     val context: Context,
     val noteClickInterface: NoteClickInterface,
-    val noteLongClickInterface: NoteLongClickInterface
+    val noteLongClickInterface: NoteLongClickInterface,
+    val categoryDao: CategoryDao
 ) :
     RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
     lateinit var sharedPref: SharedPreferences
-    private lateinit var important: String
-    private lateinit var useful: String
-    private lateinit var hobby: String
-    private lateinit var label1: String
-    private lateinit var label2: String
-    private lateinit var label3: String
+    private lateinit var categoryViewModel: CategoryViewModel
 
     private val allNotes = ArrayList<Note>()
 
@@ -43,18 +46,7 @@ class NoteRVAdapter(
             R.layout.note_rv_item,
             parent, false
         )
-        important = context.getString(R.string.important)
-        useful = context.getString(R.string.useful)
-        hobby = context.getString(R.string.hobby)
-        label1 =
-            context.getSharedPreferences("prefs", Context.MODE_PRIVATE).getString("label1", "")
-                .toString()
-        label2 =
-            context.getSharedPreferences("prefs", Context.MODE_PRIVATE).getString("label2", "")
-                .toString()
-        label3 =
-            context.getSharedPreferences("prefs", Context.MODE_PRIVATE).getString("label3", "")
-                .toString()
+
         return ViewHolder(itemView)
     }
 
@@ -72,43 +64,16 @@ class NoteRVAdapter(
         }
 
         holder.dateTV.text = context.getString(R.string.lastedit) + currentDateAndTime
-        val currCategory = allNotes[position].label
+        val currCategory = allNotes[position].categoryId
         holder.categoryChip.visibility = View.GONE
-        if(currCategory != "") {
-            holder.categoryChip.visibility = View.VISIBLE
-            when (currCategory) {
-                "important" -> {
-                    holder.categoryChip.text = important
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
-                        R.drawable.star
-                    )
-                }
-                "useful" -> {
-                    holder.categoryChip.text = useful
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
-                        R.drawable.useful
-                    )
-                }
-                "hobby" -> {
-                    holder.categoryChip.text = hobby
-                    holder.categoryChip.chipIcon = AppCompatResources.getDrawable(context,
-                        R.drawable.person
-                    )
-                }
-                "label1" -> {
-                    holder.categoryChip.text = label1
-                }
-                "label2" -> {
-                    holder.categoryChip.text = label2
-                }
-                "label3" -> {
-                    holder.categoryChip.text = label3
-                }
+        if(currCategory != 1) {
+            CoroutineScope(Dispatchers.Main).launch {
+                val categoryName = currCategory?.let { getCategoryName(it) }
+                holder.categoryChip.visibility = View.VISIBLE
+                holder.categoryChip.text = categoryName
             }
-        }
 
-        if (holder.categoryChip.text == "")
-            holder.categoryChip.visibility = View.GONE
+        }
 
 
         if (isPreview){
@@ -124,6 +89,12 @@ class NoteRVAdapter(
         holder.itemView.setOnLongClickListener {
             noteLongClickInterface.onNoteLongClick(allNotes[position])
             return@setOnLongClickListener true
+        }
+    }
+
+    private suspend fun getCategoryName(categoryId: Int): String? {
+        return withContext(Dispatchers.IO) {
+            categoryDao.getCategoryNameById(categoryId)
         }
     }
 

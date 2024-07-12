@@ -39,7 +39,7 @@
     <string name="authError">Ошибка входа:</string>
     <string name="noPassError">Настройте пароль или сбросьте данные JustNotes!</string>
     <string name="notes">Заметки</string>
-    <string name="menu_home">Дом</string>
+    <string name="menu_home">Домой</string>
     <string name="add_button">Новая заметка</string>
     <string name="logo">Logo</string>
     <string name="fontToggle">Системный шрифт</string>
@@ -56,8 +56,8 @@
     <string name="add">Добавить</string>
     <string name="openTask">Открывать по умолчанию</string>
     <string name="backup_title">Резервное копирование</string>
-    <string name="do_backup">Сделать копию</string>
-    <string name="do_restore">Восстановить копию</string>
+    <string name="do_backup">Копировать</string>
+    <string name="do_restore">Восстановить</string>
     <string name="licenses">Лицензии</string>
     <string name="thx_license">В данной программе используются сторонние библиотеки. Спасибо их разработчикам.</string>
     <string name="backup_desc">Локальное резервирование заметок</string>
@@ -87,8 +87,8 @@
     <string name="import_txt">Импорт из .txt</string>
     <string name="update_downloaded">Обновление только что было скачано из Google Play.</string>
     <string name="backup_rules">Здесь можно сделать резервную копию ваших заметок. Чтобы использовать локальное резервное копирование, приложению необходим доступ к файлам на устройстве. Что бы использовать облачное резервное копирование, вам необходимо создать аккаунт.</string>
-    <string name="local_backup">Локальное копирование</string>
-    <string name="cloud_backup">Облачное копирование</string>
+    <string name="local_backup">Локальное резервирование</string>
+    <string name="cloud_backup">Облачное резервирование</string>
     <string name="no_account">Нет аккаунта</string>
     <string name="sign_out">Выйти из аккаунта</string>
     <string name="delete_account">Удалить аккаунт</string>
@@ -168,7 +168,7 @@
     <string name="changes">Список изменений</string>
     <string name="contribuitors">Участники</string>
     <string name="translators">Переводчики</string>
-    <string name="no_label">Без ярылка</string>
+    <string name="no_label">Без ярлыка</string>
     <string name="manage_labels">Настройка ярлыков</string>
     <string name="label_selected">Ярлык выбран:</string>
 </resources>

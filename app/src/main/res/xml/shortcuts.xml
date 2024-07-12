@@ -1,0 +1,16 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="newnote"
+        android:enabled="true"
+        android:icon="@drawable/add"
+        android:shortcutShortLabel="@string/add_button"
+        android:shortcutLongLabel="@string/add_button"
+        android:shortcutDisabledMessage="@string/deleted">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.jjewuz.justnotes"
+            android:targetClass="com.jjewuz.justnotes.Activities.AddEditNoteActivity" />
+    </shortcut>
+    <!-- Specify more shortcuts here. -->
+</shortcuts>
+  
