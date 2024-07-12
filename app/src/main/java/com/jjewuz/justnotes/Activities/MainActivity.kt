@@ -106,6 +106,12 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val notesCountText = view.findViewById<TextView>(R.id.notes_count)
         val notesText = resources.getString(R.string.total_notes)
         val lastBackupText = view.findViewById<TextView>(R.id.last_backup)
+        val jmCard = view.findViewById<MaterialCardView>(R.id.ad_card)
+        jmCard.setOnClickListener{
+            val url = "https://play.google.com/store/apps/details?id=com.jjewuz.justmoney"
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(i)
+        }
 
         viewModel.getNotes().observe(this, Observer { notes ->
             val notesCount = notes.size

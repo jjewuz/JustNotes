@@ -176,4 +176,6 @@
     <string name="no_label">Unlabeled</string>
     <string name="manage_labels">Manage labels</string>
     <string name="label_selected">Label selected:</string>
+    <string name="justmoney_ad">JustMoney in alpha-test!</string>
+    <string name="check_jm">Check new finance app from jjewuz!</string>
 </resources>
