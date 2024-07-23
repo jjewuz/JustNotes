@@ -268,6 +268,7 @@ class BackupUI: BottomSheetDialogFragment() {
                                 }
                                 if (credential != null) {
                                     auth.currentUser?.reauthenticate(credential)!!.addOnSuccessListener {
+                                        storageRef.child("user/$userId/database.aes").delete()
                                         auth.currentUser?.delete()?.addOnSuccessListener {
                                             userEmailTxt.text = resources.getString(R.string.no_account)
                                             authLayout.visibility = View.VISIBLE

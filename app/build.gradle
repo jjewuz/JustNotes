@@ -14,8 +14,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 30
         targetSdk 35
-        versionCode 172
-        versionName "5.5.2"
+        versionCode 174
+        versionName "5.5.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -70,6 +70,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:21.0.0'
     implementation 'com.google.firebase:firebase-auth:23.0.0'
     implementation 'androidx.activity:activity-ktx:1.9.0'
+    implementation 'androidx.activity:activity:1.9.0'
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'

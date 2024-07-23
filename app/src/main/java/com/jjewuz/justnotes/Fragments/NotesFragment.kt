@@ -1,6 +1,5 @@
 package com.jjewuz.justnotes.Fragments
 
-import android.app.ActivityOptions
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context

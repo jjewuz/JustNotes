@@ -42,7 +42,6 @@
                     android:id="@+id/local_layout"
                     android:layout_marginTop="10dp"
                     app:cardCornerRadius="25dp"
-                    android:backgroundTint="?colorOnPrimarySurface"
                     style="@style/Widget.Material3.CardView.Outlined"
                     android:layout_height="wrap_content">
 
@@ -84,6 +83,7 @@
                                 android:text="@string/do_backup"
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
+                                android:backgroundTint="?colorOnPrimary"
                                 style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_height="wrap_content"/>
                             <Button
@@ -92,6 +92,7 @@
                                 android:text="@string/do_restore"
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
+                                android:backgroundTint="?colorOnPrimary"
                                 style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
@@ -107,7 +108,6 @@
                     android:animateLayoutChanges="true"
                     android:paddingBottom="10dp"
                     app:cardCornerRadius="25dp"
-                    android:backgroundTint="?colorOnPrimarySurface"
                     style="@style/Widget.Material3.CardView.Outlined"
                     android:layout_height="wrap_content">
 
@@ -242,6 +242,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/log_btn"
+                                    android:backgroundTint="?colorOnPrimary"
                                     style="@style/Widget.Material3.Button.TonalButton"
                                     android:text="@string/login"/>
 
@@ -249,6 +250,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/reg_btn"
+                                    android:backgroundTint="?colorOnPrimary"
                                     style="@style/Widget.Material3.Button.TonalButton"
                                     android:text="@string/register"/>
 
@@ -276,6 +278,7 @@
                                 android:text="@string/do_backup"
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
+                                android:backgroundTint="?colorOnPrimary"
                                 style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_height="wrap_content"/>
                             <Button
@@ -284,6 +287,7 @@
                                 android:text="@string/do_restore"
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
+                                android:backgroundTint="?colorOnPrimary"
                                 style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
