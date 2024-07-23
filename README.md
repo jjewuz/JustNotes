@@ -23,6 +23,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
 - [x] Change text color 
 - [x] Labels for notes 
 - [ ] Reminders (With notifications)
+- [ ] Change note background 
 
 ## Screenshots
 <img src="https://github.com/jjewuz/JustNotes/assets/53698992/262a8ffe-f810-4c7c-886c-485b9eb780ba" width="180" height="320" />
@@ -36,9 +37,9 @@ If you faced some app issue, you can report it with GitHub issues page. Do not f
 ## Translations
 The application is translated into different languages thanks to the community using [Weblate](https://hosted.weblate.org/projects/justnotes/).
 
-## Support chat
+## Channel
 
-https://t.me/jjewuz_support
+https://t.me/jjewuzhub
 
 ## License
 - All code is licensed under MIT License.
