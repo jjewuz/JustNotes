@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.jjewuz.justnotes.R
 import java.time.LocalDateTime
@@ -18,8 +19,6 @@ class NotificationHelper(private val context: Context) {
 
     @SuppressLint("ServiceCast", "LaunchActivityFromNotification")
     fun createNotification(title: String, message: String, id: Int, dateTime: LocalDateTime) {
-        val notificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val channel = NotificationChannel(
             "0",
@@ -40,7 +39,7 @@ class NotificationHelper(private val context: Context) {
 
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            0,
+            id,
             intent,
             PendingIntent.FLAG_IMMUTABLE
         )
@@ -49,9 +48,14 @@ class NotificationHelper(private val context: Context) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val calendar = Calendar.getInstance()
-        calendar.set(dateTime.year, dateTime.monthValue, dateTime.dayOfMonth, dateTime.hour, dateTime.minute)
-
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.YEAR, dateTime.year)
+            set(Calendar.MONTH, dateTime.monthValue) // Месяцы в Calendar начинаются с 0
+            set(Calendar.DAY_OF_MONTH, dateTime.dayOfMonth)
+            set(Calendar.HOUR_OF_DAY, dateTime.hour)
+            set(Calendar.MINUTE, dateTime.minute)
+            set(Calendar.SECOND, 0)
+        }
         val alarmTime = calendar.timeInMillis
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -62,9 +66,6 @@ class NotificationHelper(private val context: Context) {
                 }
             }
         }
-
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent)
-
-        notificationManager.notify(id, notificationBuilder.build())
     }
 }

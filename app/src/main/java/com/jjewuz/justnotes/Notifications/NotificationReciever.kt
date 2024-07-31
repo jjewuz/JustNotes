@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.jjewuz.justnotes.R
 
@@ -22,6 +23,8 @@ class NotificationReceiver : BroadcastReceiver() {
             .setContentText(message)
             .setSmallIcon(R.drawable.reminders)
             .setAutoCancel(true)
+
+        Log.d("NotificationReceiver", "Received notification: $title - $message")
 
         notificationManager.notify(id, notificationBuilder.build())
     }
