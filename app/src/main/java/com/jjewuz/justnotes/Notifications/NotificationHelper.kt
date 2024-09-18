@@ -17,20 +17,8 @@ import java.util.Calendar
 
 class NotificationHelper(private val context: Context) {
 
-    @SuppressLint("ServiceCast", "LaunchActivityFromNotification")
+    @SuppressLint("ScheduleExactAlarm")
     fun createNotification(title: String, message: String, id: Int, dateTime: LocalDateTime) {
-
-        val channel = NotificationChannel(
-            "0",
-            "Reminders",
-            NotificationManager.IMPORTANCE_DEFAULT
-        )
-
-        val notificationBuilder = NotificationCompat.Builder(context, channel.id)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setSmallIcon(R.drawable.reminders)
-            .setAutoCancel(true)
 
         val intent = Intent(context, NotificationReceiver::class.java)
         intent.putExtra("title", title)
@@ -41,16 +29,14 @@ class NotificationHelper(private val context: Context) {
             context,
             id,
             intent,
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
-
-        notificationBuilder.setContentIntent(pendingIntent)
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val calendar = Calendar.getInstance().apply {
             set(Calendar.YEAR, dateTime.year)
-            set(Calendar.MONTH, dateTime.monthValue) // Месяцы в Calendar начинаются с 0
+            set(Calendar.MONTH, dateTime.monthValue - 1)
             set(Calendar.DAY_OF_MONTH, dateTime.dayOfMonth)
             set(Calendar.HOUR_OF_DAY, dateTime.hour)
             set(Calendar.MINUTE, dateTime.minute)
@@ -58,14 +44,6 @@ class NotificationHelper(private val context: Context) {
         }
         val alarmTime = calendar.timeInMillis
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (!alarmManager.canScheduleExactAlarms()) {
-                Intent().also { intenta ->
-                    intenta.action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
-                    context.startActivity(intenta)
-                }
-            }
-        }
-        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent)
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent)
     }
 }

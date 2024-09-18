@@ -44,6 +44,9 @@
             android:name=".Activities.InfoActivity"
             android:exported="false" />
 
+        <receiver android:name=".Notifications.NotificationReceiver"
+            android:enabled="true"/>
+
         <receiver
             android:name=".Notes.NoteWidget"
             android:exported="false">

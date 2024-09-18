@@ -42,6 +42,7 @@ import com.jjewuz.justnotes.Todos.TodoLongClickInterface
 import com.jjewuz.justnotes.Todos.TodoViewModel
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
@@ -132,8 +133,6 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             val dataPickerButton: Chip = inf.findViewById(R.id.time_pick)
             var data: String = ""
             var dateTime = LocalDateTime.of(2024, 3, 17, 10, 0)
-            if (!isDev)
-                dataPickerButton.visibility = View.GONE
             dataPickerButton.setOnClickListener {
                 val constraintsBuilder = CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now())
                 val datePicker = MaterialDatePicker.Builder.datePicker()
@@ -155,6 +154,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                         timePick.show(parentFragmentManager, "tag")
                         timePick.addOnPositiveButtonClickListener {
                             data =  "${calendar.get(Calendar.DAY_OF_MONTH)}.${calendar.get(Calendar.MONTH)+1}.${calendar.get(Calendar.YEAR)} - ${timePick.hour}:${timePick.minute}"
+                            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH:mm")
                             dataPickerButton.text = data
                             dateTime = LocalDateTime.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH), timePick.hour, timePick.minute)
                         }
@@ -170,8 +170,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                         false,
                         data
                     )
-                    context?.let { it1 -> NotificationHelper(it1) }
-                        ?.createNotification("JustNotes", todoText.text.toString(), newTodo.id, dateTime)
+                    NotificationHelper(requireContext()).createNotification("JustNotes", todoText.text.toString(), 101, dateTime)
 
                     todoViewModel.insert(newTodo)
                 }

@@ -2,6 +2,7 @@ package com.jjewuz.justnotes.Activities
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ContentValues
@@ -13,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -622,8 +624,16 @@ class MainActivity : AppCompatActivity() {
             builder.create().show()
         }
 
+        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             DynamicColors.applyToActivitiesIfAvailable(application)
+            if (!alarmManager.canScheduleExactAlarms()) {
+                Intent().also { intenta ->
+                    intenta.action = Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                    this.startActivity(intenta)
+                }
+            }
         }
 
         val loginErr = resources.getString(R.string.authError)
