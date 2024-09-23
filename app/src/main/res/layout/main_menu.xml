@@ -89,7 +89,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/justmoney"/>
+                    android:src="@drawable/executor"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -101,11 +101,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:text="@string/justmoney_ad"/>
+                        android:text="@string/executor_title"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="@string/check_jm"
+                        android:text="@string/executor_promo"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>

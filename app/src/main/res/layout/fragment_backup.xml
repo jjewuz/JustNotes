@@ -162,6 +162,7 @@
                                 android:paddingStart="10dp"
                                 android:text="@string/no_account"
                                 android:textSize="20sp"
+                                android:gravity="center_vertical"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/imageView"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -291,12 +292,6 @@
                                 style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
-
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/progress_bar"
-                            android:indeterminate="false" />
 
                     </LinearLayout>
 

@@ -176,6 +176,6 @@
     <string name="no_label">Unlabeled</string>
     <string name="manage_labels">Manage labels</string>
     <string name="label_selected">Label selected:</string>
-    <string name="justmoney_ad">JustMoney released!</string>
-    <string name="check_jm">Check new finance app from jjewuz!</string>
+    <string name="executor_title">Executor is out!</string>
+    <string name="executor_promo">Check out new app from jjewuz!</string>
 </resources>

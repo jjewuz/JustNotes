@@ -99,9 +99,6 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
             }
         }
         val appLabel = view.findViewById<TextView>(R.id.app_label)
-        if (already) {
-            appLabel.text = "${resources.getString(R.string.app_name)} β"
-        }
 
         val viewModel = ViewModelProvider(this)[NoteViewModal::class.java]
 
@@ -176,8 +173,6 @@ class BackupUI: BottomSheetDialogFragment() {
 
 
         auth = Firebase.auth
-
-        progressBar = view.findViewById(R.id.progress_bar)
         autoSwitch = view.findViewById(R.id.auto_backup_switch)
         lastBackup = view.findViewById(R.id.last_backup)
         deleteBtn = view.findViewById(R.id.delete_btn)
@@ -354,7 +349,7 @@ class BackupUI: BottomSheetDialogFragment() {
                             "success: $success, message: $message, exitCode: $exitCode"
                         )
                         if (success) {
-                            progressBar.progress = 25
+
                         }
                     }
                 }
@@ -375,11 +370,7 @@ class BackupUI: BottomSheetDialogFragment() {
                 }
                 lastBackupText.text = currentTime
                 Toast.makeText(requireContext(), R.string.backup_complete, Toast.LENGTH_SHORT).show()
-                progressBar.progress = 100
             }
-                .addOnProgressListener {
-                    progressBar.progress = (it.bytesTransferred / it.totalByteCount).toInt() * 50
-                }
         }
     }
 
