@@ -215,8 +215,7 @@ class SettingsActivity : AppCompatActivity() {
             builder.setView(inf)
                 .setPositiveButton(R.string.close) { _, _ ->
                 }
-            builder.create()
-            val dialog = builder.show()
+            builder.create().show()
             standart.setOnClickListener {
                 with (sharedPref.edit()) {
                     putString("theme", "standart")
@@ -269,7 +268,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun restartApp() = runBlocking {
         launch {
-            delay(1500L)
+            delay(1300L)
             val ctx = applicationContext
             val pm = ctx.packageManager
             val intent = pm.getLaunchIntentForPackage(ctx.packageName)

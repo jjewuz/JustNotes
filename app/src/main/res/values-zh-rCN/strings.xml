@@ -142,8 +142,6 @@
     <string name="sort">分类</string>
     <string name="color_picker">选择颜色</string>
     <string name="error_saving_labels">保存标签名称出错</string>
-    <string name="labels_edit_text">空字段将隐藏标签。</string>
-    <string name="useful">有用</string>
     <string name="app_theme">应用主题</string>
     <string name="redo">重做</string>
     <string name="select_time">提醒时间</string>

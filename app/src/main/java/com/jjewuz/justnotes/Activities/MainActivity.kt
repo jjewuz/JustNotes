@@ -26,7 +26,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.biometric.BiometricManager.Authenticators.*
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK
+import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -54,11 +56,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.storage
+import com.jjewuz.justnotes.Fragments.NotesFragment
+import com.jjewuz.justnotes.Fragments.TodoFragment
 import com.jjewuz.justnotes.Notes.NoteDatabase
 import com.jjewuz.justnotes.Notes.NoteViewModal
-import com.jjewuz.justnotes.Fragments.NotesFragment
 import com.jjewuz.justnotes.R
-import com.jjewuz.justnotes.Fragments.TodoFragment
 import com.jjewuz.justnotes.databinding.ActivityMainBinding
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
 import java.io.File
@@ -82,23 +84,7 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        var k = 0
-
-        val appCard = view.findViewById<MaterialCardView>(R.id.app_card)
         val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        val already = sharedPref.getBoolean("is_dev", false)
-        appCard.setOnClickListener {
-            k+=1
-            if (k==6 && !already){
-                with(sharedPref.edit()){
-                    putBoolean("is_dev", true)
-                    apply()
-                }
-                Toast.makeText(requireContext(), resources.getString(R.string.beta_mode_activated), Toast.LENGTH_LONG).show()
-            }
-        }
-        val appLabel = view.findViewById<TextView>(R.id.app_label)
 
         val viewModel = ViewModelProvider(this)[NoteViewModal::class.java]
 
@@ -107,7 +93,7 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val lastBackupText = view.findViewById<TextView>(R.id.last_backup)
         val jmCard = view.findViewById<MaterialCardView>(R.id.ad_card)
         jmCard.setOnClickListener{
-            val url = "https://play.google.com/store/apps/details?id=com.jjewuz.justmoney"
+            val url = "https://play.google.com/store/apps/details?id=com.jjewuz.executor"
             val i = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(i)
         }
@@ -504,9 +490,7 @@ class BackupUI: BottomSheetDialogFragment() {
 
     private fun updateUI(user: FirebaseUser?){
         user?.let {
-            val name = it.displayName
             val email = it.email
-            val photoUrl = it.photoUrl
 
             userEmailTxt.text = email
             authLayout.visibility = View.GONE
@@ -514,9 +498,6 @@ class BackupUI: BottomSheetDialogFragment() {
             deleteBtn.visibility = View.VISIBLE
             cloudButtons.visibility = View.VISIBLE
             autoSwitch.visibility = View.VISIBLE
-
-            val emailVerified = it.isEmailVerified
-            val uid = it.uid
         }
     }
 
@@ -538,7 +519,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
-    lateinit var sharedPref: SharedPreferences
+    private lateinit var sharedPref: SharedPreferences
 
     lateinit var backup: RoomBackup
 
@@ -564,7 +545,6 @@ class MainActivity : AppCompatActivity() {
         } else if (enabledFont and (theme=="ice")){
             setTheme(R.style.BlackIce)
         }
-        //setSupportActionBar(findViewById(R.id.topAppBar))
         enableEdgeToEdge()
         actionBar?.hide()
 
@@ -606,10 +586,10 @@ class MainActivity : AppCompatActivity() {
                 .setTitle(R.string.agreement)
                 .setIcon(R.drawable.info)
                 .setCancelable(false)
-                .setPositiveButton(R.string.agree) { dialog, id ->
+                .setPositiveButton(R.string.agree) { _, _ ->
                     sharedPref.edit().putBoolean("agree_conditions2023", true).apply()
                 }
-                .setNegativeButton(R.string.decline) { dialog, id ->
+                .setNegativeButton(R.string.decline) { _, _ ->
                     this.finish()
                 }
             builder.create().show()
@@ -684,11 +664,9 @@ class MainActivity : AppCompatActivity() {
                 .build()
         }
 
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            if (enabledpass) {
-                biometricPrompt.authenticate(promptInfo)
-            }
+
+        if (enabledpass) {
+            biometricPrompt.authenticate(promptInfo)
         }
 
 
@@ -714,9 +692,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-            .addOnFailureListener { e ->
-                //TODO
-            }
 
         val name = getString(R.string.reminders)
         val descriptionText = getString(R.string.reminders)

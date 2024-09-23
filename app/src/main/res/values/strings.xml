@@ -8,7 +8,7 @@
     <string name="count2">Reading time</string>
     <string name="minuts">mins</string>
     <string name="hint">Write here</string>
-    <string name="tg">Telegram Group</string>
+    <string name="tg">Telegram</string>
     <string name="tasks">Tasks</string>
     <string name="rate">Rate app</string>
     <string name="appwidget_text" translatable="false">JustNotes</string>
@@ -43,7 +43,7 @@
     <string name="notes">Notes</string>
     <string name="menu_home">Home</string>
     <string name="add_button">New note</string>
-    <string name="logo" translatable="false">Logo</string>
+    <string name="logo">Logo</string>
     <string name="fontToggle">System font</string>
     <string name="reportBug">Report app issue</string>
     <string name="buildn">Build number:</string>
@@ -52,7 +52,7 @@
     <string name="security">Security</string>
     <string name="other">Other</string>
     <string name="restart">Restart</string>
-    <string name="nothingTxt">It\'s empty here…</string>
+    <string name="nothingTxt">It\'s empty here!</string>
     <string name="socialLinksText">Subscribe to social networks:</string>
     <string name="todo">Task list</string>
     <string name="add">Add</string>
@@ -71,7 +71,7 @@
     <string name="backup_warn">Attention! Reminders are not saved.</string>
     <string name="not_encrypted">Attention! The local backup is not encrypted.</string>
     <string name="preview">Preview note text</string>
-    <string name="set_on_widget">Set the note to the widget</string>
+    <string name="set_on_widget">Set note to widget</string>
     <string name="delete_warn">You will not be able to recover a note after deleting it!</string>
     <string name="note_set_to_widget">The note has been installed in the widget</string>
     <string name="what_new_update">"What's new in "</string>
@@ -128,7 +128,6 @@
     <string name="important">Important</string>
     <string name="hobby">Hobby</string>
     <string name="extra_label">Label</string>
-    <string name="useful">Useful</string>
     <string name="agreement">Agreement is necessary</string>
     <string name="set_labels">Set extra labels name</string>
     <string name="select_theme">Select theme</string>
@@ -139,15 +138,14 @@
     <string name="push_notification">Select time when push notification</string>
     <string name="add_reminder">Add a reminder</string>
     <string name="reminders">Reminders</string>
-    <string name="style">Style</string>
+    <string name="style">View</string>
     <string name="sort">Sort</string>
     <string name="change_page">Switch page</string>
     <string name="remind_hint">Remind me about...</string>
     <string name="select_time">Remind time</string>
     <string name="delete_reminder">Delete reminder?</string>
-    <string name="labels_edit_text">Empty field will hide label.</string>
     <string name="labels">Labels</string>
-    <string name="error_saving_labels">Error saving labels name</string>
+    <string name="error_saving_labels">Error saving labels</string>
     <string name="is_saved">Saved</string>
     <string name="beta_mode_activated">Beta features activated!</string>
     <string name="beta_mode">Beta mode</string>
@@ -158,8 +156,8 @@
     <string name="pin">Pin</string>
     <string name="delete">Delete</string>
     <string name="auto_backup_on">Auto backup enabled</string>
-    <string name="search_hint">Search among titles...</string>
-    <string name="jump_toEnd">Scroll to bottom</string>
+    <string name="search_hint">Search through titles...</string>
+    <string name="jump_toEnd">Scroll to the end</string>
     <string name="source_code">Source code</string>
     <string name="links">Links</string>
     <string name="gh_profile">GitHub profile</string>

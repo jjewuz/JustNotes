@@ -2,8 +2,6 @@ package com.jjewuz.justnotes.Fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,6 +15,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,13 +32,13 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.jjewuz.justnotes.Activities.ModalBottomSheet
 import com.jjewuz.justnotes.Notifications.NotificationHelper
-import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Todos.Todo
 import com.jjewuz.justnotes.Todos.TodoAdapter
 import com.jjewuz.justnotes.Todos.TodoClickInterface
 import com.jjewuz.justnotes.Todos.TodoLongClickInterface
 import com.jjewuz.justnotes.Todos.TodoViewModel
+import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -50,7 +49,6 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
     private lateinit var todoViewModel: TodoViewModel
     private lateinit var noTasks: TextView
     private lateinit var bottomAppBar: BottomAppBar
-    private lateinit var timeText: TextView
     lateinit var viewIcon: MenuItem
 
     override fun onCreateView(
@@ -59,7 +57,6 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_todo, container, false)
         val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        val isDev = sharedPref.getBoolean("is_dev", false)
         bottomAppBar = v.findViewById(R.id.bottomAppBar)
         noTasks = v.findViewById(R.id.notasks)
 
@@ -131,7 +128,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
             val inf = requireActivity().layoutInflater.inflate(R.layout.todo_add, null)
             val todoText: TextInputEditText = inf.findViewById(R.id.todoEditText)
             val dataPickerButton: Chip = inf.findViewById(R.id.time_pick)
-            var data: String = ""
+            var data = ""
             var dateTime = LocalDateTime.of(2024, 3, 17, 10, 0)
             dataPickerButton.setOnClickListener {
                 val constraintsBuilder = CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now())
@@ -163,7 +160,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                 }
             }
             builder.setView(inf)
-            builder.setPositiveButton(R.string.add) { dialog, id ->
+            builder.setPositiveButton(R.string.add) { _, _ ->
                 if ((todoText.length() <= 100) and (todoText.length() != 0)) {
                     val newTodo = Todo(
                         todoText.text.toString(),
@@ -209,9 +206,9 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.delete_reminder)
             .setIcon(R.drawable.delete)
-            .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
+            .setNegativeButton(resources.getString(R.string.neg)) { _, _ ->
             }
-            .setPositiveButton(R.string.pos) { dialog, which ->
+            .setPositiveButton(R.string.pos) { _, _ ->
                 todoViewModel.delete(todo)
                 Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
             }

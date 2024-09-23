@@ -127,7 +127,6 @@
     <string name="hobby">Afición</string>
     <string name="important">Importante</string>
     <string name="agreement">Es necesario un acuerdo</string>
-    <string name="useful">Útil</string>
     <string name="default_theme">Por defecto</string>
     <string name="monet_theme">Colores dinámicos</string>
     <string name="coffee_theme">Café con hielo</string>
@@ -146,7 +145,6 @@
     <string name="label">Etiqueta</string>
     <string name="sort">Clasificar</string>
     <string name="error_saving_labels">Error al guardar el nombre de las etiquetas</string>
-    <string name="labels_edit_text">El campo vacío ocultará la etiqueta.</string>
     <string name="select_time">recordar el tiempo</string>
     <string name="reminders">Recordatorios</string>
     <string name="last_backup">Última copia de seguridad:</string>

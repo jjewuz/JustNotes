@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -33,7 +32,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.toHtml
@@ -44,8 +42,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
@@ -61,11 +57,9 @@ import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Utils.TextHelper
 import com.jjewuz.justnotes.Utils.Utils
 import com.jjewuz.justnotes.Utils.Utils.colorFormatting
-import com.jjewuz.justnotes.Utils.Utils.textFormatting
 import com.jjewuz.justnotes.Utils.Utils.hideKeyboard
+import com.jjewuz.justnotes.Utils.Utils.textFormatting
 import java.io.BufferedReader
-import java.io.File
-import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -80,7 +74,6 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var bottomSheet: FrameLayout
 
     private var label = ""
-    private var oldLabel = ""
 
     private lateinit var importTxtBtn: Button
     private lateinit var exportTxtBtn: Button
@@ -106,7 +99,6 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var scrollView: NestedScrollView
 
     private lateinit var categorySpinner: Spinner
-    private lateinit var currLabelTextView: TextView
 
     private val categoryViewModel: CategoryViewModel by viewModels()
     private lateinit var categoryList: List<Category>
@@ -139,8 +131,6 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
 
-
-
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -163,7 +153,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         toWidgetBtn = findViewById(R.id.towidget)
         passBtn = findViewById(R.id.pass_btn)
 
-        //Receive text from share sheet
+        //Receive text
         when (intent?.action) {
             Intent.ACTION_SEND -> {
                 val text = intent.getStringExtra(Intent.EXTRA_TEXT)
@@ -266,10 +256,10 @@ class AddEditNoteActivity : AppCompatActivity() {
             val date = intent.getStringExtra("timestamp")
             val category = intent.getIntExtra("categoryId", 0)
 
-            categoryViewModel.allCategories.observe(this, { categories ->
+            categoryViewModel.allCategories.observe(this) { categories ->
                 categoryList = categories
                 setupCategorySpinner(categories, category)
-            })
+            }
 
             val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm", Locale.getDefault())
             var currentDateAndTime = ""
@@ -289,14 +279,12 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
             isEditable = false
         } else {
-            categoryViewModel.allCategories.observe(this, { categories ->
+            categoryViewModel.allCategories.observe(this) { categories ->
                 categoryList = categories
                 setupCategorySpinner(categories, 1)
-            })
+            }
         }
 
-
-        //Spinner listener
         categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedCategory = parent?.getItemAtPosition(position) as Category
@@ -316,13 +304,13 @@ class AddEditNoteActivity : AppCompatActivity() {
             builder.setIcon(R.drawable.security)
             builder.setTitle(R.string.set_password)
             builder.setView(inflater)
-                .setPositiveButton("OK") { dialog, id ->
+                .setPositiveButton("OK") { _, _ ->
                     if (pass.text.toString().length <= 5) {
                         noteLock = pass.text.toString()
                         hasChanges = true
                     }
                 }
-                .setNegativeButton(R.string.back) { dialog, id ->
+                .setNegativeButton(R.string.back) { dialog, _ ->
                     dialog.cancel()
                 }
             builder.create().show()
@@ -367,7 +355,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             builder.setTitle(R.string.enter_password)
             builder.setView(inflater)
                 .setCancelable(false)
-                .setPositiveButton("OK") { dialog, id ->
+                .setPositiveButton("OK") { _, _ ->
                         if (noteLock != pass.text.toString()){
                             this.finish()
                         } else {
@@ -563,24 +551,14 @@ class AddEditNoteActivity : AppCompatActivity() {
     }
 
     private fun saveOurDoc() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-        {
-            noteEdt = findViewById(R.id.idEdtNoteDesc)
-            val noteText = noteEdt.text.toString()
-            val noteTitle = noteTitleEdt.text.toString()
+        noteEdt = findViewById(R.id.idEdtNoteDesc)
+        val noteText = noteEdt.text.toString()
+        val noteTitle = noteTitleEdt.text.toString()
 
-            createAndSaveWordDocScoped(this, noteTitle, noteText)
-        } else {
-            noteEdt = findViewById(R.id.idEdtNoteDesc)
-            val noteTitle = noteTitleEdt.text.toString()
-            val noteText = noteEdt.text.toString()
-
-            createAndSaveWordDoc(this, noteTitle, noteText)
-        }
+        createAndSaveWordDocScoped(this, noteTitle, noteText)
     }
 
-    @RequiresApi(Build.VERSION_CODES.R)
-    fun createAndSaveWordDocScoped(context: Context, noteName: String, noteText: String) {
+    private fun createAndSaveWordDocScoped(context: Context, noteName: String, noteText: String) {
         val resolver = context.contentResolver
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, noteName)
@@ -600,23 +578,6 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun createAndSaveWordDoc(context: Context, noteName: String, noteText: String) {
-
-        val downloadsDirectory = File(Environment.getExternalStorageDirectory(), "Download")
-        if (!downloadsDirectory.exists()) {
-            downloadsDirectory.mkdirs()
-        }
-        val file = File(downloadsDirectory, noteName)
-
-        try {
-            val fileOutputStream = FileOutputStream(file)
-            fileOutputStream.write(noteText.toByteArray())
-            fileOutputStream.close()
-            Toast.makeText(this, R.string.docMade, Toast.LENGTH_SHORT).show()
-        } catch (e: Exception) {
-            Toast.makeText(this, "${R.string.error}: $e", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     private fun requestReviewFlow(activity: Activity) {
 

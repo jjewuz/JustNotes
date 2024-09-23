@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tg">Канал Телеграм</string>
+    <string name="tg">Telegram</string>
     <string name="site">Сайт</string>
     <string name="back">Назад</string>
     <string name="inf">Информация</string>
@@ -50,7 +50,7 @@
     <string name="security">Безопасность</string>
     <string name="other">Прочее</string>
     <string name="restart">Перезапуск</string>
-    <string name="nothingTxt">Тут пока пусто…</string>
+    <string name="nothingTxt">Здесь пусто!</string>
     <string name="socialLinksText">Подпишитесь на социальные сети:</string>
     <string name="todo">Список задач</string>
     <string name="add">Добавить</string>
@@ -126,13 +126,12 @@
     <string name="important">Важное</string>
     <string name="hobby">Хобби</string>
     <string name="extra_label">Ярлык</string>
-    <string name="useful">Полезное</string>
     <string name="agreement">Соглашение необходимо</string>
     <string name="set_labels">Установить имена доп. ярлыков</string>
     <string name="select_theme">Выберите тему</string>
     <string name="default_theme">Стандартная</string>
     <string name="monet_theme">Динамические цвета</string>
-    <string name="coffee_theme">Кофе со льдом</string>
+    <string name="coffee_theme">Айс-кофе</string>
     <string name="app_theme">Тема приложения</string>
     <string name="push_notification">Выберите время, когда отправить уведомление</string>
     <string name="add_reminder">Добавить напоминание</string>
@@ -143,7 +142,6 @@
     <string name="remind_hint">Напомни мне...</string>
     <string name="select_time">Время напоминания</string>
     <string name="delete_reminder">Удалить напоминание?</string>
-    <string name="labels_edit_text">Пустое поле скроет ярлык.</string>
     <string name="labels">Ярлыки</string>
     <string name="error_saving_labels">Ошибка сохранения ярлыков</string>
     <string name="is_saved">Сохранено</string>
@@ -156,7 +154,7 @@
     <string name="pin">Закрепить</string>
     <string name="delete">Удалить</string>
     <string name="auto_backup_on">Автоматическое резервирование включено.</string>
-    <string name="search_hint">Искать среди названий...</string>
+    <string name="search_hint">Искать среди заголовков...</string>
     <string name="jump_toEnd">К концу заметки</string>
     <string name="source_code">Исходный код</string>
     <string name="links">Ссылки</string>
@@ -165,6 +163,7 @@
     <string name="app_desc">JustNotes - это простое и функциональное приложение для создания заметок. Красивый дизайн, удобный интерфейс, все необходимые функции - всё это в JustNotes!  Записывайте идеи, составляйте списки, ведите дневник - JustNotes станет вашим незаменимым помощником.</string>
     <string name="about_app">О приложении</string>
     <string name="app_restarting">JustNotes перезапускается...</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
     <string name="changes">Список изменений</string>
     <string name="contribuitors">Участники</string>
     <string name="translators">Переводчики</string>

@@ -132,8 +132,6 @@
     <string name="sort">Organizar</string>
     <string name="donate">Doe para o desenvolvedor</string>
     <string name="color_picker">Escolha a cor</string>
-    <string name="labels_edit_text">Um campo vazio ocultará a etiqueta.</string>
-    <string name="useful">Útil</string>
     <string name="backup_complete">Backup concluído</string>
     <string name="app_theme">Tema do aplicativo</string>
     <string name="deletion_succes">Conta excluída com sucesso!</string>

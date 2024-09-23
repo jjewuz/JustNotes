@@ -119,10 +119,8 @@
     <string name="color_picker">Escolha a cor</string>
     <string name="empty">Vazio</string>
     <string name="error_saving_labels">Erro ao gravar o nome dos rótulos</string>
-    <string name="labels_edit_text">Um campo vazio ocultará a etiqueta.</string>
     <string name="buildn">Número de compilação:</string>
     <string name="import_txt">Importar .txt</string>
-    <string name="useful">Útil</string>
     <string name="backup_complete">Backup concluído</string>
     <string name="underlined">Sublinhado</string>
     <string name="appversion">Versão da app</string>

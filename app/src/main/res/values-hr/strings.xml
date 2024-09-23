@@ -80,7 +80,6 @@
     <string name="choose_note">Odaberi bilješku za prikaz.</string>
     <string name="local_backup">Lokalna sigurnosna kopija</string>
     <string name="color_picker">Odaberi boju</string>
-    <string name="useful">Korisno</string>
     <string name="color">Boja</string>
     <string name="extra_label">Etiketa</string>
     <string name="bold">Podebljano</string>
@@ -115,7 +114,6 @@
     <string name="app_theme">Tema aplikacije</string>
     <string name="select_time">Vrijeme podsjećivanja</string>
     <string name="delete_reminder">Izbrisati podsjetnik?</string>
-    <string name="labels_edit_text">Prazno polje će sakriti etiketu.</string>
     <string name="labels">Etikete</string>
     <string name="error_saving_labels">Greška prilikom spremanja imena etiketa</string>
     <string name="beta_mode_activated">Funkcije beta verzije su uključene!</string>

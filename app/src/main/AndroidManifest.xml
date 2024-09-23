@@ -32,9 +32,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.NotePickerActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activities.AddCategory"
             android:exported="false" />
         <activity

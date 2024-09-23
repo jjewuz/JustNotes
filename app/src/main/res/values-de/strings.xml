@@ -125,7 +125,6 @@
     <string name="important">Wichtig</string>
     <string name="hobby">Hobby</string>
     <string name="extra_label">Etikett</string>
-    <string name="useful">Nützlich</string>
     <string name="agreement">Vereinbarung ist notwendig</string>
     <string name="set_labels">Legen Sie den Namen eines zusätzlichen Labels fest</string>
     <string name="select_theme">Thema wählen</string>
@@ -147,7 +146,6 @@
     <string name="label">Etikett</string>
     <string name="sort">Sortieren</string>
     <string name="error_saving_labels">Beim Speichern des Labelnamens ist ein Fehler aufgetreten</string>
-    <string name="labels_edit_text">Bei leerem Feld wird die Beschriftung ausgeblendet.</string>
     <string name="reminders">Erinnerungen</string>
     <string name="source_code">Quellcode</string>
     <string name="links">Links</string>

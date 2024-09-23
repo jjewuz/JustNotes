@@ -21,7 +21,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,8 +44,8 @@ import com.jjewuz.justnotes.Notes.NoteLongClickInterface
 import com.jjewuz.justnotes.Notes.NoteRVAdapter
 import com.jjewuz.justnotes.Notes.NoteViewModal
 import com.jjewuz.justnotes.Notes.NoteWidget
-import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 import com.jjewuz.justnotes.R
+import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
@@ -59,9 +58,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     private lateinit var bottomAppBar: BottomAppBar
 
     private lateinit var labelGroup: ChipGroup
-    private lateinit var label1: Chip
-    private lateinit var label2: Chip
-    private lateinit var label3: Chip
 
     lateinit var noteRVAdapter: NoteRVAdapter
     lateinit var allItems: LiveData<List<Note>>
@@ -146,10 +142,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
         categoryViewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
 
-        categoryViewModel.allCategories.observe(viewLifecycleOwner, { categories ->
-            // В этом месте вы получаете список категорий и используете его
+        categoryViewModel.allCategories.observe(viewLifecycleOwner) { categories ->
             setupCategoryChips(categories)
-        })
+        }
 
 
 
@@ -262,7 +257,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             chip.isCheckable = true
             chip.isChecked = category.id == selectedCategoryId
 
-            chip.setOnCheckedChangeListener { buttonView, isChecked ->
+            chip.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     Toast.makeText(requireContext(), "${lText} ${chip.text}", Toast.LENGTH_SHORT).show()
                     selectedCategoryId = category.id
@@ -354,11 +349,11 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     }
 
     private fun updateList(items: LiveData<List<Note>>){
-       items.observe(viewLifecycleOwner, Observer { list ->
-            list?.let {
-                noteRVAdapter.updateList(it)
-            }
-        })
+       items.observe(viewLifecycleOwner) { list ->
+           list?.let {
+               noteRVAdapter.updateList(it)
+           }
+       }
     }
 
 }

@@ -81,7 +81,6 @@
     <string name="save">Lưu</string>
     <string name="hobby">Sở thích</string>
     <string name="extra_label">Nhãn</string>
-    <string name="useful">Hữu ích</string>
     <string name="add_reminder">Thêm lời nhắc</string>
     <string name="reminders">Lời nhắc</string>
     <string name="style">Phong cách</string>
@@ -89,7 +88,6 @@
     <string name="change_page">Chuyển trang</string>
     <string name="remind_hint">Nhắc tôi về...</string>
     <string name="select_time">Nhắc nhở thời gian</string>
-    <string name="labels_edit_text">Trường trống sẽ ẩn nhãn.</string>
     <string name="labels">Nhãn</string>
     <string name="error_saving_labels">Lỗi lưu tên nhãn</string>
     <string name="beta_mode_activated">Đã kích hoạt tính năng Beta!</string>
