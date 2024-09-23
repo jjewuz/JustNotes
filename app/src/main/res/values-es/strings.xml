@@ -163,4 +163,12 @@
     <string name="search_hint">Buscando entre los títulos...</string>
     <string name="gh_profile">Perfil de GitHub</string>
     <string name="no_label">Sin etiquetar</string>
+    <string name="app_restarting">Reiniciando JustNotes...</string>
+    <string name="changes">Registro de cambios</string>
+    <string name="manage_labels">Administrar etiquetas</string>
+    <string name="label_selected">Etiqueta seleccionada:</string>
+    <string name="executor_promo">¡Echa un vistazo a la nueva aplicación de jjewuz!</string>
+    <string name="executor_title">¡El ejecutor se ha lanzado!</string>
+    <string name="contribuitors">Colaboradores</string>
+    <string name="translators">Traductores</string>
 </resources>
