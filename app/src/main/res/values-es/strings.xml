@@ -7,7 +7,7 @@
     <string name="count2">Tiempo de lectura</string>
     <string name="minuts">minutos</string>
     <string name="hint">Escriba aqui</string>
-    <string name="tg">Grupo de Telegram</string>
+    <string name="tg">Telegram</string>
     <string name="tasks">Tareas</string>
     <string name="rate">Valore la aplicación</string>
     <string name="add_widget">Añadir widget</string>
@@ -50,7 +50,7 @@
     <string name="security">Seguridad</string>
     <string name="other">Otro</string>
     <string name="restart">Reanudar</string>
-    <string name="nothingTxt">Aquí está vacío…</string>
+    <string name="nothingTxt">¡Está vacío!</string>
     <string name="socialLinksText">Suscríbete a las redes sociales:</string>
     <string name="todo">Lista de tareas</string>
     <string name="add">Agregar</string>
@@ -69,7 +69,7 @@
     <string name="backup_warn">¡Atención! Los recordatorios no se guardan.</string>
     <string name="not_encrypted">¡Atención! La copia de seguridad local no está cifrada.</string>
     <string name="preview">Vista previa del texto de la nota</string>
-    <string name="set_on_widget">Establecer la nota en el widget</string>
+    <string name="set_on_widget">Establecer nota en el widget</string>
     <string name="delete_warn">¡No podrás recuperar una nota después de eliminarla!</string>
     <string name="note_set_to_widget">La nota se ha instalado en el widget</string>
     <string name="what_new_update">"¿Qué hay de nuevo en "</string>
@@ -138,13 +138,13 @@
     <string name="delete_reminder">¿Eliminar recordatorio?</string>
     <string name="beta_mode">modo beta</string>
     <string name="beta_mode_activated">¡Funciones beta activadas!</string>
-    <string name="style">Estilo</string>
+    <string name="style">Vista</string>
     <string name="push_notification">Seleccione la hora en la que recibirá la notificación push</string>
     <string name="labels">Etiquetas</string>
     <string name="remind_hint">Recuérdame sobre...</string>
     <string name="label">Etiqueta</string>
     <string name="sort">Clasificar</string>
-    <string name="error_saving_labels">Error al guardar el nombre de las etiquetas</string>
+    <string name="error_saving_labels">Error al guardar las etiquetas</string>
     <string name="select_time">recordar el tiempo</string>
     <string name="reminders">Recordatorios</string>
     <string name="last_backup">Última copia de seguridad:</string>
@@ -159,8 +159,8 @@
     <string name="legal">Legal</string>
     <string name="app_desc">JustNotes es una aplicación para tomar notas sencilla y funcional. Hermoso diseño, interfaz fácil de usar, todas las funciones necesarias: ¡todo esto en JustNotes!  Escriba ideas, haga listas, lleve un diario: JustNotes se convertirá en su asistente indispensable.</string>
     <string name="about_app">Acerca de la aplicación</string>
-    <string name="jump_toEnd">Desplazarse hacia abajo</string>
-    <string name="search_hint">Buscando entre los títulos...</string>
+    <string name="jump_toEnd">Desplazarse hasta el final</string>
+    <string name="search_hint">Buscando por títulos...</string>
     <string name="gh_profile">Perfil de GitHub</string>
     <string name="no_label">Sin etiquetar</string>
     <string name="app_restarting">Reiniciando JustNotes...</string>
