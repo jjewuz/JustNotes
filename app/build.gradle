@@ -14,8 +14,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 30
         targetSdk 35
-        versionCode 182
-        versionName "5.6.1"
+        versionCode 183
+        versionName "5.6.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -60,41 +60,38 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.1'
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:22.0.2'
-    implementation 'com.google.firebase:firebase-firestore:25.0.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:22.1.0'
+    implementation 'com.google.firebase:firebase-firestore:25.1.0'
     implementation 'com.google.firebase:firebase-storage:21.0.0'
     implementation 'com.google.firebase:firebase-auth:23.0.0'
-    implementation 'androidx.activity:activity-ktx:1.9.0'
-    implementation 'androidx.activity:activity:1.9.0'
+    implementation 'androidx.activity:activity-ktx:1.9.2'
+    implementation 'androidx.activity:activity:1.9.2'
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'androidx.work:work-runtime-ktx:2.9.1'
     implementation 'com.google.android.play:app-update-ktx:2.1.0'
     implementation 'com.google.android.play:review-ktx:2.0.1'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.1.0'
-    implementation 'com.google.firebase:firebase-messaging:24.0.0'
+    implementation 'com.google.firebase:firebase-messaging:24.0.1'
     implementation "androidx.work:work-runtime-ktx:2.9.1"
 
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
     implementation "androidx.core:core-splashscreen:1.0.1"
-
-    implementation "androidx.activity:activity-ktx:1.9.0"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.1'
 
     implementation "androidx.room:room-ktx:2.6.1"
     kapt "androidx.room:room-compiler:2.6.1"
     androidTestImplementation "androidx.room:room-testing:2.6.1"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.2"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.8.2"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.8.6"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
