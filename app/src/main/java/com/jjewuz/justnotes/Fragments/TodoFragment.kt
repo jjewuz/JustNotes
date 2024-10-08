@@ -151,9 +151,17 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                         timePick.show(parentFragmentManager, "tag")
                         timePick.addOnPositiveButtonClickListener {
                             data =  "${calendar.get(Calendar.DAY_OF_MONTH)}.${calendar.get(Calendar.MONTH)+1}.${calendar.get(Calendar.YEAR)} - ${timePick.hour}:${timePick.minute}"
+                            dateTime = LocalDateTime.of(
+                                calendar.get(Calendar.YEAR),
+                                calendar.get(Calendar.MONTH) + 1, // Months are 0-based in Calendar
+                                calendar.get(Calendar.DAY_OF_MONTH),
+                                timePick.hour,
+                                timePick.minute
+                            )
                             val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH:mm")
-                            dataPickerButton.text = data
-                            dateTime = LocalDateTime.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH), timePick.hour, timePick.minute)
+                            val formattedDate = dateTime.format(formatter)
+                            dataPickerButton.text = formattedDate
+                            data = formattedDate
                         }
                     }
 
