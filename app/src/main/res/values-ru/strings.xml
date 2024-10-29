@@ -172,4 +172,5 @@
     <string name="label_selected">Ярлык выбран:</string>
     <string name="executor_title">Executor вышел!</string>
     <string name="executor_promo">Посмотрите на новое приложение от jjewuz!</string>
+    <string name="backup_warning">Из-за ограничений системы резервирования, приложение должно быть перезапущено после создания каждый резервной копии для стабильной работы. После восстановления приложение перезапускается самостоятельно.</string>
 </resources>

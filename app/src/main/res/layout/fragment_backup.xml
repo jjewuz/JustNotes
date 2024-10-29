@@ -24,17 +24,49 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:id="@+id/warn_layout"
                     android:layout_marginTop="25dp"
-                    android:layout_width="match_parent"
-                    android:text="@string/backup_rules"
-                    android:layout_height="wrap_content"/>
+                    android:animateLayoutChanges="true"
+                    android:paddingBottom="10dp"
+                    app:cardCornerRadius="25dp"
+                    style="@style/Widget.Material3.CardView.Outlined"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:text="@string/backup_warn"
-                    android:textColor="?colorError"
-                    android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:contentDescription="@string/inf"
+                            android:src="@drawable/info"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="@string/backup_rules"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="?colorOnErrorContainer"
+                            android:text="@string/backup_warning"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:text="@string/backup_warn"
+                            android:textColor="?colorError"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -84,7 +116,7 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="?colorOnPrimary"
-                                style="@style/Widget.Material3.Button.TonalButton"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_height="wrap_content"/>
                             <Button
                                 android:id="@+id/rest"
@@ -93,7 +125,7 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="?colorOnPrimary"
-                                style="@style/Widget.Material3.Button.TonalButton"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
@@ -244,7 +276,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/log_btn"
                                     android:backgroundTint="?colorOnPrimary"
-                                    style="@style/Widget.Material3.Button.TonalButton"
+                                    style="@style/Widget.Material3.Button.TextButton"
                                     android:text="@string/login"/>
 
                                 <Button
@@ -252,7 +284,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/reg_btn"
                                     android:backgroundTint="?colorOnPrimary"
-                                    style="@style/Widget.Material3.Button.TonalButton"
+                                    style="@style/Widget.Material3.Button.TextButton"
                                     android:text="@string/register"/>
 
                                 <Button
@@ -280,7 +312,7 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="?colorOnPrimary"
-                                style="@style/Widget.Material3.Button.TonalButton"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_height="wrap_content"/>
                             <Button
                                 android:id="@+id/rest_cloud"
@@ -289,7 +321,7 @@
                                 android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="?colorOnPrimary"
-                                style="@style/Widget.Material3.Button.TonalButton"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
