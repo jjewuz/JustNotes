@@ -177,4 +177,5 @@
     <string name="executor_title">Executor is out!</string>
     <string name="executor_promo">Check out new app from jjewuz!</string>
     <string name="backup_warning">Due to the limitations of the backup system, the application needs to be restarted to work stably after backup. After restore the application will restart automatically.</string>
+    <string name="note_sent_noti">Send to notifications</string>
 </resources>

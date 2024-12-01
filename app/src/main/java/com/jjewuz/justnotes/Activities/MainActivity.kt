@@ -696,12 +696,16 @@ class MainActivity : AppCompatActivity() {
         val name = getString(R.string.reminders)
         val descriptionText = getString(R.string.reminders)
         val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel("0", name, importance).apply {
+        val channel = NotificationChannel("1", name, importance).apply {
             description = descriptionText
         }
         val notificationManager: NotificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel2 = NotificationChannel("0", getString(R.string.notes), importance).apply {
+            description = getString(R.string.notes)
+        }
         notificationManager.createNotificationChannel(channel)
+        notificationManager.createNotificationChannel(channel2)
     }
 
     override fun onDestroy() {

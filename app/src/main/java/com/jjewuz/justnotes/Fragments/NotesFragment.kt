@@ -1,11 +1,16 @@
 package com.jjewuz.justnotes.Fragments
 
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +21,7 @@ import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -46,6 +52,7 @@ import com.jjewuz.justnotes.Notes.NoteViewModal
 import com.jjewuz.justnotes.Notes.NoteWidget
 import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
+import com.jjewuz.justnotes.Utils.Utils
 
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
@@ -296,6 +303,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         val edit = inf.findViewById<MaterialCardView>(R.id.edit)
         val widget = inf.findViewById<MaterialCardView>(R.id.tohome)
         val delete = inf.findViewById<MaterialCardView>(R.id.delete)
+        val notify = inf.findViewById<MaterialCardView>(R.id.tonoti)
 
         builder.setIcon(R.drawable.note)
         builder.setTitle(note.noteTitle)
@@ -330,6 +338,11 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             Toast.makeText(requireContext(), R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
             editor.cancel()
         }
+        notify.setOnClickListener {
+            sendNotification(requireContext(), note)
+            Toast.makeText(requireContext(), "Notification sent", Toast.LENGTH_SHORT).show()
+            editor.cancel()
+        }
     }
 
     private fun pushWidget(){
@@ -355,5 +368,51 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
            }
        }
     }
+
+    private fun sendNotification(context: Context, note: Note) {
+        val notificationId = note.id
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Создаем Intent для открытия AddEditNoteActivity
+        val intent = Intent(context, AddEditNoteActivity::class.java).apply {
+            putExtra("noteType", "Edit")
+            putExtra("noteId", note.id)
+            putExtra("noteTitle", note.noteTitle)
+            putExtra("noteDescription", note.noteDescription)
+            putExtra("timestamp", note.timeStamp)
+            putExtra("categoryId", note.categoryId ?: 0)
+            putExtra("security", note.security)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        val pendingIntent = PendingIntent.getActivity(
+            context,
+            notificationId,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val spannedContent = Html.fromHtml(note.noteDescription, Html.FROM_HTML_MODE_COMPACT).toString()
+        val content = if (spannedContent.length > 50) {
+            "${spannedContent.take(50)}..."
+        } else {
+            spannedContent
+        }
+
+        val notification = NotificationCompat.Builder(context, "1")
+            .setSmallIcon(R.drawable.note)
+            .setContentTitle(note.noteTitle)
+            .setContentText(content)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .build()
+
+        notificationManager.notify(notificationId, notification)
+    }
+
+
 
 }

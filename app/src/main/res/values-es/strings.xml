@@ -171,4 +171,5 @@
     <string name="executor_title">¡El ejecutor se ha lanzado!</string>
     <string name="contribuitors">Colaboradores</string>
     <string name="translators">Traductores</string>
+    <string name="note_sent_noti">Enviar a notificaciones</string>
 </resources>

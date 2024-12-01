@@ -76,11 +76,11 @@ class InfoActivity : AppCompatActivity() {
 
         ghBtn.setOnClickListener { openLink("https://github.com/jjewuz/JustNotes") }
         sourceBtn.setOnClickListener { openLink("https://github.com/jjewuz") }
-        siteBtn.setOnClickListener{ openLink("https://jjewuz.ru/justnotes/justnotes.html") }
+        siteBtn.setOnClickListener{ openLink("https://jjewuz.com/justnotes.html") }
         weblateBtn.setOnClickListener {openLink("https://hosted.weblate.org/engage/justnotes/")}
         licenseBtn.setOnClickListener { startActivity(Intent(this, OssLicensesMenuActivity::class.java)) }
-        tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }
-        pp.setOnClickListener { openLink("https://jjewuz.ru/justnotes/privacypolicy.html") }
+        tou.setOnClickListener { openLink("https://jjewuz.com/justnotes/termsofuse.html") }
+        pp.setOnClickListener { openLink("https://jjewuz.com/justnotes/privacypolicy.html") }
         tgBtn.setOnClickListener { openLink("https://t.me/jjewuz_support") }
         vkBtn.setOnClickListener { openLink("https://vk.com/jjewuzhub") }
 
