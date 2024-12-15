@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="25dp"
+    app:cardCornerRadius="20dp"
     android:minHeight="75dp"
 
     style="?attr/materialCardViewOutlinedStyle">

@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
 
     <queries>
         <package android:name="com.jjewuz.justnotes" />
@@ -42,7 +44,13 @@
             android:exported="false" />
 
         <receiver android:name=".Notifications.NotificationReceiver"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jjewuz.NOTIFICATION_DELETED" />
+                <action android:name="com.jjewuz.NOTIFICATION_HIDE" />
+            </intent-filter>
+        </receiver>
 
         <receiver
             android:name=".Notes.NoteWidget"
@@ -84,6 +92,14 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+
+        <service
+            android:name=".Utils.Utils$PersistentService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false"
+            android:enabled="true"
+            android:permission="android.permission.FOREGROUND_SERVICE" />
+
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"

@@ -91,12 +91,6 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val notesCountText = view.findViewById<TextView>(R.id.notes_count)
         val notesText = resources.getString(R.string.total_notes)
         val lastBackupText = view.findViewById<TextView>(R.id.last_backup)
-        val jmCard = view.findViewById<MaterialCardView>(R.id.ad_card)
-        jmCard.setOnClickListener{
-            val url = "https://play.google.com/store/apps/details?id=com.jjewuz.executor"
-            val i = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(i)
-        }
 
         viewModel.getNotes().observe(this, Observer { notes ->
             val notesCount = notes.size
@@ -579,9 +573,9 @@ class MainActivity : AppCompatActivity() {
             val builder = MaterialAlertDialogBuilder(this)
             val inflater = this.layoutInflater.inflate(R.layout.contions, null)
             val tou = inflater.findViewById<Button>(R.id.terms_of_use)
-            tou.setOnClickListener { openLink("https://jjewuz.ru/justnotes/termsofuse.html") }
+            tou.setOnClickListener { openLink("https://jjewuz.ru/en/justnotes/termsofuse.html") }
             val pp = inflater.findViewById<Button>(R.id.privacy_policy)
-            pp.setOnClickListener { openLink("https://jjewuz.ru/justnotes/privacypolicy.html") }
+            pp.setOnClickListener { openLink("https://jjewuz.ru/en/justnotes/privacypolicy.html") }
             builder.setView(inflater)
                 .setTitle(R.string.agreement)
                 .setIcon(R.drawable.info)

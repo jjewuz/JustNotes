@@ -18,10 +18,11 @@ import com.jjewuz.justnotes.R
 
 class InfoActivity : AppCompatActivity() {
 
-    private lateinit var ghBtn: LinearLayout
-    private lateinit var sourceBtn: LinearLayout
-    private lateinit var siteBtn: LinearLayout
-    private lateinit var weblateBtn: LinearLayout
+    private lateinit var siteProfile: Button
+    private lateinit var ghBtn: Button
+    private lateinit var sourceBtn: Button
+    private lateinit var siteBtn: Button
+    private lateinit var weblateBtn: Button
     private lateinit var licenseBtn: Button
 
     private lateinit var tou: Button
@@ -59,6 +60,7 @@ class InfoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         enableEdgeToEdge()
 
+        siteProfile = findViewById(R.id.profile_site)
         ghBtn = findViewById(R.id.github_profile)
         sourceBtn = findViewById(R.id.github_code)
         siteBtn = findViewById(R.id.site)
@@ -75,13 +77,14 @@ class InfoActivity : AppCompatActivity() {
         versionTxt.text = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
 
         ghBtn.setOnClickListener { openLink("https://github.com/jjewuz/JustNotes") }
+        siteProfile.setOnClickListener{ openLink("https://jjewuz.com") }
         sourceBtn.setOnClickListener { openLink("https://github.com/jjewuz") }
         siteBtn.setOnClickListener{ openLink("https://jjewuz.com/justnotes.html") }
         weblateBtn.setOnClickListener {openLink("https://hosted.weblate.org/engage/justnotes/")}
         licenseBtn.setOnClickListener { startActivity(Intent(this, OssLicensesMenuActivity::class.java)) }
-        tou.setOnClickListener { openLink("https://jjewuz.com/justnotes/termsofuse.html") }
-        pp.setOnClickListener { openLink("https://jjewuz.com/justnotes/privacypolicy.html") }
-        tgBtn.setOnClickListener { openLink("https://t.me/jjewuz_support") }
+        tou.setOnClickListener { openLink("https://jjewuz.com/en/justnotes/termsofuse.html") }
+        pp.setOnClickListener { openLink("https://jjewuz.com/en/justnotes/privacypolicy.html") }
+        tgBtn.setOnClickListener { openLink("https://t.me/jjewuz") }
         vkBtn.setOnClickListener { openLink("https://vk.com/jjewuzhub") }
 
 

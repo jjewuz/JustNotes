@@ -5,27 +5,31 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import com.jjewuz.justnotes.R
+import androidx.core.content.ContextCompat
+import com.jjewuz.justnotes.Utils.Utils
+
 
 class NotificationReceiver : BroadcastReceiver() {
-
     override fun onReceive(context: Context, intent: Intent) {
-        val title = intent.getStringExtra("title")
-        val message = intent.getStringExtra("message")
-        val id = intent.getIntExtra("id", -1)
+        when (intent.action) {
+            "com.jjewuz.NOTIFICATION_DELETED" -> {
+                val serviceIntent = Intent(context, Utils.PersistentService::class.java).apply {
+                    putExtra("noteId", intent.getIntExtra("noteId", -1))
+                    putExtra("noteTitle", intent.getStringExtra("noteTitle"))
+                    putExtra("noteDescription", intent.getStringExtra("noteDescription"))
+                }
+                Log.d("NotesService", "Open note with ${intent.getStringExtra("noteTitle")}")
+                ContextCompat.startForegroundService(context, serviceIntent)
+            }
 
-        val notificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        val notificationBuilder = NotificationCompat.Builder(context, "0")
-            .setContentTitle(title)
-            .setContentText(message)
-            .setSmallIcon(R.drawable.reminders)
-            .setAutoCancel(true)
-
-        Log.d("NotificationReceiver", "Received notification: $title - $message")
-
-        notificationManager.notify(id, notificationBuilder.build())
+            "com.jjewuz.NOTIFICATION_HIDE" -> {
+                val noteId = intent.getIntExtra("noteId", -1)
+                val notificationManager =
+                    context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager.cancel(noteId)
+                Log.d("NotesService", "Closed note with $noteId")
+            }
+        }
     }
 }
+

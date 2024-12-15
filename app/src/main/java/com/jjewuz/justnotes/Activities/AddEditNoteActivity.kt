@@ -2,6 +2,7 @@ package com.jjewuz.justnotes.Activities
 
 
 import android.app.Activity
+import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.ContentValues
