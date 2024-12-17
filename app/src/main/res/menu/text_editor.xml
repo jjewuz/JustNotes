@@ -25,6 +25,20 @@
         android:title="@string/jump_toEnd"
         app:showAsAction="ifRoom"
         android:id="@+id/jumpToEnd" />
+
+    <item
+        android:icon="@drawable/copy"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/copy_text"
+        app:showAsAction="ifRoom"
+        android:id="@+id/copy_text"/>
+
+    <item
+        android:icon="@drawable/share"
+        android:iconTint="?colorOnBackground"
+        android:title="@string/share"
+        app:showAsAction="ifRoom"
+        android:id="@+id/share_text"/>
     <item
         android:icon="@drawable/label"
         android:iconTint="?colorOnBackground"

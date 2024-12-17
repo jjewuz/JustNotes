@@ -178,4 +178,7 @@
     <string name="open">Открыть</string>
     <string name="service_work">Сервис запущен</string>
     <string name="notification_sent">Уведомление отправлено</string>
+    <string name="share">Поделиться</string>
+    <string name="copy_text">Скопировать текст</string>
+    <string name="copied_text">Текст заметки скопирован!</string>
 </resources>

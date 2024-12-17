@@ -4,6 +4,8 @@ package com.jjewuz.justnotes.Activities
 import android.app.Activity
 import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Context
@@ -14,6 +16,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
@@ -471,6 +474,21 @@ class AddEditNoteActivity : AppCompatActivity() {
             R.id.labels -> {
                 true
             }
+            R.id.copy_text -> {
+                val clipboard = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("UID", getText())
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(this, R.string.copied_text, Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.share_text -> {
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, getText())
+                }
+                this.startActivity(Intent.createChooser(intent, "Share via"))
+                true
+            }
             R.id.jumpToEnd -> {
                 scrollView.fullScroll(View.FOCUS_DOWN)
                 true
@@ -533,6 +551,10 @@ class AddEditNoteActivity : AppCompatActivity() {
     private val getTxtFile = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         val text = uri?.let { readTxt(this, it) }
         noteEdt.setText(text)
+    }
+
+    private fun getText(): String {
+        return ("${noteTitleEdt.text}\n ${Html.fromHtml(noteEdt.text.toString(), Html.FROM_HTML_MODE_COMPACT)}")
     }
 
     private fun readTxt(context: Context, fileUri: Uri): String {

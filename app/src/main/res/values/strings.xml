@@ -182,4 +182,7 @@
     <string name="open">Open</string>
     <string name="service_work">Service is working</string>
     <string name="notification_sent">Notification sent</string>
+    <string name="share">Share</string>
+    <string name="copy_text">Copy text</string>
+    <string name="copied_text">Note text copied!</string>
 </resources>
