@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.jjewuz.justnotes.Category.CategoryDao
-import com.jjewuz.justnotes.Category.CategoryViewModel
 import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Utils.Utils
 import kotlinx.coroutines.CoroutineScope
@@ -21,14 +20,13 @@ import java.util.Locale
 
 class NoteRVAdapter(
     val context: Context,
-    val noteClickInterface: NoteClickInterface,
-    val noteLongClickInterface: NoteLongClickInterface,
-    val categoryDao: CategoryDao
+    private val noteClickInterface: NoteClickInterface,
+    private val noteLongClickInterface: NoteLongClickInterface,
+    private val categoryDao: CategoryDao
 ) :
     RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
-    lateinit var sharedPref: SharedPreferences
-    private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var sharedPref: SharedPreferences
 
     private val allNotes = ArrayList<Note>()
 

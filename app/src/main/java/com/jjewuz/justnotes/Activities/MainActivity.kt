@@ -34,7 +34,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -42,7 +41,6 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
-import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -92,10 +90,10 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
         val notesText = resources.getString(R.string.total_notes)
         val lastBackupText = view.findViewById<TextView>(R.id.last_backup)
 
-        viewModel.getNotes().observe(this, Observer { notes ->
+        viewModel.getNotes().observe(this) { notes ->
             val notesCount = notes.size
             notesCountText.text = "$notesText $notesCount"
-        })
+        }
         lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
 
         val backupCard = view.findViewById<MaterialCardView>(R.id.backup_card)
@@ -104,7 +102,7 @@ class ModalBottomSheet: BottomSheetDialogFragment(){
 
         backupCard.setOnClickListener {
             val modalBottomSheet = BackupUI()
-            modalBottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
+            modalBottomSheet.show(parentFragmentManager, TAG)
             this.dismiss()}
         settingsCard.setOnClickListener {
             val intent = Intent(requireActivity(), SettingsActivity::class.java)
@@ -121,7 +119,6 @@ class BackupUI: BottomSheetDialogFragment() {
 
     private lateinit var lastBackupText: TextView
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var progressBar: LinearProgressIndicator
     private lateinit var autoSwitch: MaterialSwitch
     private lateinit var lastBackup: TextView
 
@@ -140,10 +137,6 @@ class BackupUI: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_backup, container, false)
-
-    companion object {
-        const val TAG = "BackupUI"
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -238,7 +231,7 @@ class BackupUI: BottomSheetDialogFragment() {
                         val inflater = requireActivity().layoutInflater.inflate(R.layout.auth_credential, null)
                         val pass = inflater.findViewById<TextInputEditText>(R.id.input)
                         builder.setView(inflater)
-                            .setPositiveButton(R.string.delete_account) { dialog, id ->
+                            .setPositiveButton(R.string.delete_account) { _, _ ->
                                 val credential = userEmail?.let { it1 ->
                                     EmailAuthProvider.getCredential(
                                         it1, pass.text.toString())
@@ -293,7 +286,7 @@ class BackupUI: BottomSheetDialogFragment() {
         lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
     }
 
-    fun backup(local: Boolean){
+    private fun backup(local: Boolean){
         val mainActivity = (activity as MainActivity)
         val backup = mainActivity.backup
         val storageRef = Firebase.storage.reference
@@ -310,7 +303,6 @@ class BackupUI: BottomSheetDialogFragment() {
                 .apply {
                     onCompleteListener { success, message, exitCode ->
                         Log.d(ContentValues.TAG, "success: $success, message: $message, exitCode: $exitCode")
-                        if (success) {}
                     }
                 }
                 .backup()
@@ -328,9 +320,6 @@ class BackupUI: BottomSheetDialogFragment() {
                             ContentValues.TAG,
                             "success: $success, message: $message, exitCode: $exitCode"
                         )
-                        if (success) {
-
-                        }
                     }
                 }
                 .backup()

@@ -2,7 +2,6 @@ package com.jjewuz.justnotes.Activities
 
 
 import android.app.Activity
-import android.app.NotificationManager
 import android.appwidget.AppWidgetManager
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -86,8 +85,8 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var passBtn: LinearLayout
 
     private lateinit var viewModal: NoteViewModal
-    private var noteID = -1;
-    private var noteLock = "";
+    private var noteID = -1
+    private var noteLock = ""
 
     private var added = false
 
@@ -554,7 +553,7 @@ class AddEditNoteActivity : AppCompatActivity() {
     }
 
     private fun getText(): String {
-        return ("${noteTitleEdt.text}\n ${Html.fromHtml(noteEdt.text.toString(), Html.FROM_HTML_MODE_COMPACT)}")
+        return ("${noteTitleEdt.text}\n${Html.fromHtml(noteEdt.text.toString(), Html.FROM_HTML_MODE_COMPACT)}")
     }
 
     private fun readTxt(context: Context, fileUri: Uri): String {

@@ -2,10 +2,8 @@ package com.jjewuz.justnotes.Category
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.jjewuz.justnotes.Category.Category
 
 @Dao
 interface CategoryDao {

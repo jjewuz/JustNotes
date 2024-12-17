@@ -1,20 +1,12 @@
 package com.jjewuz.justnotes.Fragments
 
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
-import android.os.IBinder
-import android.text.Html
-import android.text.Spanned
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -23,7 +15,6 @@ import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
@@ -62,9 +53,8 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
     lateinit var notesRV: RecyclerView
     lateinit var progressBar: ProgressBar
-    lateinit var addFAB: FloatingActionButton
+    private lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
-    lateinit var viewIcon: MenuItem
 
     private lateinit var bottomAppBar: BottomAppBar
 
@@ -218,7 +208,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         }
 
         context?.let {
-            bottomAppBar?.setOnTouchListener(object : OnSwipeTouchListener(it) {
+            bottomAppBar.setOnTouchListener(object : OnSwipeTouchListener(it) {
 
                 override fun onSwipeLeft() {
                     replaceFragment(TodoFragment())
@@ -270,7 +260,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
 
             chip.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
-                    Toast.makeText(requireContext(), "${lText} ${chip.text}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "$lText ${chip.text}", Toast.LENGTH_SHORT).show()
                     selectedCategoryId = category.id
                     updateList(viewModal.getLabel(selectedCategoryId))
                 } else {
@@ -304,10 +294,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     override fun onNoteLongClick(note: Note) {
         val builder = MaterialAlertDialogBuilder(requireContext())
         val inf = requireActivity().layoutInflater.inflate(R.layout.note_options, null)
-        val edit = inf.findViewById<MaterialCardView>(R.id.edit)
         val widget = inf.findViewById<MaterialCardView>(R.id.tohome)
         val delete = inf.findViewById<MaterialCardView>(R.id.delete)
         val notify = inf.findViewById<MaterialCardView>(R.id.tonoti)
+        val share = inf.findViewById<MaterialCardView>(R.id.share_note)
 
         builder.setIcon(R.drawable.note)
         builder.setTitle(note.noteTitle)
@@ -321,19 +311,15 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 .setTitle(R.string.delWarn)
                 .setIcon(R.drawable.delete)
                 .setMessage(R.string.delete_warn)
-                .setNegativeButton(resources.getString(R.string.neg)) { dialog, which ->
+                .setNegativeButton(resources.getString(R.string.neg)) { _, _ ->
                 }
-                .setPositiveButton(R.string.pos) { dialog, which ->
+                .setPositiveButton(R.string.pos) { _, _ ->
                     viewModal.deleteNote(note)
                     updateList(allItems)
                     editor.cancel()
                     Toast.makeText(requireActivity(), R.string.deleted, Toast.LENGTH_LONG).show()
                 }
                 .show()
-        }
-        edit.setOnClickListener {
-            openNote(note)
-            editor.cancel()
         }
         widget.setOnClickListener {
             val sharedPreferences = context?.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
@@ -346,6 +332,13 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             startPersistentNotification(requireContext(), note)
             Toast.makeText(requireContext(), resources.getString(R.string.notification_sent), Toast.LENGTH_SHORT).show()
             editor.cancel()
+        }
+        share.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, "${note.noteTitle}\n${fromHtml(note.noteDescription)}")
+            }
+            this.startActivity(Intent.createChooser(intent, "Share via"))
         }
     }
 
@@ -374,15 +367,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     }
 
     private fun startPersistentNotification(context: Context, note: Note) {
-
-        val spannedContent =
-            Html.fromHtml(note.noteDescription, Html.FROM_HTML_MODE_COMPACT).toString()
-        val content = if (spannedContent.length > 100) {
-            "${spannedContent.take(150)}..."
-        } else {
-            spannedContent
-        }
-
         val serviceIntent = Intent(context, Utils.PersistentService::class.java).apply {
             putExtra("noteId", note.id)
             putExtra(Utils.PersistentService.NOTE_ID_KEY, note.id)
@@ -395,6 +379,5 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         }
         ContextCompat.startForegroundService(context, serviceIntent)
     }
-
 
 }

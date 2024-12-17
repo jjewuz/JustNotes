@@ -12,9 +12,7 @@ import com.jjewuz.justnotes.Category.CategoryDao
 import com.jjewuz.justnotes.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
 
 @Database(entities = [Note::class, Category::class], version = 4, exportSchema = true, autoMigrations = [ AutoMigration (1,2), AutoMigration(2,3)])
 abstract class NoteDatabase : RoomDatabase() {
@@ -57,7 +55,7 @@ abstract class NoteDatabase : RoomDatabase() {
 
         }
 
-        val MIGRATION_3_4 = object : Migration(3, 4) {
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 // Выполняем миграцию для добавления categoryId
                 db.execSQL("""

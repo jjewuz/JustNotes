@@ -1,9 +1,6 @@
 package com.jjewuz.justnotes.Category
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.jjewuz.justnotes.Category.CategoryDao
-import com.jjewuz.justnotes.Category.Category
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

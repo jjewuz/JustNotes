@@ -2,10 +2,7 @@ package com.jjewuz.justnotes.Notes
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.jjewuz.justnotes.Category.Category
 
 @Entity(
     tableName = "notesTable",

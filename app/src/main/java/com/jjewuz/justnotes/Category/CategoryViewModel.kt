@@ -5,8 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.jjewuz.justnotes.Notes.NoteDatabase
-import com.jjewuz.justnotes.Category.Category
-import com.jjewuz.justnotes.Category.CategoryRepo
 import kotlinx.coroutines.launch
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {

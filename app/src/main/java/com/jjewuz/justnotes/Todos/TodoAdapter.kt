@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.jjewuz.justnotes.R
-import java.time.format.DateTimeFormatter
 
 class TodoAdapter(private val viewModelStoreOwner: ViewModelStoreOwner, var todos: List<Todo>, val todoClickInterface: TodoClickInterface, private val todoLongClickInterface: TodoLongClickInterface) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

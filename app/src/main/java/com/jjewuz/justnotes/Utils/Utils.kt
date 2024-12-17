@@ -21,7 +21,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat
 import com.jjewuz.justnotes.Activities.AddEditNoteActivity
 import com.jjewuz.justnotes.Notifications.NotificationReceiver
 import com.jjewuz.justnotes.R
@@ -41,20 +40,26 @@ object Utils {
 
         if (selectedTextStart != -1 && selectedTextEnd != -1) {
             val spannable = SpannableString(noteEdt.text)
-            if (param == "bold"){
-                spannable.setSpan(StyleSpan(Typeface.BOLD), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "italic"){
-                spannable.setSpan(StyleSpan(Typeface.ITALIC), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "under"){
-                spannable.setSpan(UnderlineSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "strike"){
-                spannable.setSpan(StrikethroughSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            }else if (param == "null"){
-                val spans = spannable.getSpans(
-                    selectedTextStart, selectedTextEnd,
-                    CharacterStyle::class.java
-                )
-                for (selectSpan in spans) spannable.removeSpan(selectSpan)
+            when (param) {
+                "bold" -> {
+                    spannable.setSpan(StyleSpan(Typeface.BOLD), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+                "italic" -> {
+                    spannable.setSpan(StyleSpan(Typeface.ITALIC), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+                "under" -> {
+                    spannable.setSpan(UnderlineSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+                "strike" -> {
+                    spannable.setSpan(StrikethroughSpan(), selectedTextStart, selectedTextEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
+                "null" -> {
+                    val spans = spannable.getSpans(
+                        selectedTextStart, selectedTextEnd,
+                        CharacterStyle::class.java
+                    )
+                    for (selectSpan in spans) spannable.removeSpan(selectSpan)
+                }
             }
             noteEdt.setText(spannable)
             noteEdt.setSelection(selectedTextEnd)
@@ -67,34 +72,39 @@ object Utils {
 
         if (selectedTextStart != -1 && selectedTextEnd != -1) {
             val spannable = SpannableString(noteEdt.text)
-            if (param == "red") {
-                spannable.setSpan(
-                    ForegroundColorSpan(Color.rgb(193, 22, 22)),
-                    selectedTextStart,
-                    selectedTextEnd,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }else if(param == "yellow"){
-                spannable.setSpan(
-                    ForegroundColorSpan(Color.rgb(227, 174, 18)),
-                    selectedTextStart,
-                    selectedTextEnd,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }else if(param == "blue"){
-                spannable.setSpan(
-                    ForegroundColorSpan(Color.rgb(15, 68, 202)),
-                    selectedTextStart,
-                    selectedTextEnd,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }else if(param == "green"){
-                spannable.setSpan(
-                    ForegroundColorSpan(Color.rgb(113, 219, 165)),
-                    selectedTextStart,
-                    selectedTextEnd,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
+            when (param) {
+                "red" -> {
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.rgb(193, 22, 22)),
+                        selectedTextStart,
+                        selectedTextEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
+                "yellow" -> {
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.rgb(227, 174, 18)),
+                        selectedTextStart,
+                        selectedTextEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
+                "blue" -> {
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.rgb(15, 68, 202)),
+                        selectedTextStart,
+                        selectedTextEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
+                "green" -> {
+                    spannable.setSpan(
+                        ForegroundColorSpan(Color.rgb(113, 219, 165)),
+                        selectedTextStart,
+                        selectedTextEnd,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
             }
             noteEdt.setText(spannable)
             noteEdt.setSelection(selectedTextEnd)
@@ -140,7 +150,6 @@ object Utils {
             label = intent?.getIntExtra(NOTE_LABEL_ID, 0) ?: 0
 
 
-            // Intent для удаления (свайпом)
             val deleteIntent = Intent(this, NotificationReceiver::class.java).apply {
                 action = "com.jjewuz.NOTIFICATION_DELETED"
                 putExtra(NOTE_ID_KEY, noteId)
@@ -173,7 +182,6 @@ object Utils {
                 PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
 
-            // Intent для скрытия (кнопка)
             val hideIntent = Intent(this, NotificationReceiver::class.java).apply {
                 action = "com.jjewuz.NOTIFICATION_HIDE"
                 putExtra(NOTE_ID_KEY, noteId)
@@ -206,15 +214,14 @@ object Utils {
                 spannedContent
             }
 
-            // Создание уведомления
-            val notification = NotificationCompat.Builder(this, "0") // Уникальный канал
+            val notification = NotificationCompat.Builder(this, "0")
                 .setSmallIcon(R.drawable.note)
                 .setContentTitle(noteTitle)
                 .setContentText(content)
                 .addAction(hideAction)
                 .addAction(openAction)
-                .setDeleteIntent(deletePendingIntent) // Удаление свайпом
-                .setOngoing(true) // Постоянное уведомление
+                .setDeleteIntent(deletePendingIntent)
+                .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build()
 

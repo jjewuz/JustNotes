@@ -56,7 +56,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_todo, container, false)
-        val sharedPref = requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
         bottomAppBar = v.findViewById(R.id.bottomAppBar)
         noTasks = v.findViewById(R.id.notasks)
 
@@ -91,7 +91,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
-        todoViewModel = ViewModelProvider(requireActivity()).get(TodoViewModel::class.java)
+        todoViewModel = ViewModelProvider(requireActivity())[TodoViewModel::class.java]
         todoViewModel.allTodos.observe(viewLifecycleOwner) { todos ->
             adapter.todos = todos
             adapter.notifyDataSetChanged()
@@ -189,7 +189,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         }
 
         context?.let {
-            bottomAppBar?.setOnTouchListener(object : OnSwipeTouchListener(it) {
+            bottomAppBar.setOnTouchListener(object : OnSwipeTouchListener(it) {
 
                 override fun onSwipeLeft() {
                     replaceFragment(NotesFragment())
