@@ -344,7 +344,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         }
         notify.setOnClickListener {
             startPersistentNotification(requireContext(), note)
-            Toast.makeText(requireContext(), "Notification sent", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), resources.getString(R.string.notification_sent), Toast.LENGTH_SHORT).show()
             editor.cancel()
         }
     }

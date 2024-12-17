@@ -121,15 +121,12 @@ object Utils {
 
             notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-            // Создаем базовое уведомление для запуска Foreground Service
             val initialNotification = NotificationCompat.Builder(this, "0")
                 .setSmallIcon(R.drawable.note)
-                .setContentTitle("Foreground Service")
-                .setContentText("Service is running")
+                .setContentTitle(resources.getString(R.string.service_work))
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build()
 
-            // Запуск Foreground Service (всегда с одним ID, например, 1)
             startForeground(1, initialNotification)
             notificationManager.cancel(0)
         }

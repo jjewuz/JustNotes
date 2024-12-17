@@ -69,7 +69,7 @@
     <string name="backup_warn">Внимание! Напоминания не сохраняются.</string>
     <string name="not_encrypted">Внимание! Локальная резервная копия не зашифрована.</string>
     <string name="preview">Предпросмотр текста заметки</string>
-    <string name="set_on_widget">Установить заметку в виджет</string>
+    <string name="set_on_widget">Отправить в виджет</string>
     <string name="delete_warn">Вы не сможете восстановить заметку после её удаления!</string>
     <string name="note_set_to_widget">Заметка установлена в виджет</string>
     <string name="what_new_update">"Что нового в "</string>
@@ -173,7 +173,9 @@
     <string name="executor_title">Executor вышел!</string>
     <string name="executor_promo">Посмотрите на новое приложение от jjewuz!</string>
     <string name="backup_warning">Из-за ограничений системы резервирования, приложение должно быть перезапущено после создания каждый резервной копии для стабильной работы. После восстановления приложение перезапускается самостоятельно.</string>
-    <string name="note_sent_noti">Отправить в уведомления</string>
+    <string name="note_sent_noti">Закрепить в уведомлениях</string>
     <string name="hide">Скрыть</string>
     <string name="open">Открыть</string>
+    <string name="service_work">Сервис запущен</string>
+    <string name="notification_sent">Уведомление отправлено</string>
 </resources>
