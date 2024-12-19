@@ -556,7 +556,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val enabledpass = sharedPref.getBoolean("enabledPassword", false)
-        val newPP = sharedPref.getBoolean("agree_conditions2023", false)
+        val newPP = sharedPref.getBoolean("agree_conditions2024", false)
 
         if (!newPP){
             val builder = MaterialAlertDialogBuilder(this)
@@ -567,10 +567,11 @@ class MainActivity : AppCompatActivity() {
             pp.setOnClickListener { openLink("https://jjewuz.ru/en/justnotes/privacypolicy.html") }
             builder.setView(inflater)
                 .setTitle(R.string.agreement)
+                .setMessage(R.string.update_legacy)
                 .setIcon(R.drawable.info)
                 .setCancelable(false)
                 .setPositiveButton(R.string.agree) { _, _ ->
-                    sharedPref.edit().putBoolean("agree_conditions2023", true).apply()
+                    sharedPref.edit().putBoolean("agree_conditions2024", true).apply()
                 }
                 .setNegativeButton(R.string.decline) { _, _ ->
                     this.finish()
