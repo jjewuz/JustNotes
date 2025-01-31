@@ -92,7 +92,6 @@
     <string name="no_account">لا يوجد حساب</string>
     <string name="sign_out">تسجيل الخروج</string>
     <string name="delete_account">حذف الحساب</string>
-    <string name="email">البريد الإلكتروني</string>
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
     <string name="register">تسجيل</string>
@@ -103,7 +102,6 @@
     <string name="cloud_backup_beta">النسخ الاحتياطي السحابي حاليًا قيد الاختبار. يرجى عدم الاعتماد على هذه الطريقة حتى إشعار آخر.</string>
     <string name="set_password">تعيين كلمة المرور</string>
     <string name="enter_password">أدخل كلمة المرور</string>
-    <string name="pass_hint">اترك الحقل فارغًا أو اكتب '0' لإزالة كلمة المرور.</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="deletion_error">خطأ في حذف الحساب!</string>
     <string name="deletion_succes">تم حذف الحساب بنجاح!</string>
