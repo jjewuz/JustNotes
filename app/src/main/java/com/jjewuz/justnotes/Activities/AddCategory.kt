@@ -3,8 +3,11 @@ package com.jjewuz.justnotes.Activities
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -65,6 +68,15 @@ class AddCategory : AppCompatActivity() {
 
         binding.addCategory.setOnClickListener {
             addDialog()
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.addCategory) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.bottomMargin = insets.bottom + 20
+            params.rightMargin = insets.right + 40
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
         }
     }
 
