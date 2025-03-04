@@ -193,24 +193,4 @@
     <string name="app_desc">JustNotes 是一款简单实用的笔记应用程序。精美的设计、易于使用的界面、所有必要的功能，这一切尽在 JustNotes！ 记下想法、列出清单、写日记--JustNotes 将成为你不可或缺的助手。</string>
     <string name="about_app">关于应用</string>
     <string name="app_restarting">重启 JustNotes...</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="changes">Changelog</string>
-    <string name="contribuitors">Contribuitors</string>
-    <string name="translators">Translators</string>
-    <string name="no_label">Unlabeled</string>
-    <string name="manage_labels">Manage labels</string>
-    <string name="label_selected">Label selected:</string>
-    <string name="executor_title">Executor is out!</string>
-    <string name="executor_promo">Check out new app from jjewuz!</string>
-    <string name="backup_warning">Due to the limitations of the backup system, the application needs to be restarted to work stably after backup. After restore the application will restart automatically.</string>
-    <string name="note_sent_noti">Pin to notifications</string>
-    <string name="hide">Hide</string>
-    <string name="open">Open</string>
-    <string name="service_work">Service is working</string>
-    <string name="notification_sent">Notification sent</string>
-    <string name="share">Share</string>
-    <string name="copy_text">Copy text</string>
-    <string name="copied_text">Note text copied!</string>
-    <string name="update_legacy">Terms of Use and Privacy Policy is being updated to be clearer and include new features. Last updated: 20.12.2024. To continue using, please agree to the terms.</string>
 </resources>
