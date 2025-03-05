@@ -173,6 +173,7 @@
                             android:layout_height="wrap_content">
 
                             <Button
+                                style="?attr/materialIconButtonFilledStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:id="@+id/profile_site"
@@ -181,6 +182,7 @@
                                 android:text="@string/site"/>
 
                             <Button
+                                style="?attr/materialIconButtonFilledStyle"
                                 android:layout_width="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:layout_height="wrap_content"
@@ -254,40 +256,50 @@
                             android:textSize="18sp"
                             android:textStyle="bold"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <Button
-                            style="?attr/materialIconButtonFilledStyle"
-                            android:id="@+id/github_code"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/source_code"
-                            app:icon="@drawable/github"
-                            />
-
-                        <Button
-                            style="?attr/materialIconButtonFilledStyle"
-                            android:id="@+id/site"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/site"
-                            app:icon="@drawable/site"
-                            />
 
 
-                        <Button
-                            style="?attr/materialIconButtonFilledStyle"
-                            android:id="@+id/weblate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/weblate"
-                            app:icon="@drawable/weblate"
-                            />
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                            <Button
+                                style="?attr/materialIconButtonFilledStyle"
+                                android:id="@+id/github_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/source_code"
+                                app:icon="@drawable/github"
+                                />
+
+                            <Button
+                                style="?attr/materialIconButtonFilledStyle"
+                                android:id="@+id/site"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/site"
+                                app:icon="@drawable/site"
+                                />
+
+
+                            <Button
+                                style="?attr/materialIconButtonFilledStyle"
+                                android:id="@+id/weblate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weblate"
+                                app:icon="@drawable/weblate"
+                                />
+
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+
+
 
                     </LinearLayout>
 

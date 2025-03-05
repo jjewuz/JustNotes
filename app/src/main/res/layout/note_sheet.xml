@@ -89,8 +89,7 @@
                         android:layout_width="match_parent"
                         android:id="@+id/card_spinner"
                         android:layout_margin="5dp"
-                        android:backgroundTint="?colorOnPrimary"
-                        style="@style/Widget.Material3.CardView.Elevated"
+                        style="?attr/materialCardViewFilledStyle"
                         android:layout_height="wrap_content">
 
                         <Spinner
@@ -156,8 +155,7 @@
                             android:layout_width="wrap_content"
                             android:id="@+id/importtxt"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="?colorOnPrimary"
-                            style="@style/Widget.Material3.Button.TonalButton"
+                            style="?attr/materialCardViewFilledStyle"
                             android:text="@string/import_txt"
                             android:layout_weight="1"
                             app:icon="@drawable/load"
@@ -169,8 +167,7 @@
                             app:icon="@drawable/unload"
                             android:layout_marginStart="10dp"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="?colorOnPrimary"
-                            style="@style/Widget.Material3.Button.TonalButton"
+                            style="?attr/materialCardViewFilledStyle"
                             android:text="@string/export"
                             android:layout_weight="1"/>
 

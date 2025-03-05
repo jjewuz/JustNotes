@@ -119,7 +119,6 @@ class BackupUI: BottomSheetDialogFragment() {
 
     private lateinit var lastBackupText: TextView
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var autoSwitch: MaterialSwitch
     private lateinit var lastBackup: TextView
 
     private lateinit var userEmailTxt: TextView
@@ -146,7 +145,6 @@ class BackupUI: BottomSheetDialogFragment() {
 
 
         auth = Firebase.auth
-        autoSwitch = view.findViewById(R.id.auto_backup_switch)
         lastBackup = view.findViewById(R.id.last_backup)
         deleteBtn = view.findViewById(R.id.delete_btn)
         logoutBtn = view.findViewById(R.id.logout_btn)
@@ -160,7 +158,6 @@ class BackupUI: BottomSheetDialogFragment() {
         deleteBtn.visibility = View.GONE
         logoutBtn.visibility = View.GONE
         cloudButtons.visibility = View.GONE
-        autoSwitch.visibility = View.GONE
 
 
 
@@ -204,10 +201,7 @@ class BackupUI: BottomSheetDialogFragment() {
             logoutBtn.visibility = View.GONE
             deleteBtn.visibility = View.GONE
             cloudButtons.visibility = View.GONE
-            autoSwitch.visibility = View.GONE
         }
-
-        autoSwitch.isChecked = sharedPref.getBoolean("auto_backup", false)
 
         view.findViewById<Button>(R.id.delete_btn).setOnClickListener {
             MaterialAlertDialogBuilder(requireActivity())
@@ -267,21 +261,7 @@ class BackupUI: BottomSheetDialogFragment() {
                 .show()
         }
 
-        autoSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                with (sharedPref.edit()) {
-                    putBoolean("auto_backup", true)
-                    apply()
-                }
 
-                Toast.makeText(requireContext(), R.string.auto_backup_on, Toast.LENGTH_SHORT).show()
-            }else{
-                with (sharedPref.edit()) {
-                    putBoolean("auto_backup", false)
-                    apply()
-                }
-            }
-        }
         lastBackupText = lastBackup
         lastBackupText.text = sharedPref.getString("last_backup", "${resources.getString(R.string.last_backup)} - ")
     }
@@ -480,7 +460,6 @@ class BackupUI: BottomSheetDialogFragment() {
             logoutBtn.visibility = View.VISIBLE
             deleteBtn.visibility = View.VISIBLE
             cloudButtons.visibility = View.VISIBLE
-            autoSwitch.visibility = View.VISIBLE
         }
     }
 
@@ -567,7 +546,6 @@ class MainActivity : AppCompatActivity() {
             pp.setOnClickListener { openLink("https://jjewuz.ru/en/justnotes/privacypolicy.html") }
             builder.setView(inflater)
                 .setTitle(R.string.agreement)
-                .setMessage(R.string.update_legacy)
                 .setIcon(R.drawable.info)
                 .setCancelable(false)
                 .setPositiveButton(R.string.agree) { _, _ ->
@@ -640,13 +618,12 @@ class MainActivity : AppCompatActivity() {
                 .setSubtitle(resources.getString(R.string.loginText))
                 .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
                 .build()
-        } else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
+        } else
             promptInfo = BiometricPrompt.PromptInfo.Builder()
                 .setTitle(resources.getString(R.string.loginTitle))
                 .setSubtitle(resources.getString(R.string.loginText))
                 .setAllowedAuthenticators(BIOMETRIC_WEAK or DEVICE_CREDENTIAL)
                 .build()
-        }
 
 
         if (enabledpass) {
@@ -690,25 +667,6 @@ class MainActivity : AppCompatActivity() {
         }
         notificationManager.createNotificationChannel(channel)
         notificationManager.createNotificationChannel(channel2)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        val user = Firebase.auth.currentUser
-        if (user != null) {
-            if (sharedPref.getBoolean("auto_backup", false)) {
-                val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-                val currDate: String = sdf.format(Date().time)
-
-                if (sharedPref.getString("last_backup_text", "dd MMM yyyy - HH:mm")
-                        ?.dropLast(8) != currDate
-                ) {
-
-                    backup()
-                    sharedPref.edit().putString("last_backup_text", currDate).apply()
-                }
-            }
-        }
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
