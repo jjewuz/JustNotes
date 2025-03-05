@@ -7,15 +7,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-
-
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
-
         <item name="android:windowSplashScreenAnimationDuration">1000</item>
         <item name="colorControlNormal">?colorOnBackground</item>
 
@@ -38,14 +29,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
 
-
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
-
         <item name="colorControlNormal">?colorOnBackground</item>
 
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
@@ -56,12 +39,6 @@
     <style name="Font" parent="Theme.Material3.Dark">
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
 
         <item name="colorControlNormal">?colorOnBackground</item>
 
@@ -105,12 +82,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
 
         <item name="colorControlNormal">?colorOnBackground</item>
 
@@ -125,13 +96,6 @@
         <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>

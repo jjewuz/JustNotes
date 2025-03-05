@@ -128,7 +128,6 @@ class AddEditNoteActivity : AppCompatActivity() {
             setTheme(R.style.BlackIce)
         }
         setContentView(R.layout.activity_add_edit_note)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         setSupportActionBar(findViewById(R.id.topAppBar))
         supportActionBar?.title = ""
 

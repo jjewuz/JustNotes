@@ -2,13 +2,6 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.DynamicColors.Light">
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
-
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
@@ -34,13 +27,6 @@
     <style name="DarkTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="actionOverflowButtonStyle">@style/Threedotsmenu</item>
@@ -55,12 +41,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
 
         <item name="windowActionBar">false</item>
         <item name="android:fontFamily">@font/raleway</item>
@@ -106,12 +86,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -120,9 +94,6 @@
             true
         </item>
 
-        <item name="android:windowLayoutInDisplayCutoutMode">
-            shortEdges <!-- default, shortEdges, or never -->
-        </item>
         <item name="android:fontFamily">@font/raleway</item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
     </style>
@@ -131,12 +102,6 @@
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
