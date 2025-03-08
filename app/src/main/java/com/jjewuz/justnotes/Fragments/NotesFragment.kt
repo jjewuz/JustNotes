@@ -283,6 +283,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         intent.putExtra("label", note.label)
         intent.putExtra("noteId", note.id)
         intent.putExtra("categoryId", note.categoryId)
+        intent.putExtra("bgId", note.bgId)
         startActivity(intent)
     }
 

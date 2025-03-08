@@ -14,7 +14,8 @@ class Note (
     @ColumnInfo(name = "timestamp") val timeStamp: String,
     @ColumnInfo(name = "security", defaultValue = "") val security: String,
     @ColumnInfo(name = "label", defaultValue = "") val label: String,
-    @ColumnInfo(name = "categoryId") val categoryId: Int? = null
+    @ColumnInfo(name = "categoryId") val categoryId: Int? = null,
+    @ColumnInfo(name = "bgId", defaultValue = "-1") val bgId: Int
 ){
     @PrimaryKey(autoGenerate = true)
     var id = 0

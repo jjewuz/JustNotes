@@ -14,8 +14,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 30
         targetSdk 35
-        versionCode 204
-        versionName "5.8.1"
+        versionCode 205
+        versionName "5.8.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -101,10 +101,12 @@ dependencies {
 
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
-    androidTestImplementation ("androidx.test.espresso:espresso-core:$rootProject.espressoVersion", {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
     implementation 'de.raphaelebner:roomdatabasebackup:1.0.0-beta13'
+
+    implementation "com.google.ai.edge.litert:litert:1.1.2"
 }

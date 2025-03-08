@@ -2,6 +2,9 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
         <item name="windowActionBar">false</item>
@@ -24,6 +27,9 @@
     </style>
 
     <style name="DarkTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
@@ -37,6 +43,9 @@
     </style>
 
     <style name="Font" parent="Theme.Material3.Dark">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
 
@@ -79,6 +88,9 @@
     </style>
 
     <style name="FontMonet" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
         <item name="android:windowSplashScreenBackground">?colorSecondary</item>
         <item name="android:windowSplashScreenBrandingImage">@drawable/jjewuz</item>
@@ -93,6 +105,9 @@
     </style>
 
     <style name="Nothing" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
         <item name="popupMenuBackground">@drawable/custom_popup</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

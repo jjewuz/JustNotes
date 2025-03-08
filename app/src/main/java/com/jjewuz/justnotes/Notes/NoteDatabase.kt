@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Note::class, Category::class], version = 4, exportSchema = true, autoMigrations = [ AutoMigration (1,2), AutoMigration(2,3)])
+@Database(entities = [Note::class, Category::class], version = 5, exportSchema = true, autoMigrations = [ AutoMigration (1,2), AutoMigration(2,3), AutoMigration(4,5)])
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun getNotesDao(): NotesDao
