@@ -144,6 +144,26 @@
 
                 </LinearLayout>
 
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/generate_sum"
+                        android:layout_margin="5dp"
+                        style="?attr/materialCardViewFilledStyle"
+                        android:id="@+id/summarize"
+                        app:icon="@drawable/ai"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_bg_menu"
+                        android:layout_margin="5dp"
+                        style="?attr/materialCardViewFilledStyle"
+                        android:id="@+id/bgcolor"
+                        app:icon="@drawable/palette"/>
+
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

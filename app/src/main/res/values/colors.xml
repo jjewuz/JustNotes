@@ -23,23 +23,24 @@
         <item>@color/note_gray_dark</item>
     </integer-array>
 
-    <color name="note_red_light">#FFCDD2</color>
-    <color name="note_blue_light">#BBDEFB</color>
-    <color name="note_green_light">#C8E6C9</color>
-    <color name="note_yellow_light">#FFF9C4</color>
-    <color name="note_orange_light">#FFE0B2</color>
-    <color name="note_purple_light">#E1BEE7</color>
-    <color name="note_cyan_light">#B2EBF2</color>
-    <color name="note_gray_light">#E0E0E0</color>
+    <color name="note_red_light">#FFB3B3</color>
+    <color name="note_blue_light">#A3C8FF</color>
+    <color name="note_green_light">#B2E5B2</color>
+    <color name="note_yellow_light">#FFF1A8</color>
+    <color name="note_orange_light">#FFD1A3</color>
+    <color name="note_purple_light">#D8A8E1</color>
+    <color name="note_cyan_light">#A2E6F5</color>
+    <color name="note_gray_light">#D3D3D3</color>
 
-    <color name="note_red_dark">#B71C1C</color>
-    <color name="note_blue_dark">#0D47A1</color>
-    <color name="note_green_dark">#1B5E20</color>
-    <color name="note_yellow_dark">#F57F17</color>
-    <color name="note_orange_dark">#E65100</color>
-    <color name="note_purple_dark">#4A148C</color>
-    <color name="note_cyan_dark">#006064</color>
-    <color name="note_gray_dark">#424242</color>
+    <color name="note_red_dark">#B73B3B</color>
+    <color name="note_blue_dark">#325E9E</color>
+    <color name="note_green_dark">#388C3B</color>
+    <color name="note_yellow_dark">#C78300</color>
+    <color name="note_orange_dark">#BF4C0B</color>
+    <color name="note_purple_dark">#6A0A6C</color>
+    <color name="note_cyan_dark">#006E75</color>
+    <color name="note_gray_dark">#757575</color>
+
 
 
 

@@ -19,6 +19,7 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.Html
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -78,6 +79,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import androidx.core.graphics.toColorInt
+import androidx.core.content.edit
 
 class AddEditNoteActivity : AppCompatActivity() {
 
@@ -97,6 +99,8 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var clearBtn: LinearLayout
     private lateinit var toWidgetBtn: LinearLayout
     private lateinit var passBtn: LinearLayout
+    private lateinit var aiButton: Button
+    private lateinit var bgButton: Button
 
     private lateinit var viewModal: NoteViewModal
     private var noteID = -1
@@ -148,6 +152,8 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
 
+
+
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -170,6 +176,8 @@ class AddEditNoteActivity : AppCompatActivity() {
         clearBtn = findViewById(R.id.clear_txt)
         toWidgetBtn = findViewById(R.id.towidget)
         passBtn = findViewById(R.id.pass_btn)
+        aiButton = findViewById(R.id.summarize)
+        bgButton = findViewById(R.id.bgcolor) // change bg color
 
         //Receive text
         when (intent?.action) {
@@ -201,12 +209,30 @@ class AddEditNoteActivity : AppCompatActivity() {
 
         toWidgetBtn.setOnClickListener {
             val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putInt("note_id", noteID)
-            editor.apply()
+            sharedPreferences.edit {
+                putInt("note_id", noteID)
+            }
             pushWidget()
             Toast.makeText(this, R.string.note_set_to_widget, Toast.LENGTH_SHORT).show()
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        val isExp = sharedPref.getBoolean("is_exp", false)
+
+        if (!isExp)
+            aiButton.visibility = View.GONE
+
+        aiButton.setOnClickListener {
+            generateSum()
+        }
+
+        bgButton.setOnClickListener {
+            showColorPickerDialog(this) { selectedColorId ->
+                hasChanges = true
+                setBgColorFromId(selectedColorId)
+                bgId = selectedColorId
+                saveNote(false)
+            }
         }
 
         bottomAppBar.setNavigationOnClickListener {
@@ -506,49 +532,6 @@ class AddEditNoteActivity : AppCompatActivity() {
                 scrollView.fullScroll(View.FOCUS_DOWN)
                 true
             }
-            R.id.choose_bg -> {
-                showColorPickerDialog(this) { selectedColorId ->
-                    hasChanges = true
-                    setBgColorFromId(selectedColorId)
-                    bgId = selectedColorId
-                    saveNote(false)
-                }
-                true
-            }
-            R.id.ai -> {
-                /*val tokenizer = WordPieceTokenizer(this)
-                val bert = MobileBertInterpreter(this)
-                val text = getText()
-
-                val tokens: IntArray = tokenizer.tokenize(text).toIntArray()
-
-                val maxSequenceLength = 512
-
-                val paddedTokens = if (tokens.size > maxSequenceLength) {
-                    tokens.take(maxSequenceLength).toIntArray() // Обрезаем до maxSequenceLength
-                } else {
-                    tokens + IntArray(maxSequenceLength - tokens.size) { 0 }
-                }
-
-                val reshapedInput: Array<Array<FloatArray>> = arrayOf(
-                    arrayOf(paddedTokens.map { it.toFloat() }.toFloatArray()) // Преобразуем IntArray в FloatArray
-                )
-
-                val result: Array<Array<FloatArray>> = bert.predict(reshapedInput)
-
-                val output = result[0][0]
-
-                val summary = output.take(10).joinToString(", ") { it.toString() }
-
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("AI сводка")
-                    .setIcon(R.drawable.info)
-                    .setMessage(summary)
-                    .setPositiveButton("OK") { _, _ -> }
-                    .show()
-*/
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -699,27 +682,21 @@ class AddEditNoteActivity : AppCompatActivity() {
     }
 
     private fun showColorPickerDialog(context: Context, onColorSelected: (Int) -> Unit) {
-        // Определяем текущую тему
         val isDarkTheme = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
 
-        // Загружаем массив цветов в зависимости от темы
         val lightColors = context.resources.getIntArray(R.array.note_colors_light)
         val darkColors = context.resources.getIntArray(R.array.note_colors_dark)
         val colors = if (isDarkTheme) darkColors else lightColors
-
-        // Создаем список идентификаторов цветов (-1 для "Без фона", 0-8 для остальных)
         val allColors = IntArray(colors.size + 1).apply {
-            this[0] = -1 // "Без фона"
+            this[0] = -1
             for (i in colors.indices) {
-                this[i + 1] = i // Записываем индекс цвета (0-8)
+                this[i + 1] = i
             }
         }
 
-        // Создаем View для диалога
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_color_picker, null)
         val container = dialogView.findViewById<GridLayout>(R.id.color_container)
 
-        // Устанавливаем количество столбцов (например, 3 или 4)
         container.columnCount = 4
 
         for ((index, color) in allColors.withIndex()) {
@@ -737,11 +714,30 @@ class AddEditNoteActivity : AppCompatActivity() {
             container.addView(circleView)
         }
 
-        // Показываем диалог
         MaterialAlertDialogBuilder(context)
-            .setTitle("Выберите фон заметки")
+            .setTitle(R.string.choose_bg)
             .setView(dialogView)
-            .setNegativeButton("Отмена", null)
+            .setNegativeButton(R.string.back, null)
+            .show()
+    }
+
+    private fun generateSum(){
+        val tokenizer = WordPieceTokenizer(this)
+        val bert = MobileBertInterpreter(this)
+        val text = getText()
+
+        val tokens: IntArray = tokenizer.tokenize(text)
+
+        val input = arrayOf(intArrayOf(tokens.firstOrNull() ?: 0))
+        Log.d("BERT", "Input tokens: ${tokens.joinToString()}")
+
+        val result: FloatArray = bert.predict(input)[0][0]
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.ai_sum)
+            .setIcon(R.drawable.ai)
+            .setMessage(tokenizer.detokenize(result.map { it.toInt() }))
+            .setPositiveButton("OK") { _, _ -> }
             .show()
     }
 

@@ -39,17 +39,4 @@
         android:title="@string/share"
         app:showAsAction="ifRoom"
         android:id="@+id/share_text"/>
-    <item
-        android:icon="@drawable/buttonc"
-        android:iconTint="?colorOnBackground"
-        android:title="Выбрать фон"
-        app:showAsAction="ifRoom"
-        android:id="@+id/choose_bg"/>
-    <item
-        android:icon="@drawable/label"
-        android:iconTint="?colorOnBackground"
-        android:title="Сводка ИИ"
-        app:showAsAction="ifRoom"
-        android:visible="false"
-        android:id="@+id/ai" />
 </menu>

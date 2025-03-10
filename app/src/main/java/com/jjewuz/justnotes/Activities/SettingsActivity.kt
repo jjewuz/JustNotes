@@ -21,6 +21,7 @@ import com.jjewuz.justnotes.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import androidx.core.net.toUri
 
 
 private lateinit var sharedPref: SharedPreferences
@@ -82,16 +83,13 @@ class SettingsActivity : AppCompatActivity() {
         val preview = sharedPref.getBoolean("enabledPreview", false)
         val tasksOpen = sharedPref.getBoolean("isTask", false)
         val isSecuredScreen = sharedPref.getBoolean("screenSecurity", false)
-        val isDev = sharedPref.getBoolean("is_dev", false)
-
-        if (!isDev){
-            betaCardView.visibility = View.GONE
-        }
+        val isExp = sharedPref.getBoolean("is_exp", false)
 
         passSwitch.isChecked = enabledpass
         fontSwitch.isChecked = enabledFont
         previewSwitch.isChecked = preview
         screenSecuredNotes.isChecked = isSecuredScreen
+        betaSwitch.isChecked = isExp
 
         if (tasksOpen){
             openGroup.check(R.id.openTasks)
@@ -99,7 +97,8 @@ class SettingsActivity : AppCompatActivity() {
             openGroup.check(R.id.yesnotes)
         }
 
-        reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jjewuz/JustNotes/issues/new"))
+        reportBtn.setOnClickListener { val i = Intent(Intent.ACTION_VIEW,
+            "https://github.com/jjewuz/JustNotes/issues/new".toUri())
             startActivity(i) }
 
 
@@ -252,13 +251,19 @@ class SettingsActivity : AppCompatActivity() {
 
         betaSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.warning)
+                    .setMessage(R.string.ef_warn)
+                    .setIcon(R.drawable.error)
+                    .setPositiveButton("OK", null)
+                    .show()
                 with (sharedPref.edit()) {
-                    putBoolean("is_dev", true)
+                    putBoolean("is_exp", true)
                     apply()
                 }
             }else{
                 with (sharedPref.edit()) {
-                    putBoolean("is_dev", false)
+                    putBoolean("is_exp", false)
                     apply()
                 }
             }

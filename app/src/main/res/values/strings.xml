@@ -186,4 +186,13 @@
     <string name="copy_text">Copy text</string>
     <string name="copied_text">Note text copied!</string>
     <string name="update_legacy">Terms of Use and Privacy Policy is being updated to be clearer and include new features. Last updated: 20.12.2024. To continue using, please agree to the terms.</string>
+    <string name="sure">Are you sure?</string>
+    <string name="sure_backup">Do you want to backup your notes? It will re-write your old backup.</string>
+    <string name="choose_bg">Choose note background</string>
+    <string name="choose_bg_menu">Change background</string>
+    <string name="generate_sum">Summarize with AI</string>
+    <string name="ai_sum">AI summarize</string>
+    <string name="experemental_features">Experemental features</string>
+    <string name="warning">Warning</string>
+    <string name="ef_warn">Experimental features are unstable: they may not work as expected or may cause the application to crash. Use with caution.</string>
 </resources>

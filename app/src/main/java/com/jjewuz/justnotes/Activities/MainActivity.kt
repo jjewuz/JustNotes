@@ -187,7 +187,18 @@ class BackupUI: BottomSheetDialogFragment() {
         }
 
         view.findViewById<Button>(R.id.backup_cloud).setOnClickListener {
-            backup(false)
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(R.string.sure)
+                .setIcon(R.drawable.info)
+                .setMessage(R.string.sure_backup)
+                .setPositiveButton("OK") { _, _ ->
+                    backup(false)
+                }
+                .setNegativeButton(R.string.back) { _, _ ->
+
+                }
+                .show()
+
         }
 
         view.findViewById<Button>(R.id.rest_cloud).setOnClickListener {

@@ -182,4 +182,13 @@
     <string name="copy_text">Скопировать текст</string>
     <string name="copied_text">Текст заметки скопирован!</string>
     <string name="update_legacy">Условия использования и политика конфиденциальности обновляется для более понятного описания и новых возможностей. Дата обновления: 20.12.2024. Для продолжения использования согласитесь с условиями.</string>
+    <string name="sure">Вы уверены?</string>
+    <string name="sure_backup">Вы хотите перезаписать вашу резервную копию, которая перезапишет старую?</string>
+    <string name="choose_bg">Выберите фон заметки</string>
+    <string name="choose_bg_menu">Изменить фон</string>
+    <string name="generate_sum">Составить сводку с ИИ</string>
+    <string name="ai_sum">Сводка ИИ</string>
+    <string name="experemental_features">Эксперементальные возможности</string>
+    <string name="warning">Внимание</string>
+    <string name="ef_warn">Эксперементальные возможности нестабильны: они могут не работать как нужно или приводить к сбою приложения. Используйте с осторожностью.</string>
 </resources>

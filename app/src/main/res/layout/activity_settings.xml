@@ -402,7 +402,7 @@
 
                             <ImageView
                                 android:layout_width="wrap_content"
-                                android:src="@drawable/bug_report"
+                                android:src="@drawable/error"
                                 app:tint="?colorOnSecondaryContainer"
                                 android:scaleY="0.8"
                                 android:scaleX="0.8"
@@ -412,8 +412,7 @@
                                 android:id="@+id/betatoggle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="@string/beta_mode" />
+                                android:text="@string/experemental_features" />
 
                         </LinearLayout>
 
