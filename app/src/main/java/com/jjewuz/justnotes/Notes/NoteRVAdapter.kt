@@ -2,11 +2,16 @@ package com.jjewuz.justnotes.Notes
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.jjewuz.justnotes.Category.CategoryDao
 import com.jjewuz.justnotes.R
@@ -34,7 +39,9 @@ class NoteRVAdapter(
         val noteTV: TextView = itemView.findViewById(R.id.idTVNote)
         val descTV: TextView = itemView.findViewById(R.id.notedesc)
         val dateTV: TextView = itemView.findViewById(R.id.idTVDate)
-        val categoryChip: Chip = itemView.findViewById(R.id.category)
+        val textContainer: MaterialCardView = itemView.findViewById(R.id.textcontainer)
+        val categoryChip: MaterialCardView = itemView.findViewById(R.id.category)
+        val categoryText: TextView = itemView.findViewById(R.id.category_tv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,7 +58,7 @@ class NoteRVAdapter(
         val isPreview = sharedPref.getBoolean("enabledPreview", false)
 
         holder.noteTV.text = allNotes[position].noteTitle
-        val sdf = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd.MM.yyyy - HH:mm", Locale.getDefault())
         val date = allNotes[position].timeStamp
         val currentDateAndTime: String = try {
             sdf.format(date.toLong())
@@ -66,17 +73,23 @@ class NoteRVAdapter(
             CoroutineScope(Dispatchers.Main).launch {
                 val categoryName = currCategory?.let { getCategoryName(it) }
                 holder.categoryChip.visibility = View.VISIBLE
-                holder.categoryChip.text = categoryName
+                holder.categoryText.text = categoryName
             }
 
         }
 
+        val desc = Utils.fromHtml(allNotes[position].noteDescription.take(400))
+
 
         if (isPreview){
-            holder.descTV.text = Utils.fromHtml(allNotes[position].noteDescription.take(400))
+            holder.descTV.text = desc
         } else{
             holder.descTV.visibility = View.GONE
+            holder.textContainer.visibility = View.GONE
         }
+
+        if (desc.isEmpty())
+            holder.textContainer.visibility = View.GONE
 
         holder.itemView.setOnClickListener {
             noteClickInterface.onNoteClick(allNotes[position], position)

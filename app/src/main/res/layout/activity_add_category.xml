@@ -15,11 +15,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
             app:titleTextColor="?colorOnBackground"
             app:theme="@style/Toolbar"
+            android:layout_height="?attr/actionBarSize"
             app:title="@string/labels" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,8 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/add"/>
+        android:layout_margin="30dp"
+        android:backgroundTint="?colorPrimaryContainer"
+        android:src="@drawable/add"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

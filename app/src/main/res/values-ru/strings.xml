@@ -15,7 +15,7 @@
     <string name="option1">Очистить текст</string>
     <string name="option2">Информация о тексте</string>
     <string name="option3">Сохранить и выйти</string>
-    <string name="lastedit">"Последнее изменение: "</string>
+    <string name="lastedit">"Изменено: "</string>
     <string name="Title">Название заметки</string>
     <string name="deleted">Удалено</string>
     <string name="saved">Последнее сохранение</string>
@@ -183,7 +183,7 @@
     <string name="copied_text">Текст заметки скопирован!</string>
     <string name="update_legacy">Условия использования и политика конфиденциальности обновляется для более понятного описания и новых возможностей. Дата обновления: 20.12.2024. Для продолжения использования согласитесь с условиями.</string>
     <string name="sure">Вы уверены?</string>
-    <string name="sure_backup">Вы хотите перезаписать вашу резервную копию, которая перезапишет старую?</string>
+    <string name="sure_backup">Вы хотите сделать новую резервную копию, которая перезапишет старую?</string>
     <string name="choose_bg">Выберите фон заметки</string>
     <string name="choose_bg_menu">Изменить фон</string>
     <string name="generate_sum">Составить сводку с ИИ</string>

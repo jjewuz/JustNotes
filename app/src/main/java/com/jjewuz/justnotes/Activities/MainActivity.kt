@@ -10,7 +10,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -32,6 +31,7 @@ import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import androidx.biometric.BiometricPrompt
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -40,7 +40,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -560,7 +559,7 @@ class MainActivity : AppCompatActivity() {
                 .setIcon(R.drawable.info)
                 .setCancelable(false)
                 .setPositiveButton(R.string.agree) { _, _ ->
-                    sharedPref.edit().putBoolean("agree_conditions2024", true).apply()
+                    sharedPref.edit() { putBoolean("agree_conditions2024", true) }
                 }
                 .setNegativeButton(R.string.decline) { _, _ ->
                     this.finish()
@@ -699,7 +698,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openLink(url: String){
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val i = Intent(Intent.ACTION_VIEW, url.toUri())
         startActivity(i)
     }
 
@@ -709,46 +708,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
         fragmentTransaction.replace(R.id.place_holder, fragment)
         fragmentTransaction.commit ()
-    }
-
-
-    private fun backup() {
-        val backup = this.backup
-        val storageRef = Firebase.storage.reference
-
-        val userId = Firebase.auth.currentUser?.uid
-        backup
-            .database(NoteDatabase.getDatabase(this))
-            .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_INTERNAL)
-            .customBackupFileName("database")
-            .backupIsEncrypted(true)
-            .customEncryptPassword(userId.toString())
-            .apply {
-                onCompleteListener { success, message, exitCode ->
-                    Log.d(
-                        ContentValues.TAG,
-                        "success: $success, message: $message, exitCode: $exitCode"
-                    )
-                }
-            }
-            .backup()
-
-        storageRef.child("user/$userId/database.aes").putFile(
-            File(
-                this.filesDir,
-                "databasebackup/database.aes"
-            ).toUri()
-        ).addOnSuccessListener {
-            val sdf2 = SimpleDateFormat("dd MMM yyyy - HH:mm", Locale.getDefault())
-            val currentDateAndTime2: String = sdf2.format(Date().time)
-            val currentTime =
-                "${resources.getString(R.string.last_backup)} $currentDateAndTime2"
-            with(sharedPref.edit()) {
-                putString("last_backup_time", currentDateAndTime2)
-                putString("last_backup", currentTime)
-                apply()
-            }
-        }
     }
 
     override fun onResume() {
