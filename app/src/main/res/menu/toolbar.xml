@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/view_change"
-        android:icon="@drawable/reminders"
+        android:icon="@drawable/account"
         app:iconTint="?colorOnSecondaryContainer"
-        android:title="@string/change_page"
+        android:title="@string/inf"
         app:showAsAction="always"/>
 </menu>

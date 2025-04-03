@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.NotesFragment">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:background="?colorSurfaceContainerLowest"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -32,8 +34,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/reminders"
-                android:src="@drawable/reminders"/>
+                android:id="@+id/account"
+                android:src="@drawable/account"/>
 
         </LinearLayout>
 
@@ -106,19 +108,6 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottomAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:foregroundTintMode="multiply"
-                style="@style/Widget.Material3.BottomAppBar"
-                android:backgroundTint="?colorSurfaceContainerHigh"
-                app:menu="@menu/notes_items"
-                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-                app:navigationIcon="@drawable/menu"
-                />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/idFAB"

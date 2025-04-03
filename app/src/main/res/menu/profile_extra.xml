@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/github"
+        android:icon="@drawable/github"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:title="@string/source_code"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/weblate"
+        android:icon="@drawable/weblate"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:title="@string/weblate"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/legal"
+        android:icon="@drawable/info"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:title="@string/legal"
+        app:showAsAction="never"/>
+</menu>

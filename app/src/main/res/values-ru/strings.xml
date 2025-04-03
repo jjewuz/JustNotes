@@ -31,7 +31,7 @@
     <string name="loginTitle">JustNotes защищен</string>
     <string name="loginText">Пожалуйста аутентифицируйтесь</string>
     <string name="settingsText">Настройки</string>
-    <string name="passwordSettings">Биометрическая аутентификация</string>
+    <string name="passwordSettings">Вход с биометрией</string>
     <string name="passEnable">Защита включена</string>
     <string name="passDisabled">Защита выключена</string>
     <string name="authFail">Вход не удался</string>
@@ -117,7 +117,7 @@
     <string name="decline">Отклонить</string>
     <string name="undo">Отменить</string>
     <string name="redo">Вернуть</string>
-    <string name="screenshot_secured_notes">Разрешить скриншот в защищеных заметках</string>
+    <string name="screenshot_secured_notes">Cкриншот в защищеных заметках</string>
     <string name="close">Закрыть</string>
     <string name="color_picker">Выбрать цвет</string>
     <string name="color">Цвет</string>
@@ -191,4 +191,8 @@
     <string name="experemental_features">Эксперементальные возможности</string>
     <string name="warning">Внимание</string>
     <string name="ef_warn">Эксперементальные возможности нестабильны: они могут не работать как нужно или приводить к сбою приложения. Используйте с осторожностью.</string>
+    <string name="cloud_backup_account">Облачное резервирование требует аккаунта.</string>
+    <string name="use_account">Используйте аккаунт JustNotes, что бы получить доступ к облачному резервному копированию.</string>
+    <string name="change_sort">Нажмите, чтобы изменить порядок заметок</string>
+    <string name="change_view">Нажмите, чтобы изменить вид заметок</string>
 </resources>

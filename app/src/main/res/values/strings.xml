@@ -33,7 +33,7 @@
     <string name="loginTitle">JustNotes is locked</string>
     <string name="loginText">Please authenticate</string>
     <string name="settingsText">Settings</string>
-    <string name="passwordSettings">Biometric authentication</string>
+    <string name="passwordSettings">Biometric auth</string>
     <string name="passEnable">Protection on</string>
     <string name="passDisabled">Protection off</string>
     <string name="authFail">Authentication failed</string>
@@ -119,7 +119,7 @@
     <string name="decline">Decline</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
-    <string name="screenshot_secured_notes">Allow screenshot in secured notes</string>
+    <string name="screenshot_secured_notes">Screenshot in secured notes</string>
     <string name="close">Close</string>
     <string name="color_picker">Choose color</string>
     <string name="color">Color</string>
@@ -195,4 +195,8 @@
     <string name="experemental_features">Experemental features</string>
     <string name="warning">Warning</string>
     <string name="ef_warn">Experimental features are unstable: they may not work as expected or may cause the application to crash. Use with caution.</string>
+    <string name="cloud_backup_account">Cloud backup requires account.</string>
+    <string name="use_account">Use JustNotes account to access cloud backup functional.</string>
+    <string name="change_sort">Tap to change notes sort</string>
+    <string name="change_view">Tap to change notes view</string>
 </resources>

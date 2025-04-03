@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notes"
+        android:icon="@drawable/note"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:checked="true"
+        android:title="@string/notes"/>
+    <item
+        android:id="@+id/reminders"
+        android:icon="@drawable/reminders"
+        app:iconTint="?colorOnSecondaryContainer"
+        android:title="@string/reminders"/>
+</menu>

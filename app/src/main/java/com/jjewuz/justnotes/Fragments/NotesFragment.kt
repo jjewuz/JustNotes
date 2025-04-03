@@ -27,14 +27,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.search.SearchBar
 import com.jjewuz.justnotes.Activities.AddEditNoteActivity
-import com.jjewuz.justnotes.Activities.ModalBottomSheet
+import com.jjewuz.justnotes.Activities.Profile
 import com.jjewuz.justnotes.Category.Category
 import com.jjewuz.justnotes.Category.CategoryViewModel
 import com.jjewuz.justnotes.Notes.Note
@@ -45,7 +45,6 @@ import com.jjewuz.justnotes.Notes.NoteRVAdapter
 import com.jjewuz.justnotes.Notes.NoteViewModal
 import com.jjewuz.justnotes.Notes.NoteWidget
 import com.jjewuz.justnotes.R
-import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 import com.jjewuz.justnotes.Utils.Utils
 import com.jjewuz.justnotes.Utils.Utils.fromHtml
 
@@ -56,15 +55,12 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     private lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
 
-    private lateinit var bottomAppBar: BottomAppBar
-
     private lateinit var labelGroup: ChipGroup
 
     lateinit var noteRVAdapter: NoteRVAdapter
     lateinit var allItems: LiveData<List<Note>>
-
     private lateinit var searchView: SearchView
-    private lateinit var reminderButton: ImageView
+    private lateinit var accountButton: ImageView
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -80,8 +76,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
         var isGrid = sharedPref.getBoolean("grid", false)
 
         val v = inflater.inflate(R.layout.fragment_notes, container, false)
-
-        bottomAppBar = v.findViewById(R.id.bottomAppBar)
         notesRV = v.findViewById(R.id.notes)
         progressBar = v.findViewById(R.id.progress_bar)
         addFAB = v.findViewById(R.id.idFAB)
@@ -107,9 +101,10 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             WindowInsetsCompat.CONSUMED
         }
 
-        reminderButton = v.findViewById(R.id.reminders)
-        reminderButton.setOnClickListener {
-            replaceFragment(TodoFragment())
+        accountButton = v.findViewById(R.id.account)
+        accountButton.setOnClickListener {
+            val intent = Intent(requireActivity(), Profile::class.java)
+            startActivity(intent)
         }
         val searchPanel = v.findViewById<LinearLayout>(R.id.searchBar)
 
@@ -147,40 +142,6 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             setupCategoryChips(categories)
         }
 
-
-
-        bottomAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.sorting -> {
-                    reverse = !reverse
-                    with (sharedPref.edit()){
-                        putBoolean("reversed", reverse)
-                        apply()
-                    }
-                    val fragmentManager = parentFragmentManager
-                    val fragmentTransaction = fragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.place_holder, NotesFragment())
-                    fragmentTransaction.commit ()
-                    true
-                }
-                R.id.style -> {
-                    isGrid = !isGrid
-                    with (sharedPref.edit()){
-                        putBoolean("grid", isGrid)
-                        apply()
-                    }
-                    val fragmentManager = parentFragmentManager
-                    val fragmentTransaction = fragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.place_holder, NotesFragment())
-                    fragmentTransaction.commit ()
-                    true
-                }
-
-                else -> false
-            }
-
-        }
-
         updateList(allItems)
 
         noteRVAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
@@ -197,29 +158,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
             }
         })
 
-        bottomAppBar.setNavigationOnClickListener {
-            val modalBottomSheet = ModalBottomSheet()
-            modalBottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
-        }
-
         addFAB.setOnClickListener {
             val intent = Intent(requireActivity(), AddEditNoteActivity::class.java)
             startActivity(intent)
-        }
-
-        context?.let {
-            bottomAppBar.setOnTouchListener(object : OnSwipeTouchListener(it) {
-
-                override fun onSwipeLeft() {
-                    replaceFragment(TodoFragment())
-                    super.onSwipeLeft()
-                }
-
-                override fun onSwipeRight() {
-                    replaceFragment(TodoFragment())
-                    super.onSwipeRight()
-                }
-            })
         }
 
         searchView = v.findViewById(R.id.search_bar)
@@ -240,6 +181,9 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
                 return false
             }
         })
+
+
+
 
         return v
     }

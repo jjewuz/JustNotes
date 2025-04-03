@@ -27,7 +27,6 @@ class AddCategory : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val theme = sharedPref.getString("theme", "standart")
@@ -44,6 +43,7 @@ class AddCategory : AppCompatActivity() {
         } else if (enabledFont and (theme=="ice")){
             setTheme(R.style.BlackIce)
         }
+        binding = ActivityAddCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
 

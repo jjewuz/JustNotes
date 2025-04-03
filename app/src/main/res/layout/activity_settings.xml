@@ -88,37 +88,6 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:backgroundTint="?colorSurfaceVariant"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/monet"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:gravity="center_vertical"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:src="@drawable/palette"
-                            app:tint="?colorOnSecondaryContainer"
-                            android:scaleY="0.8"
-                            android:scaleX="0.8"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:text="@string/app_theme"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
@@ -302,65 +271,6 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"/>
-
-
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/labels_layout"
-            android:layout_marginRight="15dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="?colorPrimary"
-                android:text="@string/labels"/>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                style="@style/Widget.Material3.CardView.Filled"
-                android:layout_marginTop="10dp"
-                android:id="@+id/labels_edit"
-                android:backgroundTint="?colorSurfaceVariant"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/label"
-                        app:tint="?colorOnSecondaryContainer"
-                        android:scaleY="0.8"
-                        android:scaleX="0.8"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:id="@+id/set_labels"
-                        android:text="@string/manage_labels"/>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-
-
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
@@ -417,48 +327,6 @@
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/report"
-                    android:backgroundTint="?colorSurfaceVariant"
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_height="wrap_content">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:gravity="center_vertical"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:src="@drawable/bug_report"
-                            app:tint="?colorOnSecondaryContainer"
-                            android:scaleY="0.8"
-                            android:scaleX="0.8"
-                            android:layout_height="wrap_content"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="16sp"
-                                android:text="@string/reportBug"/>
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 

@@ -15,7 +15,6 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
-
     <queries>
         <package android:name="com.jjewuz.justnotes" />
 
@@ -34,6 +33,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Activities.Profile"
+            android:exported="false" />
+        <activity
             android:name=".Activities.AddCategory"
             android:exported="false" />
         <activity
@@ -43,7 +45,8 @@
             android:name=".Activities.InfoActivity"
             android:exported="false" />
 
-        <receiver android:name=".Notifications.NotificationReceiver"
+        <receiver
+            android:name=".Notifications.NotificationReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -51,7 +54,6 @@
                 <action android:name="com.jjewuz.NOTIFICATION_HIDE" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".Notes.NoteWidget"
             android:exported="false">
@@ -95,12 +97,10 @@
 
         <service
             android:name=".Utils.Utils$PersistentService"
-            android:foregroundServiceType="specialUse"
-            android:exported="false"
             android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
             android:permission="android.permission.FOREGROUND_SERVICE" />
-
-
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
             android:enabled="false">

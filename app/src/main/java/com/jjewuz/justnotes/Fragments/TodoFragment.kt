@@ -1,6 +1,7 @@
 package com.jjewuz.justnotes.Fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -30,7 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import com.jjewuz.justnotes.Activities.ModalBottomSheet
+import com.jjewuz.justnotes.Activities.Profile
 import com.jjewuz.justnotes.Notifications.NotificationHelper
 import com.jjewuz.justnotes.R
 import com.jjewuz.justnotes.Todos.Todo
@@ -38,7 +39,6 @@ import com.jjewuz.justnotes.Todos.TodoAdapter
 import com.jjewuz.justnotes.Todos.TodoClickInterface
 import com.jjewuz.justnotes.Todos.TodoLongClickInterface
 import com.jjewuz.justnotes.Todos.TodoViewModel
-import com.jjewuz.justnotes.Utils.OnSwipeTouchListener
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -71,13 +71,14 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
 
             override fun onPrepareMenu(menu: Menu) {
                 super.onPrepareMenu(menu)
-                viewIcon.setIcon(R.drawable.note)
+                viewIcon.setIcon(R.drawable.account)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.view_change -> {
-                        replaceFragment(NotesFragment())
+                        val intent = Intent(requireActivity(), Profile::class.java)
+                        startActivity(intent)
                         true
                     }
                     else -> false
@@ -181,26 +182,6 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
                 }
             }
             builder.create().show()
-        }
-
-        bottomAppBar.setNavigationOnClickListener {
-            val modalBottomSheet = ModalBottomSheet()
-            modalBottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
-        }
-
-        context?.let {
-            bottomAppBar.setOnTouchListener(object : OnSwipeTouchListener(it) {
-
-                override fun onSwipeLeft() {
-                    replaceFragment(NotesFragment())
-                    super.onSwipeLeft()
-                }
-
-                override fun onSwipeRight() {
-                    replaceFragment(NotesFragment())
-                    super.onSwipeRight()
-                }
-            })
         }
 
         return v
