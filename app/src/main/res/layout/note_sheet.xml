@@ -49,7 +49,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="25dp"
+                app:cardCornerRadius="10dp"
                 style="@style/Widget.Material3.CardView.Outlined"
                 android:layout_height="wrap_content">
 
@@ -110,7 +110,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="25dp"
+                app:cardCornerRadius="35dp"
                 style="@style/Widget.Material3.CardView.Outlined"
                 android:layout_height="wrap_content">
 
@@ -149,7 +149,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/generate_sum"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         style="?attr/materialCardViewFilledStyle"
                         android:id="@+id/summarize"
                         app:icon="@drawable/ai"/>
@@ -158,7 +158,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/choose_bg_menu"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         style="?attr/materialCardViewFilledStyle"
                         android:id="@+id/bgcolor"
                         app:icon="@drawable/palette"/>
@@ -170,6 +170,13 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButtonGroup
+                            android:id="@+id/buttonGroup"
+                            android:layout_width="wrap_content"
+                            android:padding="5dp"
+                            style="@style/Widget.Material3.MaterialButtonGroup.Connected"
+                            android:layout_height="wrap_content">
 
                         <Button
                             android:layout_width="wrap_content"
@@ -190,6 +197,8 @@
                             style="?attr/materialCardViewFilledStyle"
                             android:text="@string/export"
                             android:layout_weight="1"/>
+
+                        </com.google.android.material.button.MaterialButtonGroup>
 
                     </LinearLayout>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
     android:id="@+id/app_card"
-    app:cardCornerRadius="30dp"
+    app:cardCornerRadius="15dp"
     style="?attr/materialCardViewElevatedStyle"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"

@@ -57,7 +57,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_todo, container, false)
         requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
-        bottomAppBar = v.findViewById(R.id.bottomAppBar)
+        //bottomAppBar = v.findViewById(R.id.bottomAppBar)
         noTasks = v.findViewById(R.id.notasks)
 
         (activity as AppCompatActivity).setSupportActionBar(v.findViewById(R.id.topAppBar))

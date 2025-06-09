@@ -6,14 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/holder"
-    android:orientation="vertical"
-
     tools:context=".Activities.AddEditNoteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -38,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/NestedScrollBarStyle"
-        android:transitionName="transition_fab"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -54,10 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:clickable="true"
             android:focusable="true"
             android:transitionName="transition"
-            app:cardCornerRadius="25dp"
+            app:cardCornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -96,6 +91,7 @@
                 android:inputType="textMultiLine"
                 android:isScrollContainer="true"
                 android:layout_marginBottom="100dp"
+                android:minHeight="48dp"
                 android:textCursorDrawable="@drawable/color_cursor"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -105,34 +101,97 @@
 
     </LinearLayout>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:hideOnScroll="true"
-        android:foregroundTintMode="multiply"
-        style="@style/Widget.Material3.BottomAppBar"
-        android:backgroundTint="?colorSurfaceContainerHigh"
-        app:navigationIcon="@drawable/menu"
-        app:menu="@menu/formatting"
-        />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout
+        android:id="@+id/floating_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="30dp"
-        android:src="@drawable/edit"
-        android:id="@+id/edit_fab"
-        />
+        android:layout_gravity="bottom|center"
+        style="@style/Widget.Material3.FloatingToolbar.Vibrant"
+        app:layout_behavior="com.google.android.material.behavior.HideViewOnScrollBehavior"
+        android:layout_margin="16dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <com.google.android.material.overflow.OverflowLinearLayout
+        android:id="@+id/floating_toolbar_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/floating_toolbar_button_menu"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/menu"
+            app:layout_overflowText="@string/menu_home"
+            app:layout_overflowIcon="@drawable/menu" />
+
+        <ImageView
+            android:id="@+id/floating_toolbar_button_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/materialIconButtonFilledStyle"
+            android:src="@drawable/bold" />
+
+        <ImageView
+            android:id="@+id/floating_toolbar_button_italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/materialIconButtonFilledStyle"
+            android:src="@drawable/italic" />
+
+        <ImageView
+            android:id="@+id/floating_toolbar_button_underlined"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:src="@drawable/under" />
+
+        <ImageView
+            android:id="@+id/floating_toolbar_button_striked"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:src="@drawable/strike"
+            app:layout_overflowText="@string/striked"
+            app:layout_overflowIcon="@drawable/strike"/>
+
+        <ImageView
+            android:id="@+id/floating_toolbar_button_normal"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/clear"
+            app:layout_overflowText="@string/clear_f"
+            app:layout_overflowIcon="@drawable/clear"/>
+
+        <Button
+            android:id="@+id/floating_toolbar_button_color"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/palette_small"
+            app:layout_overflowText="@string/color"
+            app:layout_overflowIcon="@drawable/palette"/>
+    </com.google.android.material.overflow.OverflowLinearLayout>
+        </ScrollView>
+
+    </com.google.android.material.floatingtoolbar.FloatingToolbarLayout>
+
+
 
     <FrameLayout
         android:id="@+id/standard_bottom_sheet"
         style="@style/Widget.Material3.BottomSheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:behavior_peekHeight="550dp"
         app:behavior_saveFlags="all"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

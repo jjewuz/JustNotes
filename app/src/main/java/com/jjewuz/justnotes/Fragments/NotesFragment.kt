@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -32,7 +31,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.search.SearchBar
+import com.google.android.material.loadingindicator.LoadingIndicator
 import com.jjewuz.justnotes.Activities.AddEditNoteActivity
 import com.jjewuz.justnotes.Activities.Profile
 import com.jjewuz.justnotes.Category.Category
@@ -51,7 +50,7 @@ import com.jjewuz.justnotes.Utils.Utils.fromHtml
 class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var viewModal: NoteViewModal
     lateinit var notesRV: RecyclerView
-    lateinit var progressBar: ProgressBar
+    lateinit var progressBar: LoadingIndicator
     private lateinit var addFAB: FloatingActionButton
     lateinit var nothing: TextView
 

@@ -70,11 +70,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardDescription">
 
+            <com.google.android.material.button.MaterialButtonGroup
+                android:id="@+id/buttonGroup"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                style="@style/Widget.Material3.MaterialButtonGroup.Connected"
+                android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/backup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/do_backup" />
 
@@ -82,9 +88,10 @@
                 android:id="@+id/restore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/do_restore" />
+
+            </com.google.android.material.button.MaterialButtonGroup>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

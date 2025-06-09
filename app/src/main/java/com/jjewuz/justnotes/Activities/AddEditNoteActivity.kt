@@ -11,7 +11,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -19,7 +18,6 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.Html
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -43,19 +41,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.toColor
+import androidx.core.content.edit
+import androidx.core.graphics.toColorInt
 import androidx.core.text.toHtml
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.test.core.app.ApplicationProvider
+import com.google.ai.edge.aicore.GenerativeModel
+import com.google.ai.edge.aicore.generationConfig
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.jjewuz.justnotes.Category.Category
@@ -66,27 +63,24 @@ import com.jjewuz.justnotes.Notes.NoteDatabase
 import com.jjewuz.justnotes.Notes.NoteViewModal
 import com.jjewuz.justnotes.Notes.NoteWidget
 import com.jjewuz.justnotes.R
-import com.jjewuz.justnotes.Utils.MobileBertInterpreter
 import com.jjewuz.justnotes.Utils.TextHelper
-import com.jjewuz.justnotes.Utils.Utils
 import com.jjewuz.justnotes.Utils.Utils.colorFormatting
+import com.jjewuz.justnotes.Utils.Utils.fromHtml
 import com.jjewuz.justnotes.Utils.Utils.hideKeyboard
 import com.jjewuz.justnotes.Utils.Utils.textFormatting
-import com.jjewuz.justnotes.Utils.WordPieceTokenizer
+import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import androidx.core.graphics.toColorInt
-import androidx.core.content.edit
 
 class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var noteTitleEdt: EditText
     private lateinit var noteEdt: EditText
     private lateinit var savedTxt: TextView
-    private lateinit var bottomAppBar: BottomAppBar
+    //private lateinit var bottomAppBar: BottomAppBar
     private lateinit var bottomSheet: FrameLayout
     private var bgId: Int = -1
     private lateinit var bg: CoordinatorLayout
@@ -115,8 +109,6 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     private lateinit var sharedPref: SharedPreferences
 
-    private lateinit var fab: FloatingActionButton
-
     private lateinit var scrollView: NestedScrollView
 
     private lateinit var categorySpinner: Spinner
@@ -125,9 +117,11 @@ class AddEditNoteActivity : AppCompatActivity() {
     private lateinit var categoryList: List<Category>
     private lateinit var categoryDao: CategoryDao
 
+    private lateinit var menuButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPref = this.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        sharedPref = this.getSharedPreferences("prefs", MODE_PRIVATE)
 
         val enabledFont = sharedPref.getBoolean("enabledFont", false)
         val theme = sharedPref.getString("theme", "standart")
@@ -154,6 +148,7 @@ class AddEditNoteActivity : AppCompatActivity() {
 
 
 
+
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -164,7 +159,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         noteTitleEdt = findViewById(R.id.idEdtNoteName)
         noteEdt = findViewById(R.id.idEdtNoteDesc)
         savedTxt = findViewById(R.id.savedtxt)
-        bottomAppBar = findViewById(R.id.bottomAppBar)
+       // bottomAppBar = findViewById(R.id.bottomAppBar)
         bottomSheet = findViewById(R.id.standard_bottom_sheet)
         scrollView = findViewById(R.id.nestedScrollView)
         bg = findViewById(R.id.holder)
@@ -188,6 +183,8 @@ class AddEditNoteActivity : AppCompatActivity() {
             }
         }
 
+        menuButton = findViewById(R.id.floating_toolbar_button_menu)
+
         val standardBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
@@ -208,7 +205,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
 
         toWidgetBtn.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("widget_prefs", MODE_PRIVATE)
             sharedPreferences.edit {
                 putInt("note_id", noteID)
             }
@@ -223,7 +220,25 @@ class AddEditNoteActivity : AppCompatActivity() {
             aiButton.visibility = View.GONE
 
         aiButton.setOnClickListener {
-            generateSum()
+            val materialDialog = MaterialAlertDialogBuilder(this).apply {
+                setIcon(R.drawable.ai)
+                setTitle(R.string.ai_sum)
+                setMessage("Идёт суммаризация...") // Временное сообщение
+                setPositiveButton(R.string.close) { _, _ -> }
+            }.create()
+
+            // Показываем диалог сразу
+            materialDialog.show()
+
+            // Запускаем корутину для асинхронной обработки
+            lifecycleScope.launch {
+                try {
+                    val summary = summarizeText(fromHtml(noteEdt.text.toString()).toString())
+                    materialDialog.setMessage(summary)
+                } catch (e: Exception) {
+                    materialDialog.setMessage("Ошибка: ${e.localizedMessage}")
+                }
+            }
         }
 
         bgButton.setOnClickListener {
@@ -235,61 +250,46 @@ class AddEditNoteActivity : AppCompatActivity() {
             }
         }
 
-        bottomAppBar.setNavigationOnClickListener {
+        menuButton.setOnClickListener {
             savedTxt.hideKeyboard()
             standardBottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
 
-        bottomAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.boldbtn -> {
-                    textFormatting("bold", noteEdt)
-                    true
-                }
-                R.id.italicbtn -> {
-                    textFormatting("italic", noteEdt)
-                    true
-                }
-                R.id.underlinedbtn -> {
-                    textFormatting("under", noteEdt)
-                    true
-                }
-                R.id.strikebtn -> {
-                    textFormatting("strike", noteEdt)
-                    true
-                }
-                R.id.clearformat -> {
-                    textFormatting("null", noteEdt)
-                    true
-                }
-                R.id.color -> {
-                    val builder = MaterialAlertDialogBuilder(this)
-                    val inflater = this.layoutInflater.inflate(R.layout.color_picker, null)
-                    val red = inflater.findViewById<Button>(R.id.red)
-                    val yellow = inflater.findViewById<Button>(R.id.yellow)
-                    val blue = inflater.findViewById<Button>(R.id.blue)
-                    val green = inflater.findViewById<Button>(R.id.green)
+        val boldBtn = findViewById<ImageView>(R.id.floating_toolbar_button_bold)
+        boldBtn.setOnClickListener { textFormatting("bold", noteEdt) }
+        val italicBtn = findViewById<ImageView>(R.id.floating_toolbar_button_italic)
+        italicBtn.setOnClickListener { textFormatting("italic", noteEdt) }
+        val underBtn = findViewById<ImageView>(R.id.floating_toolbar_button_underlined)
+        underBtn.setOnClickListener { textFormatting("under", noteEdt) }
+        val strikedBtn = findViewById<ImageView>(R.id.floating_toolbar_button_striked)
+        strikedBtn.setOnClickListener { textFormatting("strike", noteEdt) }
+        val normalBtn = findViewById<ImageView>(R.id.floating_toolbar_button_normal)
+        normalBtn.setOnClickListener { textFormatting("null", noteEdt) }
+        val colorBtn = findViewById<Button>(R.id.floating_toolbar_button_color)
+        colorBtn.setOnClickListener {
+            val builder = MaterialAlertDialogBuilder(this)
+            val inflater = this.layoutInflater.inflate(R.layout.color_picker, null)
+            val red = inflater.findViewById<Button>(R.id.red)
+            val yellow = inflater.findViewById<Button>(R.id.yellow)
+            val blue = inflater.findViewById<Button>(R.id.blue)
+            val green = inflater.findViewById<Button>(R.id.green)
 
-                    builder.setIcon(R.drawable.palette)
-                    builder.setTitle(R.string.color_picker)
-                    builder.setView(inflater)
-                        .setPositiveButton(R.string.close) { _, _ ->
-                        }
-                    builder.create()
-                    val dialog = builder.show()
-                    red.setOnClickListener { colorFormatting("red", noteEdt)
-                        dialog.dismiss()}
-                    yellow.setOnClickListener { colorFormatting("yellow", noteEdt)
-                        dialog.dismiss()}
-                    blue.setOnClickListener { colorFormatting("blue", noteEdt)
-                        dialog.dismiss()}
-                    green.setOnClickListener { colorFormatting("green", noteEdt)
-                        dialog.dismiss()}
-                    hasChanges = true
-                    true
+            builder.setIcon(R.drawable.palette)
+            builder.setTitle(R.string.color_picker)
+            builder.setView(inflater)
+                .setPositiveButton(R.string.close) { _, _ ->
                 }
-                else -> false
-            }
+            builder.create()
+            val dialog = builder.show()
+            red.setOnClickListener { colorFormatting("red", noteEdt)
+                dialog.dismiss()}
+            yellow.setOnClickListener { colorFormatting("yellow", noteEdt)
+                dialog.dismiss()}
+            blue.setOnClickListener { colorFormatting("blue", noteEdt)
+                dialog.dismiss()}
+            green.setOnClickListener { colorFormatting("green", noteEdt)
+                dialog.dismiss()}
+            hasChanges = true
         }
 
 
@@ -322,7 +322,7 @@ class AddEditNoteActivity : AppCompatActivity() {
             bgId = intent.getIntExtra("bgId", -1)
             setBgColorFromId(bgId)
             savedTxt.text = resources.getString(R.string.saved) + ": " + currentDateAndTime
-            noteEdt.setText(noteDescription?.let { Utils.fromHtml(it) })
+            noteEdt.setText(noteDescription?.let { fromHtml(it) })
             isEditable = false
         } else {
             categoryViewModel.allCategories.observe(this) { categories ->
@@ -415,40 +415,6 @@ class AddEditNoteActivity : AppCompatActivity() {
             builder.create().show()
         }
 
-        fab = findViewById(R.id.edit_fab)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(fab) { vi, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
-            params.bottomMargin = insets.bottom + 20
-            params.rightMargin = insets.right + 40
-            vi.layoutParams = params
-            WindowInsetsCompat.CONSUMED
-        }
-
-        if (!isEditable){
-            noteEdt.isFocusable = false
-        } else {
-            fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.save))
-        }
-
-        fab.setOnClickListener {
-            if (!isEditable){
-                fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.save))
-                noteEdt.requestFocus()
-                noteEdt.focus()
-                isEditable = true
-                noteEdt.setSelection(noteEdt.length())
-            }
-            else {
-                fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.edit))
-                saveNote(false)
-                noteEdt.isFocusable = false
-                isEditable = false
-            }
-
-        }
     }
 
     private fun setupCategorySpinner(categories: List<Category>, selectedCategoryId: Int) {
@@ -514,7 +480,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 true
             }
             R.id.copy_text -> {
-                val clipboard = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipboard = this.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
                 val clip = ClipData.newPlainText("UID", getText())
                 clipboard.setPrimaryClip(clip)
                 Toast.makeText(this, R.string.copied_text, Toast.LENGTH_SHORT).show()
@@ -721,24 +687,25 @@ class AddEditNoteActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun generateSum(){
-        val tokenizer = WordPieceTokenizer(this)
-        val bert = MobileBertInterpreter(this)
-        val text = getText()
+    suspend fun summarizeText(text: String): String {
+        val generationConfig = generationConfig {
+            context = ApplicationProvider.getApplicationContext() // required
+            temperature = 0.2f
+            topK = 16
+            maxOutputTokens = 256
+        }
+        val generativeModel = GenerativeModel(
+            generationConfig = generationConfig
+        )
 
-        val tokens: IntArray = tokenizer.tokenize(text)
+        val prompt = "Суммаризируй следующий текст, сохраняя ключевые моменты. " +
+                "Ответ должен быть кратким (1-2 предложения):\n\n$text"
 
-        val input = arrayOf(intArrayOf(tokens.firstOrNull() ?: 0))
-        Log.d("BERT", "Input tokens: ${tokens.joinToString()}")
-
-        val result: FloatArray = bert.predict(input)[0][0]
-
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.ai_sum)
-            .setIcon(R.drawable.ai)
-            .setMessage(tokenizer.detokenize(result.map { it.toInt() }))
-            .setPositiveButton("OK") { _, _ -> }
-            .show()
+        return try {
+            generativeModel.generateContent(prompt).text ?: "Не удалось суммаризировать текст"
+        } catch (e: Exception) {
+            "Ошибка суммаризации: ${e.localizedMessage}"
+        }
     }
 
 

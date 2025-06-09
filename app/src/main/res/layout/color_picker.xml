@@ -13,32 +13,32 @@
 
         <Button
             android:id="@+id/red"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:backgroundTint="#C11616"
             android:background="@drawable/buttonc"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/blue"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:backgroundTint="#0F44CA"
             android:background="@drawable/buttonc"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/yellow"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:backgroundTint="#E3AE12"
             android:background="@drawable/buttonc"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/green"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:backgroundTint="@color/launcher_icon_background"
             android:background="@drawable/buttonc"
             style="?android:attr/buttonBarButtonStyle" />

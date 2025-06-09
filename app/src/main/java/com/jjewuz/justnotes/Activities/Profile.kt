@@ -1,10 +1,12 @@
 package com.jjewuz.justnotes.Activities
 
+import android.app.Dialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,12 +20,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -612,7 +616,21 @@ class Profile : AppCompatActivity() {
         }
     }
 
+    private fun showProgressDialog() {
+        val dialog = Dialog(this).apply {
+            setContentView(ProgressBar(this@Profile).apply {
+                setPadding(50, 50, 50, 50)
+            })
+            window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            setCancelable(false)
+        }
+        dialog.show()
+    }
+
     private fun restartApp() = runBlocking {
+
+        showProgressDialog()
+
         launch {
             delay(1300L)
             val ctx = applicationContext

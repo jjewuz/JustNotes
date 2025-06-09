@@ -76,11 +76,11 @@
             android:visibility="gone"
             app:drawableTopCompat="@drawable/empty" />
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
+            <com.google.android.material.loadingindicator.LoadingIndicator
+                style="@style/Widget.Material3.LoadingIndicator.Contained"
+                android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/progress_bar"
-                android:layout_width="wrap_content"
-                android:indeterminate="true"
                 android:layout_height="wrap_content"/>
 
         <androidx.core.widget.NestedScrollView
