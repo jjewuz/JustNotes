@@ -12,7 +12,7 @@ JustNotes is simple android app for taking notes, like there have been tens of t
   </a>
   
 ## Features
-- [x] Material You Design
+- [x] Material You Expressive Design
 - [x] Text formatting
 - [x] Import and export .txt documents
 - [x] Lock app with system biometry
