@@ -12,24 +12,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/searchBar"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:background="?colorSurfaceContainerLowest"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_gravity="end"
+            android:id="@+id/account"
+            style="?attr/materialIconButtonFilledStyle"
+            app:icon="@drawable/account"/>
 
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:titleTextColor="?colorOnBackground"
-                app:title="@string/reminders" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout

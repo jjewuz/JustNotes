@@ -4,24 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -48,7 +43,7 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
 
     private lateinit var todoViewModel: TodoViewModel
     private lateinit var noTasks: TextView
-    private lateinit var bottomAppBar: BottomAppBar
+    private lateinit var accountButton: Button
     lateinit var viewIcon: MenuItem
 
     override fun onCreateView(
@@ -60,31 +55,19 @@ class TodoFragment :Fragment(), TodoClickInterface, TodoLongClickInterface {
         //bottomAppBar = v.findViewById(R.id.bottomAppBar)
         noTasks = v.findViewById(R.id.notasks)
 
-        (activity as AppCompatActivity).setSupportActionBar(v.findViewById(R.id.topAppBar))
-
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.toolbar, menu)
-                viewIcon = menu.findItem(R.id.view_change)
-            }
-
-            override fun onPrepareMenu(menu: Menu) {
-                super.onPrepareMenu(menu)
-                viewIcon.setIcon(R.drawable.account)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.view_change -> {
-                        val intent = Intent(requireActivity(), Profile::class.java)
-                        startActivity(intent)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        accountButton = v.findViewById(R.id.account)
+        accountButton.setOnClickListener {
+            val intent = Intent(requireActivity(), Profile::class.java)
+            startActivity(intent)
+        }
+        val searchPanel = v.findViewById<LinearLayout>(R.id.searchBar)
+        ViewCompat.setOnApplyWindowInsetsListener(searchPanel) { vi, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val params = vi.layoutParams as ViewGroup.MarginLayoutParams
+            params.topMargin = insets.bottom + 90
+            vi.layoutParams = params
+            WindowInsetsCompat.CONSUMED
+        }
 
         val recyclerView: RecyclerView = v.findViewById(R.id.recyclerView)
         val adapter = TodoAdapter(requireActivity(), emptyList(), this, this)

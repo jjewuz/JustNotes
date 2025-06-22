@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -287,10 +286,6 @@ class Profile : AppCompatActivity() {
         gridView.adapter = adapter
     }
 
-    private fun openSomething() {
-        Toast.makeText(this, "Открываем...", Toast.LENGTH_SHORT).show()
-    }
-
     private fun openActivity(activity: Class<out AppCompatActivity>) {
         val intent = Intent(this, activity)
         startActivity(intent)
@@ -305,14 +300,10 @@ class Profile : AppCompatActivity() {
 
         val colorMonet = inf.findViewById<Button>(R.id.monetcolor)
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
-            monet.visibility = View.GONE
-        } else {
-            colorMonet.backgroundTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(this,
-                    R.color.material_dynamic_primary50
-                ))
-        }
+        colorMonet.backgroundTintList = ColorStateList.valueOf(
+            ContextCompat.getColor(this,
+                R.color.material_dynamic_primary50
+            ))
         builder.setIcon(R.drawable.palette)
         builder.setTitle(R.string.select_theme)
         builder.setView(inf)
@@ -499,7 +490,7 @@ class Profile : AppCompatActivity() {
             backup
                 .database(NoteDatabase.getDatabase(context))
                 .backupLocation(RoomBackup.BACKUP_FILE_LOCATION_CUSTOM_DIALOG)
-                .customBackupFileName("JustNotes_Backup_$currentDateAndTime.sqlite")
+                .customBackupFileName("JustNotes_Backup_$currentDateAndTime")
                 .backupIsEncrypted(false)
                 .apply {
                     onCompleteListener { success, message, exitCode ->
@@ -507,7 +498,6 @@ class Profile : AppCompatActivity() {
                     }
                 }
                 .backup()
-            restartApp()
         } else {
             val userId = Firebase.auth.currentUser?.uid
             MaterialAlertDialogBuilder(this)

@@ -19,4 +19,59 @@
         <item name="android:scrollbars">vertical</item>
         <item name="android:scrollbarThumbVertical">@drawable/scrollbar</item>
     </style>
+
+    <style name="Top20Bottom10">
+        <item name="shapeAppearance">@style/ShapeAppearance.Top20Bottom10</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Top20Bottom10" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="Top10Bottom20">
+        <item name="shapeAppearance">@style/ShapeAppearance.Top10Bottom20</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Top10Bottom20" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+
+    <style name="Top10Bottom10">
+        <item name="shapeAppearance">@style/ShapeAppearance.Top10Bottom10</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="minHeight">70dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Top10Bottom10" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="Top20Bottom20">
+        <item name="shapeAppearance">@style/ShapeAppearance.Top20Bottom20</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="minHeight">70dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Top20Bottom20" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
 </resources>

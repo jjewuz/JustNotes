@@ -25,12 +25,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <Button
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     app:backgroundTint="@color/md_theme_light_primary"
                     android:background="@drawable/buttonc" />
 
@@ -39,7 +39,7 @@
                     android:text="@string/default_theme"
                     android:paddingStart="25dp"
                     android:paddingEnd="25dp"
-                    android:textSize="22sp"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
@@ -57,12 +57,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <Button
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/monetcolor"
             android:background="@drawable/buttonc" />
 
@@ -71,7 +71,7 @@
             android:text="@string/monet_theme"
             android:paddingStart="25dp"
             android:paddingEnd="25dp"
-            android:textSize="22sp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -88,14 +88,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
         <Button
             android:id="@+id/yellow"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:backgroundTint="@color/ice_accent"
             android:background="@drawable/buttonc" />
 
@@ -104,7 +104,7 @@
             android:text="@string/coffee_theme"
             android:paddingStart="25dp"
             android:paddingEnd="25dp"
-            android:textSize="22sp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

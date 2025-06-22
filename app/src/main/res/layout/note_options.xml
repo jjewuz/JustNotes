@@ -27,14 +27,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
                         app:srcCompat="@drawable/widget" />
 
                     <TextView
@@ -42,7 +42,7 @@
                         android:text="@string/set_on_widget"
                         android:paddingStart="25dp"
                         android:paddingEnd="25dp"
-                        android:textSize="22sp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -59,14 +59,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
                         app:srcCompat="@drawable/note_notification" />
 
                     <TextView
@@ -74,7 +74,7 @@
                         android:text="@string/note_sent_noti"
                         android:paddingStart="25dp"
                         android:paddingEnd="25dp"
-                        android:textSize="22sp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -91,14 +91,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
                         app:srcCompat="@drawable/share" />
 
                     <TextView
@@ -106,7 +106,7 @@
                         android:text="@string/share"
                         android:paddingStart="25dp"
                         android:paddingEnd="25dp"
-                        android:textSize="22sp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -123,7 +123,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -131,8 +131,8 @@
                         android:id="@+id/yellow"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
                         app:srcCompat="@drawable/delete" />
 
                     <TextView
@@ -140,7 +140,7 @@
                         android:text="@string/delete"
                         android:paddingStart="25dp"
                         android:paddingEnd="25dp"
-                        android:textSize="22sp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>

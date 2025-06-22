@@ -14,8 +14,8 @@ android {
         applicationId "com.jjewuz.justnotes"
         minSdk 31
         targetSdk 35
-        versionCode 211
-        versionName "6.0.1"
+        versionCode 215
+        versionName "6.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -58,8 +58,8 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.16.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.14.0-alpha01'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.14.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.9.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
@@ -76,25 +76,25 @@ dependencies {
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    implementation 'androidx.work:work-runtime-ktx:2.10.1'
+    implementation 'androidx.work:work-runtime-ktx:2.10.2'
     implementation 'com.google.android.play:app-update-ktx:2.1.0'
     implementation 'com.google.android.play:review-ktx:2.0.2'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.1.0'
     implementation 'com.google.firebase:firebase-messaging:24.1.1'
-    implementation "androidx.work:work-runtime-ktx:2.10.1"
+    implementation "androidx.work:work-runtime-ktx:2.10.2"
 
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
     implementation "androidx.core:core-splashscreen:1.0.1"
     implementation 'androidx.navigation:navigation-ui-ktx:2.9.0'
     implementation "androidx.viewpager2:viewpager2:1.1.0"
 
-    implementation "androidx.room:room-ktx:2.7.1"
+    implementation "androidx.room:room-ktx:2.7.2"
     kapt "androidx.room:room-compiler:2.7.1"
-    androidTestImplementation "androidx.room:room-testing:2.7.1"
+    androidTestImplementation "androidx.room:room-testing:2.7.2"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.0"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.9.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.9.1"
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"

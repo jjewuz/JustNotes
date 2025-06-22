@@ -31,11 +31,13 @@
                 android:iconifiedByDefault="true"
                 android:layout_height="wrap_content"/>
 
-            <ImageView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:id="@+id/account"
-                android:src="@drawable/account"/>
+                style="?attr/materialIconButtonFilledStyle"
+                app:icon="@drawable/account"/>
 
         </LinearLayout>
 

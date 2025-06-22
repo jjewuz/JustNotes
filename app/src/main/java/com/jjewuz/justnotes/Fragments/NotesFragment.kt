@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
@@ -59,7 +59,7 @@ class NotesFragment : Fragment(), NoteClickInterface, NoteLongClickInterface {
     lateinit var noteRVAdapter: NoteRVAdapter
     lateinit var allItems: LiveData<List<Note>>
     private lateinit var searchView: SearchView
-    private lateinit var accountButton: ImageView
+    private lateinit var accountButton: Button
 
     private lateinit var sharedPref: SharedPreferences
 
